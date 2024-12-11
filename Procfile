@@ -1,0 +1,1 @@
+web: gunicorn caravan_booking.wsgi:application
