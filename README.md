@@ -37,17 +37,26 @@ source: [Nomad-Nation amiresponsive](https://ui.dev/amiresponsive?url=https://no
 - Owners need the ability to review customer profiles to assess booking requests and approve or decline them, reducing the risk of disputes or other issues.
 - All users require a seamless and reliable experience, including a clean and responsive interface that works across all devices, fast loading times, and minimal technical issues. They also need reliable identity verification, secure data handling, privacy protections, and access to responsive customer support for resolving issues, disputes, or refunds.
 
-##### Business Goals - WHERE I GOT TO
-- Foster a dynamic blogging platform with active user participation.
-- Build a sense of community through discussions and user engagement.
-- Ensure easy blog content management for owners.
+##### Business Goals
+- Attract and retain a large base of both caravan owners and customers to establish a robust marketplace.
+- Create a safe and secure platform for both customers and owners by ensuring reliable transactions, secure data handling, and trustworthy reviews.
+- Make it easy for customers to book caravans and for owners to list and manage their rentals.
+- Encourage users to engage with the platform frequently and provide positive feedback about their experience.
+
+Future Goals:
+- Generate revenue through booking fees, subscription plans, or commission-based models.
+- Gradually expand the app's reach by targeting more geographic regions or user demographics.
+- Automate and streamline business operations to minimize manual intervention and reduce costs.
+- Collaborate with complementary businesses such as insurance providers, travel apps, or caravan servicing companies.
+- Create a sense of community for users by providing forums, blogs, or events related to caravan travel.
+- Continuously improve the platform based on user reviews, complaints, and behavior analytics.
 
 #### 2. Scope Plane
 ##### Features
 - A full list of [Features](#features) can be viewed in detail below.
 
 ##### Content Requirements
-- Blog post management (create, update, delete, and preview).
+- Review message management (create, update, delete, and preview).
 - Comment moderation and management tools.
 - User account features (register, log in, edit/delete comments).
 - Notification system for comment approval status.
@@ -56,10 +65,17 @@ source: [Nomad-Nation amiresponsive](https://ui.dev/amiresponsive?url=https://no
 #### 3. Structure Plane
 ##### Information Architecture
 - **Navigation Menu**:
-  - Links to Home, Blog Posts, Login/Register, and Dashboard (for blog owners).
+  - Links to Home/Dashboard, Login/Logout, Registration, Notification, Account, Contact, Caravan listing, Booking.
 - **Hierarchy**:
-  - Blog content displayed prominently for easy browsing.
-  - Clear call-to-action buttons for account creation and engagement (e.g., commenting).
+  - Home / Landing page - when a user first arrives on the website will contain a simple navigation bar with links to login or register and a contact page. There will also be a overview of what the app does.
+  - Login / Logout page - allow the user to log in to their account where they will then be redirected to their dashboard or if already logged in it will allow them to log out where they will be redirected to the home page.
+  - Registration page - will allow a user to create an account whether they are a customer or a caravan owner, where they will be redirected to their dashboard.
+  - Dashboard/Home page - serve as the hub for users after logging in, with personalised options based on their role and access to a extra navigation bar with links to account page, caravan listing page, booking page and notification page.
+  - Caravan listing page - allow customers to browse and filter caravans based on their needs and allow owners to add, edit and remove their caravans from the listing page.
+  - Booking page - customers to finalise caravan booking details and request the booking and for owners to review the request to approve or decline the bookings. 
+  - Contact page - This will allow users to contact either admin for things such as technical problems or owners/customers about their bookings.
+  - Account page - logged in users can edit their profiles, update preferences and change other personal details.
+  - Notification page - logged in users can see all their messages easily and be able to preview and delete any of there messages.
 
 ##### User Flow
 1. Guest users browse blog content → read posts and see commenter names.
