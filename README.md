@@ -78,11 +78,44 @@ Future Goals:
   - Notification page - logged in users can see all their messages easily and be able to preview and delete any of there messages.
 
 ##### User Flow
-1. Guest users browse blog content → read posts and see commenter names.
-2. Guest users register for an account → log in to leave comments.
-3. Registered users leave comments → receive a pending approval notification.
-4. Blog owners create, update, and manage posts → moderate comments.
-5. Blog owners approve or reject comments → manage user interactions.
+1. Home/Landing Page (Accessible to All Users)
+- Visitors can:
+  - View a brief overview of the app's purpose and functionality.
+  - Navigate to sign-up, log-in and contact pages
+2. User Registration and Login (Accessible to All Users)
+- Guest users can:
+  - Register for an account as a customer (to book caravans) or an owner (to list caravans).
+  - Log in to access personalized features.
+  - Reset passwords if needed.
+3. Customer Workflow
+- Registered customers can:
+  - Search for caravans using filters (location, price, availability, features).
+  - View caravan details, including descriptions, photos, and brief description of the owner.
+  - Save favorite caravans to a wish list for future reference.
+  - Send booking requests to caravan owners.
+  - Track and manage booking.
+  - Leave reviews and write comments for caravans they have stayed in.
+4. Caravan Owner Workflow
+- Registered owners can:
+  - Create, update, and manage caravan listings with detailed descriptions, pricing, and availability.
+  - Upload photos to attract potential customers.
+  - Block specific dates when the caravan is unavailable.
+  - View and respond to customer messages or booking requests.
+  - Approve or decline booking requests.
+  - Respond to reviews to build trust and improve their service.
+5. Admin Workflow
+- Admins can:
+  - Approve or reject caravan listings to ensure quality and authenticity.
+  - Monitor user activity and moderate reviews or comments to remove inappropriate content.
+  - Handle disputes between customers and owners.
+  - Analyze app usage statistics and generate reports for improvement.
+6. Additional Features
+- Notifications:
+  - Customers receive booking confirmations and reminders.
+  - Owners are notified of booking requests or customer messages.
+- Secure payment processing for bookings with flexible refund and cancellation policies.
+- Error Management
+  - 404 error page is included with navigation links and automatic redirection.
 
 #### 4. Skeleton Plane
 ##### Wireframe Suggestions
@@ -157,24 +190,24 @@ In this section, list all of your possible user stories for the project. Samples
 
 ## Wireframes
 
-⚠️ INSTRUCTIONS ⚠️
-
-If you've created wireframes or mock-ups, use this section to display screenshots of your wireframes. The example table below uses sample pages from the walkthrough project to give you some inspiration for your own project, so please adjust accordingly.
-
-⚠️ --- END --- ⚠️
-
 To follow best practice, wireframes were developed for mobile, tablet, and desktop sizes.
-I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wireframes.
+I've used [Moqups](https://app.moqups.com/dDQLGW13n29lu58kkqxLxu4EKujHh6qx/edit/page/ad64222d5) to design my site wireframes.
 
 | Page | Mobile | Tablet | Desktop |
 | --- | --- | --- | --- |
-| Register | ![screenshot](documentation/wireframes/mobile-register.png) | ![screenshot](documentation/wireframes/tablet-register.png) | ![screenshot](documentation/wireframes/desktop-register.png) |
-| Login | ![screenshot](documentation/wireframes/mobile-login.png) | ![screenshot](documentation/wireframes/tablet-login.png) | ![screenshot](documentation/wireframes/desktop-login.png) |
-| Home | ![screenshot](documentation/wireframes/mobile-home.png) | ![screenshot](documentation/wireframes/tablet-home.png) | ![screenshot](documentation/wireframes/desktop-home.png) |
-| Add Blog | ![screenshot](documentation/wireframes/mobile-add-blog.png) | ![screenshot](documentation/wireframes/tablet-add-blog.png) | ![screenshot](documentation/wireframes/desktop-add-blog.png) |
-| Edit Blog | ![screenshot](documentation/wireframes/mobile-edit-blog.png) | ![screenshot](documentation/wireframes/tablet-edit-blog.png) | ![screenshot](documentation/wireframes/desktop-edit-blog.png) |
-| Blog Post | ![screenshot](documentation/wireframes/mobile-blog-post.png) | ![screenshot](documentation/wireframes/tablet-blog-post.png) | ![screenshot](documentation/wireframes/desktop-blog-post.png) |
-| 404 | ![screenshot](documentation/wireframes/mobile-404.png) | ![screenshot](documentation/wireframes/tablet-404.png) | ![screenshot](documentation/wireframes/desktop-404.png) |
+| Register | ![screenshot](documentation/wireframe/signup-mob.png) | ![screenshot](documentation/wireframe/home-tab.png) | ![screenshot](documentation/wireframes/desktop-register.png) |
+| Login | ![screenshot](documentation/wireframe/log-mob.png) | ![screenshot](documentation/wireframe/log-tab.png) | ![screenshot](documentation/wireframes/desktop-login.png) |
+| Home | ![screenshot](documentation/wireframe/home-mob.png) | ![screenshot](documentation/wireframe/home-tab.png) | ![screenshot](documentation/wireframes/desktop-home.png) |
+| Dashboard(customer) | ![screenshot](documentation/wireframe/custom-dash-mob.png) | ![screenshot](documentation/wireframe/custom-dash-tab.png) | ![screenshot](documentation/wireframes/desktop-add-blog.png) |
+| Dashboard(owner)| ![screenshot](documentation/wireframe/own-dash-mob.png) | ![screenshot](documentation/wireframe/own-dash-tab.png) | ![screenshot](documentation/wireframes/desktop-edit-blog.png) |
+| Listing(customer) | ![screenshot](documentation/wireframe/custom-list-mob.png) | ![screenshot](documentation/wireframe/custom-list-tab.png) | ![screenshot](documentation/wireframes) |
+| Listing(owner) | ![screenshot](documentation/wireframe/own-list-mob.png) | ![screenshot](documentation/wireframe/own-list-tab.png) | ![screenshot](documentation/wireframes) |
+| Booking(customer) | ![screenshot](documentation/wireframe/custom-book-mob.png) | ![screenshot](documentation/wireframe/custom-book-tab.png) | ![screenshot](documentation/wireframes) |
+| Booking(owner) | ![screenshot](documentation/wireframe/own-book-mob.png) | ![screenshot](documentation/wireframe/own-book-tab.png) | ![screenshot](documentation/wireframes) |
+| Contact | ![screenshot](documentation/wireframe/contact-mob.png) | ![screenshot](documentation/wireframe/contact-tab.png) | ![screenshot](documentation/wireframes/desktop-blog-post.png) |
+| Account | ![screenshot](documentation/wireframe/account-mob.png) | ![screenshot](documentation/wireframe/account-tab.png) | ![screenshot](documentation/wireframes) |
+| Notification | ![screenshot](documentation/wireframe/message-mob.png) | ![screenshot](documentation/wireframe/message-tab.png) | ![screenshot](documentation/wireframes) |
+| 404 | ![screenshot](documentation/wireframe/error-mob.png) | ![screenshot](documentation/wireframe/error-tab.png) | ![screenshot](documentation/wireframes/desktop-404.png) |
 
 ## Features
 
