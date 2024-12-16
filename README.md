@@ -159,34 +159,32 @@ I've used CSS `:root` variables to easily update the global colour scheme by cha
 
 ## User Stories
 
-⚠️ INSTRUCTIONS ⚠️
-
-In this section, list all of your possible user stories for the project. Samples have been provided below using the example walkthrough project for your inspiration. Make sure to adjust to match your own project features!
-
-⚠️ --- END --- ⚠️
-
 | Target | Expectation | Outcome |
 | --- | --- | --- |
-| As a blog owner | I would like to create new blog posts with a title, featured image, and content | so that I can share my experiences with my audience. |
-| As a blog owner | I would like to update existing blog posts | so that I can correct or add new information to my previous stories. |
-| As a blog owner | I would like to delete blog posts | so that I can remove outdated or irrelevant content from my blog. |
-| As a blog owner | I would like to retrieve a list of all my published blog posts | so that I can manage them from a central dashboard. |
-| As a blog owner | I would like to preview a post as draft before publishing it | so that I can ensure formatting and content appear correctly. |
-| As a blog owner | I would like to review comments before they are published | so that I can filter out spam or inappropriate content. |
-| As a blog owner | I would like to approve or reject comments from users | so that I can maintain control over the discussion on my posts. |
-| As a blog owner | I would like to view a list of all comments (both approved and pending) | so that I can manage user engagement effectively. |
-| As a blog owner | I would like to edit or delete user comments | so that I can clean up or remove inappropriate responses after they've been posted. |
-| As a registered user | I would like to log in to the site | so that I can leave comments on blog posts. |
-| As a registered user | I would like to register for an account | so that I can become part of the community and engage with the blog. |
-| As a registered user | I would like to leave a comment on a blog post | so that I can share my thoughts or ask questions about the owner's experiences. |
-| As a registered user | I would like my comment to show my name and the timestamp | so that others can see who I am and when I left the comment. |
-| As a registered user | I would like to receive a notification or message saying my comment is pending approval | so that I understand it hasn't been posted immediately. |
-| As a registered user | I would like to edit or delete my own comments | so that I can fix mistakes or retract my statement. |
-| As a guest user | I would like to read blog posts without registering | so that I can enjoy the content without needing to log in. |
-| As a guest user | I would like to browse past posts | so that I can explore the blog's full content history. |
-| As a guest user | I would like to register for an account | so that I can participate in the community by leaving comments on posts. |
-| As a guest user | I would like to see the names of other commenters on posts | so that I can get a sense of community interaction before registering. |
-| As a user | I would like to see a 404 error page if I get lost | so that it's obvious that I've stumbled upon a page that doesn't exist. |
+| As a caravan owner | I would like to create a listing for my caravan | so that I can rent it out to customers. |
+| As a caravan owner | I would like to upload photos and provide details about my caravan | so that I can attract potential renters. |
+| As a caravan owner | I would like to set the availability and pricing for my caravan | so that I can manage when it's rented and how much I earn. |
+| As a caravan owner | I would like to approve or decline booking requests | so that I can ensure the caravan is available for trustworthy renters. |
+| As a caravan owner | I would like to manage multiple caravan listings | so that I can rent out more than one vehicle. |
+| As a caravan owner | I would like to receive notifications about new booking requests | so that I can respond promptly to customers. |
+| As a caravan owner | I would like to block specific dates for personal use | so that my caravan is unavailable during those times. |
+| As a caravan owner | I would like to respond to customers messages or questions | so that I can provide them with helpful information. |
+| As a caravan owner | I would like to view and manage reviews left by customers | so that I can improve my service and attract more renters. |
+| As a customer | I would like to filter caravans by location, price, and features | so that I can quickly find one that suits my needs. |
+| As a customer | I would like to view detailed information about a caravan | so that I can see photos, amenities, and availability before making a decision. |
+| As a customer | I would like to search for caravans near specific destinations | so that I can plan my travel conveniently. |
+| As a customer | I would like to book a caravan for a specific date range | so that I can secure it for my trip. |
+| As a customer | I would like to receive a confirmation email or notification for my booking | so that I have proof and details of my reservation. |
+| As a customer | I would like to cancel or modify my booking | so that I can adjust my plans if necessary. |
+| As a customer | I would like to save my favourite caravans to a wish-list | so that I can revisit them later when planning a trip. |
+| As a customer | I would like to leave a review and rating for a caravan I rented | so that I can share my experience with others. |
+| As a customer | I would like to create an account or log in | so that I can manage my bookings and preferences easily. |
+| As a customer | I would like to chat with the caravan owner | so that I can ask specific questions about the rental. |
+| As a admin | I would like to view all user accounts | so that I can monitor activity and handle issues if needed. |
+| As a admin | I would like to approve or reject caravan listings | so that only high-quality and legitimate caravans are available on the platform. |
+| As a admin | I would like to moderate reviews and comments | so that inappropriate content can be removed. |
+| As a admin | I would like to analyse app usage statistics | so that I can identify areas for improvement. |
+| As a admin | I would like to disable user accounts that violate the terms of service | so that the platform remains safe and trustworthy. |
 
 ## Wireframes
 
