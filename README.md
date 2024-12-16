@@ -128,33 +128,33 @@ Future Goals:
 
 ### Colour Scheme
 
-⚠️INSTRUCTIONS ⚠️
+I used [coolors.co](https://coolors.co/2d2d2d-6a9e6f-f4a261-87ceeb-faf9f6) to generate my color palette.
 
-Explain your colors and color scheme. Consider adding a link and screenshot for your color scheme using [coolors](https://coolors.co/generate).
+- `#6A9E6F` primary colour.
+- `#87CEEB` primary accent.
+- `#F4A261` secondary accent.
+- `#FAF9F6` background.
+- `#2D2D2D` primary text.
 
-When you add a color to the palette, the URL is dynamically updated, making it easier for you to return back to your color palette later if needed. See example below:
+![screenshot](documentation/colour.png)
 
-⚠️ --- END --- ⚠️
+I've used CSS `:root` variables to easily update the global colour scheme by changing only one value, instead of everywhere in the CSS file.
 
-I used [coolors.co](https://coolors.co/080708-3772ff-df2935-fdca40-e6e8e6) to generate my color palette.
-
-- `#000000` primary text.
-- `#3772FF` primary highlights.
-- `#DF2935` secondary text.
-- `#FDCA40` secondary highlights.
-
-![screenshot](documentation/coolors.png)
+```
+:root {
+  /* p = primary | s = secondary | b = background */
+  --p-colour: #6A9E6F;
+  --p-accent: #87CEEB;
+  --s-accent: #F4A261;
+  --b-colour: #FAF9F6;
+  --p-text: #2D2D2D;
+}
+```
 
 ### Typography
 
-⚠️ INSTRUCTIONS ⚠️
-
-Explain any fonts and icon libraries used, like **Google Fonts**, **Font Awesome**, etc. Consider adding a link to each font used, the Font Awesome site (if used), or similar icon library.
-
-⚠️ --- END --- ⚠️
-
-- [Montserrat](https://fonts.google.com/specimen/Montserrat) was used for the primary headers and titles.
-- [Lato](https://fonts.google.com/specimen/Lato) was used for all other secondary text.
+- [Montserrat](https://fonts.google.com/specimen/Merriweather) was used for all other secondary text.
+- [Lato](https://fonts.google.com/specimen/Lato) was used for the primary headers and titles.
 - [Font Awesome](https://fontawesome.com) icons were used throughout the site, such as the social media icons in the footer.
 
 ## User Stories
