@@ -118,7 +118,7 @@ Future Goals:
   - 404 error page is included with navigation links and automatic redirection.
 
 #### 4. Skeleton Plane
-##### Wireframe Suggestions
+##### Wireframe Ideas
 - A full list of [Wireframes](#wireframes) can be viewed in detail below.
 
 #### 5. Surface Plane
@@ -195,19 +195,19 @@ I've used [Moqups](https://app.moqups.com/dDQLGW13n29lu58kkqxLxu4EKujHh6qx/edit/
 
 | Page | Mobile | Tablet | Desktop |
 | --- | --- | --- | --- |
-| Register | ![screenshot](documentation/wireframe/signup-mob.png) | ![screenshot](documentation/wireframe/home-tab.png) | ![screenshot](documentation/wireframes/desktop-register.png) |
-| Login | ![screenshot](documentation/wireframe/log-mob.png) | ![screenshot](documentation/wireframe/log-tab.png) | ![screenshot](documentation/wireframes/desktop-login.png) |
-| Home | ![screenshot](documentation/wireframe/home-mob.png) | ![screenshot](documentation/wireframe/home-tab.png) | ![screenshot](documentation/wireframes/desktop-home.png) |
-| Dashboard(customer) | ![screenshot](documentation/wireframe/custom-dash-mob.png) | ![screenshot](documentation/wireframe/custom-dash-tab.png) | ![screenshot](documentation/wireframes/desktop-add-blog.png) |
-| Dashboard(owner)| ![screenshot](documentation/wireframe/own-dash-mob.png) | ![screenshot](documentation/wireframe/own-dash-tab.png) | ![screenshot](documentation/wireframes/desktop-edit-blog.png) |
-| Listing(customer) | ![screenshot](documentation/wireframe/custom-list-mob.png) | ![screenshot](documentation/wireframe/custom-list-tab.png) | ![screenshot](documentation/wireframes) |
-| Listing(owner) | ![screenshot](documentation/wireframe/own-list-mob.png) | ![screenshot](documentation/wireframe/own-list-tab.png) | ![screenshot](documentation/wireframes) |
-| Booking(customer) | ![screenshot](documentation/wireframe/custom-book-mob.png) | ![screenshot](documentation/wireframe/custom-book-tab.png) | ![screenshot](documentation/wireframes) |
-| Booking(owner) | ![screenshot](documentation/wireframe/own-book-mob.png) | ![screenshot](documentation/wireframe/own-book-tab.png) | ![screenshot](documentation/wireframes) |
-| Contact | ![screenshot](documentation/wireframe/contact-mob.png) | ![screenshot](documentation/wireframe/contact-tab.png) | ![screenshot](documentation/wireframes/desktop-blog-post.png) |
-| Account | ![screenshot](documentation/wireframe/account-mob.png) | ![screenshot](documentation/wireframe/account-tab.png) | ![screenshot](documentation/wireframes) |
-| Notification | ![screenshot](documentation/wireframe/message-mob.png) | ![screenshot](documentation/wireframe/message-tab.png) | ![screenshot](documentation/wireframes) |
-| 404 | ![screenshot](documentation/wireframe/error-mob.png) | ![screenshot](documentation/wireframe/error-tab.png) | ![screenshot](documentation/wireframes/desktop-404.png) |
+| Register | ![screenshot](documentation/wireframe/signup-mob.png) | ![screenshot](documentation/wireframe/home-tab.png) | ![screenshot](documentation/wireframe/signup-desk.png) |
+| Login | ![screenshot](documentation/wireframe/log-mob.png) | ![screenshot](documentation/wireframe/log-tab.png) | ![screenshot](documentation/wireframe/log-desk.png) |
+| Home | ![screenshot](documentation/wireframe/home-mob.png) | ![screenshot](documentation/wireframe/home-tab.png) | ![screenshot](documentation/wireframe/home-desk.png) |
+| Dashboard(customer) | ![screenshot](documentation/wireframe/custom-dash-mob.png) | ![screenshot](documentation/wireframe/custom-dash-tab.png) | ![screenshot](documentation/wireframe/custom-dash-desk.png) |
+| Dashboard(owner)| ![screenshot](documentation/wireframe/own-dash-mob.png) | ![screenshot](documentation/wireframe/own-dash-tab.png) | ![screenshot](documentation/wireframe/own-dash-desk.png) |
+| Listing(customer) | ![screenshot](documentation/wireframe/custom-list-mob.png) | ![screenshot](documentation/wireframe/custom-list-tab.png) | ![screenshot](documentation/wireframe/custom-list-desk.png) |
+| Listing(owner) | ![screenshot](documentation/wireframe/own-list-mob.png) | ![screenshot](documentation/wireframe/own-list-tab.png) | ![screenshot](documentation/wireframe/own-list-desk.png) |
+| Booking(customer) | ![screenshot](documentation/wireframe/custom-book-mob.png) | ![screenshot](documentation/wireframe/custom-book-tab.png) | ![screenshot](documentation/wireframe/custom-book-desk.png) |
+| Booking(owner) | ![screenshot](documentation/wireframe/own-book-mob.png) | ![screenshot](documentation/wireframe/own-book-tab.png) | ![screenshot](documentation/wireframe/own-book-desk.png) |
+| Contact | ![screenshot](documentation/wireframe/contact-mob.png) | ![screenshot](documentation/wireframe/contact-tab.png) | ![screenshot](documentation/wireframe/contact-desk.png) |
+| Account | ![screenshot](documentation/wireframe/account-mob.png) | ![screenshot](documentation/wireframe/account-tab.png) | ![screenshot](documentation/wireframe/account-desk.png) |
+| Notification | ![screenshot](documentation/wireframe/message-mob.png) | ![screenshot](documentation/wireframe/message-tab.png) | ![screenshot](documentation/wireframe/message-desk.png) |
+| 404 | ![screenshot](documentation/wireframe/error-mob.png) | ![screenshot](documentation/wireframe/error-tab.png) | ![screenshot](documentation/wireframe/error-desk.png) |
 
 ## Features
 
