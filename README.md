@@ -193,7 +193,7 @@ I've used [Moqups](https://app.moqups.com/dDQLGW13n29lu58kkqxLxu4EKujHh6qx/edit/
 
 | Page | Mobile | Tablet | Desktop |
 | --- | --- | --- | --- |
-| Register | ![screenshot](documentation/wireframe/signup-mob.png) | ![screenshot](documentation/wireframe/home-tab.png) | ![screenshot](documentation/wireframe/signup-desk.png) |
+| Register | ![screenshot](documentation/wireframe/signup-mob.png) | ![screenshot](documentation/wireframe/signup-tab.png) | ![screenshot](documentation/wireframe/signup-desk.png) |
 | Login | ![screenshot](documentation/wireframe/log-mob.png) | ![screenshot](documentation/wireframe/log-tab.png) | ![screenshot](documentation/wireframe/log-desk.png) |
 | Home | ![screenshot](documentation/wireframe/home-mob.png) | ![screenshot](documentation/wireframe/home-tab.png) | ![screenshot](documentation/wireframe/home-desk.png) |
 | Dashboard(customer) | ![screenshot](documentation/wireframe/custom-dash-mob.png) | ![screenshot](documentation/wireframe/custom-dash-tab.png) | ![screenshot](documentation/wireframe/custom-dash-desk.png) |
@@ -209,62 +209,51 @@ I've used [Moqups](https://app.moqups.com/dDQLGW13n29lu58kkqxLxu4EKujHh6qx/edit/
 
 ## Features
 
-⚠️ INSTRUCTIONS ⚠️
-
-In this section, you should go over the different parts of your project, and describe each feature. You should explain what value each of the features provides for the user, focusing on your target audience, what they want to achieve, and how your project can help them achieve these things.
-
-**IMPORTANT**: Remember to always include a screenshot of each individual feature!
-
-⚠️ --- END --- ⚠️
-
 ### Existing Features
 
 | Feature | Notes | Screenshot |
 | --- | --- | --- |
-| Register | Authentication is handled by allauth, allowing users to register accounts. | ![screenshot](documentation/features/register.png) |
-| Login | Authentication is handled by allauth, allowing users to log in to their existing accounts. | ![screenshot](documentation/features/login.png) |
-| Logout | Authentication is handled by allauth, allowing users to log out of their accounts. | ![screenshot](documentation/features/logout.png) |
-| Blog List | The homepage displays basic information about blog posts, including image, title, author, date, and a brief excerpt. | ![screenshot](documentation/features/blog-list.png) |
-| View Post | Users can view the full blog post details, including any comments. | ![screenshot](documentation/features/view-post.png) |
-| Pagination | Blog posts are displayed in pages, with six posts per page. This provides better navigation for users through the post list. | ![screenshot](documentation/features/pagination.png) |
-| Add Comments | Authenticated visitors can comment on blog posts; comments require approval before being published. | ![screenshot](documentation/features/add-comment.png) |
-| Edit Comments | Authenticated visitors can edit their own comments. | ![screenshot](documentation/features/edit-comment.png) |
-| Delete Comments | Authenticated visitors can delete their own comments. | ![screenshot](documentation/features/delete-comment.png) |
-| Comment Approvals | Admins can approve or disapprove comments submitted by users before they are visible on the blog post. | ![screenshot](documentation/features/comment-approval.png) |
-| Create Post | Site owners can create/publish blog posts, including setting a featured image using Cloudinary, all from the Django admin dashboard. | ![screenshot](documentation/features/create-post.png) |
-| Update Post | Site owners can update/manage blog posts from the Django admin dashboard. | ![screenshot](documentation/features/update-post.png) |
-| Delete Post | Site owners can delete blog posts from the Django admin dashboard. | ![screenshot](documentation/features/delete-post.png) |
-| About Page | The About page displays the latest information about the site author, along with the option for visitors to send collaboration requests. | ![screenshot](documentation/features/about.png) |
-| Collaboration Requests | Visitors can submit collaboration requests from the *About* page, which are later reviewed by the admin. | ![screenshot](documentation/features/collaboration.png) |
-| User Feedback | Clear and obvious Django messages are used to provide feedback to user actions. | ![screenshot](documentation/features/messages.png) |
-| Heroku Deployment | The site is fully deployed to Heroku, making it accessible online and easy to manage. | ![screenshot](documentation/features/heroku.png) |
-| 404 | The 404 error page will indicate when a user has navigated to a page that doesn't exist, replacing the default Heroku 404 page with one that ties into the site's look and feel. | ![screenshot](documentation/features/404.png) |
+| Homepage | Allows all user to log in, sign up and gain a clear understanding of what the app's purpose and features are. | ![screenshot](documentation/feature) |
+| Register | Authentication is handled by allauth, allowing users to register accounts. | ![screenshot](documentation/feature) |
+| Login | Authentication is handled by allauth, allowing users to log in to their existing accounts. | ![screenshot](documentation/feature) |
+| Logout | Authentication is handled by allauth, allowing users to log out of their accounts. | ![screenshot](documentation/feature) |
+| Dashboard | The dashboard will display personalized sections tailored to either the customer or owner, along with image slideshows and links to their corresponding pages. | **customer:** ![screenshot](documentation/feature) **owner:** ![screenshot](documentation/feature) |
+| Navigation | The app will feature two separate navigation bars: one for all users, including Home, Log In, Register, and Contact tabs, and another for signed-in users, featuring Account, Listings, Bookings, and Notifications tabs. Both navigation bars can be toggled on and off as needed. | **all users:** ![screenshot](documentation/feature) **signed in users:** ![screenshot](documentation/feature) |
+| Pagination | Caravan listings are displayed with six caravans per page, ensuring easy navigation for customers browsing the options. | ![screenshot](documentation/feature) |
+| Next arrow | On the listing page, users can browse through the image gallery to view caravans in greater detail. | ![screenshot](documentation/feature) |
+| Contact form | All users can use this feature to contact the admin, while customers can reach out to owners and vice versa. | ![screenshot](documentation/feature) |
+| Search bar | The search bar allows users to find a specific caravan by its ID on the listing page, or on the dashboard, it can be used to search for actions such as contacting an owner or booking a caravan stay. | **dashboard** ![screenshot](documentation/feature) **listing page** ![screenshot](documentation/feature) |
+| Filter | Users can filter caravan searches based on their needs, for example, customers can search for caravans with free Wi-Fi, or owners can locate their caravans by a specific location. | ![screenshot](documentation/feature) |
+| Account dropdowns | Logged-in users can access dropdown tabs to view detailed information on each topic, as well as edit or delete content as needed. | ![screenshot](documentation/feature) |
+| Add caravans | Caravan owners can add new caravans to the listing page, including uploading images and providing detailed information about each caravan. | ![screenshot](documentation/feature) |
+| Update caravan details | Caravan owners can update/manage their caravan details from their booking page. | ![screenshot](documentation/feature) |
+| Delete caravans | Caravan owners can delete any of their caravans from their booking page. | ![screenshot](documentation/feature) |
+| Booking button | Customers can click the 'Book Now' button to navigate to the booking page, where they can reserve their selected caravan. | ![screenshot](documentation/feature) |
+| booking form | Customers can complete a form with their personal details, desired dates for their stay, and any additional information or questions for the owner. The owner can review the booking request, provide additional details or ask questions, and choose to accept or decline the request. | **customer form** ![screenshot](documentation/feature) **owner form** ![screenshot](documentation/feature) |
+| User Feedback | Clear and obvious Django messages are used to provide feedback to user actions. | ![screenshot](documentation/feature) |
+| Caravan reviews | Customers can leave reviews and ratings for their previous stays, while owners can respond to reviews to build stronger relationships with customers and attract more potential renters. | **customer review** ![screenshot](documentation/feature) **owner review** ![screenshot](documentation/feature) |
+| Social media links | The footer section includes links to various social media platforms. | ![screenshot](documentation/feature) |
+| Wish-list | Customers can save caravans to a wish list, allowing them to revisit their favorite options later. | ![screenshot](documentation/feature) |
+| Notifications | Customers and owners can receive both email and in-app notifications based on their preferences for events like booking requests, reviews, and admin messages. In-app notifications can be deleted manually on the notifications page or automatically after a set period, depending on user preferences. | **email** ![screenshot](documentation/feature) **in-app** ![screenshot](documentation/feature) |
+| Heroku Deployment | The site is fully deployed to Heroku, making it accessible online and easy to manage. | ![screenshot](documentation/feature) |
+| 404 | The 404 error page will indicate when a user has navigated to a page that doesn't exist, replacing the default Heroku 404 page with one that ties into the site's look and feel. | ![screenshot](documentation/feature) |
+# Needs adding
+| admin features |  | ![screenshot](documentation/feature) |
 
 ### Future Features
 
-⚠️ INSTRUCTIONS ⚠️
-
-Do you have additional ideas that you'd like to include on your project in the future? Fantastic, list them here! It's always great to have plans for future improvements. Consider adding any helpful links or notes to help remind you in the future, if you revisit the project in a couple years.
-
-A few examples are listed below to align with possible ways to improve on the sample walkthrough project, to give you some inspiration.
-
-⚠️ --- END ---⚠️
-
-- **Post Categories/Tags**: Allow users to categorize and tag blog posts, making it easier for visitors to filter content based on their interests.
-- **Post Search Functionality**: Add a search bar for users to quickly find posts by keywords or phrases.
-- **Post Likes/Dislikes or Upvotes**: Implement a "like" or "upvote" system for blog posts to encourage user engagement and give feedback to the author.
-- **User Profiles**: Create personalized user profiles where authenticated users can view their comments, liked posts, and account information.
-- **Comment Replies & Threads**: Enable users to reply to comments, creating nested comment threads for better discussions.
-- **Post Sharing**: Add social media sharing buttons (e.g., Twitter, Facebook, LinkedIn) for users to share blog posts.
-- **Notifications**: Implement a notification system that alerts users when their comments are approved, when new comments are made on a post they've commented on, or when new posts are published.
-- **Email Subscriptions**: Allow users to subscribe to receive email notifications for new posts, updates, or newsletters.
-- **Post Analytics**: Provide post authors with analytics such as views, time spent reading, and engagement rates.
-- **Multilingual Support**: Add the ability to write and view blog posts in multiple languages, broadening the audience.
-- **Related Posts Recommendations**: Show related posts at the bottom of a blog post to encourage further reading and keep users engaged.
-- **Content Flagging/Reporting**: Allow users to flag or report inappropriate content (comments or posts) for moderation.
-- **SEO Optimization**: Implement features for SEO, such as meta tags, custom URLs, and keywords for better search engine ranking.
-- **User Dashboard**: Provide users with a dashboard to track their activity, such as comments made, likes received, and blog posts they’ve interacted with.
-- **Admin Dashboard Analytics**: Provide site admins with an analytics dashboard showing user activity, popular posts, most commented articles, etc.
+- **Maps or GPS directions**: Allow users to locate the caravan stay easily.
+- **Add more filters**: Add other topics e.g. pet friendly.
+- **Add payment method**: Implement a payment gateway, for example PayPal, then install its SDK and add all the required models, views and front-end code.
+- **Curated travel itineraries**: Add a section for owners to add travel plans customers can have when they arrive at their destination.
+- **Pricing**: Allow owners to set pricing for different days, for example, weekends, weekdays, or holidays.
+- **Earning tracker**: Update database models, add a method to calculate the owner's net earnings and add a model for the earnings, and add front-end code so the owner can view it.
+- **Add-ons**: Allow the caravan owner to offer add-ons such as camping gear or a BBQ.
+- **Manage refunds**: Allow the admin to manage refund requests for cancellations.
+- **Notifications**: Allow the admin to send notifications or emails to users about any updates, promotions, or issues.
+- **Reports**: Allow the admin to create reports of earnings and transactions so the app's financial performance can be tracked.
+- **Fraudulent accounts**: Allow admin to detect any suspicious bookings, to protect their users and the platform.
+- **Admin Analytics**: Provide site admins with an integrated location-based analytic so they can see popular destinations and caravans.
 - **Custom Themes for Users**: Allow users to customize the visual theme of the site (colors, fonts, etc.) to suit their preferences.
 
 ## Tools & Technologies
@@ -287,7 +276,9 @@ A few examples are listed below to align with possible ways to improve on the sa
 | [![badge](https://img.shields.io/badge/PostgreSQL-grey?logo=postgresql&logoColor=4169E1)](https://www.postgresql.org) | Relational database management. |
 | [![badge](https://img.shields.io/badge/Cloudinary-grey?logo=cloudinary&logoColor=3448C5)](https://cloudinary.com) | Online static file storage. |
 | [![badge](https://img.shields.io/badge/WhiteNoise-grey?logo=python&logoColor=FFFFFF)](https://whitenoise.readthedocs.io) | Serving static files with Heroku. |
+⚠️ potential remove ⚠️
 | [![badge](https://img.shields.io/badge/Google_Maps_API-grey?logo=googlemaps&logoColor=4285F4)](https://developers.google.com/maps) | Interactive map on my site. |
+⚠️ end ⚠️
 | [![badge](https://img.shields.io/badge/Font_Awesome-grey?logo=fontawesome&logoColor=528DD7)](https://fontawesome.com) | Icons. |
 | [![badge](https://img.shields.io/badge/ChatGPT-grey?logo=openai&logoColor=75A99C)](https://chat.openai.com) | Help debug, troubleshoot, and explain things. |
 | [![badge](https://img.shields.io/badge/Mermaid-grey?logo=mermaid&logoColor=FF3670)](https://mermaid.live) | Generate an interactive diagram for the data/schema. |
