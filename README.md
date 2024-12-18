@@ -299,69 +299,102 @@ Want to add more?
 
 Entity Relationship Diagrams (ERD) help to visualize database architecture before creating models. Understanding the relationships between different tables can save time later in the project.
 
-![screenshot](documentation/erd.png)
+<details>
+<summary>Click here to see my ERD's</summary>
 
-⚠️ INSTRUCTIONS ⚠️
+![screenshot](documentation/erd/book-erd.png)
 
-Using your defined models, create an ERD with the relationships identified. A couple of recommendations for building your own free ERDs:
-- [Lucidchart](https://www.lucidchart.com/pages/ER-diagram-symbols-and-meaning)
-- [Draw.io](https://draw.io)
+![screenshot](documentation/erd/caravan-erd.png)
 
-Looking for an interactive version of your ERD? Consider using a [`Mermaid flowchart`](https://mermaid.live). To simplify the process, you can ask ChatGPT (or similar) the following prompt:
+![screenshot](documentation/erd/message-erd.png)
 
-> ChatGPT Prompt:
-> "Generate a Markdown syntax Mermaid ERD using my Django models"
-> [paste-your-django-models-into-ChatGPT]
+![screenshot](documentation/erd/note-erd.png)
 
-The "I Think Therefore I Blog" sample ERD in Markdown syntax using Mermaid can be seen below as an example.
+![screenshot](documentation/erd/review-erd.png)
 
-**NOTE**: A Markdown Preview tool doesn't show the interactive ERD; you must first commit/push the code to your GitHub repository in order to see it live in action.
+![screenshot](documentation/erd/user-erd.png)
 
-⚠️ --- END --- ⚠️
+![screenshot](documentation/erd/wish-erd.png)
+
+</details>
 
 I have used `Mermaid` to generate an interactive ERD of my project.
 
 ```mermaid
 erDiagram
-    USER ||--o{ POST : "authors"
-    USER ||--o{ COMMENT : "commenters"
-    POST ||--o{ COMMENT : "has"
-    POST {
-        string title
-        string slug
-        cloudinary featured_image
-        text content
-        text excerpt
-        datetime created_on
-        datetime updated_on
-        int status
+    USER {
+        INTEGER ID PK
+        STRING Name
+        STRING Email
+        STRING Password
+        ENUM Role
+        DATETIME Created_at
+        DATETIME Updated_at
     }
-    COMMENT {
-        text body
-        datetime created_on
-        bool approved
+
+    CARAVAN {
+        INTEGER ID PK
+        INTEGER Owner_ID FK
+        STRING Name
+        STRING Location
+        FLOAT Price
+        TEXT Description
+        DATETIME Created_at
     }
-    ABOUT {
-        string title
-        cloudinary profile_image
-        text content
-        datetime updated_on
+
+    BOOKING {
+        INTEGER ID PK
+        INTEGER User_ID FK
+        INTEGER Caravan_ID FK
+        DATE Start_date
+        DATE End_date
+        ENUM Status
     }
-    COLLABORATEREQUEST {
-        string name
-        string email
-        text message
-        bool read
+
+    REVIEW {
+        INTEGER ID PK
+        INTEGER User_ID FK
+        INTEGER Caravan_ID FK
+        INTEGER Rating
+        TEXT Comment
     }
+
+    NOTIFICATION {
+        INTEGER ID PK
+        INTEGER User_ID FK
+        TEXT Message
+        BOOLEAN Read
+        DATETIME Created_at
+    }
+
+    WISH_LIST {
+        INTEGER ID PK
+        INTEGER User_ID FK
+        INTEGER Caravan_ID FK
+    }
+
+    MESSAGE {
+        INTEGER ID PK
+        INTEGER Sender_ID FK
+        INTEGER Receiver_ID FK
+        TEXT Content
+        DATETIME Created_at
+    }
+
+    %% Relationships
+    USER ||--o{ CARAVAN : "owns"
+    USER ||--o{ BOOKING : "makes"
+    CARAVAN ||--o{ BOOKING : "is booked in"
+    USER ||--o{ REVIEW : "leaves"
+    CARAVAN ||--o{ REVIEW : "receives"
+    USER ||--o{ NOTIFICATION : "receives"
+    USER ||--o{ WISH_LIST : "creates"
+    CARAVAN ||--o{ WISH_LIST : "is saved in"
+    USER ||--o{ MESSAGE : "sends/receives"
+
 ```
 
-source: [Mermaid](https://mermaid.live/edit#pako:eNqNUstuwjAQ_BVrz6EiVIiSG21zg9LyuFSRkImXxGpsR45TkQb-vU4C5REq4Yut2dnZnfWWECqG4AHqV04jTUUgiT3LuT8ju12no0ryPp0viEcCoLmJlc4CaHNeppOJ_9bQQiUESoMnZq1wgxnTS0rZvKuTGc1lRAw3CbbQLMmjExgmKmdcUl2QDVKTa2QrLmh0lmdwa0iobFPSXKG4DVGnZyijBg0XSEJt1ayWkjeCecpaQS6N7dB2kDXYvrmOjsurymvFijvLrpVKCE1Trb6RXYiPnqfLOwZ3NiMrsuEJ3jeif_3-eRuPbQuz0cKf-R9L_-YnSiraf4iC8uSqvMAsu2iq9m3ncfQMDgjUNpPZla0LBWBitPJQ7ROj-qtaqIpnl1XNCxmCZ3SODjQGDksO3oYmmUVTKsErYQue-zR8cN2B2-t3h73BY2_Qd6AAr7t34Ecpm-HW7M_63UhqlUfxQWr_C_zI_7I)
-
-⚠️ RECOMMENDED ⚠️
-
-Alternatively, or in addition to, a more comprehensive ERD can be auto-generated once you're at the end of your development stages, just before you submit. Follow the steps below to obtain a thorough ERD that you can include. Feel free to leave the steps below in the README for future use to yourself.
-
-⚠️ --- END --- ⚠️
+source: [Mermaid](https://mermaid.live/edit#pako:eNq1VV1v2jAU_SuWpb7RbaiwibxlwbCokKAktFUVCXmJBxGJjWwD6yj_fXZoQghEo5qaJ-ee4_tx7rW9gxGLCTQg4f0EzznOQgrUN_WRB3aHtf5sJ0BDZbL7YHJ_NPuBZztD4OCMnBlRhpP0zDrBQmwZj48AcqZj4LG04qFvBiiwxwhYnGBJ4hmWF8DpKj4B9yE9LCzTMx9M54r8C7O7pYTPFDi4srgRi7BMGD0Cg5FrBmDCk6jCDtBTAPpERDxZndIbSyyr-O669zrU9VVMxXkRBWZhjjeY1mGdBvAl5nKmxawBiMY1c94sxZdrUUvXQw82evzYbAvYU9rTeU1mi2UZoXUVHTewB7ZlBrbr_GdyeZQxEQLPK4qoNo2QGjaP4Pg97X20_R-zke0HHydZGWuMfN8condE8gmNm2N5JCLJpkEhi1FZ9uE6LW5ulMs0P1BikaxE5Q56fb29ZbvySBsghGxLRQjPOcWB0ZwML0lJKjZf4CUC_GRsSWKQ0Es-36ZaU1OCN40-Kzx-EOdiiifT-C_ycUI0M8rFa4p_ylVVCZVsU1HFOGiqUI0Wn6tpwBbMCFeXd6yehXxiQigXRF2CUG-IMV9q2l7x8Foy_4VG0JB8TVqQs_V8AY1fOBXqb53fz2_PSmldYQqNHfwNje7dp1671-t27rpfO9_anXYLvkDjy74F_zCmNrRz8nO-1v73fwEnVdjV)
 
 I have used `pygraphviz` and `django-extensions` to auto-generate an ERD.
 
