@@ -6,12 +6,27 @@
 
 The Caravan-themed website/app will allow users to explore, book, and manage caravan trips. It will feature a user-friendly interface for browsing caravan options, booking itineraries, and managing accounts, along with admin capabilities to manage caravans and bookings.
 
-# ADD MORE CONTENT ABOUT SITE HERE
+When a user first opens the app, they will land on the home page, where they will see a brief overview of the app's purpose and features. This introduction will include links to direct new users to the registration page and existing users to the login page. At the top of the home page, there will be a navigation icon that users can click to open a navigation bar with links to other sections of the app.
+
+Once a user has either created a new account or logged into an existing one, they will be redirected to the dashboard. The dashboard layout will vary depending on whether the user is a customer or an owner but will follow the same overall structure, with tailored content for each role. After logging in, a secondary navigation bar will appear, providing quick access to tabs such as Account, Bookings, Listings, and Notifications. The dashboard's main section will feature various content areas, each accompanied by a slideshow of images and links to corresponding pages. A search bar will also be available, allowing users to quickly find specific actions, such as editing their personal details, contacting another user, or booking a caravan stay.
+
+On the Account page, users will be able to update their personal information, modify payment details, change preferences, or review the app’s privacy and data management policies alongside other information. Customers can then proceed to the Caravan Listings page, where they will be able to browse all available caravans. Each listing will include a detailed description and a gallery of images that users can scroll through. To help customers narrow their search, filters will be available, allowing them to focus on specific criteria, such as the caravan’s size, location, or available amenities. Additionally, a search bar will enable customers to input a specific caravan ID to be taken directly to that caravan’s details.
+
+For owners, the Listings page will also include a section showcasing all of their currently listed caravans, with options to edit or delete them. Owners will also have access to a feature for adding new caravan listings, including details and images.
+
+When a customer decides to book a caravan, they can click the "Book Now" button to be redirected to the booking page. This page will feature a booking form where customers can provide their personal details, select dates for their stay, and include any additional information or questions for the owner. An aside section will display the customer’s current and previous bookings for easy reference. Once the booking request is submitted, the customer will receive a confirmation message informing them that the owner will review their request and respond within a specified time-frame.
+
+On the owner’s side, the Bookings page will display all pending booking requests, along with the details submitted by customers. Owners will be able to review these details, add any further information or questions, and choose to either accept or decline the booking request. Once a decision has been made, a message will be sent to the customer notifying them of the outcome.
+
+All notifications and messages, such as booking updates or admin communications, will be sent to the Notifications page. Users can also choose to enable email notifications in their account preferences, in which case they will receive email updates for important events alongside in-app notifications.
+
+The main navigation bar will include a Contact tab accessible to all users. This page will feature a contact form where users can input their personal details and submit any questions or inquiries. The contact form will serve multiple purposes, such as owners reaching out to the admin, customers contacting owners, or even guest users requesting additional information about the application. This ensures streamlined communication for all users of the app.
+
+Additionally, the application will include a 404 error page to handle instances where users attempt to access a non-existent or broken link. The error page will display a clear message explaining that an error has occurred and provide options to either navigate back to a specific page or wait to be automatically redirected to the homepage or dashboard. Consistency will be maintained across all pages in terms of structure and design, ensuring users can easily navigate the app without confusion.
 
 ![screenshot](documentation/mockup.png)
 
 source: [Nomad-Nation amiresponsive](https://ui.dev/amiresponsive?url=https://nomad-nation-23b17dd0a6b5.herokuapp.com)
-
 
 ## UX
 
@@ -222,19 +237,19 @@ I've used [Moqups](https://app.moqups.com/dDQLGW13n29lu58kkqxLxu4EKujHh6qx/edit/
 | Pagination | Caravan listings are displayed with six caravans per page, ensuring easy navigation for customers browsing the options. | ![screenshot](documentation/feature) |
 | Next arrow | On the listing page, users can browse through the image gallery to view caravans in greater detail. | ![screenshot](documentation/feature) |
 | Contact form | All users can use this feature to contact the admin, while customers can reach out to owners and vice versa. | ![screenshot](documentation/feature) |
-| Search bar | The search bar allows users to find a specific caravan by its ID on the listing page, or on the dashboard, it can be used to search for actions such as contacting an owner or booking a caravan stay. | **dashboard** ![screenshot](documentation/feature) **listing page** ![screenshot](documentation/feature) |
+| Search bar | The search bar allows users to find a specific caravan by its ID on the listing page, or on the dashboard, it can be used to search for actions such as contacting an owner or booking a caravan stay. | **dashboard:** ![screenshot](documentation/feature) **listing page:** ![screenshot](documentation/feature) |
 | Filter | Users can filter caravan searches based on their needs, for example, customers can search for caravans with free Wi-Fi, or owners can locate their caravans by a specific location. | ![screenshot](documentation/feature) |
 | Account dropdowns | Logged-in users can access dropdown tabs to view detailed information on each topic, as well as edit or delete content as needed. | ![screenshot](documentation/feature) |
 | Add caravans | Caravan owners can add new caravans to the listing page, including uploading images and providing detailed information about each caravan. | ![screenshot](documentation/feature) |
 | Update caravan details | Caravan owners can update/manage their caravan details from their booking page. | ![screenshot](documentation/feature) |
 | Delete caravans | Caravan owners can delete any of their caravans from their booking page. | ![screenshot](documentation/feature) |
 | Booking button | Customers can click the 'Book Now' button to navigate to the booking page, where they can reserve their selected caravan. | ![screenshot](documentation/feature) |
-| booking form | Customers can complete a form with their personal details, desired dates for their stay, and any additional information or questions for the owner. The owner can review the booking request, provide additional details or ask questions, and choose to accept or decline the request. | **customer form** ![screenshot](documentation/feature) **owner form** ![screenshot](documentation/feature) |
+| booking form | Customers can complete a form with their personal details, desired dates for their stay, and any additional information or questions for the owner. The owner can review the booking request, provide additional details or ask questions, and choose to accept or decline the request. | **customer form:** ![screenshot](documentation/feature) **owner form:** ![screenshot](documentation/feature) |
 | User Feedback | Clear and obvious Django messages are used to provide feedback to user actions. | ![screenshot](documentation/feature) |
-| Caravan reviews | Customers can leave reviews and ratings for their previous stays, while owners can respond to reviews to build stronger relationships with customers and attract more potential renters. | **customer review** ![screenshot](documentation/feature) **owner review** ![screenshot](documentation/feature) |
+| Caravan reviews | Customers can leave reviews and ratings for their previous stays, while owners can respond to reviews to build stronger relationships with customers and attract more potential renters. | **customer review:** ![screenshot](documentation/feature) **owner review:** ![screenshot](documentation/feature) |
 | Social media links | The footer section includes links to various social media platforms. | ![screenshot](documentation/feature) |
 | Wish-list | Customers can save caravans to a wish list, allowing them to revisit their favorite options later. | ![screenshot](documentation/feature) |
-| Notifications | Customers and owners can receive both email and in-app notifications based on their preferences for events like booking requests, reviews, and admin messages. In-app notifications can be deleted manually on the notifications page or automatically after a set period, depending on user preferences. | **email** ![screenshot](documentation/feature) **in-app** ![screenshot](documentation/feature) |
+| Notifications | Customers and owners can receive both email and in-app notifications based on their preferences for events like booking requests, reviews, and admin messages. In-app notifications can be deleted manually on the notifications page or automatically after a set period, depending on user preferences. | **email:** ![screenshot](documentation/feature) **in-app:** ![screenshot](documentation/feature) |
 | Heroku Deployment | The site is fully deployed to Heroku, making it accessible online and easy to manage. | ![screenshot](documentation/feature) |
 | 404 | The 404 error page will indicate when a user has navigated to a page that doesn't exist, replacing the default Heroku 404 page with one that ties into the site's look and feel. | ![screenshot](documentation/feature) |
 # Needs adding
@@ -424,12 +439,6 @@ source: [medium.com](https://medium.com/@yathomasi1/1-using-django-extensions-to
 
 ### GitHub Projects
 
-⚠️ TIP ⚠️
-
-Consider adding screenshots of your Projects Board(s), Issues (open and closed), and Milestone tasks.
-
-⚠️ --- END ---⚠️
-
 [GitHub Projects](https://www.github.com/AshLaw96/Nomad-Nation/projects) served as an Agile tool for this project. Through it, EPICs, User Stories, issues/bugs, and Milestone tasks were planned, then subsequently tracked on a regular basis using the Kanban project board.
 
 ![screenshot](documentation/gh-projects.png)
@@ -474,11 +483,7 @@ Deployment steps are as follows, after account setup:
 > [!IMPORTANT]
 > This is a sample only; you would replace the values with your own if cloning/forking my repository.
 
-🛑 !!! ATTENTION AshLaw96 !!! 🛑
-
 ⚠️ DO NOT update the environment variables to your own! These should never be public; only use the demo values below! ⚠️
-
-🛑 --- END --- 🛑
 
 | Key | Value |
 | --- | --- |
@@ -573,7 +578,6 @@ MIDDLEWARE = [
 ]
 ```
 
-
 ### Local Development
 
 This project can be cloned or forked in order to make a local copy on your own system.
@@ -586,12 +590,6 @@ You will need to create a new file called `env.py` at the root-level, and includ
 
 > [!IMPORTANT]
 > This is a sample only; you would replace the values with your own if cloning/forking my repository.
-
-🛑 !!! ATTENTION AshLaw96 !!! 🛑
-
-⚠️ DO NOT update the environment variables to your own! These should never be public; only use the demo values below! ⚠️
-
-🛑 --- END --- 🛑
 
 Sample `env.py` file:
 
@@ -651,48 +649,24 @@ By forking the GitHub Repository, you make a copy of the original repository on 
 
 ### Local VS Deployment
 
-⚠️ INSTRUCTIONS ⚠️
-
-Use this space to discuss any differences between the local version you've developed, and the live deployment site. Generally, there shouldn't be [m]any major differences, so if you honestly cannot find any differences, feel free to use the following example:
-
-⚠️ --- END --- ⚠️
-
 There are no remaining major differences between the local version when compared to the deployed version online.
 
 ## Credits
 
-⚠️ INSTRUCTIONS ⚠️
-
-In the following sections, you need to reference where you got your content, media, and any extra help. It is common practice to use code from other repositories and tutorials (which is totally acceptable), however, it is important to be very specific about these sources to avoid potential plagiarism.
-
-⚠️ --- END ---⚠️
-
 ### Content
-
-⚠️ INSTRUCTIONS ⚠️
-
-Use this space to provide attribution links for any borrowed code snippets, elements, and resources. Ideally, you should provide an actual link to every resource used, not just a generic link to the main site. If you've used multiple components from the same source (such as Bootstrap), then you only need to list it once, but if it's multiple Codepen samples, then you should list each example individually. If you've used AI for some assistance (such as ChatGPT or Perplexity), be sure to mention that as well. A few examples have been provided below to give you some ideas.
-
-⚠️ --- END ---⚠️
 
 | Source | Notes |
 | --- | --- |
 | [Markdown Builder](https://markdown.2bn.dev) | Help generating Markdown files |
-| [Chris Beams](https://chris.beams.io/posts/git-commit) | "How to Write a Git Commit Message" |
 | [I Think Therefore I Blog](https://codeinstitute.net) | Code Institute walkthrough project inspiration |
 | [Bootstrap](https://getbootstrap.com) | Various components / responsive front-end framework |
 | [Cloudinary API](https://cloudinary.com) | Cloud storage for static/media files |
 | [Whitenoise](https://whitenoise.readthedocs.io) | Static file service |
-| [Python Tutor](https://pythontutor.com) | Additional Python help |
 | [ChatGPT](https://chatgpt.com) | Help with code logic and explanations |
 
 ### Media
 
-⚠️ INSTRUCTIONS ⚠️
-
-Use this space to provide attribution links to any media files borrowed from elsewhere (images, videos, audio, etc.). If you're the owner (or a close acquaintance) of some/all media files, then make sure to specify this information. Let the assessors know that you have explicit rights to use the media files within your project. Ideally, you should provide an actual link to every media file used, not just a generic link to the main site, unless it's AI-generated artwork.
-
-Looking for some media files? Here are some popular sites to use. The list of examples below is by no means exhaustive. Within the Code Institute Slack community, you can find more "free media" links by sending yourself (or Slackbot) the following command: `!freemedia`.
+⚠️ --- Notes ---⚠️
 
 - Images
     - [Pexels](https://www.pexels.com)
@@ -709,14 +683,11 @@ Looking for some media files? Here are some popular sites to use. The list of ex
     - [TinyPNG](https://tinypng.com) (for images <5MB)
     - [CompressPNG](https://compresspng.com) (for images >5MB)
 
-A few examples have been provided below to give you some ideas on how to do your own Media credits.
-
 ⚠️ --- END ---⚠️
 
 | Source | Notes |
 | --- | --- |
 | [favicon.io](https://favicon.io) | Generating the favicon |
-| [I Think Therefore I Blog](https://codeinstitute.net) | Sample images provided from the walkthrough projects |
 | [Font Awesome](https://fontawesome.com) | Icons used throughout the site |
 | [Pexels](https://images.pexels.com/photos/416160/pexels-photo-416160.jpeg) | Hero image |
 | [Wallhere](https://c.wallhere.com/images/9c/c8/da4b4009f070c8e1dfee43d25f99-2318808.jpg!d) | Background wallpaper |
@@ -728,15 +699,7 @@ A few examples have been provided below to give you some ideas on how to do your
 
 ### Acknowledgements
 
-⚠️ INSTRUCTIONS ⚠️
-
-Use this space to provide attribution and acknowledgement to any supports that helped, encouraged, or supported you throughout the development stages of this project. It's always lovely to appreciate those that help us grow and improve our developer skills. A few examples have been provided below to give you some ideas.
-
-⚠️ --- END ---⚠️
-
 - I would like to thank my Code Institute mentor, [Tim Nelson](https://www.github.com/TravelTimN) for the support throughout the development of this project.
 - I would like to thank the [Code Institute](https://codeinstitute.net) Tutor Team for their assistance with troubleshooting and debugging some project issues.
 - I would like to thank the [Code Institute Slack community](https://code-institute-room.slack.com) for the moral support; it kept me going during periods of self doubt and impostor syndrome.
-- I would like to thank my partner, for believing in me, and allowing me to make this transition into software development.
-- I would like to thank my employer, for supporting me in my career development change towards becoming a software developer.
-
+- I would like to thank my partner, [Megan Lawrence](linkedin.com/in/megan-lawrence-27431119b) for believing in me, and allowing me to make this transition into software development.
