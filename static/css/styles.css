@@ -1,10 +1,39 @@
+:root {
+    /* p = primary | s = secondary | b = background */
+    --p-colour: #6A9E6F;
+    --p-accent: #87CEEB;
+    --s-accent: #F4A261;
+    --b-colour: #FAF9F6;
+    --p-text: #2D2D2D;
+    /* Map to Bootstrap's color variables */
+    --bs-primary: var(--p-colour);
+    --bs-secondary: var(--s-accent);
+    --bs-info: var(--p-accent);
+    --bs-light: var(--b-colour);
+    --bs-dark: var(--p-text);
+  }
+
 body {
-    /* Prevent horizontal scrolling */
-    overflow-x: hidden; 
-    /* Ensure vertical scrolling is possible */
-    overflow-y: auto; 
     margin: 0;
     padding: 0;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+#title {
+    font-family: 'Lato', sans-serif !important;
+}
+
+a {
+    color: var(--p-accent);
+}
+
+a:hover {
+    color: var(--s-accent);
+}
+
+.navbar, footer {
+    background-color: var(--p-colour);
+    color: var(--b-colour);
 }
 
 /* Full-screen slideshow container */
@@ -57,10 +86,11 @@ body {
 
 .card {
     margin-bottom: 30px;
+    background-color: var(--p-text) !important;
 }
 
 .text-white {
-    color: #fff;
+    color: var(--b-colour) !important;
 }
 
 .about {
@@ -76,5 +106,4 @@ footer {
     position: relative;
     width: 100%;
     padding: 20px;
-    text-align: center;
 }
