@@ -61,7 +61,7 @@ INSTALLED_APPS = [
 SITE_ID = 1
 # Redirect URLs
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/accounts/login/'
+LOGOUT_REDIRECT_URL = 'account_login'
 ACCOUNT_SIGNUP_REDIRECT_URL = '/homepage/'
 
 MIDDLEWARE = [
@@ -132,6 +132,17 @@ AUTH_PASSWORD_VALIDATORS = [
 # Email settings
 ACCOUNT_EMAIL_VERIFICATION = 'optional'
 ACCOUNT_EMAIL_REQUIRED = True
+# Email backend
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# SMTP configuration for Gmail
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+# Email credentials
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+# Default email address for sending emails
+DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
 # Usernames
 ACCOUNT_USERNAME_REQUIRED = True
