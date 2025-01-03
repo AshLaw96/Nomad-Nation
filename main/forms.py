@@ -1,11 +1,15 @@
 from django import forms
 from .models import ContactMessage
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+
+
+User = get_user_model()
+
 
 class ContactForm(forms.ModelForm):
     class Meta:
         model = ContactMessage
-        fields = ['recipient', 'message']  # Add recipient field
+        fields = ['recipient', 'subject', 'message']
 
     def __init__(self, *args, **kwargs):
         # Capture the user (passed from the view)
@@ -14,8 +18,8 @@ class ContactForm(forms.ModelForm):
 
         # Filter recipient choices based on user type
         if self.user and self.user.is_authenticated:
-            # Authenticated users: Show only customers or caravan owners
+            # Authenticated users: Exclude superusers
             self.fields['recipient'].queryset = User.objects.exclude(is_superuser=True)
         else:
-            # Guest users: Show only admin
+            # Guest users: Show only superusers
             self.fields['recipient'].queryset = User.objects.filter(is_superuser=True)

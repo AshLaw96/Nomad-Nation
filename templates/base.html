@@ -35,28 +35,42 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+                    <!-- Links visible for all users -->
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/' %}active" aria-current="page{% endif %}" href="{% url 'homepage' %}">Home</a>
                     </li>
+                    <li class="nav-item {% if request.path == '/contact/' %}active{% endif %}">
+                        <a href="{% url 'contact' %}" class="nav-link">Contact</a>
+                    </li>                
+                    <!-- Conditional links for logged in users -->
                     {% if user.is_authenticated %}
                         <li class="nav-item {% if request.path == '/dashboard/' %}active{% endif %}">
                             <a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                    <li class="nav-item {% if request.path == '/account/logout' %}active" aria-current="page{% endif %}">
-                        <a href="{% url 'account_logout' %}" class="nav-link">Logout</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item {% if request.path == '/account/signup' %}active" aria-current="page{% endif %}">
-                        <a href="{% url 'account_signup' %}" class="nav-link">Register</a>
-                    </li>
-                    <li class="nav-item {% if request.path == '/account/login' %}active" aria-current="page{% endif %}">
-                        <a href="{% url 'account_login' %}" class="nav-link">Login</a>
-                    </li>
-                    {% endif %}
-                    <li class="nav-item {% if request.path == '/contact/' %}active{% endif %}">
-                        <a href="{% url 'contact' %}" class="nav-link">Contact</a>
-                    </li>                    
+                            <a href="#" class="nav-link">Caravan listings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Bookings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Account</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Notifications</a>
+                        </li>
+                        <li class="nav-item {% if request.path == '/account/logout' %}active" aria-current="page{% endif %}">
+                            <a href="{% url 'account_logout' %}" class="nav-link">Logout</a>
+                        </li>
+                        {% else %}
+                        <!-- Links for guest users -->
+                        <li class="nav-item {% if request.path == '/account/signup' %}active" aria-current="page{% endif %}">
+                            <a href="{% url 'custom_account_signup' %}" class="nav-link">Register</a>
+                        </li>
+                        <li class="nav-item {% if request.path == '/account/login' %}active" aria-current="page{% endif %}">
+                            <a href="{% url 'account_login' %}" class="nav-link">Login</a>
+                        </li>
+                    {% endif %}  
                 </ul>
             </div>
         </div>
@@ -64,7 +78,6 @@
     <!-- Main content block -->
     <main>
         {% block content %}
-        <!-- Page-specific content will go here -->
         {% endblock %}
     </main>
     <!-- Footer section -->

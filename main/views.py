@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from .forms import ContactForm
-from django.contrib.auth.models import User
+
+
+User = get_user_model
 
 
 def homepage(request):
@@ -24,8 +26,7 @@ def contact_view(request):
                 contact_message.recipient = form.cleaned_data.get('recipient')
             contact_message.save()
             messages.success(request, 'Your message has been sent successfully.')
-            # Redirect to a page after sending the message
-            return redirect('home')  
+            return redirect('homepage')  
     else:
         form = ContactForm(user=request.user if request.user.is_authenticated else None)
 

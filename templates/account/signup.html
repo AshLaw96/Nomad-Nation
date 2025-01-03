@@ -23,9 +23,9 @@
         Already have an account? Then <a href="{% url 'account_login' %}">sign in</a>.
     </p>    
     <!-- Sign up form -->
-    <form method="post" action="{% url 'account_signup' %}" class="p-4 border rounded shadow-sm mx-auto">
-    {% csrf_token %}
-    {{ form.as_p }}    
+    <form method="post" action="{% url 'custom_account_signup' %}" class="p-4 border rounded shadow-sm mx-auto">
+        {% csrf_token %}
+        {{ form.as_p }}   
         <button class="btn btn-primary w-100 mt-3 btn-styles" type="submit">Sign Up</button>
     </form>
 </div>
