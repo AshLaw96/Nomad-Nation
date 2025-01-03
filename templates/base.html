@@ -39,6 +39,10 @@
                         <a class="nav-link {% if request.path == '/' %}active" aria-current="page{% endif %}" href="{% url 'homepage' %}">Home</a>
                     </li>
                     {% if user.is_authenticated %}
+                        <li class="nav-item {% if request.path == '/dashboard/' %}active{% endif %}">
+                            <a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
                     <li class="nav-item {% if request.path == '/account/logout' %}active" aria-current="page{% endif %}">
                         <a href="{% url 'account_logout' %}" class="nav-link">Logout</a>
                     </li>

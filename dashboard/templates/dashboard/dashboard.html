@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center bg-styles">
+    <h1 class="text-center mb-4 title">Welcome to your Dashboard</h1>
+
+    {% if user_type == "customer" %}
+        <!-- Customer specific content -->
+        <div class="row w-100">
+            <!-- Upcoming stays section -->
+            <div class="col-md-4">
+                <div class="card mb-4 text-white">
+                    <div class="card-header">
+                        <h2 class="title card-title">Upcoming stays</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>View and manage your upcoming bookings.</p>
+                        <ul class="list-group">
+                            {% for stay in upcoming_stays %}
+                                <li class="list-group-item">{{ stay }}</li>
+                                <a href="#" class="btn btn-primary btn-styles">View your upcoming stays</a>
+                            {% empty %}
+                                <li class="list-group-item">No upcoming stays</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Wish-list section -->
+            <div class="col-md-4">
+                <div class="card mb-4 text-white">
+                    <div class="card-header">
+                        <h2 class="card-title title">Wish-list</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>View your wish-listed caravans.</p>
+                        <ul class="list-group">
+                            {% for item in wishlist %}
+                                <li class="list-group-item">{{ item }}</li>
+                                <a href="#" class="btn btn-primary btn-styles">Show wish-list</a>
+                            {% empty %}
+                                <li class="list-group-item">No items in your wishlist</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Previous stays section -->
+            <div class="col-md-4">
+                <div class="card mb-4 text-white">
+                    <div class="card-header">
+                        <h2 class="card-title title">Previous stays</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>View your previous stays.</p>
+                        <ul class="list-group">
+                            {% for stay in previous_stays %}
+                                <li class="list-group-item">{{ stay }}</li>
+                                <a href="#" class="btn btn-primary btn-styles">View your previous stays</a>
+                            {% empty %}
+                                <li class="list-group-item">No previous stays</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% elif user_type == "owner" %}
+        <!-- Caravan owner specific content -->
+        <div class="row w-100">
+            <!-- Booking request section -->
+            <div class="col-md-4">
+                <div class="card mb-4 text-white">
+                    <div class="card-header">
+                        <h2 class="card-title title">Booking requests</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>View and manage requests from customers.</p>
+                        <ul class="list-group">
+                            {% for request in requests %}
+                                <li class="list-group-item">{{ request }}</li>
+                                <a href="#" class="btn btn-primary btn-styles">View booking requests</a>
+                            {% empty %}
+                                <li class="list-group-item">No current requests</li>
+                            {% endfor %}
+                        </ul>    
+                    </div>
+                </div>
+            </div>
+            <!-- Own caravan listing section -->
+            <div class="col-md-4">
+                <div class="card mb-4 text-white">
+                    <div class="card-header">
+                        <h2 class="card-title title">Your caravans</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>View and manage your caravan listings.</p>
+                        <ul class="list-group">
+                            {% for caravan in caravans %}
+                                <li class="list-group-item">{{ caravan }}</li>
+                                <a href="#" class="btn btn-primary btn-styles">View your caravans</a>
+                            {% empty %}
+                                <li class="list-group-item">No caravans listed</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Review section -->
+            <div class="col-md-4">
+                <div class="card mb-4 text-white">
+                    <div class="card-header">
+                        <h2 class="card-title title">Reviews</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Check reviews from customers.</p>
+                        <ul class="list-group">
+                            {% for review in reviews %}
+                                <li class="list-group-item">{{ review }}</li>
+                                <a href="#" class="btn btn-primary btn-styles">View your customer reviews</a>
+                            {% empty %}
+                                <li class="list-group-item">No reviews</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

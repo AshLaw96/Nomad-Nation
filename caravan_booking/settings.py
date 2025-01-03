@@ -60,7 +60,7 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 # Redirect URLs
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = 'account_login'
 ACCOUNT_SIGNUP_REDIRECT_URL = '/homepage/'
 
@@ -132,6 +132,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Tells Django to use this custom model
+AUTH_USER_MODEL = 'dashboard.CustomUser'
 
 # Email settings
 ACCOUNT_EMAIL_VERIFICATION = 'optional'

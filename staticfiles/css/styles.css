@@ -38,7 +38,7 @@ html, body {
     color: var(--p-text);
 }
 
-#title {
+.title {
     font-family: 'Lato', sans-serif !important;
 }
 
@@ -148,6 +148,20 @@ form {
     border: 1px solid #ddd;
     padding: 20px;
     border-radius: 10px;
+}
+
+/* Contact section */
+
+textarea {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Dashboard section */
+
+.card-header {
+    background-color: var(--p-colour);
 }
 
 footer {
