@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container_fluid">
@@ -76,7 +76,7 @@
         </div>
     </nav>
     <!-- Main content block -->
-    <main>
+    <main class="flex-grow-1">
         {% block content %}
         {% endblock %}
     </main>
