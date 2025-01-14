@@ -1,26 +1,17 @@
 from django import forms
-from .models import CustomUser
+from allauth.account.forms import SignupForm
+from .models import UserProfile
 
 
-class CustomUserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+class CustomSignupForm(SignupForm):
     user_type = forms.ChoiceField(
-        choices=CustomUser.USER_TYPES,
+        choices=UserProfile.USER_TYPES,
         widget=forms.Select(attrs={'class': 'form-select'})
     )
 
-    class Meta:
-        model = CustomUser
-        fields = ['username', 'email', 'password', 'user_type']
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        print("form fields:", self.fields)
-
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        # Hash the password
-        user.set_password(self.cleaned_data['password'])  
-        if commit:
-            user.save()
+    def save(self, request):
+        user = super().save(request)
+        UserProfile.objects.create(
+            user=user, user_type=self.cleaned_data['user_type']
+        )
         return user

@@ -64,7 +64,7 @@ SITE_ID = 1
 # Redirect URLs
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = 'account_login'
-ACCOUNT_SIGNUP_REDIRECT_URL = '/homepage/'
+ACCOUNT_SIGNUP_REDIRECT_URL = '/dashboard/'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
@@ -86,7 +86,9 @@ ROOT_URLCONF = 'caravan_booking.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -139,8 +141,9 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = 'dashboard.CustomUser'
 
 # Email settings
-ACCOUNT_EMAIL_VERIFICATION = 'optional'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_FORMS = {'signup': 'dashboard.forms.CustomSignupForm',}
 # Email backend
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # SMTP configuration for Gmail

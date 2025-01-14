@@ -65,7 +65,7 @@
                         {% else %}
                         <!-- Links for guest users -->
                         <li class="nav-item {% if request.path == '/account/signup' %}active" aria-current="page{% endif %}">
-                            <a href="{% url 'custom_account_signup' %}" class="nav-link">Register</a>
+                            <a href="{% url 'account_signup' %}" class="nav-link">Register</a>
                         </li>
                         <li class="nav-item {% if request.path == '/account/login' %}active" aria-current="page{% endif %}">
                             <a href="{% url 'account_login' %}" class="nav-link">Login</a>

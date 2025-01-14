@@ -7,7 +7,8 @@ def dashboard_view(request):
     """
     Renders a single dashboard page for both customers and owners.
     """
-    user = request.user
+    current_user = request.user
+    user = current_user.profile
     # Initialise context variables
     context = {}
 
