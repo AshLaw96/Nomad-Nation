@@ -1,15 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from .forms import ContactForm
-
-
-User = get_user_model
+from main.models import ContactMessage
 
 
 def homepage(request):
     return render(request, 'main/home.html')
+
  
 def contact_view(request):
     if request.method == 'POST':

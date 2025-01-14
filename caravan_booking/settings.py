@@ -27,17 +27,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', False) 
 
-ALLOWED_HOSTS = [
-    '8000-ashlaw96-nomadnation-2b1jbt42wfk.ws.codeinstitute-ide.net',
-    '.herokuapp.com' 
-    ]
-
-
-CSRF_TRUSTED_ORIGINS = [
-    'https://8000-ashlaw96-nomadnation-2b1jbt42wfk.ws.codeinstitute-ide.net'
-]
+ALLOWED_HOSTS = []
+CSRF_TRUSTED_ORIGINS = []
+host = os.environ.get("HOST")
+if host:
+    ALLOWED_HOSTS.append(host)
+    CSRF_TRUSTED_ORIGINS.append(f"https://{host}")
 
 
 # Application definition
@@ -101,6 +98,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'caravan_booking.wsgi.application'
 
 AUTHENTICATION_BACKENDS = [
@@ -137,8 +135,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Tells Django to use this custom model
-AUTH_USER_MODEL = 'dashboard.CustomUser'
 
 # Email settings
 ACCOUNT_EMAIL_VERIFICATION = 'none'
@@ -155,9 +151,6 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 # Default email address for sending emails
 DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
-
-# Usernames
-ACCOUNT_USERNAME_REQUIRED = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
