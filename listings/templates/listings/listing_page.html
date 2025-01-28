@@ -24,6 +24,16 @@
                             {{ availability.start_date }} to {{ availability.end_date }}{% if not forloop.last %}, {% endif %}
                         {% endfor %}
                     </p>
+                    <!-- Buttons for Owners -->
+                    {% if user_type == "owner" %}
+                        <div class="d-flex justify-content-between mt-3">
+                            <a href="{% url 'edit_caravan' caravan.pk %}" class="btn btn-warning btn-styles">Edit</a>
+                            <form method="post" action="{% url 'delete_caravan' caravan.pk %}" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-styles">Delete</button>
+                            </form>
+                        </div>
+                    {% endif %}
                 </li>
             {% endfor %}
         </ul>

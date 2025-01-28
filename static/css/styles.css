@@ -15,6 +15,8 @@
 
 html, body {
     min-height: 100%;
+    width: 100%;
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
     display: flex;
@@ -134,21 +136,21 @@ a:hover {
     margin-top: 20px;
 }
 
-/* Log in section */
+/* All form sections */
 
 .log-wrap {
-    /* make container fill full height minus footer and header */
-    min-height: calc(100vh - 156px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    /* Prevent horizontal scroll */
+    max-width: 100%;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 form {
-    max-width: 400px;
+    width: 100%;
     background-color: #faf9f650;
     border: 1px solid #ddd;
-    padding: 20px;
+    box-sizing: border-box;
     border-radius: 10px;
 }
 

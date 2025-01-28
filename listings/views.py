@@ -54,3 +54,36 @@ def add_caravan(request):
     return render(request, 'listings/add_caravan.html', {'form': form})
 
 
+@login_required
+def edit_caravan(request, pk):
+    caravan = get_object_or_404(Caravan, pk=pk, owner=request.user)
+    if request.method == "POST":
+        form = CaravanForm(request.POST, request.FILES, instance=caravan, user=request.user)
+        if form.is_valid():
+            caravan = form.save(commit=False)
+            caravan.save()
+            # Save ManyToMany field
+            form.save_m2m()
+            # Handle extra amenities
+            extra_amenity = form.cleaned_data.get('extra_amenity')
+            if extra_amenity:
+                amenity_obj, created = Amenity.objects.get_or_create(name=extra_amenity, owner=request.user)
+                caravan.amenities.add(amenity_obj)
+            # Handle multiple images
+            for image in request.FILES.getlist('images'):
+                CaravanImage.objects.create(caravan=caravan, image=image)
+            return redirect('listings')
+    else:
+        form = CaravanForm(instance=caravan, user=request.user)
+    return render(request, 'listings/add_caravan.html', {'form': form})
+
+
+@login_required
+def delete_caravan(request, pk):
+    caravan = get_object_or_404(Caravan, pk=pk, owner=request.user)
+    if request.method == "POST":
+        caravan.delete()
+        return redirect('listings')
+    # Redirects to listing page if not a POST request
+    return redirect('listings')
+
