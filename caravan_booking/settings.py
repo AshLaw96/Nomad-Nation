@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django_extensions',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -54,7 +55,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'main',
     'dashboard',
-    'django_extensions',
+    'listings',
 ]
 
 SITE_ID = 1
