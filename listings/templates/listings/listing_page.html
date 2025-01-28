@@ -30,5 +30,11 @@
     {% else %}
         <p class="text-center">No caravans available</p>
     {% endif %}
+    <!-- Add Caravan Button for Owners -->
+    {% if user_type == "owner" %}
+    <div class="text-center mt-4">
+        <a href="{% url 'add_caravan' %}" class="btn btn-primary btn-styles">Add Caravan</a>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}

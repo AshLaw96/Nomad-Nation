@@ -33,3 +33,20 @@ class Caravan(models.Model):
         return self.title
 
 
+
+
+class Availability(models.Model):
+    caravan = models.ForeignKey(
+        Caravan, on_delete=models.CASCADE,
+        related_name='availabilities'
+    )
+    start_date = models.DateField(blank=False)
+    end_date = models.DateField(null=True, blank=True)
+    is_available = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"{self.caravan.title if self.caravan else 'No Caravan'}: {self.start_date} to {self.end_date}"
+
+    def clean(self):
+        if self.start_date and self.end_date and self.start_date > self.end_date:
+            raise ValidationError("End date must be after start date.")

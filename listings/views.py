@@ -1,4 +1,6 @@
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from .forms import CaravanForm, CaravanImageForm
 from .models import Caravan, Amenity, Availability, CaravanImage
 
 @login_required
@@ -18,4 +20,37 @@ def listings_view(request):
         'username': request.user.username,
     }
     return render(request, 'listings/listing_page.html', context)
+
+
+@login_required
+def add_caravan(request):
+    if request.method == 'POST':
+        form = CaravanForm(request.POST, request.FILES, user=request.user)
+        if form.is_valid():
+            caravan = form.save(commit=False)
+            caravan.owner = request.user
+            caravan.save()
+            # Save ManyToMany field
+            form.save_m2m()
+            # Handle extra amenities
+            extra_amenity = form.cleaned_data.get('extra_amenity')
+            if extra_amenity:
+                amenity_obj, created = Amenity.objects.get_or_create(name=extra_amenity, owner=request.user)
+                caravan.amenities.add(amenity_obj)
+            # Handle availability
+            available_dates_data = form.cleaned_data.get('available_dates', [])
+            for date_entry in available_dates_data:
+                Availability.objects.create(
+                    caravan=caravan,
+                    start_date=date_entry['start_date'],
+                    end_date=date_entry['end_date']
+                )
+            # Handle multiple images
+            for image in request.FILES.getlist('images'):
+                CaravanImage.objects.create(caravan=caravan, image=image)
+            return redirect('listings')
+    else:
+        form = CaravanForm(user=request.user)
+    return render(request, 'listings/add_caravan.html', {'form': form})
+
 
