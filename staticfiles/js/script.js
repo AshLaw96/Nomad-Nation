@@ -128,6 +128,8 @@ function initialiseEditCaravan() {
 // Initialise carousel
 function initialiseCarousel() {
     document.querySelectorAll('.carousel').forEach(function (carousel) {
-        new bootstrap.Carousel(carousel);
+        new bootstrap.Carousel(carousel, {
+            interval: false
+        });
     });
 }

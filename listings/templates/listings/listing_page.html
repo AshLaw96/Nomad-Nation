@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container mt-5 bg-styles">
-    <h1 class="text-center title">Welcome to your Listings Page {{ username }}</h1>
+    <h1 class="text-center pt-3 title">Welcome to your Listings Page {{ username }}</h1>
 
     <!-- Check if there are any caravans -->
     {% if caravans %}
@@ -11,7 +11,7 @@
                 <li class="list-group-item mb-3">
                     <h2>{{ caravan.title }}</h2>
                     <!-- Carousel for multiple images -->
-                    <div id="carousel{{ caravan.pk }}" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carousel{{ caravan.pk }}" class="carousel slide">
                         <div class="carousel-inner">
                             {% for image in caravan.images.all %}
                                 <div class="carousel-item {% if forloop.first %}active{% endif %}">
@@ -44,18 +44,22 @@
                     </p>
                     <!-- Buttons for Owners -->
                     {% if user_type == "owner" %}
-                        <div class="d-flex justify-content-between mt-3">
-                            <a href="{% url 'edit_caravan' caravan.pk %}" class="btn btn-warning btn-styles">Edit</a>
-                            <form method="post" action="{% url 'delete_caravan' caravan.pk %}" class="d-inline">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-danger btn-styles">Delete</button>
+                        <div class="row mt-3">
+                            <div class="col-auto">
+                                <a href="{% url 'edit_caravan' caravan.pk %}" class="btn btn-warning btn-styles">Edit</a>
+                            </div>
+                            <div class="col text-end">
+                                <form method="post" action="{% url 'delete_caravan' caravan.pk %}" id="delete-button">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-styles">Delete</button>
+                                </div>
                             </form>
                         </div>
                     {% else %}
-                        <!-- Book Now Button for Customers -->
-                        <div class="text-center mt-3">
-                            <a href="{% url 'book_caravan' caravan.pk %}" class="btn btn-success btn-styles">Book Now</a>
-                        </div>
+                    <!-- Book Now Button for Customers -->
+                    <div class="text-center mt-3">
+                        <a href="{% url 'book_caravan' caravan.pk %}" class="btn btn-success btn-styles">Book Now</a>
+                    </div>
                     {% endif %}
                 </li>
             {% endfor %}
@@ -66,7 +70,7 @@
     <!-- Add Caravan Button for Owners -->
     {% if user_type == "owner" %}
     <div class="text-center mt-4">
-        <a href="{% url 'add_caravan' %}" class="btn btn-primary btn-styles">Add Caravan</a>
+        <a href="{% url 'add_caravan' %}" class="btn btn-primary btn-styles mb-4">Add Caravan</a>
     </div>
     {% endif %}
 </div>

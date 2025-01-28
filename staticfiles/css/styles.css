@@ -181,6 +181,29 @@ textarea {
     background-color: var(--p-colour);
 }
 
+/* Listing section */
+
+.carousel-inner {
+    display: flex;
+    align-items: center;
+    height: 160px;
+    margin-bottom: 10px;
+}
+
+.carousel-inner img {
+    max-width: 100%;
+    max-height: 100%;
+    /* Ensures images covers entire area */
+    object-fit: cover;
+    margin: auto;
+}
+
+#delete-button {
+    border: none;
+}
+
+/* Footer section */
+
 footer {
     width: 100%;
     padding: 20px;
