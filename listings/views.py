@@ -87,3 +87,7 @@ def delete_caravan(request, pk):
     # Redirects to listing page if not a POST request
     return redirect('listings')
 
+
+@login_required
+def book_caravan(request, pk):
+    return render(request, 'listings/book_caravan.html', {'caravan': get_object_or_404(Caravan, pk=pk)})

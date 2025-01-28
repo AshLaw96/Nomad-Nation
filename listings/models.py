@@ -33,6 +33,12 @@ class Caravan(models.Model):
         return self.title
 
 
+class CaravanImage(models.Model):
+    caravan = models.ForeignKey(Caravan, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='static/images/')
+
+    def __str__(self):
+        return f"Image for {self.caravan.title}"
 
 
 class Availability(models.Model):

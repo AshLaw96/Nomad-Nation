@@ -70,3 +70,8 @@ class CaravanForm(forms.ModelForm):
                 raise forms.ValidationError("Start date cannot be after end date.")
         return dates
 
+
+class CaravanImageForm(forms.ModelForm):
+    class Meta:
+        model = CaravanImage
+        fields = ['image']

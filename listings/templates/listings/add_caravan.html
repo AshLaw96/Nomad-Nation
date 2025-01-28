@@ -35,6 +35,16 @@
             <label for="id_price_per_night">Price Per Night:</label>
             {{ form.price_per_night }}
         </div>
+        <!-- Availability calendar -->
+        <div class="form-group">
+            <label id="calendar-label">Availability:</label>
+            <div id="calendar" class="w-100" aria-labelledby="calendar-label" role="application"></div>
+            <div id="selected-dates" class="mt-2"></div>
+            <input type="hidden" id="available_dates" name="available_dates" value='[
+                {"start_date": "2025-01-21", "end_date": "2025-01-23"},
+                {"start_date": "2025-02-02", "end_date": "2025-02-04"}
+            ]'>
+        </div>
         <button type="submit" class="btn btn-primary btn-styles w-100 mt-3">Add</button>
     </form>
 </div>

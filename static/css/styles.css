@@ -154,6 +154,19 @@ form {
     border-radius: 10px;
 }
 
+img, .form-control {
+    max-width: 100%;
+    height: auto;
+}
+
+input[type="file"] {
+    width: 100%;
+    /* Prevent file input from overflowing */
+    max-width: 100%;  
+    /* Ensure padding doesn't cause overflow */
+    box-sizing: border-box;  
+}
+
 /* Contact section */
 
 textarea {

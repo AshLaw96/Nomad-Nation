@@ -136,22 +136,35 @@ a:hover {
     margin-top: 20px;
 }
 
-/* Log in section */
+/* All form sections */
 
 .log-wrap {
-    /* make container fill full height minus footer and header */
-    min-height: calc(100vh - 156px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    /* Prevent horizontal scroll */
+    max-width: 100%;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 form {
-    max-width: 400px;
+    width: 100%;
     background-color: #faf9f650;
     border: 1px solid #ddd;
-    padding: 20px;
+    box-sizing: border-box;
     border-radius: 10px;
+}
+
+img, .form-control {
+    max-width: 100%;
+    height: auto;
+}
+
+input[type="file"] {
+    width: 100%;
+    /* Prevent file input from overflowing */
+    max-width: 100%;  
+    /* Ensure padding doesn't cause overflow */
+    box-sizing: border-box;  
 }
 
 /* Contact section */
