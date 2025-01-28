@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5 bg-styles">
+    <h1 class="text-center title">Welcome to your Listings Page {{ username }}</h1>
+
+    <!-- Check if there are any caravans -->
+    {% if caravans %}
+        <ul class="list-group">
+            {% for caravan in caravans %}
+                <li class="list-group-item mb-3">
+                    <h2>{{ caravan.title }}</h2>
+                    <p>{{ caravan.description }}</p>
+                    <p><strong>Berth:</strong> {{ caravan.get_berth_display }}</p>
+                    <p><strong>Location:</strong> {{ caravan.location }}</p>
+                    <p><strong>Price per night:</strong> ${{ caravan.price_per_night }}</p>
+                    <p><strong>Amenities:</strong>
+                        {% for amenity in caravan.amenities.all %}
+                            {{ amenity.name }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                    <p><strong>Available Dates:</strong>
+                        {% for availability in caravan.availabilities.all %}
+                            {{ availability.start_date }} to {{ availability.end_date }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-center">No caravans available</p>
+    {% endif %}
+</div>
+{% endblock %}
