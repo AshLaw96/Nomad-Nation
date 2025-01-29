@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initialiseAddCaravan();
   initialiseEditCaravan();
   initialiseCarousel();
+  initialiseFilterToggle();
 });
 
 // Utility functions
@@ -23,6 +24,23 @@ function removeDuplicates(dates) {
           t.start_date === value.start_date && t.end_date === value.end_date
       )
   );
+}
+
+// Initialise filter toggle
+function initialiseFilterToggle() {
+  const toggleFiltersBtn = document.getElementById("toggle-filters");
+  if (toggleFiltersBtn) {
+    toggleFiltersBtn.addEventListener("click", function () {
+      var filterContainer = document.getElementById("filter-container");
+      if (filterContainer.style.display === "none") {
+        filterContainer.style.display = "block";
+        this.textContent = "Hide Filters";
+      } else {
+        filterContainer.style.display = "none";
+        this.textContent = "Show Filters";
+      }
+    });
+  }
 }
 
 // Initialise calendar on Add Caravan page

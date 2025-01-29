@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Caravan, Amenity, Availability
 
-# Register your models here.
+
+admin.site.register(Caravan)
+admin.site.register(Amenity)
+admin.site.register(Availability)

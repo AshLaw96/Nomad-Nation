@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from .forms import CaravanForm
 from .models import Caravan, Amenity, Availability, CaravanImage
 
@@ -8,17 +9,54 @@ from .models import Caravan, Amenity, Availability, CaravanImage
 def listings_view(request):
     """
     Displays all caravans owned by the logged-in user.
+    Includes search and filtering functionality.
     """
     user_type = request.user.profile.user_type
-    if user_type == 'owner':
-        caravans = Caravan.objects.filter(owner=request.user).prefetch_related(
-            'amenities', 'images', 'availabilities'
-        )
-    else:
-        caravans = Caravan.objects.all().prefetch_related(
-            'amenities', 'images', 'availabilities'
-        )
 
+    if user_type == 'owner':
+        caravans = Caravan.objects.filter(owner=request.user)
+    else:
+        caravans = Caravan.objects.all()
+
+    # Search Functionality
+    search_query = request.GET.get('search', '')
+    if search_query:
+        caravans = caravans.filter(
+            Q(title__icontains=search_query) |
+            Q(description__icontains=search_query) |
+            Q(location__icontains=search_query)
+        )
+    # Filter Functionality
+    filter_berth = request.GET.get('berth', '')
+    filter_location = request.GET.get('location', '')
+    min_price = request.GET.get('min_price', '')
+    max_price = request.GET.get('max_price', '')
+    available_from = request.GET.get('available_from', '')
+    available_to = request.GET.get('available_to', '')
+    filter_amenities = request.GET.getlist('amenities', [])
+
+    if filter_berth:
+        caravans = caravans.filter(berth=filter_berth)
+    if filter_location:
+        caravans = caravans.filter(location__icontains=filter_location)
+    if min_price:
+        caravans = caravans.filter(price__gte=min_price)
+    if max_price:
+        caravans = caravans.filter(price__lte=max_price)
+    if available_from:
+        caravans = caravans.filter(
+            availabilities__start_date__gte=available_from
+        )
+    if available_to:
+        caravans = caravans.filter(availabilities__end_date__lte=available_to)
+    if filter_amenities:
+        caravans = caravans.filter(
+            amenities__id__in=filter_amenities
+        ).distinct()
+
+    caravans = caravans.prefetch_related(
+        'amenities', 'images', 'availabilities'
+    )
     context = {
         'caravans': caravans,
         'user_type': user_type,
