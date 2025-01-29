@@ -67,7 +67,7 @@ class Availability(models.Model):
 
     def clean(self):
         if (
-            self.start_date and self.end_date and 
+            self.start_date and self.end_date and
             self.start_date > self.end_date
         ):
             raise ValidationError("End date must be after start date.")

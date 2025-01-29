@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+
+# Import environment variables from env.py if it exists
+if os.path.isfile('env.py'):
+    import env  # noqa: F401
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,13 +30,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = []
-CSRF_TRUSTED_ORIGINS = []
-host = os.environ.get("HOST")
-if host:
-    ALLOWED_HOSTS.append(host)
-    CSRF_TRUSTED_ORIGINS.append(f"https://{host}")
-
+ALLOWED_HOSTS = os.environ.get('HOST', '').split(',')
+CSRF_TRUSTED_ORIGINS = [f"https://{host}" for host in ALLOWED_HOSTS if host]
 
 # Application definition
 
