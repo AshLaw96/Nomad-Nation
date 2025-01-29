@@ -37,15 +37,13 @@ def add_caravan(request):
             caravan.save()
             # Save ManyToMany field
             form.save_m2m()
-            # Handle extra amenities
-            extra_amenity = form.cleaned_data.get(
-                'extra_amenity'
-            )
-            if extra_amenity:
-                amenity_obj, created = Amenity.objects.get_or_create(
-                    name=extra_amenity, owner=request.user
-                )
-                caravan.amenities.add(amenity_obj)
+            # Handle multiple amenities
+            for key, value in request.POST.items():
+                if key.startswith('extra_amenity_') and value:
+                    amenity_obj, created = Amenity.objects.get_or_create(
+                        name=value, owner=request.user
+                    )
+                    caravan.amenities.add(amenity_obj)
             # Handle availability
             available_dates_data = form.cleaned_data.get('available_dates', [])
             for date_entry in available_dates_data:
@@ -82,13 +80,13 @@ def edit_caravan(request, pk):
             caravan.save()
             # Save ManyToMany field
             form.save_m2m()
-            # Handle extra amenities
-            extra_amenity = form.cleaned_data.get('extra_amenity')
-            if extra_amenity:
-                amenity_obj, created = Amenity.objects.get_or_create(
-                    name=extra_amenity, owner=request.user
-                )
-                caravan.amenities.add(amenity_obj)
+            # Handle multiple amenities
+            for key, value in request.POST.items():
+                if key.startswith('extra_amenity_') and value:
+                    amenity_obj, created = Amenity.objects.get_or_create(
+                        name=value, owner=request.user
+                    )
+                    caravan.amenities.add(amenity_obj)
             # Handle multiple images
             for image in request.FILES.getlist('images'):
                 CaravanImage.objects.create(caravan=caravan, image=image)
