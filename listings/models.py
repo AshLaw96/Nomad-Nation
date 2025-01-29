@@ -1,11 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 
 class Amenity(models.Model):
     name = models.CharField(max_length=50)
     owner = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='amenities', null=False, blank=False, default=1
+        User,
+        on_delete=models.CASCADE,
+        related_name='amenities',
+        null=False,
+        blank=False,
+        default=1
     )
 
     def __str__(self):
@@ -34,7 +40,9 @@ class Caravan(models.Model):
 
 
 class CaravanImage(models.Model):
-    caravan = models.ForeignKey(Caravan, on_delete=models.CASCADE, related_name='images')
+    caravan = models.ForeignKey(
+        Caravan, on_delete=models.CASCADE, related_name='images'
+    )
     image = models.ImageField(upload_to='static/images/')
 
     def __str__(self):
@@ -51,8 +59,15 @@ class Availability(models.Model):
     is_available = models.BooleanField(default=True)
 
     def __str__(self):
-        return f"{self.caravan.title if self.caravan else 'No Caravan'}: {self.start_date} to {self.end_date}"
+        return (
+            f"{self.caravan.title if self.caravan else 'No Caravan'}: "
+            f"{self.start_date} to "
+            f"{self.end_date}"
+        )
 
     def clean(self):
-        if self.start_date and self.end_date and self.start_date > self.end_date:
+        if (
+            self.start_date and self.end_date and 
+            self.start_date > self.end_date
+        ):
             raise ValidationError("End date must be after start date.")

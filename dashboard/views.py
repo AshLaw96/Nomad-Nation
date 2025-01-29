@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
-from django.db.models import Q
 
 
 @login_required
@@ -18,16 +17,16 @@ def dashboard_view(request):
         # Superuser-specific context
         context['user_type'] = 'superuser'
         # Add link to admin page
-        context['admin_url'] = '/admin/'  
+        context['admin_url'] = '/admin/'
         # Separate superuser dashboard template
-        return render(request, 'dashboard/dashboard.html', context)  
+        return render(request, 'dashboard/dashboard.html', context)
 
     # Regular users: Check for profile
     try:
         user_profile = current_user.profile
     except AttributeError:
         # Handle users without profiles
-        return redirect('account_logout')  
+        return redirect('account_logout')
 
     # Check user type and populate context
     if user_profile.user_type == 'customer':

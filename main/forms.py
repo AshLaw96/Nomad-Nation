@@ -16,7 +16,11 @@ class ContactForm(forms.ModelForm):
         # Filter recipient choices based on user type
         if self.user and self.user.is_authenticated:
             # Authenticated users: Exclude superusers
-            self.fields['recipient'].queryset = User.objects.exclude(is_superuser=True)
+            self.fields['recipient'].queryset = User.objects.exclude(
+                is_superuser=True
+            )
         else:
             # Guest users: Show only superusers
-            self.fields['recipient'].queryset = User.objects.filter(is_superuser=True)
+            self.fields['recipient'].queryset = User.objects.filter(
+                is_superuser=True
+            )

@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .forms import CaravanForm, CaravanImageForm
+from .forms import CaravanForm
 from .models import Caravan, Amenity, Availability, CaravanImage
+
 
 @login_required
 def listings_view(request):
@@ -10,9 +11,13 @@ def listings_view(request):
     """
     user_type = request.user.profile.user_type
     if user_type == 'owner':
-        caravans = Caravan.objects.filter(owner=request.user).prefetch_related('amenities', 'images', 'availabilities')
+        caravans = Caravan.objects.filter(owner=request.user).prefetch_related(
+            'amenities', 'images', 'availabilities'
+        )
     else:
-        caravans = Caravan.objects.all().prefetch_related('amenities', 'images', 'availabilities')
+        caravans = Caravan.objects.all().prefetch_related(
+            'amenities', 'images', 'availabilities'
+        )
 
     context = {
         'caravans': caravans,
@@ -33,9 +38,13 @@ def add_caravan(request):
             # Save ManyToMany field
             form.save_m2m()
             # Handle extra amenities
-            extra_amenity = form.cleaned_data.get('extra_amenity')
+            extra_amenity = form.cleaned_data.get(
+                'extra_amenity'
+            )
             if extra_amenity:
-                amenity_obj, created = Amenity.objects.get_or_create(name=extra_amenity, owner=request.user)
+                amenity_obj, created = Amenity.objects.get_or_create(
+                    name=extra_amenity, owner=request.user
+                )
                 caravan.amenities.add(amenity_obj)
             # Handle availability
             available_dates_data = form.cleaned_data.get('available_dates', [])
@@ -56,9 +65,18 @@ def add_caravan(request):
 
 @login_required
 def edit_caravan(request, pk):
-    caravan = get_object_or_404(Caravan, pk=pk, owner=request.user)
+    caravan = get_object_or_404(
+        Caravan,
+        pk=pk,
+        owner=request.user
+    )
     if request.method == "POST":
-        form = CaravanForm(request.POST, request.FILES, instance=caravan, user=request.user)
+        form = CaravanForm(
+            request.POST,
+            request.FILES,
+            instance=caravan,
+            user=request.user
+        )
         if form.is_valid():
             caravan = form.save(commit=False)
             caravan.save()
@@ -67,7 +85,9 @@ def edit_caravan(request, pk):
             # Handle extra amenities
             extra_amenity = form.cleaned_data.get('extra_amenity')
             if extra_amenity:
-                amenity_obj, created = Amenity.objects.get_or_create(name=extra_amenity, owner=request.user)
+                amenity_obj, created = Amenity.objects.get_or_create(
+                    name=extra_amenity, owner=request.user
+                )
                 caravan.amenities.add(amenity_obj)
             # Handle multiple images
             for image in request.FILES.getlist('images'):
@@ -90,4 +110,8 @@ def delete_caravan(request, pk):
 
 @login_required
 def book_caravan(request, pk):
-    return render(request, 'listings/book_caravan.html', {'caravan': get_object_or_404(Caravan, pk=pk)})
+    return render(
+        request,
+        'listings/book_caravan.html',
+        {'caravan': get_object_or_404(Caravan, pk=pk)}
+    )

@@ -22,4 +22,6 @@ class ContactMessage(models.Model):
     sent_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Message from {self.sender} to {self.recipient}: {self.subject}"
+        return (
+            f"Message from {self.sender} to {self.recipient}: {self.subject}"
+        )
