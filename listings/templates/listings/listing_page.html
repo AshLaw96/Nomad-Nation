@@ -2,31 +2,32 @@
 
 {% block content %}
 <div class="container mt-5 bg-styles">
-    <h1 class="text-center pt-3 title">Welcome to your Listings Page {{ username }}</h1>
+    <h1 class="text-center pt-3 mb-2 title">Welcome to your Listings Page {{ username }}</h1>
     <!-- Search content and reset button -->
-    <div class="mb-4">
-        <form method="get" class="row g-3">
-            <div class="col-md-4">
-                <input
+    <form method="get" class="row g-3 mt-3 mx-auto text-center" style="max-width: 600px;">
+        <div class="col-md-8">
+            <input
                 type="text"
                 class="form-control"
                 placeholder="Search caravans..."
                 name="search"
                 value="{{ request.GET.search }}"
-                >
-            </div>
-            <div class="col-md-3 mt-2">
-                <button type="submit" class="btn btn-primary btn-styles">Search</button>
-                <a href="{% url 'listings' %}" class="btn btn-secondary btn-styles">Reset</a>
-            </div>
-        </form>
-    </div>
-    <!-- Add a button to toggle the filters -->
-    <button id="toggle-filters" class="btn btn-info btn-styles">Show Filters</button>
+            >
+        </div>
+        <div class="col-md-4 mt-2 mb-1 d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary btn-styles">Search</button>
+            <a href="{% url 'listings' %}" class="btn btn-secondary btn-styles ml-auto">Reset</a>
+        </div>
+    </form>
+    <!-- Toggle filters -->
+    <div class="text-center mb-2 mt-1">
+        <button id="toggle-filters" class="btn btn-info btn-styles">Filters</button>
+    </div> 
     <!-- Filter section -->
-    <div class="mb-4" id="filter-container" style="display: none;">
-        <form method="get" class="row g-3">
-            <div class="col-md-2">
+    <div class="text-center mb-4" id="filter-container" style="display: none;">
+        <form method="get" class="row g-3 pb-3 mx-auto text-center" style="max-width: 800px;">
+            <!-- Berth filter -->
+            <div class="col-md-3">
                 <select name="berth" class="form-select">
                     <option value="">Filter by berth</option>
                     <option value="2" {% if request.GET.berth == '2' %}selected{% endif %}>Two</option>
@@ -34,63 +35,67 @@
                     <option value="6" {% if request.GET.berth == '6' %}selected{% endif %}>Six</option>
                 </select>
             </div>
-            <div class="col-md-2">
+            <!-- Location filter -->
+            <div class="col-md-3">
                 <input
-                type="text"
-                class="form-control"
-                placeholder="Location"
-                name="location"
-                value="{{ request.GET.location }}"
+                    type="text"
+                    class="form-control"
+                    placeholder="Location"
+                    name="location"
+                    value="{{ request.GET.location }}"
                 >
             </div>
-            <div class="col-md-2">
+            <!-- Price range -->
+            <div class="col-md-3">
                 <input
-                type="number"
-                class="form-control"
-                placeholder="Min Price"
-                name="min_price"
-                value="{{ request.GET.min_price }}"
+                    type="number"
+                    class="form-control"
+                    placeholder="Min Price"
+                    name="min_price"
+                    value="{{ request.GET.min_price }}"
                 >
             </div>
-            <div class="col-md-2">
+            <!-- Date filters -->
+            <div class="col-md-3">
                 <input
-                type="number"
-                class="form-control"
-                placeholder="Max Price"
-                name="max_price"
-                value="{{ request.GET.max_price }}"
+                    type="number"
+                    class="form-control"
+                    placeholder="Max Price"
+                    name="max_price"
+                    value="{{ request.GET.max_price }}"
                 >
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <input
-                type="date"
-                class="form-control"
-                placeholder="Available From"
-                name="available_from"
-                value="{{ request.GET.available_from }}"
+                    type="date"
+                    class="form-control"
+                    placeholder="Available From"
+                    name="available_from"
+                    value="{{ request.GET.available_from }}"
                 >
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <input
-                type="date"
-                class="form-control"
-                placeholder="Available To"
-                name="available_to"
-                value="{{ request.GET.available_to }}"
+                    type="date"
+                    class="form-control"
+                    placeholder="Available To"
+                    name="available_to"
+                    value="{{ request.GET.available_to }}"
                 >
             </div>
-            <div class="col-md-4">
+            <!-- Amenities multi-select -->
+            <div class="col-md-12">
+                <label for="amenities">Select Amenities:</label>
                 <select class="form-select" name="amenities" multiple>
                     {% for amenity in amenities %}
-                        <option value="{{ amenity.id }}" {% if amenity.id|stringformat:"s" in request.GET.amenities %}selected{% endif %}>
+                        <option value="{{ amenity.id }}" {% if amenity.id|stringformat:"s" in selected_amenities %}selected{% endif %}>
                             {{ amenity.name }}
                         </option>
                     {% endfor %}
                 </select>
             </div>
-            <div class="col-md-3 mt-2">
-                <button type="submit" class="btn btn-primary btn-styles">Search</button>
-                <a href="{% url 'listings' %}" class="btn btn-secondary btn-styles">Reset</a>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary mt-3 btn-styles">Apply Filters</button>
             </div>
         </form>
     </div>

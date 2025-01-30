@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initialiseEditCaravan();
   initialiseCarousel();
   initialiseFilterToggle();
+  initialiseSelect2();
 });
 
 // Utility functions
@@ -26,19 +27,43 @@ function removeDuplicates(dates) {
   );
 }
 
-// Initialise filter toggle
+// Initialise Select2 for the amenities dropdown
+function initialiseSelect2() {
+  if (window.jQuery) {
+    $(document).ready(function () {
+      $("select[name='amenities']").select2({
+        placeholder: "Select amenities",
+        allowClear: true,
+        width: "100%",
+      });
+    });
+  } else {
+    console.error("jQuery not found: Select2 requires jQuery to function.");
+  }
+}
+
+// Initialise filter toggle and auto submission
 function initialiseFilterToggle() {
   const toggleFiltersBtn = document.getElementById("toggle-filters");
+  const filterForm = document.getElementById("filter-form");
+  const amenitiesSelect = document.querySelector("select[name='amenities']");
+  // Show/hide filters
   if (toggleFiltersBtn) {
     toggleFiltersBtn.addEventListener("click", function () {
-      var filterContainer = document.getElementById("filter-container");
+      const filterContainer = document.getElementById("filter-container");
       if (filterContainer.style.display === "none") {
         filterContainer.style.display = "block";
         this.textContent = "Hide Filters";
       } else {
         filterContainer.style.display = "none";
-        this.textContent = "Show Filters";
+        this.textContent = "Filters";
       }
+    });
+  }
+  // Auto submit form when amenities are selected
+  if (amenitiesSelect && filterForm) {
+    amenitiesSelect.addEventListener("change", function () {
+      filterForm.submit();
     });
   }
 }

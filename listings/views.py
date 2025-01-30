@@ -61,6 +61,8 @@ def listings_view(request):
         'caravans': caravans,
         'user_type': user_type,
         'username': request.user.username,
+        'amenities': Amenity.objects.all(),
+        'selected_amenities': filter_amenities,
     }
     return render(request, 'listings/listing_page.html', context)
 
