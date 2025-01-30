@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
+from listings.models import Caravan
 
 
 @login_required
@@ -37,7 +38,7 @@ def dashboard_view(request):
     elif user_profile.user_type == 'owner':
         context['user_type'] = 'owner'
         context['requests'] = []
-        context['caravans'] = []
+        context['caravans'] = Caravan.objects.filter(owner=current_user)
         context['reviews'] = []
     else:
         return redirect('account_logout')

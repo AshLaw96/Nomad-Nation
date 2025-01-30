@@ -136,6 +136,12 @@ a:hover {
     margin-top: 20px;
 }
 
+/* Dashboard stylings section */
+
+.dashboard-style li {
+    background-color: var(--b-colour);
+}
+
 /* All form sections */
 
 .log-wrap {

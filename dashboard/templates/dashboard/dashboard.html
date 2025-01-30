@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container-fluid d-flex flex-column justify-content-center align-items-center bg-styles">
-    <h1 class="text-center mb-4 mt-5 title">Welcome to your Dashboard</h1>
+    <h1 class="text-center mb-1 mt-5 title">Welcome to your Dashboard</h1>
     {% if user_type == 'superuser' %}
     <h1 class="text-center mb-4 title">Superuser!</h1>
     <p>To manage the site go to admin page:
@@ -10,7 +10,7 @@
     </p>
 </div>
 {% elif user_type == 'customer' %}
-<div class="container-fluid d-flex flex-column justify-content-center align-items-center bg-styles">
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center bg-styles dashboard-style">
     <h1 class="text-center mb-4 title">{{ username }}!</h1>
     
     <div class="row w-100">
@@ -71,7 +71,7 @@
     </div>
 </div>
 {% elif user_type == 'owner' %}
-<div class="container-fluid d-flex flex-column justify-content-center align-items-center bg-styles">
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center bg-styles dashboard-style">
     <h1 class="text-center mb-4 title">{{ username }}!</h1>
     <div class="row w-100">
         <!-- Booking request section -->
@@ -101,12 +101,16 @@
                 <div class="card-body">
                     <p>View and manage your caravan listings.</p>
                     <ul class="list-group">
+                        <strong>Current caravan names:</strong>
                         {% for caravan in caravans %}
-                            <li class="list-group-item">{{ caravan }}</li>
+                            <li class="list-group-item">{{ caravan.title }}</li>
                         {% empty %}
                             <li class="list-group-item">No caravans listed</li>
                         {% endfor %}
                     </ul>
+                    <div class="d-flex justify-content-center mt-3">
+                        <a href="{% url 'listings' %}" class="btn btn-primary mt-3 btn-styles">View All Listings</a>
+                    </div>
                 </div>
             </div>
         </div>

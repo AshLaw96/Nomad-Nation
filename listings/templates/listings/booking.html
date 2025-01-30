@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5 bg-styles">
+    <h1 class="text-center">Book Caravan: {{ caravan.title }}</h1>
+    
+    {% if not caravan %}
+        <p class="text-center text-danger">You must select a caravan before booking.</p>
+        <a href="{% url 'listings' %}" class="btn btn-primary">Go Back</a>
+    {% else %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="customer_name" class="form-label">Your Name</label>
+                <input type="text" class="form-control" name="customer_name" required>
+            </div>
+            <div class="mb-3">
+                <label for="customer_email" class="form-label">Your Email</label>
+                <input type="email" class="form-control" name="customer_email" required>
+            </div>
+            <div class="mb-3">
+                <label for="start_date" class="form-label">Check-in Date</label>
+                <input type="date" class="form-control" name="start_date" required>
+            </div>
+            <div class="mb-3">
+                <label for="end_date" class="form-label">Check-out Date</label>
+                <input type="date" class="form-control" name="end_date" required>
+            </div>
+            <button type="submit" class="btn btn-success btn-styles">Request Booking</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}

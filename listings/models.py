@@ -71,3 +71,28 @@ class Availability(models.Model):
             self.start_date > self.end_date
         ):
             raise ValidationError("End date must be after start date.")
+
+
+class Booking(models.Model):
+    STATUS_CHOICES = [
+        ("pending", "Pending"),
+        ("accepted", "Accepted"),
+        ("declined", "Declined"),
+    ]
+
+    caravan = models.ForeignKey(
+        Caravan, on_delete=models.CASCADE, related_name="bookings"
+    )
+    customer = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="bookings"
+    )
+    customer_name = models.CharField(max_length=255)
+    customer_email = models.EmailField()
+    start_date = models.DateField()
+    end_date = models.DateField()
+    status = models.CharField(
+        max_length=10, choices=STATUS_CHOICES, default="pending"
+    )
+
+    def __str__(self):
+        return f"Booking for {self.caravan.title} by {self.customer.username}"

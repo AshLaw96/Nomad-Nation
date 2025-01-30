@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from .forms import CaravanForm
-from .models import Caravan, Amenity, Availability, CaravanImage
+from .models import Caravan, Amenity, Availability, CaravanImage, Booking
+from django.contrib import messages
+from .forms import CaravanForm, BookingForm
 
 
 @login_required
@@ -147,9 +148,99 @@ def delete_caravan(request, pk):
 
 
 @login_required
-def book_caravan(request, pk):
-    return render(
-        request,
-        'listings/book_caravan.html',
-        {'caravan': get_object_or_404(Caravan, pk=pk)}
-    )
+def book_caravan(request, caravan_id):
+    caravan = get_object_or_404(Caravan, pk=caravan_id)
+
+    if request.method == "POST":
+        customer_name = request.POST.get("customer_name")
+        customer_email = request.POST.get("customer_email")
+        start_date = request.POST.get("start_date")
+        end_date = request.POST.get("end_date")
+
+        # Create a new booking request
+        Booking.objects.create(
+            caravan=caravan,
+            customer=request.user,
+            customer_name=customer_name,
+            customer_email=customer_email,
+            start_date=start_date,
+            end_date=end_date,
+            status="pending"
+        )
+        messages.success(request, "Booking request sent successfully!")
+        return redirect("listings")
+
+    return render(request, "book_caravan.html", {"caravan": caravan})
+
+
+@login_required
+def bookings_view(request):
+    bookings = Booking.objects.filter(customer=request.user)
+    return render(request, 'listings/booking.html', {'bookings': bookings})
+
+
+@login_required
+def booking_view(request, caravan_id):
+    caravan = get_object_or_404(Caravan, id=caravan_id)
+    user = request.user
+    user_type = user.profile.user_type
+
+    if request.method == 'POST':
+        if 'action' in request.POST:
+            # Handle accept/decline actions
+            booking_id = request.POST.get('booking_id')
+            action = request.POST.get('action')
+            booking = get_object_or_404(Booking, id=booking_id)
+            if action == 'accept':
+                booking.status = 'accepted'
+            elif action == 'decline':
+                booking.status = 'declined'
+            booking.save()
+            return redirect('book_caravan', caravan_id=caravan_id)
+        else:
+            # Handle booking request submission
+            form = BookingForm(request.POST)
+            if form.is_valid():
+                booking = form.save(commit=False)
+                booking.caravan = caravan
+                booking.customer = user
+                booking.save()
+                return redirect('book_caravan', caravan_id=caravan_id)
+    else:
+        form = BookingForm()
+
+    if user_type == 'owner' and user == caravan.owner:
+        bookings = Booking.objects.filter(caravan=caravan)
+        return render(request, 'listings/booking.html', {
+            'caravan': caravan,
+            'bookings': bookings,
+            'user_type': user_type,
+        })
+    else:
+        bookings = Booking.objects.filter(customer=user)
+        return render(request, 'listings/booking.html', {
+            'caravan': caravan,
+            'form': form,
+            'bookings': bookings,
+            'user_type': user_type,
+        })
+
+
+@login_required
+def manage_booking(request, booking_id):
+    booking = get_object_or_404(Booking, pk=booking_id)
+
+    if request.method == "POST":
+        action = request.POST.get("action")
+
+        if action == "accept":
+            booking.status = "accepted"
+            messages.success(request, "Booking accepted!")
+        elif action == "decline":
+            booking.status = "declined"
+            messages.warning(request, "Booking declined.")
+
+        booking.save()
+        return redirect("listings")
+
+    return redirect("listings")
