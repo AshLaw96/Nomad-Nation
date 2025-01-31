@@ -110,14 +110,42 @@ class BookingForm(forms.ModelForm):
             'message'
         ]
 
+    def __init__(self, *args, **kwargs):
+        self.caravan = kwargs.pop('caravan', None)
+        super().__init__(*args, **kwargs)
+        if self.caravan:
+            self.instance.caravan = self.caravan
+
     def clean(self):
         cleaned_data = super().clean()
         start_date = cleaned_data.get('start_date')
         end_date = cleaned_data.get('end_date')
+
+        # Ensure the Booking instance has a caravan before accessing it
+        if not self.instance.caravan_id:
+            raise forms.ValidationError(
+                "This booking does not have an associated caravan."
+            )
+
+        caravan = self.instance.caravan  # Now safe to access
 
         if start_date and end_date:
             if start_date > end_date:
                 raise forms.ValidationError(
                     "End date must be after start date."
                 )
+
+            # Check for overlapping bookings
+            overlapping_bookings = Booking.objects.filter(
+                caravan=caravan,
+                status="accepted",
+                start_date__lt=end_date,
+                end_date__gt=start_date
+            ).exclude(pk=self.instance.pk)
+
+            if overlapping_bookings.exists():
+                raise forms.ValidationError(
+                    "The caravan is not available for the selected dates."
+                )
+
         return cleaned_data

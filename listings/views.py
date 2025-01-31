@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from .models import Caravan, Amenity, Availability, CaravanImage, Booking
 from django.contrib import messages
+from .models import Caravan, Amenity, Availability, CaravanImage, Booking
 from .forms import CaravanForm, BookingForm
 
 
@@ -41,9 +41,9 @@ def listings_view(request):
     if filter_location:
         caravans = caravans.filter(location__icontains=filter_location)
     if min_price:
-        caravans = caravans.filter(price__gte=min_price)
+        caravans = caravans.filter(price_per_night__gte=min_price)
     if max_price:
-        caravans = caravans.filter(price__lte=max_price)
+        caravans = caravans.filter(price_per_night__lte=max_price)
     if available_from:
         caravans = caravans.filter(
             availabilities__start_date__gte=available_from
@@ -103,10 +103,10 @@ def add_caravan(request):
 
 
 @login_required
-def edit_caravan(request, pk):
+def edit_caravan(request, slug):
     caravan = get_object_or_404(
         Caravan,
-        pk=pk,
+        slug=slug,
         owner=request.user
     )
     if request.method == "POST":
@@ -152,31 +152,42 @@ def book_caravan(request, caravan_id):
     caravan = get_object_or_404(Caravan, pk=caravan_id)
 
     if request.method == "POST":
-        customer_name = request.POST.get("customer_name")
-        customer_email = request.POST.get("customer_email")
-        start_date = request.POST.get("start_date")
-        end_date = request.POST.get("end_date")
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            booking = form.save(commit=False)
+            booking.caravan = caravan
+            booking.customer = request.user
 
-        # Create a new booking request
-        Booking.objects.create(
-            caravan=caravan,
-            customer=request.user,
-            customer_name=customer_name,
-            customer_email=customer_email,
-            start_date=start_date,
-            end_date=end_date,
-            status="pending"
-        )
-        messages.success(request, "Booking request sent successfully!")
-        return redirect("listings")
+            # Check if the requested dates are available
+            overlapping_bookings = Booking.objects.filter(
+                caravan=caravan,
+                status="accepted",
+                start_date__lt=booking.end_date,
+                end_date__gt=booking.start_date
+            )
 
-    return render(request, "book_caravan.html", {"caravan": caravan})
+            if overlapping_bookings.exists():
+                messages.error(
+                    request,
+                    "The caravan is not available for the selected dates."
+                )
+            else:
+                booking.status = "pending"
+                booking.save()
+                messages.success(request, "Booking request sent successfully!")
+                return redirect("listings")
+        else:
+            messages.error(
+                request, "There was an error with your booking request."
+            )
+    else:
+        form = BookingForm()
 
-
-@login_required
-def bookings_view(request):
-    bookings = Booking.objects.filter(customer=request.user)
-    return render(request, 'listings/booking.html', {'bookings': bookings})
+    return render(
+        request,
+        "listings/booking.html",
+        {"form": form, "caravan": caravan}
+    )
 
 
 @login_required
@@ -191,21 +202,40 @@ def booking_view(request, caravan_id):
             booking_id = request.POST.get('booking_id')
             action = request.POST.get('action')
             booking = get_object_or_404(Booking, id=booking_id)
+
+            if not booking.caravan:
+                messages.error(request, "Booking has no associated caravan.")
+                return redirect('booking_view', caravan_id=caravan_id)
+
             if action == 'accept':
                 booking.status = 'accepted'
+                messages.success(request, "Booking accepted!")
             elif action == 'decline':
                 booking.status = 'declined'
+                messages.warning(request, "Booking declined.")
             booking.save()
-            return redirect('book_caravan', caravan_id=caravan_id)
+            return redirect('booking_view', caravan_id=caravan_id)
+
         else:
             # Handle booking request submission
             form = BookingForm(request.POST)
+
+            if 'caravan_id' in request.POST:
+                caravan_id = request.POST.get('caravan_id')
+                caravan = get_object_or_404(Caravan, pk=caravan_id)
+            else:
+                messages.error(request, "Caravan selection is required.")
+                return redirect("listings")
+
+            # Assign caravan before validation
+            booking = Booking(caravan=caravan, customer=request.user)
+            form = BookingForm(request.POST, instance=booking)
+
             if form.is_valid():
-                booking = form.save(commit=False)
-                booking.caravan = caravan
-                booking.customer = user
                 booking.save()
-                return redirect('book_caravan', caravan_id=caravan_id)
+                messages.success(request, "Booking request sent successfully!")
+                return redirect('booking_view', caravan_id=caravan_id)
+
     else:
         form = BookingForm()
 
@@ -229,6 +259,10 @@ def booking_view(request, caravan_id):
 @login_required
 def manage_booking(request, booking_id):
     booking = get_object_or_404(Booking, pk=booking_id)
+
+    if not booking.caravan:
+        messages.error(request, "Booking has no associated caravan.")
+        return redirect("listings")
 
     if request.method == "POST":
         action = request.POST.get("action")

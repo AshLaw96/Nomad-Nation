@@ -4,26 +4,61 @@
     <h1 class="text-center">Book Caravan: {{ caravan.title }}</h1>
     
     {% if not caravan %}
-        <p class="text-center text-danger">You must select a caravan before booking.</p>
-        <a href="{% url 'listings' %}" class="btn btn-primary">Go Back</a>
+        <p class="text-center">You must select a caravan before booking.</p>
+        <div class="d-flex justify-content-center mb-2">
+            <a href="{% url 'listings' %}" class="btn btn-primary btn-styles mb-2">Go Back to listings</a>
+        </div>
     {% else %}
+        <div class="mb-4">
+            <h3>Available Dates:</h3>
+            <ul>
+                {% for availability in caravan.availabilities.all %}
+                    {% if availability.is_available %}
+                        <li>{{ availability.start_date }} to {{ availability.end_date }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <p><strong>Price per Night:</strong> ${{ caravan.price_per_night }}</p>
         <form method="post">
             {% csrf_token %}
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
             <div class="mb-3">
-                <label for="customer_name" class="form-label">Your Name</label>
-                <input type="text" class="form-control" name="customer_name" required>
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" class="form-control" name="name" value="{{ form.name.value|default_if_none:'' }}" required>
             </div>
             <div class="mb-3">
-                <label for="customer_email" class="form-label">Your Email</label>
-                <input type="email" class="form-control" name="customer_email" required>
+                <label for="email" class="form-label">Your Email</label>
+                <input type="email" class="form-control" name="email" value="{{ form.email.value|default_if_none:'' }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="phone_number" class="form-label">Your Phone Number</label>
+                <input type="text" class="form-control" name="phone_number" value="{{ form.phone_number.value|default_if_none:'' }}">
             </div>
             <div class="mb-3">
                 <label for="start_date" class="form-label">Check-in Date</label>
-                <input type="date" class="form-control" name="start_date" required>
+                <input type="date" class="form-control" name="start_date" value="{{ form.start_date.value|default_if_none:'' }}" min="{{ today }}" required>
             </div>
             <div class="mb-3">
                 <label for="end_date" class="form-label">Check-out Date</label>
-                <input type="date" class="form-control" name="end_date" required>
+                <input type="date" class="form-control" name="end_date" value="{{ form.end_date.value|default_if_none:'' }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" name="message">{{ form.message.value|default_if_none:'' }}</textarea>
             </div>
             <button type="submit" class="btn btn-success btn-styles">Request Booking</button>
         </form>

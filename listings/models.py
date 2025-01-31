@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from datetime import date
 
 
 class Amenity(models.Model):
@@ -35,8 +36,13 @@ class Caravan(models.Model):
     location = models.CharField(max_length=100)
     amenities = models.ManyToManyField(Amenity, related_name='caravans')
 
-    def __str__(self):
-        return self.title
+    @property
+    def is_available(self):
+        today = date.today()
+        future_availabilities = self.availabilities.filter(
+            start_date__gt=today, is_available=True
+        )
+        return future_availabilities.exists()
 
 
 class CaravanImage(models.Model):
@@ -86,10 +92,12 @@ class Booking(models.Model):
     customer = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="bookings"
     )
-    customer_name = models.CharField(max_length=255)
-    customer_email = models.EmailField()
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    phone_number = models.CharField(max_length=15, blank=True, null=True)
     start_date = models.DateField()
     end_date = models.DateField()
+    message = models.TextField(blank=True, null=True)
     status = models.CharField(
         max_length=10, choices=STATUS_CHOICES, default="pending"
     )
