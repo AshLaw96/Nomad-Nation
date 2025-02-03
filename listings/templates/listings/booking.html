@@ -1,67 +1,110 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container mt-5 bg-styles">
-    <h1 class="text-center">Book Caravan: {{ caravan.title }}</h1>
-    
-    {% if not caravan %}
-        <p class="text-center">You must select a caravan before booking.</p>
-        <div class="d-flex justify-content-center mb-2">
-            <a href="{% url 'listings' %}" class="btn btn-primary btn-styles mb-2">Go Back to listings</a>
+<div class="container mt-5 bg-light p-4 rounded shadow-sm bg-styles">
+    <h1 class="text-center mb-4 title">Bookings</h1>
+
+    {% if user_type == 'customer' %}
+        <h2>Your Bookings</h2>
+    {% elif user_type == 'owner' %}
+        <h2 class="title">Your Caravan's Bookings</h2>
+    {% endif %}
+
+    <!-- Pending Bookings Section for Customer and Owner -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3 class="title">Pending Bookings</h3>
         </div>
-    {% else %}
-        <div class="mb-4">
-            <h3>Available Dates:</h3>
-            <ul>
-                {% for availability in caravan.availabilities.all %}
-                    {% if availability.is_available %}
-                        <li>{{ availability.start_date }} to {{ availability.end_date }}</li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
-        <p><strong>Price per Night:</strong> ${{ caravan.price_per_night }}</p>
-        <form method="post">
-            {% csrf_token %}
-            {% if form.errors %}
-                <div class="alert alert-danger">
-                    <ul>
-                        {% for field in form %}
-                            {% for error in field.errors %}
-                                <li>{{ error }}</li>
-                            {% endfor %}
-                        {% endfor %}
-                        {% for error in form.non_field_errors %}
-                            <li>{{ error }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
+        <div class="card-body">
+            {% if pending_bookings %}
+                <ul class="list-group">
+                    {% for booking in pending_bookings %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>{{ booking.caravan.title }}</strong><br>
+                                <small>{{ booking.start_date }} to {{ booking.end_date }}</small>
+                            </div>
+                            <span class="badge bg-warning text-dark">Pending</span>
+
+                            {% if user_type == 'owner' %}
+                                <!-- Owner view of pending bookings -->
+                                <div class="btn-group">
+                                    <a href="{% url 'manage_booking' booking.id %}" class="btn btn-success btn-sm btn-styles">Accept</a>
+                                    <a href="{% url 'manage_booking' booking.id %}" class="btn btn-danger btn-sm btn-styles">Decline</a>
+                                </div>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-muted">No pending bookings.</p>
+                <a href="{% url 'listings' %}" class="btn btn-primary btn-styles">Go back to listings</a>
             {% endif %}
-            <div class="mb-3">
-                <label for="name" class="form-label">Your Name</label>
-                <input type="text" class="form-control" name="name" value="{{ form.name.value|default_if_none:'' }}" required>
+        </div>
+    </div>
+
+    <!-- Upcoming Bookings Section -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3 class="title">Upcoming Bookings</h3>
+        </div>
+        <div class="card-body">
+            {% if upcoming_bookings %}
+                <ul class="list-group">
+                    {% for booking in upcoming_bookings %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>{{ booking.caravan.title }}</strong><br>
+                                <small>{{ booking.start_date }} to {{ booking.end_date }}</small>
+                            </div>
+                            <span class="badge bg-success">Accepted</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-muted">No upcoming bookings.</p>
+                <a href="{% url 'listings' %}" class="btn btn-primary btn-styles">Go back to listings</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Previous Bookings Section -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3 class="title">Previous Bookings</h3>
+        </div>
+        <div class="card-body">
+            {% if previous_bookings %}
+                <ul class="list-group">
+                    {% for booking in previous_bookings %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>{{ booking.caravan.title }}</strong><br>
+                                <small>{{ booking.start_date }} to {{ booking.end_date }}</small>
+                            </div>
+                            <span class="badge bg-secondary">Completed</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-muted">No previous bookings.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if user_type == 'customer' %}
+        <!-- Booking Request Form Section -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="title">Request a Booking</h3>
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Your Email</label>
-                <input type="email" class="form-control" name="email" value="{{ form.email.value|default_if_none:'' }}" required>
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Request Booking</button>
+                </form>
             </div>
-            <div class="mb-3">
-                <label for="phone_number" class="form-label">Your Phone Number</label>
-                <input type="text" class="form-control" name="phone_number" value="{{ form.phone_number.value|default_if_none:'' }}">
-            </div>
-            <div class="mb-3">
-                <label for="start_date" class="form-label">Check-in Date</label>
-                <input type="date" class="form-control" name="start_date" value="{{ form.start_date.value|default_if_none:'' }}" min="{{ today }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="end_date" class="form-label">Check-out Date</label>
-                <input type="date" class="form-control" name="end_date" value="{{ form.end_date.value|default_if_none:'' }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="message" class="form-label">Message</label>
-                <textarea class="form-control" name="message">{{ form.message.value|default_if_none:'' }}</textarea>
-            </div>
-            <button type="submit" class="btn btn-success btn-styles">Request Booking</button>
-        </form>
+        </div>
     {% endif %}
 </div>
 {% endblock %}

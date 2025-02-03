@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib import messages
+from django.utils import timezone
 from .models import Caravan, Amenity, Availability, CaravanImage, Booking
 from .forms import CaravanForm, BookingForm
 
@@ -148,11 +149,43 @@ def delete_caravan(request, pk):
 
 
 @login_required
+def booking_page_view(request):
+    """
+    Displays all bookings for the logged-in user.
+    Owners see all bookings for their caravans,
+    while customers see their own bookings.
+    """
+    user = request.user
+    user_type = user.profile.user_type
+    today = timezone.now().date()
+
+    # Fetch bookings based on user type
+    if user_type == 'owner':
+        bookings = Booking.objects.filter(caravan__owner=user)
+    else:
+        bookings = Booking.objects.filter(customer=user)
+
+    # Split bookings into categories
+    pending_bookings = bookings.filter(status='pending')
+    upcoming_bookings = bookings.filter(
+        status='accepted', start_date__gte=today
+    )
+    previous_bookings = bookings.filter(status='accepted', end_date__lt=today)
+
+    return render(request, 'listings/booking.html', {
+        'pending_bookings': pending_bookings,
+        'upcoming_bookings': upcoming_bookings,
+        'previous_bookings': previous_bookings,
+        'user_type': user_type,
+    })
+
+
+@login_required
 def book_caravan(request, caravan_id):
     caravan = get_object_or_404(Caravan, pk=caravan_id)
 
     if request.method == "POST":
-        form = BookingForm(request.POST)
+        form = BookingForm(request.POST, caravan=caravan)
         if form.is_valid():
             booking = form.save(commit=False)
             booking.caravan = caravan
@@ -172,16 +205,21 @@ def book_caravan(request, caravan_id):
                     "The caravan is not available for the selected dates."
                 )
             else:
+                # Save booking as "pending" to await owner's response
                 booking.status = "pending"
                 booking.save()
-                messages.success(request, "Booking request sent successfully!")
-                return redirect("listings")
+                messages.success(
+                    request,
+                    f"Booking request for {caravan.title} sent successfully "
+                    f"to {caravan.owner.username}!"
+                )
+                return redirect("listings/booking.html")
         else:
             messages.error(
                 request, "There was an error with your booking request."
             )
     else:
-        form = BookingForm()
+        form = BookingForm(caravan=caravan)
 
     return render(
         request,
@@ -192,68 +230,43 @@ def book_caravan(request, caravan_id):
 
 @login_required
 def booking_view(request, caravan_id):
+    print("booking_view executed")
     caravan = get_object_or_404(Caravan, id=caravan_id)
     user = request.user
     user_type = user.profile.user_type
+    # Get today's date for comparison
+    today = timezone.now().date()
 
-    if request.method == 'POST':
-        if 'action' in request.POST:
-            # Handle accept/decline actions
-            booking_id = request.POST.get('booking_id')
-            action = request.POST.get('action')
-            booking = get_object_or_404(Booking, id=booking_id)
-
-            if not booking.caravan:
-                messages.error(request, "Booking has no associated caravan.")
-                return redirect('booking_view', caravan_id=caravan_id)
-
-            if action == 'accept':
-                booking.status = 'accepted'
-                messages.success(request, "Booking accepted!")
-            elif action == 'decline':
-                booking.status = 'declined'
-                messages.warning(request, "Booking declined.")
-            booking.save()
-            return redirect('booking_view', caravan_id=caravan_id)
-
-        else:
-            # Handle booking request submission
-            form = BookingForm(request.POST)
-
-            if 'caravan_id' in request.POST:
-                caravan_id = request.POST.get('caravan_id')
-                caravan = get_object_or_404(Caravan, pk=caravan_id)
-            else:
-                messages.error(request, "Caravan selection is required.")
-                return redirect("listings")
-
-            # Assign caravan before validation
-            booking = Booking(caravan=caravan, customer=request.user)
-            form = BookingForm(request.POST, instance=booking)
-
-            if form.is_valid():
-                booking.save()
-                messages.success(request, "Booking request sent successfully!")
-                return redirect('booking_view', caravan_id=caravan_id)
-
-    else:
-        form = BookingForm()
-
+    # Determine bookings based on user type (owner or customer)
     if user_type == 'owner' and user == caravan.owner:
+        # Owner's bookings for this caravan
         bookings = Booking.objects.filter(caravan=caravan)
-        return render(request, 'listings/booking.html', {
-            'caravan': caravan,
-            'bookings': bookings,
-            'user_type': user_type,
-        })
     else:
+        # Customer's bookings
         bookings = Booking.objects.filter(customer=user)
-        return render(request, 'listings/booking.html', {
-            'caravan': caravan,
-            'form': form,
-            'bookings': bookings,
-            'user_type': user_type,
-        })
+
+    # Split bookings into Pending, Upcoming, and Previous
+    pending_bookings = bookings.filter(status='pending')
+    upcoming_bookings = bookings.filter(
+        status='accepted', start_date__gte=today
+    )
+    previous_bookings = bookings.filter(status='accepted', end_date__lt=today)
+
+    # Flags to show temporary sections
+    has_pending = pending_bookings.exists()
+    has_upcoming = upcoming_bookings.exists()
+    has_previous = previous_bookings.exists()
+
+    return render(request, 'listings/booking.html', {
+        'caravan': caravan,
+        'pending_bookings': pending_bookings,
+        'upcoming_bookings': upcoming_bookings,
+        'previous_bookings': previous_bookings,
+        'user_type': user_type,
+        'has_pending': has_pending,
+        'has_upcoming': has_upcoming,
+        'has_previous': has_previous,
+    })
 
 
 @login_required

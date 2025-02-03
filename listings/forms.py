@@ -127,7 +127,8 @@ class BookingForm(forms.ModelForm):
                 "This booking does not have an associated caravan."
             )
 
-        caravan = self.instance.caravan  # Now safe to access
+        # Now safe to access
+        caravan = self.instance.caravan
 
         if start_date and end_date:
             if start_date > end_date:
