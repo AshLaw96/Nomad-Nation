@@ -213,7 +213,7 @@ def book_caravan(request, caravan_id):
                     f"Booking request for {caravan.title} sent successfully "
                     f"to {caravan.owner.username}!"
                 )
-                return redirect("listings/booking.html")
+                return redirect("booking_view", caravan_id=caravan.id)
         else:
             messages.error(
                 request, "There was an error with your booking request."
@@ -230,7 +230,6 @@ def book_caravan(request, caravan_id):
 
 @login_required
 def booking_view(request, caravan_id):
-    print("booking_view executed")
     caravan = get_object_or_404(Caravan, id=caravan_id)
     user = request.user
     user_type = user.profile.user_type
@@ -252,10 +251,9 @@ def booking_view(request, caravan_id):
     )
     previous_bookings = bookings.filter(status='accepted', end_date__lt=today)
 
-    # Flags to show temporary sections
-    has_pending = pending_bookings.exists()
-    has_upcoming = upcoming_bookings.exists()
-    has_previous = previous_bookings.exists()
+    # Add a flag to each booking indicating if it can be modified
+    for booking in upcoming_bookings:
+        booking.can_modify = (booking.start_date - timezone.now()).days > 7
 
     return render(request, 'listings/booking.html', {
         'caravan': caravan,
@@ -263,9 +261,9 @@ def booking_view(request, caravan_id):
         'upcoming_bookings': upcoming_bookings,
         'previous_bookings': previous_bookings,
         'user_type': user_type,
-        'has_pending': has_pending,
-        'has_upcoming': has_upcoming,
-        'has_previous': has_previous,
+        'has_pending': pending_bookings.exists(),
+        'has_upcoming': upcoming_bookings.exists(),
+        'has_previous': previous_bookings.exists(),
     })
 
 
@@ -288,6 +286,29 @@ def manage_booking(request, booking_id):
             messages.warning(request, "Booking declined.")
 
         booking.save()
-        return redirect("listings")
+        return redirect("booking_view", caravan_id=booking.caravan.id)
 
-    return redirect("listings")
+    return redirect("booking_view", caravan_id=booking.caravan.id)
+
+
+@login_required
+def modify_booking(request, booking_id):
+    booking = get_object_or_404(Booking, pk=booking_id)
+
+    if request.method == "POST":
+        start_date = request.POST.get("start_date")
+        end_date = request.POST.get("end_date")
+
+        # Update booking dates
+        booking.start_date = start_date
+        booking.end_date = end_date
+        # Set status to pending for owner approval
+        booking.status = "pending"
+        booking.save()
+
+        messages.success(
+            request, "Booking modification request sent to the owner."
+        )
+        return redirect("booking_view", caravan_id=booking.caravan.id)
+
+    return redirect("booking_view", caravan_id=booking.caravan.id)

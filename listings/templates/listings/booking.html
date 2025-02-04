@@ -1,18 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container mt-5 bg-light p-4 rounded shadow-sm bg-styles">
-    <h1 class="text-center mb-4 title">Bookings</h1>
+<div class="container p-4 rounded shadow-sm bg-styles booking-style">
 
     {% if user_type == 'customer' %}
-        <h2>Your Bookings</h2>
+        <h2 class="text-center mt-3 title">Your Bookings</h2>
     {% elif user_type == 'owner' %}
-        <h2 class="title">Your Caravan's Bookings</h2>
+        <h2 class="text-center mt-3 title">Your Caravan's Bookings</h2>
     {% endif %}
 
-    <!-- Pending Bookings Section for Customer and Owner -->
+    <!-- Pending Bookings Section -->
     <div class="card mb-4">
         <div class="card-header">
-            <h3 class="title">Pending Bookings</h3>
+            <h3 class="text-center title">Pending Bookings</h3>
         </div>
         <div class="card-body">
             {% if pending_bookings %}
@@ -23,25 +22,55 @@
                                 <strong>{{ booking.caravan.title }}</strong><br>
                                 <small>{{ booking.start_date }} to {{ booking.end_date }}</small>
                             </div>
-                            <span class="badge bg-warning text-dark">Pending</span>
-
-                            {% if user_type == 'owner' %}
+                            <div class="d-flex flex-column align-items-end">
+                                {% if user_type == 'owner' %}
+                                <button type="button" class="btn btn-info btn-sm btn-styles mt-1 mb-2" data-bs-toggle="modal" data-bs-target="#bookingDetailsModal{{ booking.id }}">
+                                    View Details
+                                </button>
                                 <!-- Owner view of pending bookings -->
-                                <div class="btn-group">
-                                    <a href="{% url 'manage_booking' booking.id %}" class="btn btn-success btn-sm btn-styles">Accept</a>
-                                    <a href="{% url 'manage_booking' booking.id %}" class="btn btn-danger btn-sm btn-styles">Decline</a>
-                                </div>
-                            {% endif %}
+                                <form method="post" action="{% url 'manage_booking' booking.id %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="action" value="accept">
+                                    <button type="submit" class="btn btn-success btn-sm btn-styles mb-2">Accept</button>
+                                </form>
+                                <form method="post" action="{% url 'manage_booking' booking.id %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="action" value="decline">
+                                    <button type="submit" class="btn btn-danger btn-sm btn-styles">Decline</button>
+                                </form>
+                                {% endif %}
+                            </div>
                         </li>
+                        <!-- Booking Details Modal -->
+                        <div class="modal fade" id="bookingDetailsModal{{ booking.id }}" tabindex="-1" aria-labelledby="bookingDetailsModalLabel{{ booking.id }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="bookingDetailsModalLabel{{ booking.id }}">Booking Details</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p><strong>Name:</strong> {{ booking.name }}</p>
+                                        <p><strong>Email:</strong> {{ booking.email }}</p>
+                                        <p><strong>Phone Number:</strong> {{ booking.phone_number }}</p>
+                                        <p><strong>Message:</strong> {{ booking.message }}</p>
+                                        <p><strong>Start Date:</strong> {{ booking.start_date }}</p>
+                                        <p><strong>End Date:</strong> {{ booking.end_date }}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     {% endfor %}
                 </ul>
             {% else %}
-                <p class="text-muted">No pending bookings.</p>
+                <p class="text-white">No pending bookings.</p>
                 <a href="{% url 'listings' %}" class="btn btn-primary btn-styles">Go back to listings</a>
             {% endif %}
         </div>
     </div>
-
     <!-- Upcoming Bookings Section -->
     <div class="card mb-4">
         <div class="card-header">
@@ -56,17 +85,52 @@
                                 <strong>{{ booking.caravan.title }}</strong><br>
                                 <small>{{ booking.start_date }} to {{ booking.end_date }}</small>
                             </div>
-                            <span class="badge bg-success">Accepted</span>
+                            {% if user_type == 'customer' and booking.can_modify %}
+                                <!-- Modify Booking Button -->
+                                <button type="button" class="btn btn-warning btn-sm mb-2 btn-styles" data-bs-toggle="modal" data-bs-target="#modifyBookingModal{{ booking.id }}">
+                                    Modify Booking
+                                </button>
+                            {% endif %}
+                            {% if user_type == 'owner' %}
+                                <!-- Owner view of customer booking details -->
+                                <button type="button" class="btn btn-info btn-sm btn-styles mb-2" data-bs-toggle="modal" data-bs-target="#bookingDetailsModal{{ booking.id }}">
+                                    View Details
+                                </button>
+                            {% endif %}
                         </li>
+                        <!-- Modify Booking Modal -->
+                        <div class="modal fade" id="modifyBookingModal{{ booking.id }}" tabindex="-1" aria-labelledby="modifyBookingModalLabel{{ booking.id }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modifyBookingModalLabel{{ booking.id }}">Modify Booking</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" action="{% url 'modify_booking' booking.id %}">
+                                            {% csrf_token %}
+                                            <div class="mb-3">
+                                                <label for="start_date" class="form-label">Start Date</label>
+                                                <input type="date" class="form-control" id="start_date" name="start_date" value="{{ booking.start_date|date:'Y-m-d' }}" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="end_date" class="form-label">End Date</label>
+                                                <input type="date" class="form-control" id="end_date" name="end_date" value="{{ booking.end_date|date:'Y-m-d' }}" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     {% endfor %}
                 </ul>
             {% else %}
-                <p class="text-muted">No upcoming bookings.</p>
+                <p class="text-white">No upcoming bookings.</p>
                 <a href="{% url 'listings' %}" class="btn btn-primary btn-styles">Go back to listings</a>
             {% endif %}
         </div>
     </div>
-
     <!-- Previous Bookings Section -->
     <div class="card mb-4">
         <div class="card-header">
@@ -81,16 +145,14 @@
                                 <strong>{{ booking.caravan.title }}</strong><br>
                                 <small>{{ booking.start_date }} to {{ booking.end_date }}</small>
                             </div>
-                            <span class="badge bg-secondary">Completed</span>
                         </li>
                     {% endfor %}
                 </ul>
             {% else %}
-                <p class="text-muted">No previous bookings.</p>
+                <p class="text-white">No previous bookings.</p>
             {% endif %}
         </div>
     </div>
-
     {% if user_type == 'customer' %}
         <!-- Booking Request Form Section -->
         <div class="card mb-4">
@@ -98,13 +160,30 @@
                 <h3 class="title">Request a Booking</h3>
             </div>
             <div class="card-body">
-                <form method="POST">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn btn-primary">Request Booking</button>
-                </form>
+                <button type="button" class="btn btn-primary btn-styles" data-bs-toggle="modal" data-bs-target="#bookCaravanModal">
+                    Request Booking
+                </button>
             </div>
         </div>
     {% endif %}
+</div>
+
+<!-- Booking Modal -->
+<div class="modal fade" id="bookCaravanModal" tabindex="-1" aria-labelledby="bookCaravanModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookCaravanModalLabel">Request a Booking</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{% url 'book_caravan' caravan.id %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
