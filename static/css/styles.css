@@ -136,10 +136,12 @@ a:hover {
     margin-top: 20px;
 }
 
-/* Dashboard stylings section */
-
-.dashboard-style li {
+.dashboard-style li, .booking-style li {
     background-color: var(--b-colour);
+}
+
+.booking-style .card-body, .dashboard-style .card-body {
+    background-color: var(--p-text);
 }
 
 /* All form sections */

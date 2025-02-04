@@ -24,7 +24,12 @@
                     <p>View and manage your upcoming bookings.</p>
                     <ul class="list-group">
                         {% for stay in upcoming_stays %}
-                            <li class="list-group-item">{{ stay }}</li>
+                            <li class="list-group-item">
+                                <a href="{% url 'booking_view' stay.caravan.id %}">
+                                    <strong>{{ stay.caravan.title }}</strong><br>
+                                    <small>{{ stay.start_date }} to {{ stay.end_date }}</small>
+                                </a>
+                            </li>
                         {% empty %}
                             <li class="list-group-item">No upcoming stays</li>
                         {% endfor %}
@@ -60,7 +65,12 @@
                     <p>View your previous stays.</p>
                     <ul class="list-group">
                         {% for stay in previous_stays %}
-                            <li class="list-group-item">{{ stay }}</li>
+                            <li class="list-group-item">
+                                <a href="{% url 'booking_view' stay.caravan.id %}">
+                                    <strong>{{ stay.caravan.title }}</strong><br>
+                                    <small>{{ stay.start_date }} to {{ stay.end_date }}</small>
+                                </a>
+                            </li>
                         {% empty %}
                             <li class="list-group-item">No previous stays</li>
                         {% endfor %}
@@ -84,7 +94,13 @@
                     <p>View and manage requests from customers.</p>
                     <ul class="list-group">
                         {% for request in requests %}
-                            <li class="list-group-item">{{ request }}</li>
+                            <li class="list-group-item">
+                                <a href="{% url 'booking_view' request.caravan.id %}">
+                                    <strong>{{ request.caravan.title }}</strong><br>
+                                    <small>{{ request.customer.username }}</small> requested from
+                                    {{ request.start_date }} to {{ request.end_date }}
+                                </a>
+                            </li>
                         {% empty %}
                             <li class="list-group-item">No current requests</li>
                         {% endfor %}
