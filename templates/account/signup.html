@@ -3,16 +3,6 @@
 {% block content %}
 <div class="container d-flex flex-column justify-content-center align-items-center bg-styles log-wrap">
     <h1 id="title" class="text-center mb-4">Sign Up</h1>
-    <!-- Display Django Messages (Errors/Info) -->
-    {% if messages %}
-    <div class="mb-3">
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} text-center">
-            {{ message }}
-        </div>
-    {% endfor %}
-    </div>
-    {% endif %}
     <!-- Display Non-Field Errors -->
     {% if form.non_field_errors %}
     <div class="alert alert-danger text-center">

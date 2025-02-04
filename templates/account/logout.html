@@ -3,16 +3,6 @@
 {% block content %}
 <div class="container d-flex flex-column justify-content-center align-items-center bg-styles log-wrap">
     <h1 class="text-center mb-4 title">Sign Out</h1>
-    <!-- Display Django Messages (Errors/Info) -->
-    {% if messages %}
-    <div class="mb-3">
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} text-center">
-            {{ message }}
-        </div>
-        {% endfor %}
-    </div>
-    {% endif %}
     <p class="text-center">Are you sure you want to sign out?</p>
     <!-- Sign out form -->
     <form method="post" action="{% url 'account_logout' %}" class="p-4 border rounded shadow-sm mx-auto">

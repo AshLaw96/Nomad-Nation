@@ -80,6 +80,16 @@
     </nav>
     <!-- Main content block -->
     <main class="flex-grow-1">
+        <!-- Messages -->
+        <div class="container text-center">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
         {% block content %}
         {% endblock %}
     </main>
