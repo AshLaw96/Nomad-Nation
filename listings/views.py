@@ -172,11 +172,24 @@ def booking_page_view(request):
     )
     previous_bookings = bookings.filter(status='accepted', end_date__lt=today)
 
+    # Ensure the caravan context is passed
+    caravan = None
+    if bookings.exists():
+        caravan = bookings.first().caravan
+
+    # Add a flag to each booking indicating if it can be modified
+    for booking in upcoming_bookings:
+        booking.can_modify = (booking.start_date - today).days > 7
+
+    form = BookingForm()
+
     return render(request, 'listings/booking.html', {
         'pending_bookings': pending_bookings,
         'upcoming_bookings': upcoming_bookings,
         'previous_bookings': previous_bookings,
         'user_type': user_type,
+        'caravan': caravan,
+        'form': form,
     })
 
 
@@ -213,18 +226,30 @@ def book_caravan(request, caravan_id):
                     f"Booking request for {caravan.title} sent successfully "
                     f"to {caravan.owner.username}!"
                 )
-                return redirect("booking_view", caravan_id=caravan.id)
+                return redirect("booking_page")
         else:
             messages.error(
                 request, "There was an error with your booking request."
             )
     else:
-        form = BookingForm(caravan=caravan)
+        form = BookingForm()
 
     return render(
         request,
         "listings/booking.html",
-        {"form": form, "caravan": caravan}
+        {
+            "form": form,
+            "caravan": caravan,
+            "pending_bookings": Booking.objects.filter(status='pending'),
+            "upcoming_bookings": Booking.objects.filter(
+                status='accepted',
+                start_date__gte=timezone.now().date()
+            ),
+            "previous_bookings": Booking.objects.filter(
+                status='accepted', end_date__lt=timezone.now().date()
+            ),
+            "user_type": request.user.profile.user_type,
+        }
     )
 
 
@@ -253,7 +278,7 @@ def booking_view(request, caravan_id):
 
     # Add a flag to each booking indicating if it can be modified
     for booking in upcoming_bookings:
-        booking.can_modify = (booking.start_date - timezone.now()).days > 7
+        booking.can_modify = (booking.start_date - today).days > 7
 
     return render(request, 'listings/booking.html', {
         'caravan': caravan,

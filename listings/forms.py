@@ -109,6 +109,10 @@ class BookingForm(forms.ModelForm):
             'name', 'email', 'phone_number', 'start_date', 'end_date',
             'message'
         ]
+        widgets = {
+            'start_date': forms.DateInput(attrs={'type': 'date'}),
+            'end_date': forms.DateInput(attrs={'type': 'date'}),
+        }
 
     def __init__(self, *args, **kwargs):
         self.caravan = kwargs.pop('caravan', None)
