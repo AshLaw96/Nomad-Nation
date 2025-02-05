@@ -172,22 +172,30 @@
             </div>
         </div>
     {% endif %}
-</div>
-
-<!-- Booking Modal -->
-<div class="modal fade" id="bookCaravanModal" tabindex="-1" aria-labelledby="bookCaravanModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
+    <!-- Booking Modal -->
+    <div class="modal fade" id="bookCaravanModal" tabindex="-1" aria-labelledby="bookCaravanModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
                     <h5 class="modal-title title text-center" id="bookCaravanModalLabel">Request Booking</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" action="{% url 'book_caravan' caravan.id %}">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="title text-center">{{ caravan.title }}</h5>
+                    <p><strong>Owner:</strong> {{ caravan.owner.username }}</p>
+                    <p><strong>Available Dates:</strong>
+                        {% for availability in caravan.availabilities.all %}
+                            {{ availability.start_date }} to {{ availability.end_date }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                    <form id="bookingForm" method="POST" action="{% url 'book_caravan' caravan.id %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary mb-1 btn-styles">Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

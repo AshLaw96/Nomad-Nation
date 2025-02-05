@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
   initialiseCarousel();
   initialiseFilterToggle();
   initialiseSelect2();
+  initaliseRequestBooking();
+  initialiseBookingButton();
+  initialiseImageModal();
 });
 
 // Utility functions
@@ -268,6 +271,67 @@ function initialiseCarousel() {
   document.querySelectorAll(".carousel").forEach(function (carousel) {
     new bootstrap.Carousel(carousel, {
       interval: false,
+    });
+  });
+}
+
+// Initialise image modal
+function initialiseImageModal() {
+  const imageModal = document.getElementById("imageModal");
+  const modalCarouselInner = document.getElementById("modalCarouselInner");
+
+  if (imageModal && modalCarouselInner) {
+    imageModal.addEventListener("show.bs.modal", function (event) {
+      const button = event.relatedTarget;
+      const carouselId = button.getAttribute("data-bs-carousel-id");
+      const carousel = document.getElementById(carouselId);
+      const carouselItems = carousel.querySelectorAll(".carousel-item");
+
+      // Clear existing items in the modal carousel
+      modalCarouselInner.innerHTML = "";
+
+      // Add items to the modal carousel
+      carouselItems.forEach((item, index) => {
+        const newItem = item.cloneNode(true);
+        if (index === 0) {
+          newItem.classList.add("active");
+        } else {
+          newItem.classList.remove("active");
+        }
+        modalCarouselInner.appendChild(newItem);
+      });
+    });
+  }
+}
+
+// Initialise request booking form
+function initaliseRequestBooking() {
+  const requestBookingCard = document.getElementById("requestBookingCard");
+  if (requestBookingCard) {
+    const bookNowClicked = localStorage.getItem("bookNowClicked");
+    if (bookNowClicked) {
+      requestBookingCard.style.display = "block";
+      localStorage.removeItem("bookNowClicked");
+    }
+  }
+
+  const bookingForm = document.getElementById("bookingForm");
+  if (bookingForm) {
+    bookingForm.addEventListener("submit", function () {
+      setTimeout(function () {
+        bookingForm.reset();
+      }, 1000);
+    });
+  }
+}
+
+// Initialise booking button
+function initialiseBookingButton() {
+  const bookNowBtn = document.querySelectorAll(".book-now-btn");
+  bookNowBtn.forEach((button) => {
+    button.addEventListener("click", function () {
+      localStorage.setItem("bookNowClicked", true);
+      localStorage.setItem("caravanId", this.getAttribute("data-caravan-id"));
     });
   });
 }
