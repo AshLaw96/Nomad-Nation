@@ -58,7 +58,7 @@
                                         <p><strong>End Date:</strong> {{ booking.end_date }}</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary btn-styles" data-bs-dismiss="modal">Close</button>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
     <!-- Upcoming Bookings Section -->
     <div class="card mb-4">
         <div class="card-header">
-            <h3 class="title">Upcoming Bookings</h3>
+            <h3 class="title text-center">Upcoming Bookings</h3>
         </div>
         <div class="card-body">
             {% if upcoming_bookings %}
@@ -87,7 +87,7 @@
                             </div>
                             {% if user_type == 'customer' and booking.can_modify %}
                                 <!-- Modify Booking Button -->
-                                <button type="button" class="btn btn-warning btn-sm mb-2 btn-styles" data-bs-toggle="modal" data-bs-target="#modifyBookingModal{{ booking.id }}">
+                                <button type="button" class="btn btn-warning btn-sm ms-2 mb-2 btn-styles" data-bs-toggle="modal" data-bs-target="#modifyBookingModal{{ booking.id }}">
                                     Modify Booking
                                 </button>
                             {% endif %}
@@ -140,7 +140,7 @@
     <!-- Previous Bookings Section -->
     <div class="card mb-4">
         <div class="card-header">
-            <h3 class="title">Previous Bookings</h3>
+            <h3 class="title text-center">Previous Bookings</h3>
         </div>
         <div class="card-body">
             {% if previous_bookings %}
@@ -161,11 +161,11 @@
     </div>
     {% if user_type == 'customer' %}
         <!-- Booking Request Form Section -->
-        <div class="card mb-4">
+        <div class="card mb-4" id="requestBookingCard" style="display: none;">
             <div class="card-header">
-                <h3 class="title">Request a Booking</h3>
+                <h3 class="title text-center">Request a Booking</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body text-center">
                 <button type="button" class="btn btn-primary btn-styles" data-bs-toggle="modal" data-bs-target="#bookCaravanModal">
                     Request Booking
                 </button>
@@ -179,7 +179,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="bookCaravanModalLabel">Request a Booking</h5>
+                    <h5 class="modal-title title text-center" id="bookCaravanModalLabel">Request Booking</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
