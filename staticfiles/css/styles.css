@@ -206,6 +206,34 @@ textarea {
     margin: auto;
 }
 
+/* Ensure modal images are displayed at a larger size */
+#imageModal .carousel-item img {
+    width: 100%;
+    height: auto;
+    max-height: 100vh;
+    object-fit: contain;
+}
+  
+/* Style for the overlay icon */
+.position-relative .position-absolute {
+    display: none;
+}
+  
+.position-relative:hover .position-absolute {
+    display: block;
+    color: var(--b-colour);
+}
+
+/* Style for the favourite icon */
+.favourite-icon {
+    cursor: pointer;
+    color: var(--p-text);
+}
+  
+.favourite-icon.favourite {
+    color: gold;
+}
+
 #delete-button {
     border: none;
 }

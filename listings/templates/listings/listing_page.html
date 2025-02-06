@@ -69,12 +69,17 @@
             {% for caravan in caravans %}
                 <li class="list-group-item mb-3">
                     <h2>{{ caravan.title }}</h2>
+                    <!-- Favourites icon -->
+                    <i class="fa fa-star favourite-icon {% if caravan.is_favourite %}favourite{% endif %} text-center" data-caravan-id="{{ caravan.pk }}"></i>
                     <!-- Carousel for multiple images -->
                     <div id="carousel{{ caravan.pk }}" class="carousel slide">
                         <div class="carousel-inner">
                             {% for image in caravan.images.all %}
                                 <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                                    <img src="{{ image.image.url }}" class="d-block w-100 img-thumbnail" alt="{{ caravan.title }}" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-image-url="{{ image.image.url }}">
+                                    <img src="{{ image.image.url }}" class="d-block w-100 img-thumbnail" alt="{{ caravan.title }}">
+                                    <div class="position-absolute top-50 start-50 translate-middle" data-bs-toggle="modal" data-bs-target="#imageModal"  data-bs-image-url="{{ image.image.url }}" data-bs-carousel-id="carousel{{ caravan.pk }}">
+                                        <i class="fa-solid fa-up-right-and-down-left-from-center fa-2x text-white"></i>
+                                    </div>
                                 </div>
                             {% endfor %}
                         </div>
@@ -141,7 +146,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="imageModalLabel">Image</h5>
+                <h5 class="modal-title title text-center" id="imageModalLabel"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

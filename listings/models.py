@@ -35,6 +35,7 @@ class Caravan(models.Model):
     price_per_night = models.DecimalField(max_digits=6, decimal_places=2)
     location = models.CharField(max_length=100)
     amenities = models.ManyToManyField(Amenity, related_name='caravans')
+    is_favourite = models.BooleanField(default=False)
 
     @property
     def is_available(self):

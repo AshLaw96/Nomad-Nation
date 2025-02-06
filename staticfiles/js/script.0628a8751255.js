@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
   initaliseRequestBooking();
   initialiseBookingButton();
   initialiseImageModal();
-  initialiseFavouriteIcons();
 });
 
 // Utility functions
@@ -280,9 +279,8 @@ function initialiseCarousel() {
 function initialiseImageModal() {
   const imageModal = document.getElementById("imageModal");
   const modalCarouselInner = document.getElementById("modalCarouselInner");
-  const modalTitle = document.getElementById("imageModalLabel");
 
-  if (imageModal && modalCarouselInner && modalTitle) {
+  if (imageModal && modalCarouselInner) {
     imageModal.addEventListener("show.bs.modal", function (event) {
       const button = event.relatedTarget;
       const carouselId = button.getAttribute("data-bs-carousel-id");
@@ -292,12 +290,6 @@ function initialiseImageModal() {
         return;
       }
       const carouselItems = carousel.querySelectorAll(".carousel-item");
-      const caravanTitle = button
-        .closest(".list-group-item")
-        .querySelector("h2").textContent;
-
-      // Set the modal title to the caravan title
-      modalTitle.textContent = caravanTitle;
 
       // Clear existing items in the modal carousel
       modalCarouselInner.innerHTML = "";
@@ -305,12 +297,6 @@ function initialiseImageModal() {
       // Add items to the modal carousel
       carouselItems.forEach((item, index) => {
         const newItem = item.cloneNode(true);
-        const icon = newItem.querySelector(
-          ".fa-up-right-and-down-left-from-center"
-        );
-        if (icon) {
-          icon.parentNode.removeChild(icon);
-        }
         if (index === 0) {
           newItem.classList.add("active");
         } else {
@@ -320,62 +306,6 @@ function initialiseImageModal() {
       });
     });
   }
-}
-
-// Initialise favourite icons
-function initialiseFavouriteIcons() {
-  const favouriteIcons = document.querySelectorAll(".favourite-icon");
-  favouriteIcons.forEach((icon) => {
-    icon.addEventListener("click", function () {
-      const caravanId = this.getAttribute("data-caravan-id");
-      const isFavourite = this.classList.toggle("favourite");
-
-      console.log("Caravan ID:", caravanId);
-
-      // Send the favourite status to the server
-      fetch(`/toggle_favourite/${caravanId}/`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          "X-CSRFToken": getCookie("csrftoken"),
-        },
-        body: JSON.stringify({ is_favourite: isFavourite }),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          if (!data.success) {
-            // Revert the favourite status if the server update failed
-            this.classList.toggle("favourite");
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          // Revert the favourite status if there was an error
-          this.classList.toggle("favourite");
-        });
-    });
-  });
-}
-
-// Get CSRF token
-function getCookie(name) {
-  let cookieValue = null;
-  if (document.cookie && document.cookie !== "") {
-    const cookies = document.cookie.split(";");
-    for (let i = 0; i < cookies.length; i++) {
-      const cookie = cookies[i].trim();
-      if (cookie.substring(0, name.length + 1) === name + "=") {
-        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-        break;
-      }
-    }
-  }
-  return cookieValue;
 }
 
 // Initialise request booking form

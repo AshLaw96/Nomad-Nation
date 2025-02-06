@@ -3,6 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib import messages
 from django.utils import timezone
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_protect
+import json
 from .models import Caravan, Amenity, Availability, CaravanImage, Booking
 from .forms import CaravanForm, BookingForm
 
@@ -67,6 +71,28 @@ def listings_view(request):
         'selected_amenities': filter_amenities,
     }
     return render(request, 'listings/listing_page.html', context)
+
+
+@csrf_protect
+@require_POST
+def toggle_favourite(request, caravan_id):
+    try:
+        caravan = get_object_or_404(Caravan, pk=caravan_id)
+        data = json.loads(request.body)
+        is_favourite = data.get('is_favourite', False)
+        # Update the caravan's favourite status
+        caravan.is_favourite = is_favourite
+        caravan.save()
+        return JsonResponse({'success': True})
+    except json.JSONDecodeError:
+        # Handle cases where the body is not valid JSON
+        return JsonResponse(
+            {'success': False, 'error': 'Invalid JSON format.'},
+            status=400
+        )
+    except Exception as e:
+        # Catch any other errors and log them
+        return JsonResponse({'success': False, 'error': str(e)}, status=500)
 
 
 @login_required
