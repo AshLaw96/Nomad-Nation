@@ -5,10 +5,11 @@ from django.contrib import messages
 from django.utils import timezone
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_exempt
 import json
-from .models import Caravan, Amenity, Availability, CaravanImage, Booking
-from .forms import CaravanForm, BookingForm
+from .models import Caravan, Amenity, Availability, CaravanImage, Booking, \
+    Review
+from .forms import CaravanForm, BookingForm, ReviewForm
 
 
 @login_required
@@ -73,25 +74,35 @@ def listings_view(request):
     return render(request, 'listings/listing_page.html', context)
 
 
-@csrf_protect
+@csrf_exempt
 @require_POST
 def toggle_favourite(request, caravan_id):
     try:
+        print(
+            f"Received request to toggle favourite for caravan ID: "
+            f"{caravan_id}"
+        )
         caravan = get_object_or_404(Caravan, pk=caravan_id)
         data = json.loads(request.body)
+        print(f"Received data: {data}")
         is_favourite = data.get('is_favourite', False)
-        # Update the caravan's favourite status
         caravan.is_favourite = is_favourite
         caravan.save()
         return JsonResponse({'success': True})
     except json.JSONDecodeError:
-        # Handle cases where the body is not valid JSON
+        print("Invalid JSON format")
         return JsonResponse(
             {'success': False, 'error': 'Invalid JSON format.'},
             status=400
         )
+    except Caravan.DoesNotExist:
+        print("Caravan not found")
+        return JsonResponse(
+            {'success': False, 'error': 'Caravan not found'},
+            status=404
+        )
     except Exception as e:
-        # Catch any other errors and log them
+        print(f"Error: {e}")
         return JsonResponse({'success': False, 'error': str(e)}, status=500)
 
 
@@ -130,10 +141,10 @@ def add_caravan(request):
 
 
 @login_required
-def edit_caravan(request, slug):
+def edit_caravan(request, pk):
     caravan = get_object_or_404(
         Caravan,
-        slug=slug,
+        pk=pk,
         owner=request.user
     )
     if request.method == "POST":
@@ -363,3 +374,35 @@ def modify_booking(request, booking_id):
         return redirect("booking_view", caravan_id=booking.caravan.id)
 
     return redirect("booking_view", caravan_id=booking.caravan.id)
+
+
+@login_required
+def submit_review(request, caravan_id):
+    caravan = get_object_or_404(Caravan, pk=caravan_id)
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.caravan = caravan
+            review.customer = request.user
+            review.save()
+            if request.is_ajax():
+                return JsonResponse({
+                    "message": "Review submitted successfully!"
+                })
+            messages.success(request, "Review submitted successfully!")
+            return redirect("listings")
+        else:
+            if request.is_ajax():
+                return JsonResponse({"error": form.errors}, status=400)
+    return JsonResponse({"error": "Invalid request"}, status=400)
+
+
+@login_required
+def approve_review(request, review_id):
+    review = get_object_or_404(Review, pk=review_id)
+    if request.user == review.caravan.owner:
+        review.approved = True
+        review.save()
+        messages.success(request, "Review approved!")
+    return redirect("listings")

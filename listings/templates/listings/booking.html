@@ -83,18 +83,17 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <div>
                                 <strong>{{ booking.caravan.title }}</strong><br>
-                                <small>{{ booking.start_date }} to {{ booking.end_date }}</small>
+                                <small>{{ booking.start_date }} to {{ booking.end_date }}</small><br>
+                                {% if user_type == 'customer' %}
+                                    <small><strong>Owner:</strong> {{ booking.caravan.owner.username }}</small>
+                                {% elif user_type == 'owner' %}
+                                    <small><strong>Customer:</strong> {{ booking.customer.username }}</small>
+                                {% endif %}
                             </div>
                             {% if user_type == 'customer' and booking.can_modify %}
                                 <!-- Modify Booking Button -->
                                 <button type="button" class="btn btn-warning btn-sm ms-2 mb-2 btn-styles" data-bs-toggle="modal" data-bs-target="#modifyBookingModal{{ booking.id }}">
                                     Modify Booking
-                                </button>
-                            {% endif %}
-                            {% if user_type == 'owner' %}
-                                <!-- Owner view of customer booking details -->
-                                <button type="button" class="btn btn-info btn-sm btn-styles mb-2" data-bs-toggle="modal" data-bs-target="#bookingDetailsModal{{ booking.id }}">
-                                    View Details
                                 </button>
                             {% endif %}
                         </li>

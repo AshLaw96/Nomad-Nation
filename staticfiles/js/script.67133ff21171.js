@@ -427,39 +427,6 @@ function initialiseReviewModals() {
 
       // Set form action
       form.setAttribute("action", `/submit_review/${caravanId}/`);
-
-      // Handle form submission via AJAX
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const formData = new FormData(form);
-        fetch(form.getAttribute("action"), {
-          method: "POST",
-          headers: {
-            "X-CSRFToken": getCookie("csrftoken"),
-          },
-          body: formData,
-        })
-          .then((response) => {
-            if (!response.ok) {
-              return response.json().then((data) => {
-                throw new Error(data.errors || "Unknown error");
-              });
-            }
-            return response.json();
-          })
-          .then((data) => {
-            // Close the modal and show success message
-            const modalInstance = bootstrap.Modal.getInstance(modal);
-            modalInstance.hide();
-            alert(data.message);
-            // Reload the page to show the new review
-            location.reload();
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-            alert("An error occurred while submitting the review.");
-          });
-      });
     });
   });
 }

@@ -105,3 +105,19 @@ class Booking(models.Model):
 
     def __str__(self):
         return f"Booking for {self.caravan.title} by {self.customer.username}"
+
+
+class Review(models.Model):
+    caravan = models.ForeignKey(
+        Caravan, on_delete=models.CASCADE, related_name='reviews'
+    )
+    customer = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='reviews'
+    )
+    rating = models.IntegerField()
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Review for {self.caravan.title} by {self.customer.username}"

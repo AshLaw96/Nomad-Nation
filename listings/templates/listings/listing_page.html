@@ -70,8 +70,8 @@
                 <li class="list-group-item mb-3">
                     <h2>{{ caravan.title }}</h2>
                     {% if user_type == "customer" %}
-                    <!-- Favourites icon -->
-                    <i class="fa fa-star favourite-icon {% if caravan.is_favourite %}favourite{% endif %} text-center" data-caravan-id="{{ caravan.pk }}"></i>
+                        <!-- Favourites icon -->
+                        <i class="fa fa-star favourite-icon {% if caravan.is_favourite %}favourite{% endif %} text-center" data-caravan-id="{{ caravan.pk }}"></i>
                         <span class="ms-2">Click to add to favourites</span>
                     {% endif %}
                     <!-- Carousel for multiple images -->
@@ -109,6 +109,67 @@
                             {{ availability.start_date }} to {{ availability.end_date }}{% if not forloop.last %}, {% endif %}
                         {% endfor %}
                     </p>
+                    <!-- Reviews Section -->
+                    {% if caravan.reviews.all|length > 0  %}
+                        <h3 class="text-center title">Reviews</h3>
+                        {% for review in caravan.reviews.all %}
+                            {% if review.approved %}
+                                <div class="review">
+                                    <p><strong>{{ review.customer.username }}</strong> rated {{ review.rating }}/5</p>
+                                    <p>{{ review.comment }}</p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if user_type == "customer" %}
+                        <div class="text-center">
+                            <button type="button" class="btn btn-primary btn-styles" data-bs-toggle="modal" data-bs-target="#submitReviewModal{{ caravan.pk }}" data-caravan-id="{{ caravan.pk }}">
+                                Leave a Review
+                            </button>
+                        </div>
+                    {% endif %}
+                    <!-- Approve Reviews -->
+                    {% if user_type == "owner" %}
+                        {% if caravan.reviews.all|length > 0  %}
+                            <h3 class="title text-center">Pending Reviews</h3>
+                            {% for review in caravan.reviews.all %}
+                                {% if not review.approved %}
+                                    <div class="review">
+                                        <p><strong>{{ review.customer.username }}</strong> rated {{ review.rating }}/5</p>
+                                        <p>{{ review.comment }}</p>
+                                        <a href="{% url 'approve_review' review.pk %}" class="btn btn-success btn-styles">Approve</a>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endif %}
+                    <!-- Review Modal -->
+                    <div class="modal fade" id="submitReviewModal{{ caravan.pk }}" tabindex="-1" aria-labelledby="submitReviewModalLabel{{ caravan.pk }}" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="submitReviewModalLabel{{ caravan.pk }}">Leave a Review for {{ caravan.title }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" action="{% url 'submit_review' caravan.pk %}">
+                                        {% csrf_token %}
+                                        <div class="mb-3">
+                                            <label for="rating" class="form-label">Rating</label>
+                                            <input type="number" class="form-control" id="rating" name="rating" min="1" max="5" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="comment" class="form-label">Comment</label>
+                                            <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary btn-styles">Submit Review</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Buttons for Owners -->
                     {% if user_type == "owner" %}
                         <div class="row mt-3">

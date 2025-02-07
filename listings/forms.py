@@ -1,7 +1,7 @@
 import json
 from django import forms
 from datetime import datetime
-from .models import Caravan, Amenity, CaravanImage, Booking
+from .models import Caravan, Amenity, CaravanImage, Booking, Review
 
 
 class CaravanForm(forms.ModelForm):
@@ -154,3 +154,12 @@ class BookingForm(forms.ModelForm):
                 )
 
         return cleaned_data
+
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['rating', 'comment']
+        widgets = {
+            'comment': forms.Textarea(attrs={'rows': 3})
+        }

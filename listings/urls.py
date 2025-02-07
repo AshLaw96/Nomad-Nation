@@ -27,5 +27,15 @@ urlpatterns = [
         'modify_booking/<int:booking_id>/',
         views.modify_booking,
         name='modify_booking'
-    )
+    ),
+    path(
+        'submit_review/<int:caravan_id>/',
+        views.submit_review,
+        name='submit_review'
+    ),
+    path(
+        'approve_review/<int:review_id>/',
+        views.approve_review,
+        name='approve_review'
+    ),
 ]

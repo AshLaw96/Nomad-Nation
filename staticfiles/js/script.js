@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initialiseBookingButton();
   initialiseImageModal();
   initialiseFavouriteIcons();
+  initialiseReviewModals();
 });
 
 // Utility functions
@@ -334,7 +335,7 @@ function initialiseFavouriteIcons() {
       fetch(`/toggle_favourite/${caravanId}/`, {
         method: "POST",
         headers: {
-          "content-type": "application/json",
+          "Content-Type": "application/json",
           "X-CSRFToken": getCookie("csrftoken"),
         },
         body: JSON.stringify({ is_favourite: isFavourite }),
@@ -404,6 +405,61 @@ function initialiseBookingButton() {
     button.addEventListener("click", function () {
       localStorage.setItem("bookNowClicked", true);
       localStorage.setItem("caravanId", this.getAttribute("data-caravan-id"));
+    });
+  });
+}
+
+// Initialise review modals
+function initialiseReviewModals() {
+  const reviewModals = document.querySelectorAll(".modal.fade");
+  reviewModals.forEach((modal) => {
+    modal.addEventListener("show.bs.modal", function (event) {
+      const button = event.relatedTarget;
+      const caravanId = button.getAttribute("data-caravan-id");
+      const modalTitle = modal.querySelector(".modal-title");
+      const form = modal.querySelector("form");
+
+      // Set modal title
+      const caravanTitle = button
+        .closest(".list-group-item")
+        .querySelector("h2").textContent;
+      modalTitle.textContent = `Leave a review for ${caravanTitle}`;
+
+      // Set form action
+      form.setAttribute("action", `/submit_review/${caravanId}/`);
+
+      // Handle form submission via AJAX
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+        fetch(form.getAttribute("action"), {
+          method: "POST",
+          headers: {
+            "X-CSRFToken": getCookie("csrftoken"),
+          },
+          body: formData,
+        })
+          .then((response) => {
+            if (!response.ok) {
+              return response.json().then((data) => {
+                throw new Error(data.errors || "Unknown error");
+              });
+            }
+            return response.json();
+          })
+          .then((data) => {
+            // Close the modal and show success message
+            const modalInstance = bootstrap.Modal.getInstance(modal);
+            modalInstance.hide();
+            alert(data.message);
+            // Reload the page to show the new review
+            location.reload();
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("An error occurred while submitting the review.");
+          });
+      });
     });
   });
 }
