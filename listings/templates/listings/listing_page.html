@@ -69,8 +69,11 @@
             {% for caravan in caravans %}
                 <li class="list-group-item mb-3">
                     <h2>{{ caravan.title }}</h2>
+                    {% if user_type == "customer" %}
                     <!-- Favourites icon -->
                     <i class="fa fa-star favourite-icon {% if caravan.is_favourite %}favourite{% endif %} text-center" data-caravan-id="{{ caravan.pk }}"></i>
+                        <span class="ms-2">Click to add to favourites</span>
+                    {% endif %}
                     <!-- Carousel for multiple images -->
                     <div id="carousel{{ caravan.pk }}" class="carousel slide">
                         <div class="carousel-inner">

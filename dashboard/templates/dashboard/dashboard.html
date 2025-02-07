@@ -37,19 +37,19 @@
                 </div>
             </div>
         </div>
-        <!-- Wish-list section -->
+        <!-- Favourites section -->
         <div class="col-md-4">
             <div class="card mb-4 text-white">
                 <div class="card-header">
-                    <h2 class="card-title title">Wish-list</h2>
+                    <h2 class="card-title title">Favourites</h2>
                 </div>
                 <div class="card-body">
-                    <p>View your wish-listed caravans.</p>
+                    <p>View your Favourites caravans.</p>
                     <ul class="list-group">
-                        {% for item in wishlist %}
+                        {% for item in favourites %}
                             <li class="list-group-item">{{ item }}</li>
                         {% empty %}
-                            <li class="list-group-item">No items in your wishlist</li>
+                            <li class="list-group-item">No items in your favourites</li>
                         {% endfor %}
                     </ul>
                 </div>
