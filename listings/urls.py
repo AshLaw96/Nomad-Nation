@@ -38,4 +38,9 @@ urlpatterns = [
         views.approve_review,
         name='approve_review'
     ),
+    path(
+        'submit_reply/<int:review_id>/',
+        views.submit_reply,
+        name='submit_reply'
+    ),
 ]

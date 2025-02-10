@@ -110,13 +110,46 @@
                         {% endfor %}
                     </p>
                     <!-- Reviews Section -->
-                    {% if caravan.reviews.all|length > 0  %}
+                    {% if caravan.reviews.all|length > 0 %}
                         <h3 class="text-center title">Reviews</h3>
+                        <div class="border p-3 mb-3">
                         {% for review in caravan.reviews.all %}
                             {% if review.approved %}
-                                <div class="review">
+                            <div class="review mb-3 p-3">
                                     <p><strong>{{ review.customer.username }}</strong> rated {{ review.rating }}/5</p>
                                     <p>{{ review.comment }}</p>
+                                {% if review.reply %}
+                                <p><strong>Owner's Reply:</strong> {{ review.reply }}</p>
+                                {% endif %}
+                                {% if user_type == "owner" %}
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-primary mb-2 btn-styles" data-bs-toggle="modal" data-bs-target="#replyModal{{ review.pk }}" data-review-id="{{ review.pk }}">
+                                         Reply
+                                        </button>
+                                    <!-- Reply Modal -->
+                                    <div class="modal fade" id="replyModal{{ review.pk }}" tabindex="-1" aria-labelledby="replyModalLabel{{ review.pk }}" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="replyModalLabel{{ review.pk }}">Reply to Review</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form method="post" action="{% url 'submit_review' review.pk %}">
+                                                        {% csrf_token %}
+                                                        <div class="mb-3">
+                                                            <label for="reply" class="form-label">Reply</label>
+                                                            <textarea class="form-control" id="reply" name="reply" rows="3" required></textarea>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <button type="submit" class="btn btn-primary btn-styles">Submit Reply</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 </div>
                             {% endif %}
                         {% endfor %}
@@ -130,7 +163,7 @@
                     {% endif %}
                     <!-- Approve Reviews -->
                     {% if user_type == "owner" %}
-                        {% if caravan.reviews.all|length > 0  %}
+                        {% if caravan.reviews.all|length > 0 %}
                             <h3 class="title text-center">Pending Reviews</h3>
                             {% for review in caravan.reviews.all %}
                                 {% if not review.approved %}
@@ -166,6 +199,7 @@
                                             <button type="submit" class="btn btn-primary btn-styles">Submit Review</button>
                                         </div>
                                     </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>

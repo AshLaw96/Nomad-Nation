@@ -379,6 +379,7 @@ def modify_booking(request, booking_id):
 @login_required
 def submit_review(request, caravan_id):
     caravan = get_object_or_404(Caravan, pk=caravan_id)
+
     if request.method == "POST":
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -386,15 +387,20 @@ def submit_review(request, caravan_id):
             review.caravan = caravan
             review.customer = request.user
             review.save()
-            if request.is_ajax():
-                return JsonResponse({
-                    "message": "Review submitted successfully!"
-                })
+
+            # Add success message using Django's messaging framework
             messages.success(request, "Review submitted successfully!")
+
+            # Handle AJAX request
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return JsonResponse({"success": True})
+
             return redirect("listings")
+
         else:
-            if request.is_ajax():
-                return JsonResponse({"error": form.errors}, status=400)
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return JsonResponse({"errors": form.errors}, status=400)
+
     return JsonResponse({"error": "Invalid request"}, status=400)
 
 
@@ -406,3 +412,20 @@ def approve_review(request, review_id):
         review.save()
         messages.success(request, "Review approved!")
     return redirect("listings")
+
+
+@login_required
+def submit_reply(request, review_id):
+    review = get_object_or_404(Review, pk=review_id)
+
+    if request.method == "POST":
+        form = ReplyForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Reply submitted successfully!")
+            return JsonResponse({"success": True})
+        # Return errors if form invalid
+        return JsonResponse({"errors": form.errors}, status=400)
+
+    return JsonResponse({"error": "Invalid request"}, status=400)
+

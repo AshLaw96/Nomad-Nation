@@ -163,3 +163,12 @@ class ReviewForm(forms.ModelForm):
         widgets = {
             'comment': forms.Textarea(attrs={'rows': 3})
         }
+
+
+class ReplyForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['reply']
+        widgets = {
+            'reply': forms.Textarea(attrs={'rows': 3})
+        }

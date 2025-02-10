@@ -118,6 +118,7 @@ class Review(models.Model):
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
+    reply = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"Review for {self.caravan.title} by {self.customer.username}"
