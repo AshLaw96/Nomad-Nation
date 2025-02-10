@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
   initialiseImageModal();
   initialiseFavouriteIcons();
   initialiseReviewModals();
-  initialiseDeleteReview();
 });
 
 // Utility functions
@@ -47,21 +46,6 @@ function getCookie(name) {
     }
   }
   return cookieValue;
-}
-
-// Show in-app success message
-function showInAppMessage(message) {
-  const messageContainer = document.getElementById("success-message-container");
-
-  if (messageContainer) {
-    messageContainer.textContent = message;
-    messageContainer.style.display = "block";
-
-    // Hide the message after 5 seconds
-    setTimeout(() => {
-      messageContainer.style.display = "none";
-    }, 5000);
-  }
 }
 
 // Initialise Select2 for the amenities dropdown
@@ -364,7 +348,7 @@ function initialiseFavouriteIcons() {
       const isFavourite = this.classList.toggle("favourite");
 
       // Send the favourite status to the server
-      fetch(`/listings/toggle_favourite/${caravanId}/`, {
+      fetch(`/toggle_favourite/${caravanId}/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -428,122 +412,53 @@ function initialiseBookingButton() {
 // Initialise review modals
 function initialiseReviewModals() {
   const reviewModals = document.querySelectorAll(".modal.fade");
-
   reviewModals.forEach((modal) => {
     modal.addEventListener("show.bs.modal", function (event) {
       const button = event.relatedTarget;
-      const caravanId = button.getAttribute("data-caravan-id") || null;
-      const reviewId = button.getAttribute("data-review-id") || null;
+      const caravanId = button.getAttribute("data-caravan-id");
       const modalTitle = modal.querySelector(".modal-title");
       const form = modal.querySelector("form");
 
-      if (form) {
-        let actionUrl;
+      // Set modal title
+      const caravanTitle = button
+        .closest(".list-group-item")
+        .querySelector("h2").textContent;
+      modalTitle.textContent = `Leave a review for ${caravanTitle}`;
 
-        if (reviewId) {
-          // Reply modal
-          modalTitle.textContent = "Reply to review";
-          actionUrl = `/listings/submit_reply/${reviewId}/`;
-        } else if (caravanId) {
-          // Review modal
-          const caravanTitle = button
-            .closest(".list-group-item")
-            .querySelector("h2").textContent;
-          modalTitle.textContent = `Leave a review for ${caravanTitle}`;
-          actionUrl = `/listings/submit_review/${caravanId}/`;
-        } else {
-          console.error("Neither reviewID nor caravanID found.");
-          return;
-        }
-        form.setAttribute("action", actionUrl);
+      // Set form action
+      form.setAttribute("action", `/submit_review/${caravanId}/`);
 
-        // Ensure the event listener is added only once
-        form.addEventListener(
-          "submit",
-          function (e) {
-            e.preventDefault();
-            const formData = new FormData(form);
-
-            fetch(form.getAttribute("action"), {
-              method: "POST",
-              headers: {
-                "X-CSRFToken": getCookie("csrftoken"),
-                // Ensures Django detects AJAX
-                "X-Requested-With": "XMLHttpRequest",
-              },
-              body: formData,
-            })
-              .then(async (response) => {
-                if (!response.ok) {
-                  const text = await response.text();
-                  throw new Error(text);
-                }
-                return response.json();
-              })
-              .then((data) => {
-                if (data.success) {
-                  // Close the modal
-                  const modalInstance = bootstrap.Modal.getInstance(modal);
-                  modalInstance.hide();
-
-                  // Show success message (in-app)
-                  showInAppMessage("Review submitted successfully!");
-
-                  // Reload the page to show the new review
-                  location.reload();
-                }
-              })
-              .catch((error) => {
-                console.error("Error:", error);
-                alert("An error occurred while submitting the review.");
-              });
+      // Handle form submission via AJAX
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+        fetch(form.getAttribute("action"), {
+          method: "POST",
+          headers: {
+            "X-CSRFToken": getCookie("csrftoken"),
           },
-          // Ensures event listener is only added once
-          { once: true }
-        );
-      } else {
-        console.error("Form not found inside the modal");
-      }
+          body: formData,
+        })
+          .then(async (response) => {
+            if (!response.ok) {
+              const text = await response.text();
+              throw new Error(text);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            // Close the modal and show success message
+            const modalInstance = bootstrap.Modal.getInstance(modal);
+            modalInstance.hide();
+            alert(data.message);
+            // Reload the page to show the new review
+            location.reload();
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("An error occurred while submitting the review.");
+          });
+      });
     });
   });
-}
-
-// Initialise delete review buttons
-function initialiseDeleteReview() {
-  document.querySelectorAll(".delete-review-btn").forEach((button) => {
-    button.addEventListener("click", function (event) {
-      event.preventDefault();
-      handleDelete(this.getAttribute("data-url"));
-    });
-  });
-
-  document.querySelectorAll(".delete-reply-btn").forEach((button) => {
-    button.addEventListener("click", function (event) {
-      event.preventDefault();
-      handleDelete(this.getAttribute("data-url"));
-    });
-  });
-}
-
-// Handle delete requests
-function handleDelete(url) {
-  fetch(url, {
-    method: "POST",
-    headers: {
-      "X-CSRFToken": getCookie("csrftoken"),
-      "X-Requested-With": "XMLHttpRequest",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.success) {
-        location.reload();
-      } else {
-        showInAppMessage("An error occurred while deleting the review.");
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      showInAppMessage("An error occurred while deleting the review.");
-    });
 }

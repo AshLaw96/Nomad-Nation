@@ -513,37 +513,43 @@ function initialiseDeleteReview() {
   document.querySelectorAll(".delete-review-btn").forEach((button) => {
     button.addEventListener("click", function (event) {
       event.preventDefault();
-      handleDelete(this.getAttribute("data-url"));
+      handleDelete(
+        this,
+        "Are you sure you want to delete this review?",
+        "Review deleted successfully!"
+      );
     });
   });
 
   document.querySelectorAll(".delete-reply-btn").forEach((button) => {
     button.addEventListener("click", function (event) {
       event.preventDefault();
-      handleDelete(this.getAttribute("data-url"));
+      handleDelete(
+        this,
+        "Are you sure you want to delete this reply?",
+        "Reply deleted successfully!"
+      );
     });
   });
 }
 
 // Handle delete requests
-function handleDelete(url) {
-  fetch(url, {
-    method: "POST",
-    headers: {
-      "X-CSRFToken": getCookie("csrftoken"),
-      "X-Requested-With": "XMLHttpRequest",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.success) {
-        location.reload();
-      } else {
-        showInAppMessage("An error occurred while deleting the review.");
-      }
+function handleDelete(button, confirmationMessage, successMessage) {
+  if (confirm(confirmationMessage)) {
+    fetch(button.getAttribute("data-url"), {
+      method: "POST",
+      headers: {
+        "X-CSRFToken": getCookie("csrftoken"),
+        "X-Requested-With": "XMLHttpRequest",
+      },
     })
-    .catch((error) => {
-      console.error("Error:", error);
-      showInAppMessage("An error occurred while deleting the review.");
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          showInAppMessage(successMessage);
+          location.reload();
+        }
+      })
+      .catch((error) => console.error("Error:", error));
+  }
 }

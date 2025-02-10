@@ -113,11 +113,11 @@
                     {% if caravan.reviews.all|length > 0 %}
                         <h3 class="text-center title">Reviews</h3>
                         <div class="border p-3 mb-3">
-                        {% for review in caravan.reviews.all %}
+                            {% for review in caravan.reviews.all %}
                             {% if review.approved %}
                             <div class="review mb-3 p-3">
-                                    <p><strong>{{ review.customer.username }}</strong> rated {{ review.rating }}/5</p>
-                                    <p>{{ review.comment }}</p>
+                                <p><strong>{{ review.customer.username }}</strong> rated {{ review.rating }}/5</p>
+                                <p>{{ review.comment }}</p>
                                 {% if review.reply %}
                                 <p><strong>Owner's Reply:</strong> {{ review.reply }}</p>
                                 {% endif %}
@@ -126,6 +126,13 @@
                                         <button type="button" class="btn btn-primary mb-2 btn-styles" data-bs-toggle="modal" data-bs-target="#replyModal{{ review.pk }}" data-review-id="{{ review.pk }}">
                                          Reply
                                         </button>
+                                        <button type="button" class="btn btn-warning btn-styles" data-bs-toggle="modal" data-bs-target="#editReplyModal{{ review.pk }}" data-review-id="{{ review.pk }}">
+                                            Edit Reply
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-styles mt-2 delete-reply-btn" data-url="{% url 'delete_reply' review.pk %}">
+                                            Delete Reply
+                                        </button>
+                                    </div>
                                     <!-- Reply Modal -->
                                     <div class="modal fade" id="replyModal{{ review.pk }}" tabindex="-1" aria-labelledby="replyModalLabel{{ review.pk }}" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -150,59 +157,117 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Edit Reply Modal -->
+                                <div class="modal fade" id="editReplyModal{{ review.pk }}" tabindex="-1" aria-labelledby="editReplyModalLabel{{ review.pk }}" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="editReplyModalLabel{{ review.pk }}">Edit Reply</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="post" action="{% url 'edit_reply' review.pk %}">
+                                                    {% csrf_token %}
+                                                    <div class="mb-3">
+                                                        <label for="reply" class="form-label">Reply</label>
+                                                        <textarea class="form-control" id="reply" name="reply" rows="3" required>{{ review.reply }}</textarea>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <button type="submit" class="btn btn-primary btn-styles">Submit Reply</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            {% endif %}
+                        {% endif %}
+                        {% if user_type == "customer" %}
+                            <button type="button" class="btn btn-warning btn-styles" data-bs-toggle="modal" data-bs-target="#editReviewModal{{ review.pk }}" data-review-id="{{ review.pk }}">
+                                Edit Review
+                            </button>
+                            <button type="button" class="btn btn-danger btn-styles delete-review-btn" data-review-id="{{ review.pk }}">
+                                Delete Review
+                            </button>
+                            <!-- Edit Review Modal -->
+                            <div class="modal fade" id="editReviewModal{{ review.pk }}" tabindex="-1" aria-labelledby="editReviewModalLabel{{ review.pk }}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="editReviewModalLabel{{ review.pk }}">Edit Review</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="post" action="{% url 'edit_review' review.pk %}">
+                                                {% csrf_token %}
+                                                <div class="mb-3">
+                                                    <label for="rating" class="form-label">Rating</label>
+                                                    <input type="number" class="form-control" id="rating" name="rating" min="1" max="5" value="{{ review.rating }}" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="comment" class="form-label">Comment</label>
+                                                    <textarea class="form-control" id="comment" name="comment" rows="3" required>{{ review.comment }}</textarea>
+                                                </div>
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-primary btn-styles">Submit Review</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% endif %}
                         {% endfor %}
-                    {% endif %}
-                    {% if user_type == "customer" %}
+                        {% endif %}
+                        {% if user_type == "customer" %}
                         <div class="text-center">
                             <button type="button" class="btn btn-primary btn-styles" data-bs-toggle="modal" data-bs-target="#submitReviewModal{{ caravan.pk }}" data-caravan-id="{{ caravan.pk }}">
                                 Leave a Review
                             </button>
                         </div>
-                    {% endif %}
-                    <!-- Approve Reviews -->
-                    {% if user_type == "owner" %}
-                        {% if caravan.reviews.all|length > 0 %}
-                            <h3 class="title text-center">Pending Reviews</h3>
-                            {% for review in caravan.reviews.all %}
-                                {% if not review.approved %}
-                                    <div class="review">
-                                        <p><strong>{{ review.customer.username }}</strong> rated {{ review.rating }}/5</p>
-                                        <p>{{ review.comment }}</p>
-                                        <a href="{% url 'approve_review' review.pk %}" class="btn btn-success btn-styles">Approve</a>
-                                    </div>
-                                {% endif %}
-                            {% endfor %}
                         {% endif %}
-                    {% endif %}
-                    <!-- Review Modal -->
-                    <div class="modal fade" id="submitReviewModal{{ caravan.pk }}" tabindex="-1" aria-labelledby="submitReviewModalLabel{{ caravan.pk }}" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="submitReviewModalLabel{{ caravan.pk }}">Leave a Review for {{ caravan.title }}</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form method="post" action="{% url 'submit_review' caravan.pk %}">
-                                        {% csrf_token %}
-                                        <div class="mb-3">
-                                            <label for="rating" class="form-label">Rating</label>
-                                            <input type="number" class="form-control" id="rating" name="rating" min="1" max="5" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="comment" class="form-label">Comment</label>
-                                            <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
-                                        </div>
-                                        <div class="text-center">
-                                            <button type="submit" class="btn btn-primary btn-styles">Submit Review</button>
-                                        </div>
-                                    </form>
+                        <!-- Approve Reviews -->
+                        {% if user_type == "owner" %}
+                        {% if caravan.reviews.all|length > 0 %}
+                        <h3 class="title text-center">Pending Reviews</h3>
+                        {% for review in caravan.reviews.all %}
+                        {% if not review.approved %}
+                        <div class="review">
+                            <p><strong>{{ review.customer.username }}</strong> rated {{ review.rating }}/5</p>
+                            <p>{{ review.comment }}</p>
+                            <a href="{% url 'approve_review' review.pk %}" class="btn btn-success btn-styles">Approve</a>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        {% endif %}
+                        <!-- Review Modal -->
+                        <div class="modal fade" id="submitReviewModal{{ caravan.pk }}" tabindex="-1" aria-labelledby="submitReviewModalLabel{{ caravan.pk }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="submitReviewModalLabel{{ caravan.pk }}">Leave a Review for {{ caravan.title }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" action="{% url 'submit_review' caravan.pk %}">
+                                            {% csrf_token %}
+                                            <div class="mb-3">
+                                                <label for="rating" class="form-label">Rating</label>
+                                                <input type="number" class="form-control" id="rating" name="rating" min="1" max="5" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="comment" class="form-label">Comment</label>
+                                                <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+                                            </div>
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-primary btn-styles">Submit Review</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>    
                     </div>
                     <!-- Buttons for Owners -->
                     {% if user_type == "owner" %}

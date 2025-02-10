@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from .models import Caravan, Amenity, Availability, CaravanImage, Booking, \
     Review
-from .forms import CaravanForm, BookingForm, ReviewForm
+from .forms import CaravanForm, BookingForm, ReviewForm, ReplyForm
 
 
 @login_required
@@ -429,3 +429,41 @@ def submit_reply(request, review_id):
 
     return JsonResponse({"error": "Invalid request"}, status=400)
 
+
+@login_required
+def edit_review(request, pk):
+    review = get_object_or_404(Review, pk=pk, customer=request.user)
+    if request.method == "POST":
+        review.rating = request.POST.get("rating")
+        review.comment = request.POST.get("comment")
+        review.save()
+        return JsonResponse({"success": True})
+    return JsonResponse({"error": "Invalid request"}, status=400)
+
+
+@login_required
+def delete_review(request, pk):
+    review = get_object_or_404(Review, pk=pk, customer=request.user)
+    review.delete()
+    return JsonResponse({"success": True})
+
+
+@login_required
+def edit_reply(request, pk):
+    review = get_object_or_404(Review, pk=pk, caravan__owner=request.user)
+    if request.method == "POST":
+        review.reply = request.POST.get("reply")
+        review.save()
+        return JsonResponse({"success": True})
+    return JsonResponse({"error": "Invalid request"}, status=400)
+
+
+@login_required
+def delete_reply(request, pk):
+    review = get_object_or_404(Review, pk=pk, caravan__owner=request.user)
+    review.reply = ""
+    review.save()
+    print("Reply deleted for review ID:", pk)
+    print("Current reply content:", review.reply)
+    messages.success(request, "Reply deleted successfully!")
+    return JsonResponse({"success": True})
