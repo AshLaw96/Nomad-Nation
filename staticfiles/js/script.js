@@ -441,9 +441,20 @@ function initialiseReviewModals() {
         let actionUrl;
 
         if (reviewId) {
-          // Reply modal
-          modalTitle.textContent = "Reply to review";
-          actionUrl = `/listings/submit_reply/${reviewId}/`;
+          // Check if edit review modal
+          if (button.classList.contains("edit-review-btn")) {
+            // Edit review modal
+            modalTitle.textContent = "Edit Review";
+            actionUrl = `/listings/review_edit/${reviewId}/`;
+          } else if (button.classList.contains("edit-reply-btn")) {
+            // Edit reply modal
+            modalTitle.textContent = "Edit Reply";
+            actionUrl = `/listings/reply_edit/${reviewId}/`;
+          } else {
+            // Reply modal
+            modalTitle.textContent = "Reply to Review";
+            actionUrl = `/listings/submit_reply/${reviewId}/`;
+          }
         } else if (caravanId) {
           // Review modal
           const caravanTitle = button

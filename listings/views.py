@@ -417,7 +417,6 @@ def approve_review(request, review_id):
 @login_required
 def submit_reply(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
-
     if request.method == "POST":
         form = ReplyForm(request.POST, instance=review)
         if form.is_valid():
@@ -437,6 +436,7 @@ def edit_review(request, pk):
         review.rating = request.POST.get("rating")
         review.comment = request.POST.get("comment")
         review.save()
+        messages.success(request, "Review edited successfully!")
         return JsonResponse({"success": True})
     return JsonResponse({"error": "Invalid request"}, status=400)
 
@@ -454,6 +454,7 @@ def edit_reply(request, pk):
     if request.method == "POST":
         review.reply = request.POST.get("reply")
         review.save()
+        messages.success(request, "Reply edited successfully!")
         return JsonResponse({"success": True})
     return JsonResponse({"error": "Invalid request"}, status=400)
 
