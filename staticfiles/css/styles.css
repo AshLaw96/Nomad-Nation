@@ -234,6 +234,10 @@ textarea {
     color: gold;
 }
 
+.review p {
+    margin-bottom: 0.5rem;
+}
+
 #delete-button {
     border: none;
 }

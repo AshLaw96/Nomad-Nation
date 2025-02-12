@@ -432,89 +432,85 @@ function initialiseReviewModals() {
   reviewModals.forEach((modal) => {
     modal.addEventListener("show.bs.modal", function (event) {
       const button = event.relatedTarget;
+      if (!button) return;
+
+      console.log("Button Data Attributes:", button.dataset);
+
       const caravanId = button.getAttribute("data-caravan-id") || null;
       const reviewId = button.getAttribute("data-review-id") || null;
+      const replyId = button.getAttribute("data-reply-id") || null;
       const modalTitle = modal.querySelector(".modal-title");
-      const form = modal.querySelector("form");
 
-      if (form) {
-        let actionUrl;
+      let form = modal.querySelector("form");
 
-        if (reviewId) {
-          // Check if edit review modal
-          if (button.classList.contains("edit-review-btn")) {
-            // Edit review modal
-            modalTitle.textContent = "Edit Review";
-            actionUrl = `/listings/review_edit/${reviewId}/`;
-          } else if (button.classList.contains("edit-reply-btn")) {
-            // Edit reply modal
-            modalTitle.textContent = "Edit Reply";
-            actionUrl = `/listings/reply_edit/${reviewId}/`;
-          } else {
-            // Reply modal
-            modalTitle.textContent = "Reply to Review";
-            actionUrl = `/listings/submit_reply/${reviewId}/`;
-          }
-        } else if (caravanId) {
-          // Review modal
-          const caravanTitle = button
-            .closest(".list-group-item")
-            .querySelector("h2").textContent;
-          modalTitle.textContent = `Leave a review for ${caravanTitle}`;
-          actionUrl = `/listings/submit_review/${caravanId}/`;
-        } else {
-          console.error("Neither reviewID nor caravanID found.");
-          return;
-        }
-        form.setAttribute("action", actionUrl);
-
-        // Ensure the event listener is added only once
-        form.addEventListener(
-          "submit",
-          function (e) {
-            e.preventDefault();
-            const formData = new FormData(form);
-
-            fetch(form.getAttribute("action"), {
-              method: "POST",
-              headers: {
-                "X-CSRFToken": getCookie("csrftoken"),
-                // Ensures Django detects AJAX
-                "X-Requested-With": "XMLHttpRequest",
-              },
-              body: formData,
-            })
-              .then(async (response) => {
-                if (!response.ok) {
-                  const text = await response.text();
-                  throw new Error(text);
-                }
-                return response.json();
-              })
-              .then((data) => {
-                if (data.success) {
-                  // Close the modal
-                  const modalInstance = bootstrap.Modal.getInstance(modal);
-                  modalInstance.hide();
-
-                  // Show success message (in-app)
-                  showInAppMessage("Review submitted successfully!");
-
-                  // Reload the page to show the new review
-                  location.reload();
-                }
-              })
-              .catch((error) => {
-                console.error("Error:", error);
-                alert("An error occurred while submitting the review.");
-              });
-          },
-          // Ensures event listener is only added once
-          { once: true }
-        );
-      } else {
-        console.error("Form not found inside the modal");
+      // Only process modals that contain forms
+      if (!form) {
+        console.log("This modal does not contain a form, skipping.");
+        return;
       }
+
+      let actionUrl = "";
+
+      if (button.classList.contains("edit-reply-btn") && replyId) {
+        modalTitle.textContent = "Edit Reply";
+        actionUrl = `/listings/reply_edit/${replyId}/`;
+      } else if (reviewId) {
+        if (button.classList.contains("edit-review-btn")) {
+          modalTitle.textContent = "Edit Review";
+          actionUrl = `/listings/review_edit/${reviewId}/`;
+        } else {
+          modalTitle.textContent = "Reply to Review";
+          actionUrl = `/listings/submit_reply/${reviewId}/`;
+        }
+      } else if (caravanId) {
+        const caravanTitle = button
+          .closest(".list-group-item")
+          ?.querySelector("h2")?.textContent;
+        modalTitle.textContent = `Leave a review for ${caravanTitle}`;
+        actionUrl = `/listings/submit_review/${caravanId}/`;
+      } else {
+        console.error("Neither reviewID nor caravanID found.");
+        return;
+      }
+
+      form.setAttribute("action", actionUrl);
+
+      // Remove old event listeners
+      form.replaceWith(form.cloneNode(true));
+      // Get new form instance
+      form = modal.querySelector("form");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+
+        fetch(form.getAttribute("action"), {
+          method: "POST",
+          headers: {
+            "X-CSRFToken": getCookie("csrftoken"),
+            "X-Requested-With": "XMLHttpRequest",
+          },
+          body: formData,
+        })
+          .then(async (response) => {
+            if (!response.ok) {
+              const text = await response.text();
+              throw new Error(text);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            if (data.success) {
+              bootstrap.Modal.getOrCreateInstance(modal).hide();
+              showInAppMessage("Review submitted successfully!");
+              location.reload();
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("An error occurred. " + error.message);
+          });
+      });
     });
   });
 }
