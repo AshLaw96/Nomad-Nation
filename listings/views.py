@@ -8,7 +8,7 @@ from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 import json
 from .models import Caravan, Amenity, Availability, CaravanImage, Booking, \
-    Review
+    Review, Reply
 from .forms import CaravanForm, BookingForm, ReviewForm, ReplyForm
 
 
@@ -418,9 +418,12 @@ def approve_review(request, review_id):
 def submit_reply(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
     if request.method == "POST":
-        form = ReplyForm(request.POST, instance=review)
+        form = ReplyForm(request.POST)
         if form.is_valid():
-            form.save()
+            reply = form.save(commit=False)
+            reply.review = review
+            reply.owner = request.user
+            reply.save()
             messages.success(request, "Reply submitted successfully!")
             return JsonResponse({"success": True})
         # Return errors if form invalid
@@ -450,21 +453,26 @@ def delete_review(request, pk):
 
 @login_required
 def edit_reply(request, pk):
-    review = get_object_or_404(Review, pk=pk, caravan__owner=request.user)
+    reply = get_object_or_404(
+        Reply, pk=pk, review__caravan__owner=request.user
+    )
     if request.method == "POST":
-        review.reply = request.POST.get("reply")
-        review.save()
-        messages.success(request, "Reply edited successfully!")
-        return JsonResponse({"success": True})
+        form = ReplyForm(request.POST, instance=reply)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Reply edited successfully!")
+            return JsonResponse({"success": True})
+        # Return errors if form invalid
+        return JsonResponse({"errors": form.errors}, status=400)
+
     return JsonResponse({"error": "Invalid request"}, status=400)
 
 
 @login_required
 def delete_reply(request, pk):
-    review = get_object_or_404(Review, pk=pk, caravan__owner=request.user)
-    review.reply = ""
-    review.save()
-    print("Reply deleted for review ID:", pk)
-    print("Current reply content:", review.reply)
+    reply = get_object_or_404(
+        Reply, pk=pk, review__caravan__owner=request.user
+    )
+    reply.delete()
     messages.success(request, "Reply deleted successfully!")
     return JsonResponse({"success": True})

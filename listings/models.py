@@ -117,8 +117,20 @@ class Review(models.Model):
     rating = models.IntegerField()
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     approved = models.BooleanField(default=False)
-    reply = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"Review for {self.caravan.title} by {self.customer.username}"
+
+
+class Reply(models.Model):
+    review = models.ForeignKey(
+        Review, on_delete=models.CASCADE, related_name='replies'
+    )
+    owner = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='replies'
+    )
+    reply = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
