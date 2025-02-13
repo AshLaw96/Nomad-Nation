@@ -28,15 +28,15 @@
                                     View Details
                                 </button>
                                 <!-- Owner view of pending bookings -->
-                                <form method="post" action="{% url 'manage_booking' booking.id %}">
+                                <form method="post" action="{% url 'manage_booking' booking.id %}" class="border-0">
                                     {% csrf_token %}
                                     <input type="hidden" name="action" value="accept">
-                                    <button type="submit" class="btn btn-success btn-sm btn-styles mb-2">Accept</button>
+                                    <button type="submit" class="btn btn-success btn-sm btn-styles mb-2 no-border-btn">Accept</button>
                                 </form>
-                                <form method="post" action="{% url 'manage_booking' booking.id %}">
+                                <form method="post" action="{% url 'manage_booking' booking.id %}" class="border-0">
                                     {% csrf_token %}
                                     <input type="hidden" name="action" value="decline">
-                                    <button type="submit" class="btn btn-danger btn-sm btn-styles">Decline</button>
+                                    <button type="submit" class="btn btn-danger btn-sm btn-styles no-border-btn">Decline</button>
                                 </form>
                                 {% endif %}
                             </div>
@@ -165,7 +165,7 @@
                 <h3 class="title text-center">Request a Booking</h3>
             </div>
             <div class="card-body text-center">
-                <button type="button" class="btn btn-primary btn-styles" data-bs-toggle="modal" data-bs-target="#bookCaravanModal">
+                <button type="button" class="btn btn-primary btn-styles request-booking-btn" data-bs-toggle="modal" data-bs-target="#bookCaravanModal" data-caravan-id="{{ caravan.id }}">
                     Request Booking
                 </button>
             </div>

@@ -406,7 +406,9 @@ def submit_review(request, caravan_id):
 
 @login_required
 def approve_review(request, review_id):
-    review = get_object_or_404(Review, pk=review_id)
+    review = get_object_or_404(
+        Review, pk=review_id, caravan__owner=request.user
+    )
     if request.user == review.caravan.owner:
         review.approved = True
         review.save()
