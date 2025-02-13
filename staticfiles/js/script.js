@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   initialiseAddCaravan();
   initialiseEditCaravan();
   initialiseCarousel();
@@ -427,64 +427,145 @@ function initialiseBookingButton() {
 
 // Initialise review modals
 function initialiseReviewModals() {
-  const reviewModals = document.querySelectorAll(".modal.fade");
+  const reviewModals = document.querySelectorAll(
+    ".modal.fade:not(#imageModal)"
+  );
+  console.log(
+    `🔍 Found ${reviewModals.length} modals (excluding image modal).`
+  );
 
   reviewModals.forEach((modal) => {
+    // Prevent duplicate initialisation
+    if (modal.hasAttribute("data-initialised")) {
+      console.warn(`⚠️ Modal already initialised: ${modal.id}`);
+      return;
+    }
+    modal.setAttribute("data-initialised", "true");
+
+    console.log(`🆔 Initialising modal with ID: ${modal.id}`);
+
+    // Initialise the modal instance to manage it with Bootstrap
+    const modalInstance = new bootstrap.Modal(modal, {
+      // Prevents modal from closing when clicking on backdrop
+      backdrop: "static",
+      // Prevents closing when pressing the Escape key
+      keyboard: false,
+    });
+
     modal.addEventListener("show.bs.modal", function (event) {
       const button = event.relatedTarget;
-      if (!button) return;
+      console.log("🎯 Modal show event triggered for:", modal.id);
 
-      console.log("Button Data Attributes:", button.dataset);
+      if (!button) {
+        console.warn("⚠️ No related target button found. Skipping.");
+        return;
+      }
 
       const caravanId = button.getAttribute("data-caravan-id") || null;
       const reviewId = button.getAttribute("data-review-id") || null;
       const replyId = button.getAttribute("data-reply-id") || null;
-      const modalTitle = modal.querySelector(".modal-title");
+      console.log(
+        `🔍 Button clicked - Caravan ID: ${caravanId}, Review ID: ${reviewId}, Reply ID: ${replyId}`
+      );
 
+      const modalTitle = modal.querySelector(".modal-title");
       let form = modal.querySelector("form");
 
-      // Only process modals that contain forms
+      // Special case for editReviewModal (with dynamic IDs like editReviewModal123)
+      if (modal.id.startsWith("editReviewModal") && !form) {
+        console.log(`🛠️ Manually injecting form for modal: ${modal.id}`);
+        // Dynamically create and append a form if missing
+        const newForm = document.createElement("form");
+        newForm.method = "post";
+        newForm.innerHTML = `
+          <input type="hidden" name="csrfmiddlewaretoken" value="${getCookie(
+            "csrftoken"
+          )}">
+          <div class="mb-3">
+            <label for="rating" class="form-label">Rating</label>
+            <input type="number" class="form-control" name="rating" min="1" max="5" required>
+          </div>
+          <div class="mb-3">
+            <label for="comment" class="form-label">Comment</label>
+            <textarea class="form-control" name="comment" rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        `;
+        modal.querySelector(".modal-body").appendChild(newForm);
+        form = newForm;
+      }
+
       if (!form) {
-        console.log("This modal does not contain a form, skipping.");
+        console.log(`⏭️ Skipping modal without form: ${modal.id}`);
         return;
       }
 
       let actionUrl = "";
+      let actionType = "";
 
+      // Handle edit reply
       if (button.classList.contains("edit-reply-btn") && replyId) {
-        modalTitle.textContent = "Edit Reply";
+        actionType = "Edit Reply";
         actionUrl = `/listings/reply_edit/${replyId}/`;
-      } else if (reviewId) {
-        if (button.classList.contains("edit-review-btn")) {
-          modalTitle.textContent = "Edit Review";
-          actionUrl = `/listings/review_edit/${reviewId}/`;
-        } else {
-          modalTitle.textContent = "Reply to Review";
-          actionUrl = `/listings/submit_reply/${reviewId}/`;
-        }
-      } else if (caravanId) {
-        const caravanTitle = button
-          .closest(".list-group-item")
-          ?.querySelector("h2")?.textContent;
-        modalTitle.textContent = `Leave a review for ${caravanTitle}`;
+        modalTitle.textContent = actionType;
+        if (form.reply)
+          form.reply.value = button.getAttribute("data-reply-text") || "";
+      }
+
+      // Handle edit review
+      else if (button.classList.contains("edit-review-btn") && reviewId) {
+        actionType = "Edit Review";
+        actionUrl = `/listings/review_edit/${reviewId}/`;
+        modalTitle.textContent = actionType;
+        if (form.rating)
+          form.rating.value = button.getAttribute("data-rating") || "";
+        if (form.comment)
+          form.comment.value = button.getAttribute("data-comment") || "";
+      }
+
+      // Handle reply to review
+      else if (reviewId) {
+        actionType = "Reply to Review";
+        actionUrl = `/listings/submit_reply/${reviewId}/`;
+        modalTitle.textContent = actionType;
+      }
+
+      // Handle new review
+      else if (caravanId) {
+        actionType = "Submit New Review";
         actionUrl = `/listings/submit_review/${caravanId}/`;
-      } else {
-        console.error("Neither reviewID nor caravanID found.");
+        modalTitle.textContent = actionType;
+      }
+
+      if (!actionUrl) {
+        console.error(
+          "❌ No valid action URL determined. Check button attributes."
+        );
         return;
       }
 
-      form.setAttribute("action", actionUrl);
+      console.log(`🔗 Setting form action to: ${actionUrl}`);
+      form.action = actionUrl;
 
-      // Remove old event listeners
-      form.replaceWith(form.cloneNode(true));
-      // Get new form instance
-      form = modal.querySelector("form");
+      // Replace form to remove previous event listeners
+      const newForm = form.cloneNode(true);
+      form.replaceWith(newForm);
+      form = newForm;
 
+      // Log form fields
+      const formFields = Array.from(form.elements).map(
+        (el) => `${el.name}: ${el.value}`
+      );
+      console.log(`📝 Form fields before submission: ${formFields.join(", ")}`);
+
+      // Add form submission handler
       form.addEventListener("submit", function (e) {
         e.preventDefault();
+        console.log(`🚀 Submitting form to: ${form.action}`);
+
         const formData = new FormData(form);
 
-        fetch(form.getAttribute("action"), {
+        fetch(form.action, {
           method: "POST",
           headers: {
             "X-CSRFToken": getCookie("csrftoken"),
@@ -493,22 +574,32 @@ function initialiseReviewModals() {
           body: formData,
         })
           .then(async (response) => {
+            const contentType = response.headers.get("content-type");
             if (!response.ok) {
               const text = await response.text();
-              throw new Error(text);
+              throw new Error(`HTTP ${response.status}: ${text}`);
             }
-            return response.json();
+            if (contentType && contentType.includes("application/json")) {
+              return response.json();
+            } else {
+              throw new Error("Unexpected response type.");
+            }
           })
           .then((data) => {
+            console.log("✅ Server response:", data);
             if (data.success) {
-              bootstrap.Modal.getOrCreateInstance(modal).hide();
+              // Close the modal after submission
+              modalInstance.hide();
               showInAppMessage("Review submitted successfully!");
               location.reload();
+            } else {
+              console.warn("⚠️ Server responded with an error:", data);
+              showInAppMessage("An error occurred. Please try again.");
             }
           })
           .catch((error) => {
             console.error("Error:", error);
-            alert("An error occurred. " + error.message);
+            showInAppMessage("An error occurred. Please try again.");
           });
       });
     });

@@ -438,11 +438,14 @@ def submit_reply(request, review_id):
 def edit_review(request, pk):
     review = get_object_or_404(Review, pk=pk, customer=request.user)
     if request.method == "POST":
-        review.rating = request.POST.get("rating")
-        review.comment = request.POST.get("comment")
-        review.save()
-        messages.success(request, "Review edited successfully!")
-        return JsonResponse({"success": True})
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Review edited successfully!")
+            return JsonResponse({"success": True})
+        # Return errors if form invalid
+        return JsonResponse({"errors": form.errors}, status=400)
+
     return JsonResponse({"error": "Invalid request"}, status=400)
 
 

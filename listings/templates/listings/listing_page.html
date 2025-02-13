@@ -153,7 +153,7 @@
                 {% if caravan.reviews.all|length > 0 %}
                 {% for review in caravan.reviews.all %}
                 {% if review.approved or user_type == "owner" or review.customer == request.user %}
-                    <div class="review mb-3 p-3 {% if not review.approved %}pending-review{% endif %}">
+                    <div class="review mb-3 p-3">
                         <p>
                             <strong>Customer's reviews:</strong>
                         </p>
@@ -239,13 +239,19 @@
                 </div>
                 {% if user_type == "customer" %}
                     <div class="text-center">
-                        <button type="button" class="btn btn-warning btn-styles edit-review-btn mb-2" data-bs-toggle="modal" data-bs-target="#editReviewModal{{ review.pk }}" data-review-id="{{ review.pk }}">
+                        <button type="button" class="btn btn-warning mt-2 btn-styles edit-review-btn" data-bs-toggle="modal" data-bs-target="#editReviewModal{{ review.pk }}" data-review-id="{{ review.pk }}" data-rating="{{ review.rating }}" data-comment="{{ review.comment }}">
                             Edit Review
                         </button>
                         <button type="button" class="btn btn-danger btn-styles delete-review-btn mb-2" data-url="{% url 'delete_review' review.pk %}">
                             Delete Review
                         </button>
                     </div>
+                {% endif %}
+                {% if user_type == "owner" and not review.approved %}
+                    <form method="post" action="{% url 'approve_review' review.pk %}" class="border-0 text-center">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success btn-styles mb-2">Approve Review</button>
+                    </form>
                 {% endif %}
                 {% endif %}
                 {% endfor %}
@@ -281,6 +287,37 @@
                                     <button type="submit" class="btn btn-primary mb-2 btn-styles">Submit Review</button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Edit Review Modal -->
+            <div class="modal fade" id="editReviewModal{{ review.pk }}" tabindex="-1" aria-labelledby="editReviewModalLabel{{ review.pk }}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editReviewModalLabel{{ review.pk }}">Edit Review</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {% if review.pk %}
+                                <form method="post" action="{% url 'edit_review' review.pk %}">
+                                    {% csrf_token %}
+                                    <div class="mb-3">
+                                        <label for="rating" class="form-label">Rating</label>
+                                        <input type="number" class="form-control" id="rating" name="rating" min="1" max="5" value="{{ review.rating }}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="comment" class="form-label">Comment</label>
+                                        <textarea class="form-control" id="comment" name="comment" rows="3" required>{{ review.comment }}</textarea>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary mb-2 btn-styles">Submit Review</button>
+                                    </div>
+                                </form>
+                            {% else %}
+                                <p>Error: Review ID is missing</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
