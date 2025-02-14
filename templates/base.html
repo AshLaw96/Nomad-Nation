@@ -42,36 +42,36 @@
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/' %}active" aria-current="page{% endif %}" href="{% url 'homepage' %}">Home</a>
                     </li>
-                    <li class="nav-item {% if request.path == '/contact/' %}active{% endif %}">
-                        <a href="{% url 'contact' %}" class="nav-link">Contact</a>
+                    <li class="nav-item">
+                        <a href="{% url 'contact' %}" class="nav-link {% if request.path == '/contact/' %}active" aria-current="page{% endif %}">Contact</a>
                     </li>                
                     <!-- Conditional links for logged in users -->
                     {% if user.is_authenticated %}
-                        <li class="nav-item {% if request.path == '/dashboard/' %}active{% endif %}">
-                            <a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a>
+                        <li class="nav-item">
+                            <a href="{% url 'dashboard' %}" class="nav-link {% if request.path == '/dashboard/' %}active" aria-current="page{% endif %}">Dashboard</a>
                         </li>
-                        <li class="nav-item {% if request.path == '/listings/' %}active{% endif %}">
-                            <a href="{% url 'listings' %}" class="nav-link">Caravan listings</a>
+                        <li class="nav-item">
+                            <a href="{% url 'listings' %}" class="nav-link {% if request.path == '/listings/listings/' %}active" aria-current="page{% endif %}">Caravan listings</a>
                         </li>
-                        <li class="nav-item {% if request.path == '/bookings/' %}active{% endif %}">
-                            <a href="{% url 'booking_page' %}" class="nav-link">Bookings</a>
+                        <li class="nav-item">
+                            <a href="{% url 'booking_page' %}" class="nav-link {% if request.path == '/listings/bookings/' %}active" aria-current="page{% endif %}">Bookings</a>
                         </li>                        
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Account</a>
-                        </li>
+                        <a href="{% url 'account_settings' %}" class="nav-link {% if request.path == '/user_settings/account_settings/' %}active" aria-current="page{% endif %}">Account settings</a>
+                    </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Notifications</a>
                         </li>
-                        <li class="nav-item {% if request.path == '/account/logout' %}active" aria-current="page{% endif %}">
-                            <a href="{% url 'account_logout' %}" class="nav-link">Logout</a>
+                        <li class="nav-item">
+                            <a href="{% url 'account_logout' %}" class="nav-link {% if request.path == '/accounts/logout/' %}active" aria-current="page{% endif %}">Logout</a>
                         </li>
                         {% else %}
                         <!-- Links for guest users -->
-                        <li class="nav-item {% if request.path == '/account/signup' %}active" aria-current="page{% endif %}">
-                            <a href="{% url 'account_signup' %}" class="nav-link">Register</a>
+                        <li class="nav-item">
+                            <a href="{% url 'account_signup' %}" class="nav-link {% if request.path == '/accounts/signup/' %}active" aria-current="page{% endif %}">Register</a>
                         </li>
-                        <li class="nav-item {% if request.path == '/account/login' %}active" aria-current="page{% endif %}">
-                            <a href="{% url 'account_login' %}" class="nav-link">Login</a>
+                        <li class="nav-item">
+                            <a href="{% url 'account_login' %}" class="nav-link {% if request.path == '/accounts/login/' %}active" aria-current="page{% endif %}">Login</a>
                         </li>
                     {% endif %}  
                 </ul>

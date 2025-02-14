@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Account Settings</h1>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2 class="h5 mb-0">Personal Details</h2>
+        </div>
+        <div class="card-body text-white">
+            <p><strong>Name:</strong> {{ user_profile.user.username }}</p>
+            <p><strong>Email:</strong> {{ user_profile.user.email }}</p>
+            <p><strong>Phone Number:</strong> {{ user_profile.phone_number }}</p>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2 class="h5 mb-0">Preferences</h2>
+        </div>
+        <div class="card-body text-white">
+            <p><strong>Language:</strong> {{ user_profile.language }}</p>
+            <p><strong>Currency:</strong> {{ user_profile.currency }}</p>
+            <p><strong>Appearance:</strong> {{ user_profile.appearance }}</p>
+            <p><strong>Notifications Enabled:</strong> {{ user_profile.notifications }}</p>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2 class="h5 mb-0">Payment Details</h2>
+        </div>
+        <div class="card-body text-white">
+            {% for payment in payment_details %}
+                <p><strong>{{ payment.payment_method }}:</strong> **** **** **** {{ payment.card_last_four }}</p>
+            {% empty %}
+                <p>No payment details available.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2 class="h5 mb-0">Privacy Settings</h2>
+        </div>
+        <div class="card-body text-white">
+            <p><strong>Data Sharing Enabled:</strong> {{ privacy_settings.data_sharing_enabled }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
