@@ -6,7 +6,6 @@ from django.utils import timezone
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
-import json
 from .models import Caravan, Amenity, Availability, CaravanImage, Booking, \
     Review, Reply
 from .forms import CaravanForm, BookingForm, ReviewForm, ReplyForm
@@ -379,18 +378,15 @@ def submit_review(request, caravan_id):
             review.customer = request.user
             review.save()
 
-            # Add success message using Django's messaging framework
             messages.success(request, "Review submitted successfully!")
 
-            # Handle AJAX request
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({"success": True})
 
             return redirect("listings")
 
-        else:
-            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-                return JsonResponse({"errors": form.errors}, status=400)
+        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            return JsonResponse({"errors": form.errors}, status=400)
 
     return JsonResponse({"error": "Invalid request"}, status=400)
 
@@ -418,9 +414,11 @@ def submit_reply(request, review_id):
             reply.owner = request.user
             reply.save()
             messages.success(request, "Reply submitted successfully!")
-            return JsonResponse({"success": True})
-        # Return errors if form invalid
-        return JsonResponse({"errors": form.errors}, status=400)
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return JsonResponse({"success": True})
+            return redirect("listings")
+        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            return JsonResponse({"errors": form.errors}, status=400)
 
     return JsonResponse({"error": "Invalid request"}, status=400)
 
@@ -433,17 +431,19 @@ def edit_review(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Review edited successfully!")
-            return JsonResponse({"success": True})
-        # Return errors if form invalid
-        return JsonResponse({"errors": form.errors}, status=400)
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return JsonResponse({"success": True})
+            return redirect("listings")
+        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            return JsonResponse({"errors": form.errors}, status=400)
 
     return JsonResponse({"error": "Invalid request"}, status=400)
 
 
-@login_required
 def delete_review(request, pk):
     review = get_object_or_404(Review, pk=pk, customer=request.user)
     review.delete()
+    messages.success(request, "Review deleted successfully!")
     return JsonResponse({"success": True})
 
 
@@ -457,9 +457,11 @@ def edit_reply(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Reply edited successfully!")
-            return JsonResponse({"success": True})
-        # Return errors if form invalid
-        return JsonResponse({"errors": form.errors}, status=400)
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return JsonResponse({"success": True})
+            return redirect("listings")
+        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            return JsonResponse({"errors": form.errors}, status=400)
 
     return JsonResponse({"error": "Invalid request"}, status=400)
 

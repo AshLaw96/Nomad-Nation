@@ -44,18 +44,18 @@ urlpatterns = [
         name='submit_reply'
     ),
     path(
-        "review_edit/<int:pk>/",
+        "edit_review/<int:pk>/",
         views.edit_review,
         name="edit_review"
     ),
     path(
-        "review_delete/<int:pk>/",
+        "delete_review/<int:pk>/",
         views.delete_review,
         name="delete_review"
     ),
-    path("reply_edit/<int:pk>/", views.edit_reply, name="edit_reply"),
+    path("edit_reply/<int:pk>/", views.edit_reply, name="edit_reply"),
     path(
-        "reply_delete/<int:pk>/",
+        "delete_reply/<int:pk>/",
         views.delete_reply,
         name="delete_reply"
     ),
