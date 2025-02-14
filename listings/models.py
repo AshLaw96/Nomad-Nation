@@ -35,7 +35,12 @@ class Caravan(models.Model):
     price_per_night = models.DecimalField(max_digits=6, decimal_places=2)
     location = models.CharField(max_length=100)
     amenities = models.ManyToManyField(Amenity, related_name='caravans')
-    is_favourite = models.BooleanField(default=False)
+    favourites = models.ManyToManyField(
+        User, related_name='favourite_caravans', blank=True
+    )
+
+    def is_favourite(self, user):
+        return self.favourites.filter(id=user.id).exists()
 
     @property
     def is_available(self):
@@ -134,3 +139,6 @@ class Reply(models.Model):
     reply = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Reply by {self.owner.username} to review {self.review.pk}"

@@ -64,6 +64,12 @@ def listings_view(request):
     caravans = caravans.prefetch_related(
         'amenities', 'images', 'availabilities'
     )
+
+    # Check if each caravan is favourited by the current user
+    for caravan in caravans:
+        caravan.is_favourite = caravan.favourites.filter(
+            id=request.user.id).exists()
+
     context = {
         'caravans': caravans,
         'user_type': user_type,
@@ -76,33 +82,18 @@ def listings_view(request):
 
 @csrf_exempt
 @require_POST
+@login_required
 def toggle_favourite(request, caravan_id):
     try:
-        print(
-            f"Received request to toggle favourite for caravan ID: "
-            f"{caravan_id}"
-        )
         caravan = get_object_or_404(Caravan, pk=caravan_id)
-        data = json.loads(request.body)
-        print(f"Received data: {data}")
-        is_favourite = data.get('is_favourite', False)
-        caravan.is_favourite = is_favourite
-        caravan.save()
-        return JsonResponse({'success': True})
-    except json.JSONDecodeError:
-        print("Invalid JSON format")
-        return JsonResponse(
-            {'success': False, 'error': 'Invalid JSON format.'},
-            status=400
-        )
-    except Caravan.DoesNotExist:
-        print("Caravan not found")
-        return JsonResponse(
-            {'success': False, 'error': 'Caravan not found'},
-            status=404
-        )
+        if request.user in caravan.favourites.all():
+            caravan.favourites.remove(request.user)
+            is_favourite = False
+        else:
+            caravan.favourites.add(request.user)
+            is_favourite = True
+        return JsonResponse({'success': True, 'is_favourite': is_favourite})
     except Exception as e:
-        print(f"Error: {e}")
         return JsonResponse({'success': False, 'error': str(e)}, status=500)
 
 

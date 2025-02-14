@@ -67,7 +67,7 @@
     {% if caravans %}
     <ul class="list-group">
         {% for caravan in caravans %}
-        <li class="list-group-item mb-3">
+        <li class="list-group-item mb-3" id="caravan-{{ caravan.pk }}">
             <h2>{{ caravan.title }}</h2>
             {% if user_type == "customer" %}
             <!-- Favourites icon -->
@@ -153,7 +153,7 @@
                 {% if caravan.reviews.all|length > 0 %}
                 {% for review in caravan.reviews.all %}
                 {% if review.approved or user_type == "owner" or review.customer == request.user %}
-                    <div class="review mb-3 p-3">
+                    <div class="review mb-3 p-3" id="review-{{ review.pk }}">
                         <p>
                             <strong>Customer's reviews:</strong>
                         </p>

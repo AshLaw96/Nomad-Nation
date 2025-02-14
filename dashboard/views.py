@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.utils import timezone
-from listings.models import Caravan, Booking
+from listings.models import Caravan, Booking, Review
 
 
 @login_required
@@ -38,7 +38,7 @@ def dashboard_view(request):
             status='accepted',
             start_date__gte=timezone.now()
         )
-        context['wishlist'] = []
+        context['favourites'] = current_user.favourite_caravans.all()
         context['previous_stays'] = Booking.objects.filter(
             customer=current_user,
             status='accepted',
@@ -50,7 +50,9 @@ def dashboard_view(request):
             caravan__owner=current_user, status='pending'
         )
         context['caravans'] = Caravan.objects.filter(owner=current_user)
-        context['reviews'] = []
+        context['reviews'] = Review.objects.filter(
+            caravan__owner=current_user, approved=True
+        )
     else:
         return redirect('account_logout')
 

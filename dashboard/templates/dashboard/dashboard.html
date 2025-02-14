@@ -46,8 +46,13 @@
                 <div class="card-body">
                     <p>View your Favourites caravans.</p>
                     <ul class="list-group">
-                        {% for item in favourites %}
-                            <li class="list-group-item">{{ item }}</li>
+                        {% for caravan in favourites %}
+                            <li class="list-group-item">
+                                <a href="{% url 'listings' %}#caravan-{{ caravan.pk }}">
+                                    <strong>{{ caravan.title }}</strong><br>
+                                    <small>Owner: {{ caravan.owner.username }}</small>
+                                </a>
+                            </li>
                         {% empty %}
                             <li class="list-group-item">No items in your favourites</li>
                         {% endfor %}
@@ -140,7 +145,13 @@
                     <p>Check reviews from customers.</p>
                     <ul class="list-group">
                         {% for review in reviews %}
-                            <li class="list-group-item">{{ review }}</li>
+                            <li class="list-group-item">
+                                <a href="{% url 'listings' %}#review-{{ review.pk }}">
+                                    <strong>{{ review.caravan.title }}</strong><br>
+                                    <small>{{ review.customer.username }}</small><br> 
+                                    <small>rated {{ review.rating }} stars</small>
+                                </a>
+                            </li>
                         {% empty %}
                             <li class="list-group-item">No reviews</li>
                         {% endfor %}
