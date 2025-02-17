@@ -2,9 +2,9 @@
 {% load i18n %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container mt-5 bg-styles">
     <h1 class="mb-4">{% trans "Account Settings" %}</h1>
-
+    <!-- Personal details section -->
     <div class="card mb-4">
         <div class="card-header">
             <h2 class="h5 mb-0">{% trans "Personal Details" %}</h2>
@@ -13,10 +13,12 @@
             <p><strong>{% trans "Name:" %}</strong> {{ user_profile.user.username }}</p>
             <p><strong>{% trans "Email:" %}</strong> {{ user_profile.user.email }}</p>
             <p><strong>{% trans "Phone Number:" %}</strong> {{ user_profile.phone_number }}</p>
+            <button type="button" class="btn btn-primary mt-3 btn-styles" data-bs-toggle="modal" data-bs-target="#editPersonalDetailsModal">
                 {% trans "Edit Personal Details" %}
+            </button>
         </div>
     </div>
-
+    <!-- Preference section -->
     <div class="card mb-4">
         <div class="card-header">
             <h2 class="h5 mb-0">{% trans "Preferences" %}</h2>
@@ -26,10 +28,12 @@
             <p><strong>{% trans "Currency:" %}</strong> {{ user_profile.currency }}</p>
             <p><strong>{% trans "Appearance:" %}</strong> {{ user_profile.appearance }}</p>
             <p><strong>{% trans "Notifications Enabled:" %}</strong> {{ user_profile.notifications }}</p>
+            <button type="button" class="btn btn-primary mt-3 btn-styles" data-bs-toggle="modal" data-bs-target="#editPreferencesModal">
                 {% trans "Edit Preferences" %}
+            </button>
         </div>
     </div>
-
+    <!-- Payment details section -->
     <div class="card mb-4">
         <div class="card-header">
             <h2 class="h5 mb-0">{% trans "Payment Details" %}</h2>
@@ -40,23 +44,73 @@
             {% empty %}
                 <p>{% trans "No payment details available." %}</p>
             {% endfor %}
+            <button type="button" class="btn btn-primary mt-3 btn-styles" data-bs-toggle="modal" data-bs-target="#editPaymentDetailsModal">
                 {% trans "Edit Payment Details" %}
+            </button>
         </div>
     </div>
-
+    <!-- Privacy settings section -->
     <div class="card mb-4">
         <div class="card-header">
             <h2 class="h5 mb-0">{% trans "Privacy Settings" %}</h2>
         </div>
         <div class="card-body text-white">
             <p><strong>{% trans "Data Sharing Enabled:" %}</strong> {{ privacy_settings.data_sharing_enabled }}</p>
+            <button type="button" class="btn btn-primary mt-3 btn-styles" data-bs-toggle="modal" data-bs-target="#editPrivacySettingsModal">
+                {% trans "Edit Privacy Settings" %}
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- All modals -->
+
+<!-- Edit Personal Details Modal -->
+<div class="modal fade" id="editPersonalDetailsModal" tabindex="-1" aria-labelledby="editPersonalDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
                 <h5 class="modal-title" id="editPersonalDetailsModalLabel">{% trans "Edit Personal Details" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="{% url 'edit_personal_details' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
                         <label for="username" class="form-label">{% trans "Name" %}</label>
+                        <input type="text" class="form-control" id="username" name="username" value="{{ user_profile.user.username }}" required>
+                    </div>
+                    <div class="mb-3">
                         <label for="email" class="form-label">{% trans "Email" %}</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ user_profile.user.email }}" required>
+                    </div>
+                    <div class="mb-3">
                         <label for="phone_number" class="form-label">{% trans "Phone Number" %}</label>
+                        <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ user_profile.phone_number }}">
+                    </div>
+                    <div class="text-center">
                         <button type="submit" class="btn btn-primary mb-1 btn-styles">{% trans "Save Changes" %}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Preferences Modal -->
+<div class="modal fade" id="editPreferencesModal" tabindex="-1" aria-labelledby="editPreferencesModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
                 <h5 class="modal-title" id="editPreferencesModalLabel">{% trans "Edit Preferences" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="{% url 'edit_preferences' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
                         <label for="language" class="form-label">{% trans "Language" %}</label>
+                        <select class="form-control" id="language" name="language" required>
                             <option value="en" {% if user_profile.language == 'en' %}selected{% endif %}>{% trans "English" %}</option>
                             <option value="es" {% if user_profile.language == 'es' %}selected{% endif %}>{% trans "Spanish" %}</option>
                             <option value="fr" {% if user_profile.language == 'fr' %}selected{% endif %}>{% trans "French" %}</option>
@@ -67,20 +121,82 @@
                             <option value="zh" {% if user_profile.language == 'zh' %}selected{% endif %}>{% trans "Chinese" %}</option>
                             <option value="ja" {% if user_profile.language == 'ja' %}selected{% endif %}>{% trans "Japanese" %}</option>
                             <option value="hi" {% if user_profile.language == 'hi' %}selected{% endif %}>{% trans "Hindi" %}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="currency" class="form-label">{% trans "Currency" %}</label>
+                        <input type="text" class="form-control" id="currency" name="currency" value="{{ user_profile.currency }}" required>
+                    </div>
+                    <div class="mb-3">
                         <label for="appearance" class="form-label">{% trans "Appearance" %}</label>
+                        <select class="form-control" id="appearance" name="appearance" required>
                             <option value="light" {% if user_profile.appearance == 'light' %}selected{% endif %}>{% trans "Light" %}</option>
                             <option value="dark" {% if user_profile.appearance == 'dark' %}selected{% endif %}>{% trans "Dark" %}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="notifications" class="form-label">{% trans "Notifications Enabled" %}</label>
+                        <input type="checkbox" class="form-check-input" id="notifications" name="notifications" {% if user_profile.notifications %}checked{% endif %}>
+                    </div>
+                    <div class="text-center">
                         <button type="submit" class="btn btn-primary mb-1 btn-styles">{% trans "Save Changes" %}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Edit Payment Details Modal -->
+<div class="modal fade" id="editPaymentDetailsModal" tabindex="-1" aria-labelledby="editPaymentDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
                 <h5 class="modal-title" id="editPaymentDetailsModalLabel">{% trans "Edit Payment Details" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="{% url 'edit_payment_details' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
                         <label for="payment_method" class="form-label">{% trans "Payment Method" %}</label>
+                        <input type="text" class="form-control" id="payment_method" name="payment_method" required>
+                    </div>
+                    <div class="mb-3">
                         <label for="card_last_four" class="form-label">{% trans "Card Last Four Digits" %}</label>
+                        <input type="text" class="form-control" id="card_last_four" name="card_last_four" required>
+                    </div>
+                    <div class="mb-3">
                         <label for="billing_address" class="form-label">{% trans "Billing Address" %}</label>
+                        <textarea class="form-control" id="billing_address" name="billing_address" rows="3" required></textarea>
+                    </div>
+                    <div class="text-center">
                         <button type="submit" class="btn btn-primary mb-1 btn-styles">{% trans "Save Changes" %}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Edit Privacy Settings Modal -->
+<div class="modal fade" id="editPrivacySettingsModal" tabindex="-1" aria-labelledby="editPrivacySettingsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
                 <h5 class="modal-title" id="editPrivacySettingsModalLabel">{% trans "Edit Privacy Settings" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="{% url 'edit_privacy_settings' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
                         <label for="data_sharing_enabled" class="form-label">{% trans "Data Sharing Enabled" %}</label>
+                        <input type="checkbox" class="form-check-input" id="data_sharing_enabled" name="data_sharing_enabled" {% if privacy_settings.data_sharing_enabled %}checked{% endif %}>
+                    </div>
+                    <div class="text-center">
                         <button type="submit" class="btn btn-primary mb-1 btn-styles">{% trans "Save Changes" %}</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
