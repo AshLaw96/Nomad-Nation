@@ -21,3 +21,13 @@ def account_settings(request):
         'privacy_settings': privacy_settings
     }
     return render(request, 'user_settings/account_settings.html', context)
+        # Activate the selected language
+        translation.activate(user_profile.language)
+        request.session[settings.LANGUAGE_COOKIE_NAME] = user_profile.language
+
+        # Redirect with the language code
+        response = HttpResponseRedirect('/user_settings/account_settings/')
+        response.set_cookie(
+            settings.LANGUAGE_COOKIE_NAME, user_profile.language
+        )
+        return response

@@ -1,51 +1,86 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="mb-4">Account Settings</h1>
+    <h1 class="mb-4">{% trans "Account Settings" %}</h1>
 
     <div class="card mb-4">
         <div class="card-header">
-            <h2 class="h5 mb-0">Personal Details</h2>
+            <h2 class="h5 mb-0">{% trans "Personal Details" %}</h2>
         </div>
         <div class="card-body text-white">
-            <p><strong>Name:</strong> {{ user_profile.user.username }}</p>
-            <p><strong>Email:</strong> {{ user_profile.user.email }}</p>
-            <p><strong>Phone Number:</strong> {{ user_profile.phone_number }}</p>
+            <p><strong>{% trans "Name:" %}</strong> {{ user_profile.user.username }}</p>
+            <p><strong>{% trans "Email:" %}</strong> {{ user_profile.user.email }}</p>
+            <p><strong>{% trans "Phone Number:" %}</strong> {{ user_profile.phone_number }}</p>
+                {% trans "Edit Personal Details" %}
         </div>
     </div>
 
     <div class="card mb-4">
         <div class="card-header">
-            <h2 class="h5 mb-0">Preferences</h2>
+            <h2 class="h5 mb-0">{% trans "Preferences" %}</h2>
         </div>
         <div class="card-body text-white">
-            <p><strong>Language:</strong> {{ user_profile.language }}</p>
-            <p><strong>Currency:</strong> {{ user_profile.currency }}</p>
-            <p><strong>Appearance:</strong> {{ user_profile.appearance }}</p>
-            <p><strong>Notifications Enabled:</strong> {{ user_profile.notifications }}</p>
+            <p><strong>{% trans "Language:" %}</strong> {{ user_profile.get_language_display }}</p>
+            <p><strong>{% trans "Currency:" %}</strong> {{ user_profile.currency }}</p>
+            <p><strong>{% trans "Appearance:" %}</strong> {{ user_profile.appearance }}</p>
+            <p><strong>{% trans "Notifications Enabled:" %}</strong> {{ user_profile.notifications }}</p>
+                {% trans "Edit Preferences" %}
         </div>
     </div>
 
     <div class="card mb-4">
         <div class="card-header">
-            <h2 class="h5 mb-0">Payment Details</h2>
+            <h2 class="h5 mb-0">{% trans "Payment Details" %}</h2>
         </div>
         <div class="card-body text-white">
             {% for payment in payment_details %}
                 <p><strong>{{ payment.payment_method }}:</strong> **** **** **** {{ payment.card_last_four }}</p>
             {% empty %}
-                <p>No payment details available.</p>
+                <p>{% trans "No payment details available." %}</p>
             {% endfor %}
+                {% trans "Edit Payment Details" %}
         </div>
     </div>
 
     <div class="card mb-4">
         <div class="card-header">
-            <h2 class="h5 mb-0">Privacy Settings</h2>
+            <h2 class="h5 mb-0">{% trans "Privacy Settings" %}</h2>
         </div>
         <div class="card-body text-white">
-            <p><strong>Data Sharing Enabled:</strong> {{ privacy_settings.data_sharing_enabled }}</p>
+            <p><strong>{% trans "Data Sharing Enabled:" %}</strong> {{ privacy_settings.data_sharing_enabled }}</p>
+                <h5 class="modal-title" id="editPersonalDetailsModalLabel">{% trans "Edit Personal Details" %}</h5>
+                        <label for="username" class="form-label">{% trans "Name" %}</label>
+                        <label for="email" class="form-label">{% trans "Email" %}</label>
+                        <label for="phone_number" class="form-label">{% trans "Phone Number" %}</label>
+                        <button type="submit" class="btn btn-primary mb-1 btn-styles">{% trans "Save Changes" %}</button>
+                <h5 class="modal-title" id="editPreferencesModalLabel">{% trans "Edit Preferences" %}</h5>
+                        <label for="language" class="form-label">{% trans "Language" %}</label>
+                            <option value="en" {% if user_profile.language == 'en' %}selected{% endif %}>{% trans "English" %}</option>
+                            <option value="es" {% if user_profile.language == 'es' %}selected{% endif %}>{% trans "Spanish" %}</option>
+                            <option value="fr" {% if user_profile.language == 'fr' %}selected{% endif %}>{% trans "French" %}</option>
+                            <option value="de" {% if user_profile.language == 'de' %}selected{% endif %}>{% trans "German" %}</option>
+                            <option value="it" {% if user_profile.language == 'it' %}selected{% endif %}>{% trans "Italian" %}</option>
+                            <option value="pt" {% if user_profile.language == 'pt' %}selected{% endif %}>{% trans "Portuguese" %}</option>
+                            <option value="ru" {% if user_profile.language == 'ru' %}selected{% endif %}>{% trans "Russian" %}</option>
+                            <option value="zh" {% if user_profile.language == 'zh' %}selected{% endif %}>{% trans "Chinese" %}</option>
+                            <option value="ja" {% if user_profile.language == 'ja' %}selected{% endif %}>{% trans "Japanese" %}</option>
+                            <option value="hi" {% if user_profile.language == 'hi' %}selected{% endif %}>{% trans "Hindi" %}</option>
+                        <label for="currency" class="form-label">{% trans "Currency" %}</label>
+                        <label for="appearance" class="form-label">{% trans "Appearance" %}</label>
+                            <option value="light" {% if user_profile.appearance == 'light' %}selected{% endif %}>{% trans "Light" %}</option>
+                            <option value="dark" {% if user_profile.appearance == 'dark' %}selected{% endif %}>{% trans "Dark" %}</option>
+                        <label for="notifications" class="form-label">{% trans "Notifications Enabled" %}</label>
+                        <button type="submit" class="btn btn-primary mb-1 btn-styles">{% trans "Save Changes" %}</button>
+                <h5 class="modal-title" id="editPaymentDetailsModalLabel">{% trans "Edit Payment Details" %}</h5>
+                        <label for="payment_method" class="form-label">{% trans "Payment Method" %}</label>
+                        <label for="card_last_four" class="form-label">{% trans "Card Last Four Digits" %}</label>
+                        <label for="billing_address" class="form-label">{% trans "Billing Address" %}</label>
+                        <button type="submit" class="btn btn-primary mb-1 btn-styles">{% trans "Save Changes" %}</button>
+                <h5 class="modal-title" id="editPrivacySettingsModalLabel">{% trans "Edit Privacy Settings" %}</h5>
+                        <label for="data_sharing_enabled" class="form-label">{% trans "Data Sharing Enabled" %}</label>
+                        <button type="submit" class="btn btn-primary mb-1 btn-styles">{% trans "Save Changes" %}</button>
         </div>
     </div>
 </div>

@@ -1,50 +1,52 @@
 {% extends 'base.html' %}
+{% load i18n %}
+
 {% block content %}
 <div class="container d-flex flex-column justify-content-center align-items-center log-wrap bg-styles">
-    <h2 class="text-center title">Add Caravan</h2>
+    <h2 class="text-center title">{% trans "Add Caravan" %}</h2>
     <form method="post" enctype="multipart/form-data" class="p-4 border rounded shadow-sm mx-auto">
         {% csrf_token %}
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group mb-2">
-                    <label for="id_title">Title:</label>
+                    <label for="id_title">{% trans "Title:" %}</label>
                     {{ form.title }}
                 </div>
                 <div class="form-group mb-2">
-                    <label for="id_description">Description:</label>
+                    <label for="id_description">{% trans "Description:" %}</label>
                     {{ form.description }}
                 </div>
                 <div class="form-group mb-3">
-                    <label for="id_image">Image:</label>
+                    <label for="id_image">{% trans "Image:" %}</label>
                     <input type="file" class="form-control-file" id="id_images" name="images" multiple>
                 </div>
                 <div class="form-group mb-2">
-                <label for="id_berth">Berth:</label>
+                <label for="id_berth">{% trans "Berth:" %}</label>
                 {{ form.berth }}
                 </div>
                 <div class="form-group mb-2">
-                    <label for="id_amenities">Amenities:</label>
+                    <label for="id_amenities">{% trans "Amenities:" %}</label>
                     <div id="amenities-container">
                         {{ form.amenities }}
                     </div>
-                    <button type="button" id="add-amenity-btn" class="btn btn-secondary btn-styles mt-2">Add Amenity</button>
+                    <button type="button" id="add-amenity-btn" class="btn btn-secondary btn-styles mt-2">{% trans "Add Amenity" %}</button>
                 </div>
                 <div class="form-group mb-2">
-                    <label for="{{ form.location.id_for_label }}">Location:</label>
+                    <label for="{{ form.location.id_for_label }}">{% trans "Location:" %}</label>
                     {{ form.location }}
                 </div>
                 <div class="form-group mb-2">
-                    <label for="id_price_per_night">Price Per Night:</label>
+                    <label for="id_price_per_night">{% trans "Price Per Night:" %}</label>
                     {{ form.price_per_night }}
                 </div>
                 <!-- Availability calendar -->
                 <div class="form-group mb-3">
-                    <label id="calendar-label">Availability:</label>
+                    <label id="calendar-label">{% trans "Availability:" %}</label>
                     <div id="calendar" class="w-100" aria-labelledby="calendar-label" role="application"></div>
                     <div id="selected-dates" class="mt-2"></div>
                     <input type="hidden" id="available_dates" name="available_dates" value='[]'>
                 </div>
-                <button type="submit" class="btn btn-primary btn-styles w-100 mt-3">Add</button>
+                <button type="submit" class="btn btn-primary btn-styles w-100 mt-3">{% trans "Add" %}</button>
             </div>
         </div>
     </form>

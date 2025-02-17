@@ -1,21 +1,22 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="container mt-5 bg-styles">
-    <h1 class="text-center pt-3 mb-2 title">Welcome to your Listings Page {{ username }}</h1>
+    <h1 class="text-center pt-3 mb-2 title">{% trans "Welcome to your Listings Page" %} {{ username }}</h1>
     <!-- Search content and reset button -->
     <form method="get" class="row g-3 mt-3 mx-auto text-center" style="max-width: 600px;">
         <div class="col-md-8">
-            <input type="text" class="form-control" placeholder="Search caravans..." name="search" value="{{ request.GET.search }}">
+            <input type="text" class="form-control" placeholder="{% trans "Search caravans..." %}" name="search" value="{{ request.GET.search }}">
         </div>
         <div class="col-md-4 mt-2 mb-1 d-flex justify-content-between">
-            <button type="submit" class="btn btn-primary btn-styles">Search</button>
-            <a href="{% url 'listings' %}" class="btn btn-secondary btn-styles ml-auto">Reset</a>
+            <button type="submit" class="btn btn-primary btn-styles">{% trans "Search" %}</button>
+            <a href="{% url 'listings' %}" class="btn btn-secondary btn-styles ml-auto">{% trans "Reset" %}</a>
         </div>
     </form>
     <!-- Toggle filters -->
     <div class="text-center mb-2 mt-1">
-        <button id="toggle-filters" class="btn btn-info btn-styles">Filters</button>
+        <button id="toggle-filters" class="btn btn-info btn-styles">{% trans "Filters" %}</button>
     </div>
     <!-- Filter section -->
     <div class="text-center mb-4" id="filter-container" style="display: none;">
@@ -23,33 +24,33 @@
             <!-- Berth filter -->
             <div class="col-md-3">
                 <select name="berth" class="form-select">
-                    <option value="">Filter by berth</option>
-                    <option value="2" {% if request.GET.berth == '2' %}selected{% endif %}>Two</option>
-                    <option value="4" {% if request.GET.berth == '4' %}selected{% endif %}>Four</option>
-                    <option value="6" {% if request.GET.berth == '6' %}selected{% endif %}>Six</option>
+                    <option value="">{% trans "Filter by berth" %}</option>
+                    <option value="2" {% if request.GET.berth == '2' %}selected{% endif %}>{% trans "Two" %}</option>
+                    <option value="4" {% if request.GET.berth == '4' %}selected{% endif %}>{% trans "Four" %}</option>
+                    <option value="6" {% if request.GET.berth == '6' %}selected{% endif %}>{% trans "Six" %}</option>
                 </select>
             </div>
             <!-- Location filter -->
             <div class="col-md-3">
-                <input type="text" class="form-control" placeholder="Location" name="location" value="{{ request.GET.location }}">
+                <input type="text" class="form-control" placeholder="{% trans "Location" %}" name="location" value="{{ request.GET.location }}">
             </div>
             <!-- Price range -->
             <div class="col-md-3">
-                <input type="number" class="form-control" placeholder="Min Price" name="min_price" value="{{ request.GET.min_price }}">
+                <input type="number" class="form-control" placeholder="{% trans "Min Price" %}" name="min_price" value="{{ request.GET.min_price }}">
             </div>
             <!-- Date filters -->
             <div class="col-md-3">
-                <input type="number" class="form-control" placeholder="Max Price" name="max_price" value="{{ request.GET.max_price }}">
+                <input type="number" class="form-control" placeholder="{% trans "Max Price" %}" name="max_price" value="{{ request.GET.max_price }}">
             </div>
             <div class="col-md-6">
-                <input type="date" class="form-control" placeholder="Available From" name="available_from" value="{{ request.GET.available_from }}">
+                <input type="date" class="form-control" placeholder="{% trans "Available From" %}" name="available_from" value="{{ request.GET.available_from }}">
             </div>
             <div class="col-md-6">
-                <input type="date" class="form-control" placeholder="Available To" name="available_to" value="{{ request.GET.available_to }}">
+                <input type="date" class="form-control" placeholder="{% trans "Available To" %}" name="available_to" value="{{ request.GET.available_to }}">
             </div>
             <!-- Amenities multi-select -->
             <div class="col-md-12">
-                <label for="amenities">Select Amenities:</label>
+                <label for="amenities">{% trans "Select Amenities:" %}</label>
                 <select class="form-select" name="amenities" multiple>
                     {% for amenity in amenities %}
                         <option value="{{ amenity.id }}" {% if amenity.id|stringformat:"s" in selected_amenities %}selected{% endif %}>
@@ -59,7 +60,7 @@
                 </select>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary mt-3 btn-styles">Apply Filters</button>
+                <button type="submit" class="btn btn-primary mt-3 btn-styles">{% trans "Apply Filters" %}</button>
             </div>
         </form>
     </div>
@@ -72,7 +73,7 @@
             {% if user_type == "customer" %}
             <!-- Favourites icon -->
             <i class="fa fa-star favourite-icon {% if caravan.is_favourite %}favourite{% endif %} text-center" data-caravan-id="{{ caravan.pk }}"></i>
-            <span class="ms-2">Click to add to favourites</span>
+            <span class="ms-2">{% trans "Click to add to favourites" %}</span>
             {% endif %}
             <!-- Carousel for multiple images -->
             <div id="carousel{{ caravan.pk }}" class="carousel slide">
@@ -88,11 +89,11 @@
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ caravan.pk }}" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
+                    <span class="visually-hidden">{% trans "Previous" %}</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ caravan.pk }}" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
+                    <span class="visually-hidden">{% trans "Next" %}</span>
                 </button>
             </div>
             <!-- Modal for Enlarging Images -->
@@ -110,11 +111,11 @@
                                 </div>
                                 <button class="carousel-control-prev" type="button" data-bs-target="#modalCarousel" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
+                                    <span class="visually-hidden">{% trans "Previous" %}</span>
                                 </button>
                                 <button class="carousel-control-next" type="button" data-bs-target="#modalCarousel" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
+                                    <span class="visually-hidden">{% trans "Next" %}</span>
                                 </button>
                             </div>
                         </div>
@@ -123,16 +124,16 @@
             </div>
             <p>{{ caravan.description }}</p>
             <p>
-                <strong>Berth:</strong> {{ caravan.get_berth_display }}
+                <strong>{% trans "Berth:" %}</strong> {{ caravan.get_berth_display }}
             </p>
             <p>
-                <strong>Location:</strong> {{ caravan.location }}
+                <strong>{% trans "Location:" %}</strong> {{ caravan.location }}
             </p>
             <p>
-                <strong>Price per night:</strong> ${{ caravan.price_per_night }}
+                <strong>{% trans "Price per night:" %}</strong> ${{ caravan.price_per_night }}
             </p>
             <p>
-                <strong>Amenities:</strong>
+                <strong>{% trans "Amenities:" %}</strong>
                 {% for amenity in caravan.amenities.all %}
                     {{ amenity.name }}
                     {% if not forloop.last %},
@@ -140,7 +141,7 @@
                 {% endfor %}
             </p>
             <p>
-                <strong>Available Dates:</strong>
+                <strong>{% trans "Available Dates:" %}</strong>
                 {% for availability in caravan.availabilities.all %}
                     {{ availability.start_date }} to {{ availability.end_date }}
                     {% if not forloop.last %},
@@ -149,30 +150,30 @@
             </p>
             <!-- Reviews Section -->
             <div class="border rounded p-4 mb-3">
-                <h3 class="text-center title">Reviews</h3>
+                <h3 class="text-center title">{% trans "Reviews" %}</h3>
                 {% if caravan.reviews.all|length > 0 %}
                 {% for review in caravan.reviews.all %}
                 {% if review.approved or user_type == "owner" or review.customer == request.user %}
                     <div class="review mb-3 p-3" id="review-{{ review.pk }}">
                         <p>
-                            <strong>Customer's reviews:</strong>
+                            <strong>{% trans "Customers reviews:" %}</strong>
                         </p>
                         <p>{{ review.customer.username }}:</p>
-                        <p>rated {{ review.rating }}/5</p>
+                        <p>{% trans "rated" %} {{ review.rating }}/5</p>
                         <p>{{ review.comment }}</p>
                         {% for reply in review.replies.all %}
                             <p>
-                                <strong>Owner's Reply:</strong>
+                                <strong>{% trans "Owner's Reply:" %}</strong>
                             </p>
                             <p>{{ reply.owner.username }}</p>
                             <p>{{ reply.reply }}</p>
                             {% if user_type == "owner" %}
                                 <div class="text-center">
                                     <button type="button" class="btn btn-warning mt-2 btn-styles edit-reply-btn" data-bs-toggle="modal" data-bs-target="#editReplyModal{{ reply.pk }}" data-reply-text="{{ reply.reply }}" data-reply-id="{{ reply.pk }}">
-                                        Edit Reply
+                                        {% trans "Edit Reply" %}
                                     </button>
                                     <button type="button" class="btn btn-danger btn-styles mt-2 mb-3 delete-reply-btn" data-url="{% url 'delete_reply' reply.pk %}">
-                                        Delete Reply
+                                        {% trans "Delete Reply" %}
                                     </button>
                                 </div>
                             {% endif %}
@@ -181,18 +182,18 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="editReplyModalLabel{{ reply.pk }}">Edit Reply</h5>
+                                            <h5 class="modal-title" id="editReplyModalLabel{{ reply.pk }}">{% trans "Edit Reply" %}</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <form method="post" action="{% url 'edit_reply' reply.pk %}">
                                                 {% csrf_token %}
                                                 <div class="mb-3">
-                                                    <label for="reply" class="form-label">Reply</label>
+                                                    <label for="reply" class="form-label">{% trans "Reply" %}</label>
                                                     <textarea class="form-control" id="reply" name="reply" rows="3" required>{{ reply.reply }}</textarea>
                                                 </div>
                                                 <div class="text-center">
-                                                    <button type="submit" class="btn btn-primary mb-2 btn-styles">Submit Reply</button>
+                                                    <button type="submit" class="btn btn-primary mb-2 btn-styles">{% trans "Submit Reply" %}</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -203,7 +204,7 @@
                         {% if user_type == "owner" %}
                         <div class="text-center">
                             <button type="button" class="btn btn-primary mb-2 mt-4 reply-btn btn-styles" data-bs-toggle="modal" data-bs-target="#replyModal{{ review.pk }}" data-review-id="{{ review.pk }}">
-                                Reply
+                                {% trans "Reply" %}
                             </button>
                         </div>
                         <!-- Reply Modal -->
@@ -211,18 +212,18 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="replyModalLabel{{ review.pk }}">Reply to Review</h5>
+                                        <h5 class="modal-title" id="replyModalLabel{{ review.pk }}">{% trans "Reply to Review" %}</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         <form method="post" action="{% url 'submit_reply' review.pk %}">
                                             {% csrf_token %}
                                             <div class="mb-3">
-                                                <label for="reply" class="form-label">Reply</label>
+                                                <label for="reply" class="form-label">{% trans "Reply" %}</label>
                                                 <textarea class="form-control" id="reply" name="reply" rows="3" required></textarea>
                                             </div>
                                             <div class="text-center">
-                                                <button type="submit" class="btn btn-primary mb-2 btn-styles">Submit Reply</button>
+                                                <button type="submit" class="btn btn-primary mb-2 btn-styles">{% trans "Submit Reply" %}</button>
                                             </div>
                                         </form>
                                     </div>
@@ -233,18 +234,18 @@
                     </div>
                     {% if user_type == "customer" %}
                         <div class="text-center">
-                            <button type="button" class="btn btn-warning mt-2 btn-styles edit-review-btn" data-bs-toggle="modal" data-bs-target="#editReviewModal{{ review.pk }}" data-review-id="{{ review.pk }}" data-rating="{{ review.rating }}" data-comment="{{ review.comment }}">
-                                Edit Review
+                            <button type="button" class="btn btn-warning mt-1 mb-2 btn-styles edit-review-btn" data-bs-toggle="modal" data-bs-target="#editReviewModal{{ review.pk }}" data-review-id="{{ review.pk }}" data-rating="{{ review.rating }}" data-comment="{{ review.comment }}">
+                                {% trans "Edit Review" %}
                             </button>
-                            <button type="button" class="btn btn-danger btn-styles delete-review-btn mb-2" data-url="{% url 'delete_review' review.pk %}">
-                                Delete Review
+                            <button type="button" class="btn btn-danger btn-styles delete-review-btn mb-1" data-url="{% url 'delete_review' review.pk %}">
+                                {% trans "Delete Review" %}
                             </button>
                         </div>
                     {% endif %}
                     {% if user_type == "owner" and not review.approved %}
                         <form method="post" action="{% url 'approve_review' review.pk %}" class="border-0 text-center">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-success btn-styles mb-2">Approve Review</button>
+                            <button type="submit" class="btn btn-success btn-styles mb-2">{% trans "Approve Review" %}</button>
                         </form>
                     {% endif %}
                 {% endif %}
@@ -254,7 +255,7 @@
             {% if user_type == "customer" %}
             <div class="text-center">
                 <button type="button" class="btn btn-primary mt-2 btn-styles leave-review-btn" data-bs-toggle="modal" data-bs-target="#submitReviewModal{{ caravan.pk }}" data-caravan-id="{{ caravan.pk }}">
-                    Leave a Review
+                    {% trans "Leave a Review" %}
                 </button>
             </div>
             {% endif %}
@@ -263,22 +264,22 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="submitReviewModalLabel{{ caravan.pk }}">Leave a Review</h5>
+                            <h5 class="modal-title" id="submitReviewModalLabel{{ caravan.pk }}">{% trans "Leave a Review" %}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form method="post" action="{% url 'submit_review' caravan.pk %}">
                                 {% csrf_token %}
                                 <div class="mb-3">
-                                    <label for="rating" class="form-label">Rating</label>
+                                    <label for="rating" class="form-label">{% trans "Rating" %}</label>
                                     <input type="number" class="form-control" id="rating" name="rating" min="1" max="5" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="comment" class="form-label">Comment</label>
+                                    <label for="comment" class="form-label">{% trans "Comment" %}</label>
                                     <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary mb-2 btn-styles">Submit Review</button>
+                                    <button type="submit" class="btn btn-primary mb-2 btn-styles">{% trans "Submit Review" %}</button>
                                 </div>
                             </form>
                         </div>
@@ -291,22 +292,22 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="editReviewModalLabel{{ review.pk }}">Edit Review</h5>
+                            <h5 class="modal-title" id="editReviewModalLabel{{ review.pk }}">{% trans "Edit Review" %}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form method="post" action="{% url 'edit_review' review.pk %}">
                                 {% csrf_token %}
                                 <div class="mb-3">
-                                    <label for="rating" class="form-label">Rating</label>
+                                    <label for="rating" class="form-label">{% trans "Rating" %}</label>
                                     <input type="number" class="form-control" id="rating-{{ review.pk }}" name="rating" min="1" max="5" value="{{ review.rating }}" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="comment" class="form-label">Comment</label>
+                                    <label for="comment" class="form-label">{% trans "Comment" %}</label>
                                     <textarea class="form-control" id="comment-{{ review.pk }}" name="comment" rows="3" required>{{ review.comment }}</textarea>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary mb-2 btn-styles">Submit Review</button>
+                                    <button type="submit" class="btn btn-primary mb-2 btn-styles">{% trans "Submit Review" %}</button>
                                 </div>
                             </form>
                         </div>
@@ -319,13 +320,13 @@
                 <div class="row mt-3 {% if caravan.reviews.all|length == 0 %}border rounded p-2 text-center{% endif %}">
                     <div class="col">
                         <a href="{% url 'edit_caravan' caravan.pk %}" class="btn btn-warning btn-styles {% if caravan.reviews.all|length == 0 %}mb-2{% endif %}">
-                            Edit caravan
+                            {% trans "Edit caravan" %}
                         </a>
                     </div>
                     <div class="col">
                         <form method="post" action="{% url 'delete_caravan' caravan.pk %}" id="delete-button">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-danger btn-styles">Delete caravan</button>
+                            <button type="submit" class="btn btn-danger btn-styles">{% trans "Delete caravan" %}</button>
                         </form>
                     </div>
                 </div>
@@ -333,10 +334,10 @@
                 <div class="text-center mt-3 {% if caravan.reviews.all|length > 0 %}border rounded p-3{% endif %}">
                     {% if caravan.is_available %}
                         <a href="{% url 'book_caravan' caravan.id %}" class="btn btn-success btn-styles book-now-btn w-100 mt-2 mb-2" data-caravan-id="{{ caravan.id }}">
-                            BOOK CARAVAN NOW
+                            {% trans "BOOK CARAVAN NOW" %}
                         </a>
                     {% else %}
-                        <button class="btn btn-secondary btn-styles w-100" disabled>Not Available</button>
+                        <button class="btn btn-secondary btn-styles w-100" disabled>{% trans "Not Available" %}</button>
                     {% endif %}
                 </div>
             {% endif %}
@@ -344,12 +345,12 @@
         {% endfor %}
     </ul>
     {% else %}
-    <p class="text-center">No caravans available</p>
+    <p class="text-center">{% trans "No caravans available" %}</p>
     {% endif %}
     <!-- Add Caravan Button for Owners -->
     {% if user_type == "owner" %}
     <div class="text-center mt-4">
-        <a href="{% url 'add_caravan' %}" class="btn btn-primary btn-styles mb-4">Add Caravan</a>
+        <a href="{% url 'add_caravan' %}" class="btn btn-primary btn-styles mb-4">{% trans "Add Caravan" %}</a>
     </div>
     {% endif %}
 </div>

@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="container-fluid d-flex flex-column justify-content-center align-items-center bg-styles">
-    <h1 class="text-center mb-1 mt-5 title">Welcome to your Dashboard</h1>
+    <h1 class="text-center mb-1 mt-5 title">{% trans "Welcome to your Dashboard" %}</h1>
     {% if user_type == 'superuser' %}
-    <h1 class="text-center mb-4 title">Superuser!</h1>
-    <p>To manage the site go to admin page:
-        <a href="{{ admin_url }}" class="btn btn-primary w-100 mt-3 btn-styles">Here</a>
+    <h1 class="text-center mb-4 title">{% trans "Superuser!" %}</h1>
+    <p>{% trans "To manage the site go to admin page:" %}
+        <a href="{{ admin_url }}" class="btn btn-primary w-100 mt-3 btn-styles">{% trans "Here" %}</a>
     </p>
 </div>
 {% elif user_type == 'customer' %}
@@ -18,10 +19,10 @@
         <div class="col-md-4">
             <div class="card mb-4 text-white">
                 <div class="card-header">
-                    <h2 class="title card-title">Upcoming stays</h2>
+                    <h2 class="title card-title">{% trans "Upcoming stays" %}</h2>
                 </div>
                 <div class="card-body">
-                    <p>View and manage your upcoming bookings.</p>
+                    <p>{% trans "View and manage your upcoming bookings." %}</p>
                     <ul class="list-group">
                         {% for stay in upcoming_stays %}
                             <li class="list-group-item">
@@ -31,7 +32,7 @@
                                 </a>
                             </li>
                         {% empty %}
-                            <li class="list-group-item">No upcoming stays</li>
+                            <li class="list-group-item">{% trans "No upcoming stays" %}</li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -41,20 +42,20 @@
         <div class="col-md-4">
             <div class="card mb-4 text-white">
                 <div class="card-header">
-                    <h2 class="card-title title">Favourites</h2>
+                    <h2 class="card-title title">{% trans "Favourites" %}</h2>
                 </div>
                 <div class="card-body">
-                    <p>View your Favourites caravans.</p>
+                    <p>{% trans "View your Favourites caravans." %}</p>
                     <ul class="list-group">
                         {% for caravan in favourites %}
                             <li class="list-group-item">
                                 <a href="{% url 'listings' %}#caravan-{{ caravan.pk }}">
                                     <strong>{{ caravan.title }}</strong><br>
-                                    <small>Owner: {{ caravan.owner.username }}</small>
+                                    <small>{% trans "Owner:" %} {{ caravan.owner.username }}</small>
                                 </a>
                             </li>
                         {% empty %}
-                            <li class="list-group-item">No items in your favourites</li>
+                            <li class="list-group-item">{% trans "No items in your favourites" %}</li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -64,20 +65,20 @@
         <div class="col-md-4">
             <div class="card mb-4 text-white">
                 <div class="card-header">
-                    <h2 class="card-title title">Previous stays</h2>
+                    <h2 class="card-title title">{% trans "Previous stays" %}</h2>
                 </div>
                 <div class="card-body">
-                    <p>View your previous stays.</p>
+                    <p>{% trans "View your previous stays." %}</p>
                     <ul class="list-group">
                         {% for stay in previous_stays %}
                             <li class="list-group-item">
                                 <a href="{% url 'booking_view' stay.caravan.id %}">
                                     <strong>{{ stay.caravan.title }}</strong><br>
-                                    <small>{{ stay.start_date }} to {{ stay.end_date }}</small>
+                                    <small>{{ stay.start_date }} {% trans "to" %} {{ stay.end_date }}</small>
                                 </a>
                             </li>
                         {% empty %}
-                            <li class="list-group-item">No previous stays</li>
+                            <li class="list-group-item">{% trans "No previous stays" %}</li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -93,21 +94,24 @@
         <div class="col-md-4">
             <div class="card mb-4 text-white">
                 <div class="card-header">
-                    <h2 class="card-title title">Booking requests</h2>
+                    <h2 class="card-title title">{% trans "Booking requests" %}</h2>
                 </div>
                 <div class="card-body">
-                    <p>View and manage requests from customers.</p>
+                    <p>{% trans "View and manage requests from customers." %}</p>
                     <ul class="list-group">
                         {% for request in requests %}
                             <li class="list-group-item">
                                 <a href="{% url 'booking_view' request.caravan.id %}">
                                     <strong>{{ request.caravan.title }}</strong><br>
-                                    <small>{{ request.customer.username }}</small> requested from
-                                    {{ request.start_date }} to {{ request.end_date }}
+                                    <small>{{ request.customer.username }}</small> 
+                                    <small>
+                                        {% trans "requested from" %}
+                                        {{ request.start_date }} {% trans "to" %} {{ request.end_date }}
+                                    </small>
                                 </a>
                             </li>
                         {% empty %}
-                            <li class="list-group-item">No current requests</li>
+                            <li class="list-group-item">{% trans "No current requests" %}</li>
                         {% endfor %}
                     </ul>    
                 </div>
@@ -117,20 +121,20 @@
         <div class="col-md-4">
             <div class="card mb-4 text-white">
                 <div class="card-header">
-                    <h2 class="card-title title">Your caravans</h2>
+                    <h2 class="card-title title">{% trans "Your caravans" %}</h2>
                 </div>
                 <div class="card-body">
-                    <p>View and manage your caravan listings.</p>
+                    <p>{% trans "View and manage your caravan listings." %}</p>
                     <ul class="list-group">
-                        <strong>Current caravan names:</strong>
+                        <strong>{% trans "Current caravan names:" %}</strong>
                         {% for caravan in caravans %}
                             <li class="list-group-item">{{ caravan.title }}</li>
                         {% empty %}
-                            <li class="list-group-item">No caravans listed</li>
+                            <li class="list-group-item">{% trans "No caravans listed" %}</li>
                         {% endfor %}
                     </ul>
                     <div class="d-flex justify-content-center mt-3">
-                        <a href="{% url 'listings' %}" class="btn btn-primary mt-3 btn-styles">View All Listings</a>
+                        <a href="{% url 'listings' %}" class="btn btn-primary mt-3 btn-styles">{% trans "View All Listings" %}</a>
                     </div>
                 </div>
             </div>
@@ -139,21 +143,21 @@
         <div class="col-md-4">
             <div class="card mb-4 text-white">
                 <div class="card-header">
-                    <h2 class="card-title title">Reviews</h2>
+                    <h2 class="card-title title">{% trans "Reviews" %}</h2>
                 </div>
                 <div class="card-body">
-                    <p>Check reviews from customers.</p>
+                    <p>{% trans "Check reviews from customers." %}</p>
                     <ul class="list-group">
                         {% for review in reviews %}
                             <li class="list-group-item">
                                 <a href="{% url 'listings' %}#review-{{ review.pk }}">
                                     <strong>{{ review.caravan.title }}</strong><br>
                                     <small>{{ review.customer.username }}</small><br> 
-                                    <small>rated {{ review.rating }} stars</small>
+                                    <small>{% trans "rated" %} {{ review.rating }} {% trans "stars" %}</small>
                                 </a>
                             </li>
                         {% empty %}
-                            <li class="list-group-item">No reviews</li>
+                            <li class="list-group-item">{% trans "No reviews" %}</li>
                         {% endfor %}
                     </ul>
                 </div>

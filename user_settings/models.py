@@ -8,7 +8,7 @@ class UserProfile(models.Model):
     )
     profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
     bio = models.TextField(blank=True)
-    language = models.CharField(max_length=50, default='English')
+    phone_number = models.CharField(max_length=15, blank=True)
     appearance = models.CharField(
         max_length=20,
         choices=[('light', 'Light'), ('dark', 'Dark')],
