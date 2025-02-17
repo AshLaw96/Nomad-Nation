@@ -3,12 +3,28 @@ from django.contrib.auth.models import User
 
 
 class UserProfile(models.Model):
+    LANGUAGE_CHOICES = [
+        ('en', 'English'),
+        ('es', 'Spanish'),
+        ('fr', 'French'),
+        ('de', 'German'),
+        ('it', 'Italian'),
+        ('pt', 'Portuguese'),
+        ('ru', 'Russian'),
+        ('zh', 'Chinese'),
+        ('ja', 'Japanese'),
+        ('hi', 'Hindi'),
+    ]
+
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='user_profile'
     )
     profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
     bio = models.TextField(blank=True)
     phone_number = models.CharField(max_length=15, blank=True)
+    language = models.CharField(
+        max_length=2, choices=LANGUAGE_CHOICES, default='en'
+    )
     appearance = models.CharField(
         max_length=20,
         choices=[('light', 'Light'), ('dark', 'Dark')],

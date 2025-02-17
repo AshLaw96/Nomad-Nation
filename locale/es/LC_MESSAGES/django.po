@@ -1,0 +1,645 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-17 19:34+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: dashboard/templates/dashboard/dashboard.html:6
+msgid "Welcome to your Dashboard"
+msgstr "Bienvenido a tu Panel de Control"
+
+#: dashboard/templates/dashboard/dashboard.html:8
+msgid "Superuser!"
+msgstr "¡Superusuario!"
+
+#: dashboard/templates/dashboard/dashboard.html:9
+msgid "To manage the site go to admin page:"
+msgstr "Para gestionar el sitio, ve a la página de administración:"
+
+#: dashboard/templates/dashboard/dashboard.html:10
+msgid "Here"
+msgstr "Aquí"
+
+#: dashboard/templates/dashboard/dashboard.html:22
+msgid "Upcoming stays"
+msgstr "Próximas estancias"
+
+#: dashboard/templates/dashboard/dashboard.html:25
+msgid "View and manage your upcoming bookings."
+msgstr "Ver y gestionar tus próximas reservas."
+
+#: dashboard/templates/dashboard/dashboard.html:35
+msgid "No upcoming stays"
+msgstr "No hay próximas estancias"
+
+#: dashboard/templates/dashboard/dashboard.html:45
+msgid "Favourites"
+msgstr "Favoritos"
+
+#: dashboard/templates/dashboard/dashboard.html:48
+msgid "View your Favourites caravans."
+msgstr "Ver tus caravanas favoritas."
+
+#: dashboard/templates/dashboard/dashboard.html:54
+#: listings/templates/listings/booking.html:90
+#: listings/templates/listings/booking.html:186
+msgid "Owner:"
+msgstr "Propietario:"
+
+#: dashboard/templates/dashboard/dashboard.html:58
+msgid "No items in your favourites"
+msgstr "No hay elementos en tus favoritos"
+
+#: dashboard/templates/dashboard/dashboard.html:68
+msgid "Previous stays"
+msgstr "Estancias anteriores"
+
+#: dashboard/templates/dashboard/dashboard.html:71
+msgid "View your previous stays."
+msgstr "Ver tus estancias anteriores."
+
+#: dashboard/templates/dashboard/dashboard.html:77
+#: dashboard/templates/dashboard/dashboard.html:109
+#: listings/templates/listings/booking.html:25
+#: listings/templates/listings/booking.html:88
+#: listings/templates/listings/booking.html:153
+#: listings/templates/listings/booking.html:189
+msgid "to"
+msgstr "a"
+
+#: dashboard/templates/dashboard/dashboard.html:81
+msgid "No previous stays"
+msgstr "No hay estancias anteriores"
+
+#: dashboard/templates/dashboard/dashboard.html:97
+msgid "Booking requests"
+msgstr "Solicitudes de reserva"
+
+#: dashboard/templates/dashboard/dashboard.html:100
+msgid "View and manage requests from customers."
+msgstr "Ver y gestionar solicitudes de clientes."
+
+#: dashboard/templates/dashboard/dashboard.html:108
+msgid "requested from"
+msgstr "solicitado desde"
+
+#: dashboard/templates/dashboard/dashboard.html:114
+msgid "No current requests"
+msgstr "No hay solicitudes actuales"
+
+#: dashboard/templates/dashboard/dashboard.html:124
+msgid "Your caravans"
+msgstr "Tus caravanas"
+
+#: dashboard/templates/dashboard/dashboard.html:127
+msgid "View and manage your caravan listings."
+msgstr "Ver y gestionar tus listados de caravanas."
+
+#: dashboard/templates/dashboard/dashboard.html:129
+msgid "Current caravan names:"
+msgstr "Nombres actuales de caravanas:"
+
+#: dashboard/templates/dashboard/dashboard.html:133
+msgid "No caravans listed"
+msgstr "No hay caravanas listadas"
+
+#: dashboard/templates/dashboard/dashboard.html:137
+msgid "View All Listings"
+msgstr "Ver todos los listados"
+
+#: dashboard/templates/dashboard/dashboard.html:146
+#: listings/templates/listings/listing_page.html:153
+msgid "Reviews"
+msgstr "Reseñas"
+
+#: dashboard/templates/dashboard/dashboard.html:149
+msgid "Check reviews from customers."
+msgstr "Ver reseñas de clientes."
+
+#: dashboard/templates/dashboard/dashboard.html:156
+#: listings/templates/listings/listing_page.html:162
+msgid "rated"
+msgstr "calificado"
+
+#: dashboard/templates/dashboard/dashboard.html:156
+msgid "stars"
+msgstr "estrellas"
+
+#: dashboard/templates/dashboard/dashboard.html:160
+msgid "No reviews"
+msgstr "No hay reseñas"
+
+#: listings/templates/listings/add_caravan.html:12
+msgid "Title:"
+msgstr "Título:"
+
+#: listings/templates/listings/add_caravan.html:16
+msgid "Description:"
+msgstr "Descripción:"
+
+#: listings/templates/listings/add_caravan.html:20
+msgid "Image:"
+msgstr "Imagen:"
+
+#: listings/templates/listings/add_caravan.html:24
+#: listings/templates/listings/listing_page.html:127
+msgid "Berth:"
+msgstr "Plazas:"
+
+#: listings/templates/listings/add_caravan.html:28
+#: listings/templates/listings/listing_page.html:136
+msgid "Amenities:"
+msgstr "Servicios:"
+
+#: listings/templates/listings/add_caravan.html:32
+msgid "Add Amenity"
+msgstr "Agregar Servicio"
+
+#: listings/templates/listings/add_caravan.html:35
+#: listings/templates/listings/listing_page.html:130
+msgid "Location:"
+msgstr "Ubicación:"
+
+#: listings/templates/listings/add_caravan.html:39
+msgid "Price Per Night:"
+msgstr "Precio por Noche:"
+
+#: listings/templates/listings/add_caravan.html:44
+msgid "Availability:"
+msgstr "Disponibilidad:"
+
+#: listings/templates/listings/add_caravan.html:49
+msgid "Add"
+msgstr "Añadir"
+
+#: listings/templates/listings/booking.html:8
+msgid "Your Bookings"
+msgstr "Tus Reservas"
+
+#: listings/templates/listings/booking.html:10
+msgid "Your Caravan's Bookings"
+msgstr "Las Reservas de tu Caravana"
+
+#: listings/templates/listings/booking.html:16
+msgid "Pending Bookings"
+msgstr "Reservas Pendientes"
+
+#: listings/templates/listings/booking.html:30
+msgid "View Details"
+msgstr "Ver Detalles"
+
+#: listings/templates/listings/booking.html:36
+msgid "Accept"
+msgstr "Aceptar"
+
+#: listings/templates/listings/booking.html:41
+msgid "Decline"
+msgstr "Rechazar"
+
+#: listings/templates/listings/booking.html:51
+msgid "Booking Details"
+msgstr "Detalles de la Reserva"
+
+#: listings/templates/listings/booking.html:55
+#: user_settings/templates/user_settings/account_settings.html:13
+msgid "Name:"
+msgstr "Nombre:"
+
+#: listings/templates/listings/booking.html:56
+#: user_settings/templates/user_settings/account_settings.html:14
+msgid "Email:"
+msgstr "Correo Electrónico:"
+
+#: listings/templates/listings/booking.html:57
+#: user_settings/templates/user_settings/account_settings.html:15
+msgid "Phone Number:"
+msgstr "Número de Teléfono:"
+
+#: listings/templates/listings/booking.html:58
+msgid "Message:"
+msgstr "Mensaje:"
+
+#: listings/templates/listings/booking.html:59
+msgid "Start Date:"
+msgstr "Fecha de Inicio:"
+
+#: listings/templates/listings/booking.html:60
+msgid "End Date:"
+msgstr "Fecha de Fin:"
+
+#: listings/templates/listings/booking.html:63
+msgid "Close"
+msgstr "Cerrar"
+
+#: listings/templates/listings/booking.html:71
+msgid "No pending bookings."
+msgstr "No hay reservas pendientes."
+
+#: listings/templates/listings/booking.html:72
+#: listings/templates/listings/booking.html:137
+msgid "Go back to listings"
+msgstr "Volver a los anuncios"
+
+#: listings/templates/listings/booking.html:79
+msgid "Upcoming Bookings"
+msgstr "Próximas Reservas"
+
+#: listings/templates/listings/booking.html:92
+msgid "Customer:"
+msgstr "Cliente:"
+
+#: listings/templates/listings/booking.html:98
+#: listings/templates/listings/booking.html:107
+msgid "Modify Booking"
+msgstr "Modificar Reserva"
+
+#: listings/templates/listings/booking.html:114
+msgid "Start Date"
+msgstr "Fecha de Inicio"
+
+#: listings/templates/listings/booking.html:118
+msgid "End Date"
+msgstr "Fecha de Fin"
+
+#: listings/templates/listings/booking.html:122
+msgid "Message"
+msgstr "Mensaje"
+
+#: listings/templates/listings/booking.html:126
+#: listings/templates/listings/booking.html:196
+msgid "Submit"
+msgstr "Enviar"
+
+#: listings/templates/listings/booking.html:136
+msgid "No upcoming bookings."
+msgstr "No hay reservas próximas."
+
+#: listings/templates/listings/booking.html:144
+msgid "Previous Bookings"
+msgstr "Reservas Anteriores"
+
+#: listings/templates/listings/booking.html:159
+msgid "No previous bookings."
+msgstr "Sin reservas previas."
+
+#: listings/templates/listings/booking.html:167
+msgid "Request a Booking"
+msgstr "Solicitar una Reserva"
+
+#: listings/templates/listings/booking.html:171
+#: listings/templates/listings/booking.html:181
+msgid "Request Booking"
+msgstr "Solicitar Reserva"
+
+#: listings/templates/listings/booking.html:187
+#: listings/templates/listings/listing_page.html:144
+msgid "Available Dates:"
+msgstr "Fechas Disponibles:"
+
+#: listings/templates/listings/listing_page.html:6
+msgid "Welcome to your Listings Page"
+msgstr "Bienvenido a tu Pagina de Listados"
+
+#: listings/templates/listings/listing_page.html:10
+msgid "Search caravans..."
+msgstr "Buscar caravanas"
+
+#: listings/templates/listings/listing_page.html:13
+msgid "Search"
+msgstr "Buscar"
+
+#: listings/templates/listings/listing_page.html:14
+msgid "Reset"
+msgstr "Restablecer"
+
+#: listings/templates/listings/listing_page.html:19
+msgid "Filters"
+msgstr "Filtros"
+
+#: listings/templates/listings/listing_page.html:27
+msgid "Filter by berth"
+msgstr "Filtrar por plaza"
+
+#: listings/templates/listings/listing_page.html:28
+msgid "Two"
+msgstr "Dos"
+
+#: listings/templates/listings/listing_page.html:29
+msgid "Four"
+msgstr "Cuatro"
+
+#: listings/templates/listings/listing_page.html:30
+msgid "Six"
+msgstr "Seis"
+
+#: listings/templates/listings/listing_page.html:35
+msgid "Location"
+msgstr "Ubicación"
+
+#: listings/templates/listings/listing_page.html:39
+msgid "Min Price"
+msgstr "Precio mínimo"
+
+#: listings/templates/listings/listing_page.html:43
+msgid "Max Price"
+msgstr "Precio máximo"
+
+#: listings/templates/listings/listing_page.html:46
+msgid "Available From"
+msgstr "Disponible Desde"
+
+#: listings/templates/listings/listing_page.html:49
+msgid "Available To"
+msgstr "Disponible Para"
+
+#: listings/templates/listings/listing_page.html:53
+msgid "Select Amenities:"
+msgstr "Seleccione Servicios:"
+
+#: listings/templates/listings/listing_page.html:63
+msgid "Apply Filters"
+msgstr "Aplicar Filtros"
+
+#: listings/templates/listings/listing_page.html:76
+msgid "Click to add to favourites"
+msgstr "Haga clic para agregar a favoritos"
+
+#: listings/templates/listings/listing_page.html:92
+#: listings/templates/listings/listing_page.html:114
+msgid "Previous"
+msgstr "Previo"
+
+#: listings/templates/listings/listing_page.html:96
+#: listings/templates/listings/listing_page.html:118
+msgid "Next"
+msgstr "Siguiente"
+
+#: listings/templates/listings/listing_page.html:133
+msgid "Price per night:"
+msgstr "Precio por noche:"
+
+#: listings/templates/listings/listing_page.html:159
+msgid "Customers reviews:"
+msgstr "Opiniones de clientes:"
+
+#: listings/templates/listings/listing_page.html:166
+msgid "Owner's Reply:"
+msgstr "Respuesta Del Dropietario:"
+
+#: listings/templates/listings/listing_page.html:173
+#: listings/templates/listings/listing_page.html:185
+msgid "Edit Reply"
+msgstr "Editar Respuesta"
+
+#: listings/templates/listings/listing_page.html:176
+msgid "Delete Reply"
+msgstr "Eliminar Respuesta"
+
+#: listings/templates/listings/listing_page.html:192
+#: listings/templates/listings/listing_page.html:207
+#: listings/templates/listings/listing_page.html:222
+msgid "Reply"
+msgstr "Responder"
+
+#: listings/templates/listings/listing_page.html:196
+#: listings/templates/listings/listing_page.html:226
+msgid "Submit Reply"
+msgstr "Enviar Respuesta"
+
+#: listings/templates/listings/listing_page.html:215
+msgid "Reply to Review"
+msgstr "Responder a la Reseña"
+
+#: listings/templates/listings/listing_page.html:238
+#: listings/templates/listings/listing_page.html:295
+msgid "Edit Review"
+msgstr "Editar Reseña"
+
+#: listings/templates/listings/listing_page.html:241
+msgid "Delete Review"
+msgstr "Eliminar Reseña"
+
+#: listings/templates/listings/listing_page.html:248
+msgid "Approve Review"
+msgstr "Aprobar Reseña"
+
+#: listings/templates/listings/listing_page.html:258
+#: listings/templates/listings/listing_page.html:267
+msgid "Leave a Review"
+msgstr "Dejar una Reseña"
+
+#: listings/templates/listings/listing_page.html:274
+#: listings/templates/listings/listing_page.html:302
+msgid "Rating"
+msgstr "Calificación"
+
+#: listings/templates/listings/listing_page.html:278
+#: listings/templates/listings/listing_page.html:306
+msgid "Comment"
+msgstr "Comentario"
+
+#: listings/templates/listings/listing_page.html:282
+#: listings/templates/listings/listing_page.html:310
+msgid "Submit Review"
+msgstr "Enviar Reseña"
+
+#: listings/templates/listings/listing_page.html:323
+msgid "Edit caravan"
+msgstr "Editar caravana"
+
+#: listings/templates/listings/listing_page.html:329
+msgid "Delete caravan"
+msgstr "Eliminar Caravana"
+
+#: listings/templates/listings/listing_page.html:337
+msgid "BOOK CARAVAN NOW"
+msgstr "RESERVA LA CARAVANA AHORA"
+
+#: listings/templates/listings/listing_page.html:340
+msgid "Not Available"
+msgstr "No Disponible"
+
+#: listings/templates/listings/listing_page.html:348
+msgid "No caravans available"
+msgstr "No hay caravanas disponibles"
+
+#: listings/templates/listings/listing_page.html:353
+msgid "Add Caravan"
+msgstr "Añadir Caravana"
+
+#: user_settings/templates/user_settings/account_settings.html:6
+msgid "Account Settings"
+msgstr "Configuración de la cuenta"
+
+#: user_settings/templates/user_settings/account_settings.html:10
+msgid "Personal Details"
+msgstr "Detalles Personales"
+
+#: user_settings/templates/user_settings/account_settings.html:17
+#: user_settings/templates/user_settings/account_settings.html:73
+msgid "Edit Personal Details"
+msgstr "Editar detalles personales"
+
+#: user_settings/templates/user_settings/account_settings.html:24
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: user_settings/templates/user_settings/account_settings.html:27
+msgid "Language:"
+msgstr "Idioma:"
+
+#: user_settings/templates/user_settings/account_settings.html:28
+msgid "Currency:"
+msgstr "Moneda:"
+
+#: user_settings/templates/user_settings/account_settings.html:29
+msgid "Appearance:"
+msgstr "Apariencia:"
+
+#: user_settings/templates/user_settings/account_settings.html:30
+msgid "Notifications Enabled:"
+msgstr "Notificaciones habilitadas:"
+
+#: user_settings/templates/user_settings/account_settings.html:32
+#: user_settings/templates/user_settings/account_settings.html:105
+msgid "Edit Preferences"
+msgstr "Editar preferencias"
+
+#: user_settings/templates/user_settings/account_settings.html:39
+msgid "Payment Details"
+msgstr "Detalles de pago"
+
+#: user_settings/templates/user_settings/account_settings.html:45
+msgid "No payment details available."
+msgstr "No hay detalles de pago disponibles."
+
+#: user_settings/templates/user_settings/account_settings.html:48
+#: user_settings/templates/user_settings/account_settings.html:154
+msgid "Edit Payment Details"
+msgstr "Editar detalles de pago"
+
+#: user_settings/templates/user_settings/account_settings.html:55
+msgid "Privacy Settings"
+msgstr "Configuración de privacidad"
+
+#: user_settings/templates/user_settings/account_settings.html:58
+msgid "Data Sharing Enabled:"
+msgstr "Compartición de datos habilitada:"
+
+#: user_settings/templates/user_settings/account_settings.html:60
+#: user_settings/templates/user_settings/account_settings.html:185
+msgid "Edit Privacy Settings"
+msgstr "Editar configuración de privacidad"
+
+#: user_settings/templates/user_settings/account_settings.html:80
+msgid "Name"
+msgstr "Nombre"
+
+#: user_settings/templates/user_settings/account_settings.html:84
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: user_settings/templates/user_settings/account_settings.html:88
+msgid "Phone Number"
+msgstr "Número de teléfono"
+
+#: user_settings/templates/user_settings/account_settings.html:92
+#: user_settings/templates/user_settings/account_settings.html:142
+#: user_settings/templates/user_settings/account_settings.html:173
+#: user_settings/templates/user_settings/account_settings.html:196
+msgid "Save Changes"
+msgstr "Guardar cambios"
+
+#: user_settings/templates/user_settings/account_settings.html:112
+msgid "Language"
+msgstr "Idioma"
+
+#: user_settings/templates/user_settings/account_settings.html:114
+msgid "English"
+msgstr "Inglés"
+
+#: user_settings/templates/user_settings/account_settings.html:115
+msgid "Spanish"
+msgstr "Español"
+
+#: user_settings/templates/user_settings/account_settings.html:116
+msgid "French"
+msgstr "Francés"
+
+#: user_settings/templates/user_settings/account_settings.html:117
+msgid "German"
+msgstr "Alemán"
+
+#: user_settings/templates/user_settings/account_settings.html:118
+msgid "Italian"
+msgstr "Italiano"
+
+#: user_settings/templates/user_settings/account_settings.html:119
+msgid "Portuguese"
+msgstr "Portugués"
+
+#: user_settings/templates/user_settings/account_settings.html:120
+msgid "Russian"
+msgstr "Ruso"
+
+#: user_settings/templates/user_settings/account_settings.html:121
+msgid "Chinese"
+msgstr "Chino"
+
+#: user_settings/templates/user_settings/account_settings.html:122
+msgid "Japanese"
+msgstr "Japonés"
+
+#: user_settings/templates/user_settings/account_settings.html:123
+msgid "Hindi"
+msgstr "Hindi"
+
+#: user_settings/templates/user_settings/account_settings.html:127
+msgid "Currency"
+msgstr "Moneda"
+
+#: user_settings/templates/user_settings/account_settings.html:131
+msgid "Appearance"
+msgstr "Apariencia"
+
+#: user_settings/templates/user_settings/account_settings.html:133
+msgid "Light"
+msgstr "Claro"
+
+#: user_settings/templates/user_settings/account_settings.html:134
+msgid "Dark"
+msgstr "Oscuro"
+
+#: user_settings/templates/user_settings/account_settings.html:138
+msgid "Notifications Enabled"
+msgstr "Notificaciones habilitadas"
+
+#: user_settings/templates/user_settings/account_settings.html:161
+msgid "Payment Method"
+msgstr "Método de pago"
+
+#: user_settings/templates/user_settings/account_settings.html:165
+msgid "Card Last Four Digits"
+msgstr "Últimos cuatro dígitos de la tarjeta"
+
+#: user_settings/templates/user_settings/account_settings.html:169
+msgid "Billing Address"
+msgstr "Dirección de facturación"
+
+#: user_settings/templates/user_settings/account_settings.html:192
+msgid "Data Sharing Enabled"
+msgstr "Compartición de datos habilitada"
