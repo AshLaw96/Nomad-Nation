@@ -74,6 +74,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'user_settings.middleware.UserLanguageMiddleware',
 ]
 
 ROOT_URLCONF = 'caravan_booking.urls'
@@ -163,7 +164,7 @@ DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 # Internationalisation
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-gb'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
