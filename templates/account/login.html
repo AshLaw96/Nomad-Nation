@@ -1,16 +1,17 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="container d-flex flex-column justify-content-center align-items-center bg-styles log-wrap">
-    <h1 class="text-center mb-4 title">Log In</h1>
+    <h1 class="text-center mb-4 title">{% trans "Log In" %}</h1>
     <p class="text-center">
-        Don't have an account yet? <a href="{% url 'account_signup' %}">register</a> here.
+        {% trans "Don't have an account yet?" %} <a href="{% url 'account_signup' %}">{% trans "register here" %}</a>.
     </p>
     <!-- Login form -->
     <form method="post" action="{% url 'account_login' %}" class="p-4 border rounded shadow-sm mx-auto">
         {% csrf_token %}
         {{ form.as_p }}
-        <button class="btn btn-primary w-100 mt-3 btn-styles" type="submit">Log In</button>
+        <button class="btn btn-primary w-100 mt-3 btn-styles" type="submit">{% trans "Log In" %}</button>
     </form>
 </div>
 {% endblock %}

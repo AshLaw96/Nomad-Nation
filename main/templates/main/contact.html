@@ -1,13 +1,14 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="container d-flex flex-column justify-content-center align-items-center bg-styles log-wrap">
-    <h1 class="text-center mb-4 title">Contact Us</h1>
+    <h1 class="text-center mb-4 title">{% trans "Contact Us" %}</h1>
     <!-- Contact form -->
     <form method="post" class="p-4 border rounded shadow-sm mx-auto w-100">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary w-100 mt-3 btn-styles">Send Message</button>
+        <button type="submit" class="btn btn-primary w-100 mt-3 btn-styles">{% trans "Send Message" %}</button>
     </form>
 </div>
 {% endblock %}

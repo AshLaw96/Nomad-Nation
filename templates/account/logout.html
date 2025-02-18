@@ -1,16 +1,17 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="container d-flex flex-column justify-content-center align-items-center bg-styles log-wrap">
-    <h1 class="text-center mb-4 title">Sign Out</h1>
-    <p class="text-center">Are you sure you want to sign out?</p>
+    <h1 class="text-center mb-4 title">{% trans "Sign Out" %}</h1>
+    <p class="text-center">{% trans "Are you sure you want to sign out?" %}</p>
     <!-- Sign out form -->
     <form method="post" action="{% url 'account_logout' %}" class="p-4 border rounded shadow-sm mx-auto">
         {% csrf_token %}
-        <button class="btn btn-primary w-100 mt-3 btn-styles" type="submit">Sign Out</button>
+        <button class="btn btn-primary w-100 mt-3 btn-styles" type="submit">{% trans "Sign Out" %}</button>
     </form>
     <p class="text-center mt-3">
-        <a href="{% url 'dashboard' %}">return to the homepage</a>
+        <a href="{% url 'dashboard' %}">{% trans "return to the homepage" %}</a>
     </p>
 </div>
 {% endblock %}
