@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-18 11:47+0000\n"
+"POT-Creation-Date: 2025-02-18 19:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: es\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,57 +14,57 @@ msgstr ""
 
 #: dashboard/templates/dashboard/dashboard.html:6
 msgid "Welcome to your Dashboard"
-msgstr "Bienvenido a tu Panel de Control"
+msgstr "आपके डैशबोर्ड में स्वागत है"
 
 #: dashboard/templates/dashboard/dashboard.html:8
 msgid "Superuser!"
-msgstr "¡Superusuario!"
+msgstr "सुपरयूज़र!"
 
 #: dashboard/templates/dashboard/dashboard.html:9
 msgid "To manage the site go to admin page:"
-msgstr "Para gestionar el sitio, ve a la página de administración:"
+msgstr "साइट को प्रबंधित करने के लिए प्रशासन पृष्ठ पर जाएं:"
 
 #: dashboard/templates/dashboard/dashboard.html:10
 msgid "Here"
-msgstr "Aquí"
+msgstr "यहां"
 
 #: dashboard/templates/dashboard/dashboard.html:22
 msgid "Upcoming stays"
-msgstr "Próximas estancias"
+msgstr "आगामी प्रवास"
 
 #: dashboard/templates/dashboard/dashboard.html:25
 msgid "View and manage your upcoming bookings."
-msgstr "Ver y gestionar tus próximas reservas."
+msgstr "अपने आगामी बुकिंग को देखें और प्रबंधित करें।"
 
 #: dashboard/templates/dashboard/dashboard.html:35
 msgid "No upcoming stays"
-msgstr "No hay próximas estancias"
+msgstr "कोई आगामी प्रवास नहीं है"
 
 #: dashboard/templates/dashboard/dashboard.html:45
 msgid "Favourites"
-msgstr "Favoritos"
+msgstr "पसंदीदा"
 
 #: dashboard/templates/dashboard/dashboard.html:48
 msgid "View your Favourites caravans."
-msgstr "Ver tus caravanas favoritas."
+msgstr "अपने पसंदीदा कारवां देखें।"
 
 #: dashboard/templates/dashboard/dashboard.html:54
 #: listings/templates/listings/booking.html:90
 #: listings/templates/listings/booking.html:186
 msgid "Owner:"
-msgstr "Propietario:"
+msgstr "मालिक:"
 
 #: dashboard/templates/dashboard/dashboard.html:58
 msgid "No items in your favourites"
-msgstr "No hay elementos en tus favoritos"
+msgstr "आपके पसंदीदा में कोई आइटम नहीं है"
 
 #: dashboard/templates/dashboard/dashboard.html:68
 msgid "Previous stays"
-msgstr "Estancias anteriores"
+msgstr "पिछले प्रवास"
 
 #: dashboard/templates/dashboard/dashboard.html:71
 msgid "View your previous stays."
-msgstr "Ver tus estancias anteriores."
+msgstr "अपने पिछले प्रवास को देखें।"
 
 #: dashboard/templates/dashboard/dashboard.html:77
 #: dashboard/templates/dashboard/dashboard.html:109
@@ -73,773 +73,779 @@ msgstr "Ver tus estancias anteriores."
 #: listings/templates/listings/booking.html:153
 #: listings/templates/listings/booking.html:189
 msgid "to"
-msgstr "a"
+msgstr "तक"
 
 #: dashboard/templates/dashboard/dashboard.html:81
 msgid "No previous stays"
-msgstr "No hay estancias anteriores"
+msgstr "कोई पिछला प्रवास नहीं है"
 
 #: dashboard/templates/dashboard/dashboard.html:97
 msgid "Booking requests"
-msgstr "Solicitudes de reserva"
+msgstr "बुकिंग अनुरोध"
 
 #: dashboard/templates/dashboard/dashboard.html:100
 msgid "View and manage requests from customers."
-msgstr "Ver y gestionar solicitudes de clientes."
+msgstr "ग्राहकों से अनुरोध देखें और प्रबंधित करें।"
 
 #: dashboard/templates/dashboard/dashboard.html:108
 msgid "requested from"
-msgstr "solicitado desde"
+msgstr "से अनुरोध किया गया"
 
 #: dashboard/templates/dashboard/dashboard.html:114
 msgid "No current requests"
-msgstr "No hay solicitudes actuales"
+msgstr "कोई वर्तमान अनुरोध नहीं है"
 
 #: dashboard/templates/dashboard/dashboard.html:124
 msgid "Your caravans"
-msgstr "Tus caravanas"
+msgstr "आपके कारवां"
 
 #: dashboard/templates/dashboard/dashboard.html:127
 msgid "View and manage your caravan listings."
-msgstr "Ver y gestionar tus listados de caravanas."
+msgstr "अपने कारवां लिस्टिंग को देखें और प्रबंधित करें।"
 
 #: dashboard/templates/dashboard/dashboard.html:129
 msgid "Current caravan names:"
-msgstr "Nombres actuales de caravanas:"
+msgstr "वर्तमान कारवां के नाम:"
 
 #: dashboard/templates/dashboard/dashboard.html:133
 msgid "No caravans listed"
-msgstr "No hay caravanas listadas"
+msgstr "कोई कारवां सूचीबद्ध नहीं है"
 
 #: dashboard/templates/dashboard/dashboard.html:137
 msgid "View All Listings"
-msgstr "Ver todos los listados"
+msgstr "सभी लिस्टिंग देखें"
 
 #: dashboard/templates/dashboard/dashboard.html:146
 #: listings/templates/listings/listing_page.html:153
 msgid "Reviews"
-msgstr "Reseñas"
+msgstr "समीक्षाएं"
 
 #: dashboard/templates/dashboard/dashboard.html:149
 msgid "Check reviews from customers."
-msgstr "Ver reseñas de clientes."
+msgstr "ग्राहकों से समीक्षाएं देखें।"
 
 #: dashboard/templates/dashboard/dashboard.html:156
 #: listings/templates/listings/listing_page.html:162
 msgid "rated"
-msgstr "calificado"
+msgstr "रेटेड"
 
 #: dashboard/templates/dashboard/dashboard.html:156
 msgid "stars"
-msgstr "estrellas"
+msgstr "तारे"
 
 #: dashboard/templates/dashboard/dashboard.html:160
 msgid "No reviews"
-msgstr "No hay reseñas"
+msgstr "कोई समीक्षाएं नहीं"
 
 #: listings/templates/listings/add_caravan.html:6
 #: listings/templates/listings/listing_page.html:353
 msgid "Add Caravan"
-msgstr "Añadir Caravana"
+msgstr "कारवां जोड़ें"
 
 #: listings/templates/listings/add_caravan.html:12
 msgid "Title:"
-msgstr "Título:"
+msgstr "शीर्षक:"
 
 #: listings/templates/listings/add_caravan.html:16
 msgid "Description:"
-msgstr "Descripción:"
+msgstr "विवरण:"
 
 #: listings/templates/listings/add_caravan.html:20
 msgid "Image:"
-msgstr "Imagen:"
+msgstr "छवि:"
 
 #: listings/templates/listings/add_caravan.html:24
 #: listings/templates/listings/listing_page.html:127
 msgid "Berth:"
-msgstr "Plazas:"
+msgstr "बर्थ:"
 
 #: listings/templates/listings/add_caravan.html:28
 #: listings/templates/listings/listing_page.html:136
 msgid "Amenities:"
-msgstr "Servicios:"
+msgstr "सुविधाएं:"
 
 #: listings/templates/listings/add_caravan.html:32
 msgid "Add Amenity"
-msgstr "Agregar Servicio"
+msgstr "सुविधा जोड़ें"
 
 #: listings/templates/listings/add_caravan.html:35
 #: listings/templates/listings/listing_page.html:130
 msgid "Location:"
-msgstr "Ubicación:"
+msgstr "स्थान:"
 
 #: listings/templates/listings/add_caravan.html:39
 msgid "Price Per Night:"
-msgstr "Precio por Noche:"
+msgstr "प्रति रात कीमत:"
 
 #: listings/templates/listings/add_caravan.html:44
 msgid "Availability:"
-msgstr "Disponibilidad:"
+msgstr "उपलब्धता:"
 
 #: listings/templates/listings/add_caravan.html:49
 msgid "Add"
-msgstr "Añadir"
+msgstr "जोड़ें"
 
 #: listings/templates/listings/booking.html:8
 msgid "Your Bookings"
-msgstr "Tus Reservas"
+msgstr "आपकी बुकिंग्स"
 
 #: listings/templates/listings/booking.html:10
 msgid "Your Caravan's Bookings"
-msgstr "Las Reservas de tu Caravana"
+msgstr "आपके कारवां की बुकिंग्स"
 
 #: listings/templates/listings/booking.html:16
 msgid "Pending Bookings"
-msgstr "Reservas Pendientes"
+msgstr "लंबित बुकिंग्स"
 
 #: listings/templates/listings/booking.html:30
 msgid "View Details"
-msgstr "Ver Detalles"
+msgstr "विवरण देखें"
 
 #: listings/templates/listings/booking.html:36
 msgid "Accept"
-msgstr "Aceptar"
+msgstr "स्वीकार करें"
 
 #: listings/templates/listings/booking.html:41
 msgid "Decline"
-msgstr "Rechazar"
+msgstr "अस्वीकार करें"
 
 #: listings/templates/listings/booking.html:51
 msgid "Booking Details"
-msgstr "Detalles de la Reserva"
+msgstr "बुकिंग विवरण"
 
 #: listings/templates/listings/booking.html:55
 #: user_settings/templates/user_settings/account_settings.html:13
 msgid "Name:"
-msgstr "Nombre:"
+msgstr "नाम:"
 
 #: listings/templates/listings/booking.html:56
 #: user_settings/templates/user_settings/account_settings.html:14
 msgid "Email:"
-msgstr "Correo Electrónico:"
+msgstr "ईमेल:"
 
 #: listings/templates/listings/booking.html:57
 #: user_settings/templates/user_settings/account_settings.html:15
 msgid "Phone Number:"
-msgstr "Número de Teléfono:"
+msgstr "फोन नंबर:"
 
 #: listings/templates/listings/booking.html:58
 msgid "Message:"
-msgstr "Mensaje:"
+msgstr "संदेश:"
 
 #: listings/templates/listings/booking.html:59
 msgid "Start Date:"
-msgstr "Fecha de Inicio:"
+msgstr "प्रारंभ तिथि:"
 
 #: listings/templates/listings/booking.html:60
 msgid "End Date:"
-msgstr "Fecha de Fin:"
+msgstr "समाप्ति तिथि:"
 
 #: listings/templates/listings/booking.html:63
 msgid "Close"
-msgstr "Cerrar"
+msgstr "बंद करें"
 
 #: listings/templates/listings/booking.html:71
 msgid "No pending bookings."
-msgstr "No hay reservas pendientes."
+msgstr "कोई लंबित बुकिंग्स नहीं हैं।"
 
 #: listings/templates/listings/booking.html:72
 #: listings/templates/listings/booking.html:137
 msgid "Go back to listings"
-msgstr "Volver a los anuncios"
+msgstr "लिस्टिंग्स पर वापस जाएं"
 
 #: listings/templates/listings/booking.html:79
 msgid "Upcoming Bookings"
-msgstr "Próximas Reservas"
+msgstr "आगामी बुकिंग्स"
 
 #: listings/templates/listings/booking.html:92
 msgid "Customer:"
-msgstr "Cliente:"
+msgstr "ग्राहक:"
 
 #: listings/templates/listings/booking.html:98
 #: listings/templates/listings/booking.html:107
 msgid "Modify Booking"
-msgstr "Modificar Reserva"
+msgstr "बुकिंग में संशोधन करें"
 
 #: listings/templates/listings/booking.html:114
 msgid "Start Date"
-msgstr "Fecha de Inicio"
+msgstr "प्रारंभ तिथि"
 
 #: listings/templates/listings/booking.html:118
 msgid "End Date"
-msgstr "Fecha de Fin"
+msgstr "समाप्ति तिथि"
 
 #: listings/templates/listings/booking.html:122
 msgid "Message"
-msgstr "Mensaje"
+msgstr "संदेश"
 
 #: listings/templates/listings/booking.html:126
 #: listings/templates/listings/booking.html:196
 msgid "Submit"
-msgstr "Enviar"
+msgstr "सबमिट करें"
 
 #: listings/templates/listings/booking.html:136
 msgid "No upcoming bookings."
-msgstr "No hay reservas próximas."
+msgstr "कोई आगामी बुकिंग्स नहीं हैं।"
 
 #: listings/templates/listings/booking.html:144
 msgid "Previous Bookings"
-msgstr "Reservas Anteriores"
+msgstr "पिछली बुकिंग्स"
 
 #: listings/templates/listings/booking.html:159
 msgid "No previous bookings."
-msgstr "Sin reservas previas."
+msgstr "कोई पिछली बुकिंग्स नहीं हैं।"
 
 #: listings/templates/listings/booking.html:167
 msgid "Request a Booking"
-msgstr "Solicitar una Reserva"
+msgstr "बुकिंग का अनुरोध करें"
 
 #: listings/templates/listings/booking.html:171
 #: listings/templates/listings/booking.html:181
 msgid "Request Booking"
-msgstr "Solicitar Reserva"
+msgstr "बुकिंग अनुरोध करें"
 
 #: listings/templates/listings/booking.html:187
 #: listings/templates/listings/listing_page.html:144
 msgid "Available Dates:"
-msgstr "Fechas Disponibles:"
+msgstr "उपलब्ध तिथियां:"
 
 #: listings/templates/listings/listing_page.html:6
 msgid "Welcome to your Listings Page"
-msgstr "Bienvenido a tu Pagina de Listados"
+msgstr "आपके लिस्टिंग्स पृष्ठ में स्वागत है"
 
 #: listings/templates/listings/listing_page.html:10
 msgid "Search caravans..."
-msgstr "Buscar caravanas"
+msgstr "कारवां खोजें..."
 
 #: listings/templates/listings/listing_page.html:13
 msgid "Search"
-msgstr "Buscar"
+msgstr "खोजें"
 
 #: listings/templates/listings/listing_page.html:14
 msgid "Reset"
-msgstr "Restablecer"
+msgstr "रीसेट करें"
 
 #: listings/templates/listings/listing_page.html:19
 msgid "Filters"
-msgstr "Filtros"
+msgstr "फिल्टर"
 
 #: listings/templates/listings/listing_page.html:27
 msgid "Filter by berth"
-msgstr "Filtrar por plaza"
+msgstr "बर्थ के अनुसार फिल्टर करें"
 
 #: listings/templates/listings/listing_page.html:28
 msgid "Two"
-msgstr "Dos"
+msgstr "दो"
 
 #: listings/templates/listings/listing_page.html:29
 msgid "Four"
-msgstr "Cuatro"
+msgstr "चार"
 
 #: listings/templates/listings/listing_page.html:30
 msgid "Six"
-msgstr "Seis"
+msgstr "छह"
 
 #: listings/templates/listings/listing_page.html:35
 msgid "Location"
-msgstr "Ubicación"
+msgstr "स्थान"
 
 #: listings/templates/listings/listing_page.html:39
 msgid "Min Price"
-msgstr "Precio mínimo"
+msgstr "न्यूनतम कीमत"
 
 #: listings/templates/listings/listing_page.html:43
 msgid "Max Price"
-msgstr "Precio máximo"
+msgstr "अधिकतम कीमत"
 
 #: listings/templates/listings/listing_page.html:46
 msgid "Available From"
-msgstr "Disponible Desde"
+msgstr "उपलब्ध तिथि"
 
 #: listings/templates/listings/listing_page.html:49
 msgid "Available To"
-msgstr "Disponible Para"
+msgstr "उपलब्ध तिथि तक"
 
 #: listings/templates/listings/listing_page.html:53
 msgid "Select Amenities:"
-msgstr "Seleccione Servicios:"
+msgstr "सुविधाएँ चुनें:"
 
 #: listings/templates/listings/listing_page.html:63
 msgid "Apply Filters"
-msgstr "Aplicar Filtros"
+msgstr "फिल्टर लागू करें"
 
 #: listings/templates/listings/listing_page.html:76
 msgid "Click to add to favourites"
-msgstr "Haga clic para agregar a favoritos"
+msgstr "फेवरेट्स में जोड़ने के लिए क्लिक करें"
 
 #: listings/templates/listings/listing_page.html:92
 #: listings/templates/listings/listing_page.html:114
 msgid "Previous"
-msgstr "Previo"
+msgstr "पिछला"
 
 #: listings/templates/listings/listing_page.html:96
 #: listings/templates/listings/listing_page.html:118
 msgid "Next"
-msgstr "Siguiente"
+msgstr "अगला"
 
 #: listings/templates/listings/listing_page.html:133
 msgid "Price per night:"
-msgstr "Precio por noche:"
+msgstr "प्रति रात कीमत:"
 
 #: listings/templates/listings/listing_page.html:159
 msgid "Customers reviews:"
-msgstr "Opiniones de clientes:"
+msgstr "ग्राहकों की समीक्षाएँ:"
 
 #: listings/templates/listings/listing_page.html:166
 msgid "Owner's Reply:"
-msgstr "Respuesta Del Dropietario:"
+msgstr "स्वामी की प्रतिक्रिया:"
 
 #: listings/templates/listings/listing_page.html:173
 #: listings/templates/listings/listing_page.html:185
 msgid "Edit Reply"
-msgstr "Editar Respuesta"
+msgstr "प्रतिक्रिया संपादित करें"
 
 #: listings/templates/listings/listing_page.html:176
 msgid "Delete Reply"
-msgstr "Eliminar Respuesta"
+msgstr "प्रतिक्रिया हटाएं"
 
 #: listings/templates/listings/listing_page.html:192
 #: listings/templates/listings/listing_page.html:207
 #: listings/templates/listings/listing_page.html:222
 msgid "Reply"
-msgstr "Responder"
+msgstr "प्रतिक्रिया दें"
 
 #: listings/templates/listings/listing_page.html:196
 #: listings/templates/listings/listing_page.html:226
 msgid "Submit Reply"
-msgstr "Enviar Respuesta"
+msgstr "प्रतिक्रिया सबमिट करें"
 
 #: listings/templates/listings/listing_page.html:215
 msgid "Reply to Review"
-msgstr "Responder a la Reseña"
+msgstr "समीक्षा पर प्रतिक्रिया दें"
 
 #: listings/templates/listings/listing_page.html:238
 #: listings/templates/listings/listing_page.html:295
 msgid "Edit Review"
-msgstr "Editar Reseña"
+msgstr "समीक्षा संपादित करें"
 
 #: listings/templates/listings/listing_page.html:241
 msgid "Delete Review"
-msgstr "Eliminar Reseña"
+msgstr "समीक्षा हटाएं"
 
 #: listings/templates/listings/listing_page.html:248
 msgid "Approve Review"
-msgstr "Aprobar Reseña"
+msgstr "समीक्षा स्वीकृत करें"
 
 #: listings/templates/listings/listing_page.html:258
 #: listings/templates/listings/listing_page.html:267
 msgid "Leave a Review"
-msgstr "Dejar una Reseña"
+msgstr "समीक्षा छोड़ें"
 
 #: listings/templates/listings/listing_page.html:274
 #: listings/templates/listings/listing_page.html:302
 msgid "Rating"
-msgstr "Calificación"
+msgstr "रेटिंग"
 
 #: listings/templates/listings/listing_page.html:278
 #: listings/templates/listings/listing_page.html:306
 msgid "Comment"
-msgstr "Comentario"
+msgstr "टिप्पणी"
 
 #: listings/templates/listings/listing_page.html:282
 #: listings/templates/listings/listing_page.html:310
 msgid "Submit Review"
-msgstr "Enviar Reseña"
+msgstr "समीक्षा सबमिट करें"
 
 #: listings/templates/listings/listing_page.html:323
 msgid "Edit caravan"
-msgstr "Editar caravana"
+msgstr "कारवां संपादित करें"
 
 #: listings/templates/listings/listing_page.html:329
 msgid "Delete caravan"
-msgstr "Eliminar Caravana"
+msgstr "कारवां हटाएं"
 
 #: listings/templates/listings/listing_page.html:337
 msgid "BOOK CARAVAN NOW"
-msgstr "RESERVA LA CARAVANA AHORA"
+msgstr "अब कारवां बुक करें"
 
 #: listings/templates/listings/listing_page.html:340
 msgid "Not Available"
-msgstr "No Disponible"
+msgstr "उपलब्ध नहीं"
 
 #: listings/templates/listings/listing_page.html:348
 msgid "No caravans available"
-msgstr "No hay caravanas disponibles"
+msgstr "कोई कारवां उपलब्ध नहीं"
 
 #: main/templates/main/contact.html:6
 msgid "Contact Us"
-msgstr "Contacta con Nosotros"
+msgstr "हमसे संपर्क करें"
 
 #: main/templates/main/contact.html:11
 msgid "Send Message"
-msgstr "Enviar Mensaje"
+msgstr "संदेश भेजें"
 
 #: main/templates/main/home.html:9
 msgid "Welcome to Nomad Nation"
-msgstr "Bienvenidos a la Nación Nómada"
+msgstr "नोमैड नेशन में स्वागत है"
 
 #: main/templates/main/home.html:10
-msgid "Your trusted platform for finding and renting the perfect caravan for your "
+msgid ""
+"Your trusted platform for finding and renting the perfect caravan for your "
 "adventure"
-msgstr "Tu plataforma de confianza para encontrar y alquilar la caravana perfecta "
-"para tu aventura"
+msgstr ""
+"आपकी विश्वासमंद प्लेटफॉर्म, जहाँ आप अपनी यात्रा के लिए सही कारवां ढूंढ सकते हैं और किराए पर ले सकते हैं।"
 
 #: main/templates/main/home.html:14
 msgid "What we do"
-msgstr "Lo que hacemos"
+msgstr "हम क्या करते हैं"
 
 #: main/templates/main/home.html:16
-msgid "At Nomad Nation, we connect caravan owners with travelers looking for unique "
+msgid ""
+"At Nomad Nation, we connect caravan owners with travelers looking for unique "
 "holiday experiences. Whether you're a caravan owner looking to earn extra "
 "income or a traveler seeking a hassle-free holiday, we've got you covered."
-msgstr "En Nomad Nation, conectamos a los propietarios de caravanas con viajeros que "
-"buscan experiencias vacacionales únicas. Ya sea que seas un propietario de "
-"caravana que busca ganar ingresos adicionales o un viajero que busca unas "
-"vacaciones sin complicaciones, te tenemos cubierto."
+msgstr ""
+"नोमैड नेशन में, हम कारवां मालिकों को उन यात्रियों से जोड़ते हैं जो अद्वितीय छुट्टियों का अनुभव चाहते हैं। चाहे आप एक कारवां मालिक हों जो अतिरिक्त आय अर्जित करना चाहते हों या एक यात्री जो बिना किसी परेशानी के छुट्टियां चाहते हों, हम आपकी मदद के लिए तैयार हैं।"
 
 #: main/templates/main/home.html:26
 msgid "Reliable Rentals"
-msgstr "Alquileres Confiables"
+msgstr "विश्वसनीय रेंटल"
 
 #: main/templates/main/home.html:27
 msgid "All rentals are verified to ensure your safety and satisfaction."
-msgstr "Todos los alquileres están verificados para garantizar tu seguridad y "
-"satisfacción."
+msgstr "सभी रेंटल्स सत्यापित होते हैं ताकि आपकी सुरक्षा और संतोष सुनिश्चित हो सके।"
 
 #: main/templates/main/home.html:35
 msgid "Community-Driven"
-msgstr "Impulsado por la Comunidad"
+msgstr "समुदाय-प्रेरित"
 
 #: main/templates/main/home.html:36
 msgid "Join a growing community of caravan enthusiasts."
-msgstr "Únete a una comunidad creciente de entusiastas de las caravanas."
+msgstr "कारवां के शौक़ीनों के बढ़ते समुदाय में शामिल हों।"
 
 #: main/templates/main/home.html:44
 msgid "Secure Payments"
-msgstr "Pagos Seguros"
+msgstr "सुरक्षित भुगतान"
 
 #: main/templates/main/home.html:45
 msgid "Easy and secure booking for peace of mind."
-msgstr "Reserva fácil y segura para tu tranquilidad."
+msgstr "चिंता-मुक्त अनुभव के लिए आसान और सुरक्षित बुकिंग।"
 
 #: templates/account/login.html:6 templates/account/login.html:14
 msgid "Log In"
-msgstr "Iniciar Sesión"
+msgstr "लॉग इन करें"
 
 #: templates/account/login.html:8
 msgid "Don't have an account yet?"
-msgstr "¿Aún no tienes una cuenta?"
+msgstr "क्या आपका अभी तक खाता नहीं है?"
 
 #: templates/account/login.html:8
 msgid "register here"
-msgstr "regístrate aquí"
+msgstr "यहाँ रजिस्टर करें"
 
 #: templates/account/logout.html:6 templates/account/logout.html:11
 msgid "Sign Out"
-msgstr "Cerrar Sesión"
+msgstr "साइन आउट करें"
 
 #: templates/account/logout.html:7
 msgid "Are you sure you want to sign out?"
-msgstr "¿Estás seguro de que quieres cerrar sesión?"
+msgstr "क्या आप सच में साइन आउट करना चाहते हैं?"
 
 #: templates/account/logout.html:14
 msgid "return to the homepage"
-msgstr "volver a la página principal"
+msgstr "मुख्य पृष्ठ पर वापस जाएं"
 
 #: templates/account/password_reset.html:6
 msgid "Password Reset"
-msgstr "Restablecer Contraseña"
+msgstr "पासवर्ड रीसेट"
 
 #: templates/account/password_reset.html:14
-msgid "Forgotten your password? Enter your username or email address below, and "
+msgid ""
+"Forgotten your password? Enter your username or email address below, and "
 "we'll send you an email allowing you to reset it."
-msgstr "¿Olvidaste tu contraseña? Ingresa tu nombre de usuario o dirección de correo electrónico a continuación, "
-"y te enviaremos un correo electrónico que te permitirá restablecerla."
+msgstr ""
+"क्या आप अपना पासवर्ड भूल गए हैं? नीचे अपना उपयोगकर्ता नाम या ईमेल पता दर्ज करें, और हम आपको एक ईमेल भेजेंगे जिससे आप इसे रीसेट कर सकें।"
 
 #: templates/account/password_reset.html:20
 msgid "Reset My Password"
-msgstr "Restablecer Mi Contraseña"
+msgstr "मेरा पासवर्ड रीसेट करें"
 
 #: templates/account/password_reset.html:30
 msgid "Remember your password?"
-msgstr "¿Recuerdas tu contraseña?"
+msgstr "क्या आपको अपना पासवर्ड याद है?"
 
 #: templates/account/password_reset.html:30
 msgid "Log in"
-msgstr "Iniciar sesión"
+msgstr "लॉग इन करें"
 
 #: templates/account/password_reset.html:32
 msgid "Please contact us if you have any trouble resetting your password."
-msgstr "Por favor contáctanos si tienes algún problema para restablecer tu contraseña."
+msgstr "यदि आपको अपना पासवर्ड रीसेट करने में कोई परेशानी हो, तो कृपया हमसे संपर्क करें।"
 
 #: templates/account/password_reset_done.html:6
 msgid "Password Reset Requested"
-msgstr "Solicitud de Restablecimiento de Contraseña"
+msgstr "पासवर्ड रीसेट का अनुरोध किया गया"
 
 #: templates/account/password_reset_done.html:7
-msgid "If an account exists with the provided email address, a password reset email "
+msgid ""
+"If an account exists with the provided email address, a password reset email "
 "has been sent."
-msgstr "Si existe una cuenta con la dirección de correo electrónico proporcionada, se ha enviado un correo electrónico de restablecimiento de contraseña."
+msgstr ""
+"यदि दिए गए ईमेल पते के साथ खाता मौजूद है, तो एक पासवर्ड रीसेट ईमेल भेजा गया है।"
 
 #: templates/account/password_reset_done.html:8
-msgid "Please check your inbox and follow the instructions to reset your password."
-msgstr "Por favor revisa tu bandeja de entrada y sigue las instrucciones para restablecer tu contraseña."
+msgid ""
+"Please check your inbox and follow the instructions to reset your password."
+msgstr ""
+"कृपया अपना इनबॉक्स चेक करें और अपने पासवर्ड को रीसेट करने के लिए निर्देशों का पालन करें।"
 
 #: templates/account/password_reset_done.html:9
 #: templates/account/password_reset_from_key_done.html:8
 msgid "Return to Login"
-msgstr "Volver a Iniciar Sesión"
+msgstr "लॉगिन पर वापस जाएं"
 
 #: templates/account/password_reset_from_key.html:6
 msgid "Reset Your Password"
-msgstr "Restablecer Tu Contraseña"
+msgstr "अपना पासवर्ड रीसेट करें"
 
 #: templates/account/password_reset_from_key.html:10
 msgid "Change Password"
-msgstr "Cambiar Contraseña"
+msgstr "पासवर्ड बदलें"
 
 #: templates/account/password_reset_from_key_done.html:6
 msgid "Password Reset Successful"
-msgstr "Restablecimiento de Contraseña Exitoso"
+msgstr "पासवर्ड रीसेट सफल"
 
 #: templates/account/password_reset_from_key_done.html:7
-msgid "Your password has been successfully reset. You can now log in with your new "
+msgid ""
+"Your password has been successfully reset. You can now log in with your new "
 "password."
-msgstr "Tu contraseña ha sido restablecida exitosamente. Ahora puedes iniciar sesión con tu nueva contraseña."
+msgstr ""
+"आपका पासवर्ड सफलतापूर्वक रीसेट हो गया है। अब आप अपने नए पासवर्ड से लॉगिन कर सकते हैं।"
 
 #: templates/account/signup.html:6 templates/account/signup.html:20
 msgid "Sign Up"
-msgstr "Registrarse"
+msgstr "साइन अप करें"
 
 #: templates/account/signup.html:14
 msgid "Already have an account? Then"
-msgstr "¿Ya tienes una cuenta? Entonces"
+msgstr "क्या आपका पहले से खाता है? फिर"
 
 #: templates/account/signup.html:14
 msgid "sign in"
-msgstr "inicia sesión"
+msgstr "साइन इन करें"
 
-#: templates/base.html:13 templates/base.html:35
+#: templates/base.html:14 templates/base.html:36
 msgid "Nomad Nation"
-msgstr "Nación Nómada"
+msgstr "नोमैड नेशन"
 
-#: templates/base.html:44
+#: templates/base.html:45
 msgid "Home"
-msgstr "Inicio"
+msgstr "मुख्य पृष्ठ"
 
-#: templates/base.html:47
+#: templates/base.html:48
 msgid "Contact"
-msgstr "Contacta"
+msgstr "संपर्क"
 
-#: templates/base.html:52
+#: templates/base.html:53
 msgid "Dashboard"
-msgstr "Panel de Control"
+msgstr "डैशबोर्ड"
 
-#: templates/base.html:55
+#: templates/base.html:56
 msgid "Caravan listings"
-msgstr "Listados de caravanas"
+msgstr "कारवां लिस्टिंग्स"
 
-#: templates/base.html:58
+#: templates/base.html:59
 msgid "Bookings"
-msgstr "Reservas"
+msgstr "बुकिंग्स"
 
-#: templates/base.html:61
+#: templates/base.html:62
 msgid "Account settings"
-msgstr "Configuración de la cuenta"
+msgstr "खाता सेटिंग्स"
 
-#: templates/base.html:64
+#: templates/base.html:65
 msgid "Notifications"
-msgstr "Notificaciones"
+msgstr "सूचनाएँ"
 
-#: templates/base.html:67
+#: templates/base.html:68
 msgid "Logout"
-msgstr "Cerrar Sesión"
+msgstr "साइन आउट"
 
-#: templates/base.html:72
+#: templates/base.html:73
 msgid "Register"
-msgstr "Registrarse"
+msgstr "रजिस्टर करें"
 
-#: templates/base.html:75
+#: templates/base.html:76
 msgid "Login"
-msgstr "Iniciar Sesión"
+msgstr "लॉगिन करें"
 
-#: templates/base.html:103
+#: templates/base.html:104
 msgid "Made by"
-msgstr "Hecho por"
+msgstr "बनाया गया"
 
-#: templates/base.html:106
+#: templates/base.html:107
 msgid "Follow us:"
-msgstr "Síguenos:"
+msgstr "हमारा अनुसरण करें:"
 
 #: user_settings/templates/user_settings/account_settings.html:6
 msgid "Account Settings"
-msgstr "Configuración de la cuenta"
+msgstr "खाता सेटिंग्स"
 
 #: user_settings/templates/user_settings/account_settings.html:10
 msgid "Personal Details"
-msgstr "Detalles Personales"
+msgstr "व्यक्तिगत विवरण"
 
 #: user_settings/templates/user_settings/account_settings.html:17
 #: user_settings/templates/user_settings/account_settings.html:73
 msgid "Edit Personal Details"
-msgstr "Editar detalles personales"
+msgstr "व्यक्तिगत विवरण संपादित करें"
 
 #: user_settings/templates/user_settings/account_settings.html:24
 msgid "Preferences"
-msgstr "Preferencias"
+msgstr "प्राथमिकताएँ"
 
 #: user_settings/templates/user_settings/account_settings.html:27
 msgid "Language:"
-msgstr "Idioma:"
+msgstr "भाषा:"
 
 #: user_settings/templates/user_settings/account_settings.html:28
 msgid "Currency:"
-msgstr "Moneda:"
+msgstr "मुद्रा:"
 
 #: user_settings/templates/user_settings/account_settings.html:29
 msgid "Appearance:"
-msgstr "Apariencia:"
+msgstr "रूपरेखा:"
 
 #: user_settings/templates/user_settings/account_settings.html:30
 msgid "Notifications Enabled:"
-msgstr "Notificaciones habilitadas:"
+msgstr "सूचनाएँ सक्षम की गईं:"
 
 #: user_settings/templates/user_settings/account_settings.html:32
 #: user_settings/templates/user_settings/account_settings.html:105
 msgid "Edit Preferences"
-msgstr "Editar preferencias"
+msgstr "प्राथमिकताएँ संपादित करें"
 
 #: user_settings/templates/user_settings/account_settings.html:39
 msgid "Payment Details"
-msgstr "Detalles de pago"
+msgstr "भुगतान विवरण"
 
 #: user_settings/templates/user_settings/account_settings.html:45
 msgid "No payment details available."
-msgstr "No hay detalles de pago disponibles."
+msgstr "कोई भुगतान विवरण उपलब्ध नहीं।"
 
 #: user_settings/templates/user_settings/account_settings.html:48
 #: user_settings/templates/user_settings/account_settings.html:154
 msgid "Edit Payment Details"
-msgstr "Editar detalles de pago"
+msgstr "भुगतान विवरण संपादित करें"
 
 #: user_settings/templates/user_settings/account_settings.html:55
 msgid "Privacy Settings"
-msgstr "Configuración de privacidad"
+msgstr "गोपनीयता सेटिंग्स"
 
 #: user_settings/templates/user_settings/account_settings.html:58
 msgid "Data Sharing Enabled:"
-msgstr "Compartición de datos habilitada:"
+msgstr "डेटा साझाकरण सक्षम किया गया:"
 
 #: user_settings/templates/user_settings/account_settings.html:60
 #: user_settings/templates/user_settings/account_settings.html:185
 msgid "Edit Privacy Settings"
-msgstr "Editar configuración de privacidad"
+msgstr "गोपनीयता सेटिंग्स संपादित करें"
 
 #: user_settings/templates/user_settings/account_settings.html:80
 msgid "Name"
-msgstr "Nombre"
+msgstr "नाम"
 
 #: user_settings/templates/user_settings/account_settings.html:84
 msgid "Email"
-msgstr "Correo electrónico"
+msgstr "ईमेल"
 
 #: user_settings/templates/user_settings/account_settings.html:88
 msgid "Phone Number"
-msgstr "Número de teléfono"
+msgstr "फोन नंबर"
 
 #: user_settings/templates/user_settings/account_settings.html:92
 #: user_settings/templates/user_settings/account_settings.html:142
 #: user_settings/templates/user_settings/account_settings.html:173
 #: user_settings/templates/user_settings/account_settings.html:196
 msgid "Save Changes"
-msgstr "Guardar cambios"
+msgstr "परिवर्तन सहेजें"
 
 #: user_settings/templates/user_settings/account_settings.html:112
 msgid "Language"
-msgstr "Idioma"
+msgstr "भाषा"
 
 #: user_settings/templates/user_settings/account_settings.html:114
 msgid "English"
-msgstr "Inglés"
+msgstr "अंग्रेज़ी"
 
 #: user_settings/templates/user_settings/account_settings.html:115
 msgid "Spanish"
-msgstr "Español"
+msgstr "स्पेनिश"
 
 #: user_settings/templates/user_settings/account_settings.html:116
 msgid "French"
-msgstr "Francés"
+msgstr "फ्रेंच"
 
 #: user_settings/templates/user_settings/account_settings.html:117
 msgid "German"
-msgstr "Alemán"
+msgstr "जर्मन"
 
 #: user_settings/templates/user_settings/account_settings.html:118
 msgid "Italian"
-msgstr "Italiano"
+msgstr "इतालवी"
 
 #: user_settings/templates/user_settings/account_settings.html:119
 msgid "Portuguese"
-msgstr "Portugués"
+msgstr "पुर्तगाली"
 
 #: user_settings/templates/user_settings/account_settings.html:120
 msgid "Russian"
-msgstr "Ruso"
+msgstr "रूसी"
 
 #: user_settings/templates/user_settings/account_settings.html:121
 msgid "Chinese"
-msgstr "Chino"
+msgstr "चीनी"
 
 #: user_settings/templates/user_settings/account_settings.html:122
 msgid "Japanese"
-msgstr "Japonés"
+msgstr "जापानी"
 
 #: user_settings/templates/user_settings/account_settings.html:123
 msgid "Hindi"
-msgstr "Hindi"
+msgstr "हिंदी"
 
 #: user_settings/templates/user_settings/account_settings.html:127
 msgid "Currency"
-msgstr "Moneda"
+msgstr "मुद्रा"
 
 #: user_settings/templates/user_settings/account_settings.html:131
 msgid "Appearance"
-msgstr "Apariencia"
+msgstr "रूपरेखा"
 
 #: user_settings/templates/user_settings/account_settings.html:133
 msgid "Light"
-msgstr "Claro"
+msgstr "हल्का"
 
 #: user_settings/templates/user_settings/account_settings.html:134
 msgid "Dark"
-msgstr "Oscuro"
+msgstr "अंधेरा"
 
 #: user_settings/templates/user_settings/account_settings.html:138
 msgid "Notifications Enabled"
-msgstr "Notificaciones habilitadas"
+msgstr "सूचनाएँ सक्षम की गईं"
 
 #: user_settings/templates/user_settings/account_settings.html:161
 msgid "Payment Method"
-msgstr "Método de pago"
+msgstr "भुगतान विधि"
 
 #: user_settings/templates/user_settings/account_settings.html:165
 msgid "Card Last Four Digits"
-msgstr "Últimos cuatro dígitos de la tarjeta"
+msgstr "कार्ड के आखिरी चार अंक"
 
 #: user_settings/templates/user_settings/account_settings.html:169
 msgid "Billing Address"
-msgstr "Dirección de facturación"
+msgstr "बिलिंग पता"
 
 #: user_settings/templates/user_settings/account_settings.html:192
 msgid "Data Sharing Enabled"
-msgstr "Compartición de datos habilitada"
+msgstr "डेटा साझाकरण सक्षम किया गया"

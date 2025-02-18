@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-18 11:47+0000\n"
+"POT-Creation-Date: 2025-02-18 19:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: es\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,31 +14,31 @@ msgstr ""
 
 #: dashboard/templates/dashboard/dashboard.html:6
 msgid "Welcome to your Dashboard"
-msgstr "Bienvenido a tu Panel de Control"
+msgstr "Bem-vindo ao seu Painel de Controle"
 
 #: dashboard/templates/dashboard/dashboard.html:8
 msgid "Superuser!"
-msgstr "¡Superusuario!"
+msgstr "Superusuário!"
 
 #: dashboard/templates/dashboard/dashboard.html:9
 msgid "To manage the site go to admin page:"
-msgstr "Para gestionar el sitio, ve a la página de administración:"
+msgstr "Para gerenciar o site, vá para a página de administração:"
 
 #: dashboard/templates/dashboard/dashboard.html:10
 msgid "Here"
-msgstr "Aquí"
+msgstr "Aqui"
 
 #: dashboard/templates/dashboard/dashboard.html:22
 msgid "Upcoming stays"
-msgstr "Próximas estancias"
+msgstr "Estadias futuras"
 
 #: dashboard/templates/dashboard/dashboard.html:25
 msgid "View and manage your upcoming bookings."
-msgstr "Ver y gestionar tus próximas reservas."
+msgstr "Visualize e gerencie suas reservas futuras."
 
 #: dashboard/templates/dashboard/dashboard.html:35
 msgid "No upcoming stays"
-msgstr "No hay próximas estancias"
+msgstr "Sem estadias futuras"
 
 #: dashboard/templates/dashboard/dashboard.html:45
 msgid "Favourites"
@@ -46,25 +46,25 @@ msgstr "Favoritos"
 
 #: dashboard/templates/dashboard/dashboard.html:48
 msgid "View your Favourites caravans."
-msgstr "Ver tus caravanas favoritas."
+msgstr "Visualize suas caravanas favoritas."
 
 #: dashboard/templates/dashboard/dashboard.html:54
 #: listings/templates/listings/booking.html:90
 #: listings/templates/listings/booking.html:186
 msgid "Owner:"
-msgstr "Propietario:"
+msgstr "Proprietário:"
 
 #: dashboard/templates/dashboard/dashboard.html:58
 msgid "No items in your favourites"
-msgstr "No hay elementos en tus favoritos"
+msgstr "Nenhum item nos seus favoritos"
 
 #: dashboard/templates/dashboard/dashboard.html:68
 msgid "Previous stays"
-msgstr "Estancias anteriores"
+msgstr "Estadias anteriores"
 
 #: dashboard/templates/dashboard/dashboard.html:71
 msgid "View your previous stays."
-msgstr "Ver tus estancias anteriores."
+msgstr "Visualize suas estadias anteriores."
 
 #: dashboard/templates/dashboard/dashboard.html:77
 #: dashboard/templates/dashboard/dashboard.html:109
@@ -73,74 +73,74 @@ msgstr "Ver tus estancias anteriores."
 #: listings/templates/listings/booking.html:153
 #: listings/templates/listings/booking.html:189
 msgid "to"
-msgstr "a"
+msgstr "para"
 
 #: dashboard/templates/dashboard/dashboard.html:81
 msgid "No previous stays"
-msgstr "No hay estancias anteriores"
+msgstr "Sem estadias anteriores"
 
 #: dashboard/templates/dashboard/dashboard.html:97
 msgid "Booking requests"
-msgstr "Solicitudes de reserva"
+msgstr "Pedidos de reserva"
 
 #: dashboard/templates/dashboard/dashboard.html:100
 msgid "View and manage requests from customers."
-msgstr "Ver y gestionar solicitudes de clientes."
+msgstr "Visualize e gerencie os pedidos de clientes."
 
 #: dashboard/templates/dashboard/dashboard.html:108
 msgid "requested from"
-msgstr "solicitado desde"
+msgstr "pedido de"
 
 #: dashboard/templates/dashboard/dashboard.html:114
 msgid "No current requests"
-msgstr "No hay solicitudes actuales"
+msgstr "Sem pedidos atuais"
 
 #: dashboard/templates/dashboard/dashboard.html:124
 msgid "Your caravans"
-msgstr "Tus caravanas"
+msgstr "Suas caravanas"
 
 #: dashboard/templates/dashboard/dashboard.html:127
 msgid "View and manage your caravan listings."
-msgstr "Ver y gestionar tus listados de caravanas."
+msgstr "Visualize e gerencie seus anúncios de caravanas."
 
 #: dashboard/templates/dashboard/dashboard.html:129
 msgid "Current caravan names:"
-msgstr "Nombres actuales de caravanas:"
+msgstr "Nomes das caravanas atuais:"
 
 #: dashboard/templates/dashboard/dashboard.html:133
 msgid "No caravans listed"
-msgstr "No hay caravanas listadas"
+msgstr "Nenhuma caravana listada"
 
 #: dashboard/templates/dashboard/dashboard.html:137
 msgid "View All Listings"
-msgstr "Ver todos los listados"
+msgstr "Ver todos os anúncios"
 
 #: dashboard/templates/dashboard/dashboard.html:146
 #: listings/templates/listings/listing_page.html:153
 msgid "Reviews"
-msgstr "Reseñas"
+msgstr "Avaliações"
 
 #: dashboard/templates/dashboard/dashboard.html:149
 msgid "Check reviews from customers."
-msgstr "Ver reseñas de clientes."
+msgstr "Verifique as avaliações dos clientes."
 
 #: dashboard/templates/dashboard/dashboard.html:156
 #: listings/templates/listings/listing_page.html:162
 msgid "rated"
-msgstr "calificado"
+msgstr "avaliado"
 
 #: dashboard/templates/dashboard/dashboard.html:156
 msgid "stars"
-msgstr "estrellas"
+msgstr "estrelas"
 
 #: dashboard/templates/dashboard/dashboard.html:160
 msgid "No reviews"
-msgstr "No hay reseñas"
+msgstr "Sem avaliações"
 
 #: listings/templates/listings/add_caravan.html:6
 #: listings/templates/listings/listing_page.html:353
 msgid "Add Caravan"
-msgstr "Añadir Caravana"
+msgstr "Adicionar Caravana"
 
 #: listings/templates/listings/add_caravan.html:12
 msgid "Title:"
@@ -148,114 +148,114 @@ msgstr "Título:"
 
 #: listings/templates/listings/add_caravan.html:16
 msgid "Description:"
-msgstr "Descripción:"
+msgstr "Descrição:"
 
 #: listings/templates/listings/add_caravan.html:20
 msgid "Image:"
-msgstr "Imagen:"
+msgstr "Imagem:"
 
 #: listings/templates/listings/add_caravan.html:24
 #: listings/templates/listings/listing_page.html:127
 msgid "Berth:"
-msgstr "Plazas:"
+msgstr "Cama:"
 
 #: listings/templates/listings/add_caravan.html:28
 #: listings/templates/listings/listing_page.html:136
 msgid "Amenities:"
-msgstr "Servicios:"
+msgstr "Comodidades:"
 
 #: listings/templates/listings/add_caravan.html:32
 msgid "Add Amenity"
-msgstr "Agregar Servicio"
+msgstr "Adicionar Comodidade"
 
 #: listings/templates/listings/add_caravan.html:35
 #: listings/templates/listings/listing_page.html:130
 msgid "Location:"
-msgstr "Ubicación:"
+msgstr "Localização:"
 
 #: listings/templates/listings/add_caravan.html:39
 msgid "Price Per Night:"
-msgstr "Precio por Noche:"
+msgstr "Preço por Noite:"
 
 #: listings/templates/listings/add_caravan.html:44
 msgid "Availability:"
-msgstr "Disponibilidad:"
+msgstr "Disponibilidade:"
 
 #: listings/templates/listings/add_caravan.html:49
 msgid "Add"
-msgstr "Añadir"
+msgstr "Adicionar"
 
 #: listings/templates/listings/booking.html:8
 msgid "Your Bookings"
-msgstr "Tus Reservas"
+msgstr "Suas Reservas"
 
 #: listings/templates/listings/booking.html:10
 msgid "Your Caravan's Bookings"
-msgstr "Las Reservas de tu Caravana"
+msgstr "Reservas da sua Caravana"
 
 #: listings/templates/listings/booking.html:16
 msgid "Pending Bookings"
-msgstr "Reservas Pendientes"
+msgstr "Reservas Pendentes"
 
 #: listings/templates/listings/booking.html:30
 msgid "View Details"
-msgstr "Ver Detalles"
+msgstr "Ver Detalhes"
 
 #: listings/templates/listings/booking.html:36
 msgid "Accept"
-msgstr "Aceptar"
+msgstr "Aceitar"
 
 #: listings/templates/listings/booking.html:41
 msgid "Decline"
-msgstr "Rechazar"
+msgstr "Recusar"
 
 #: listings/templates/listings/booking.html:51
 msgid "Booking Details"
-msgstr "Detalles de la Reserva"
+msgstr "Detalhes da Reserva"
 
 #: listings/templates/listings/booking.html:55
 #: user_settings/templates/user_settings/account_settings.html:13
 msgid "Name:"
-msgstr "Nombre:"
+msgstr "Nome:"
 
 #: listings/templates/listings/booking.html:56
 #: user_settings/templates/user_settings/account_settings.html:14
 msgid "Email:"
-msgstr "Correo Electrónico:"
+msgstr "Email:"
 
 #: listings/templates/listings/booking.html:57
 #: user_settings/templates/user_settings/account_settings.html:15
 msgid "Phone Number:"
-msgstr "Número de Teléfono:"
+msgstr "Número de Telefone:"
 
 #: listings/templates/listings/booking.html:58
 msgid "Message:"
-msgstr "Mensaje:"
+msgstr "Mensagem:"
 
 #: listings/templates/listings/booking.html:59
 msgid "Start Date:"
-msgstr "Fecha de Inicio:"
+msgstr "Data de Início:"
 
 #: listings/templates/listings/booking.html:60
 msgid "End Date:"
-msgstr "Fecha de Fin:"
+msgstr "Data de Fim:"
 
 #: listings/templates/listings/booking.html:63
 msgid "Close"
-msgstr "Cerrar"
+msgstr "Fechar"
 
 #: listings/templates/listings/booking.html:71
 msgid "No pending bookings."
-msgstr "No hay reservas pendientes."
+msgstr "Sem reservas pendentes."
 
 #: listings/templates/listings/booking.html:72
 #: listings/templates/listings/booking.html:137
 msgid "Go back to listings"
-msgstr "Volver a los anuncios"
+msgstr "Voltar aos anúncios"
 
 #: listings/templates/listings/booking.html:79
 msgid "Upcoming Bookings"
-msgstr "Próximas Reservas"
+msgstr "Reservas Futuras"
 
 #: listings/templates/listings/booking.html:92
 msgid "Customer:"
@@ -268,15 +268,15 @@ msgstr "Modificar Reserva"
 
 #: listings/templates/listings/booking.html:114
 msgid "Start Date"
-msgstr "Fecha de Inicio"
+msgstr "Data de Início"
 
 #: listings/templates/listings/booking.html:118
 msgid "End Date"
-msgstr "Fecha de Fin"
+msgstr "Data de Fim"
 
 #: listings/templates/listings/booking.html:122
 msgid "Message"
-msgstr "Mensaje"
+msgstr "Mensagem"
 
 #: listings/templates/listings/booking.html:126
 #: listings/templates/listings/booking.html:196
@@ -285,7 +285,7 @@ msgstr "Enviar"
 
 #: listings/templates/listings/booking.html:136
 msgid "No upcoming bookings."
-msgstr "No hay reservas próximas."
+msgstr "Sem reservas futuras."
 
 #: listings/templates/listings/booking.html:144
 msgid "Previous Bookings"
@@ -293,11 +293,11 @@ msgstr "Reservas Anteriores"
 
 #: listings/templates/listings/booking.html:159
 msgid "No previous bookings."
-msgstr "Sin reservas previas."
+msgstr "Sem reservas anteriores."
 
 #: listings/templates/listings/booking.html:167
 msgid "Request a Booking"
-msgstr "Solicitar una Reserva"
+msgstr "Solicitar uma Reserva"
 
 #: listings/templates/listings/booking.html:171
 #: listings/templates/listings/booking.html:181
@@ -307,23 +307,23 @@ msgstr "Solicitar Reserva"
 #: listings/templates/listings/booking.html:187
 #: listings/templates/listings/listing_page.html:144
 msgid "Available Dates:"
-msgstr "Fechas Disponibles:"
+msgstr "Datas Disponíveis:"
 
 #: listings/templates/listings/listing_page.html:6
 msgid "Welcome to your Listings Page"
-msgstr "Bienvenido a tu Pagina de Listados"
+msgstr "Bem-vindo à sua Página de Anúncios"
 
 #: listings/templates/listings/listing_page.html:10
 msgid "Search caravans..."
-msgstr "Buscar caravanas"
+msgstr "Pesquisar caravanas..."
 
 #: listings/templates/listings/listing_page.html:13
 msgid "Search"
-msgstr "Buscar"
+msgstr "Pesquisar"
 
 #: listings/templates/listings/listing_page.html:14
 msgid "Reset"
-msgstr "Restablecer"
+msgstr "Reiniciar"
 
 #: listings/templates/listings/listing_page.html:19
 msgid "Filters"
@@ -331,15 +331,15 @@ msgstr "Filtros"
 
 #: listings/templates/listings/listing_page.html:27
 msgid "Filter by berth"
-msgstr "Filtrar por plaza"
+msgstr "Filtrar por cama"
 
 #: listings/templates/listings/listing_page.html:28
 msgid "Two"
-msgstr "Dos"
+msgstr "Dois"
 
 #: listings/templates/listings/listing_page.html:29
 msgid "Four"
-msgstr "Cuatro"
+msgstr "Quatro"
 
 #: listings/templates/listings/listing_page.html:30
 msgid "Six"
@@ -347,27 +347,27 @@ msgstr "Seis"
 
 #: listings/templates/listings/listing_page.html:35
 msgid "Location"
-msgstr "Ubicación"
+msgstr "Localização"
 
 #: listings/templates/listings/listing_page.html:39
 msgid "Min Price"
-msgstr "Precio mínimo"
+msgstr "Preço Mínimo"
 
 #: listings/templates/listings/listing_page.html:43
 msgid "Max Price"
-msgstr "Precio máximo"
+msgstr "Preço Máximo"
 
 #: listings/templates/listings/listing_page.html:46
 msgid "Available From"
-msgstr "Disponible Desde"
+msgstr "Disponível a partir de"
 
 #: listings/templates/listings/listing_page.html:49
 msgid "Available To"
-msgstr "Disponible Para"
+msgstr "Disponível até"
 
 #: listings/templates/listings/listing_page.html:53
 msgid "Select Amenities:"
-msgstr "Seleccione Servicios:"
+msgstr "Selecione Comodidades:"
 
 #: listings/templates/listings/listing_page.html:63
 msgid "Apply Filters"
@@ -375,38 +375,38 @@ msgstr "Aplicar Filtros"
 
 #: listings/templates/listings/listing_page.html:76
 msgid "Click to add to favourites"
-msgstr "Haga clic para agregar a favoritos"
+msgstr "Clique para adicionar aos favoritos"
 
 #: listings/templates/listings/listing_page.html:92
 #: listings/templates/listings/listing_page.html:114
 msgid "Previous"
-msgstr "Previo"
+msgstr "Anterior"
 
 #: listings/templates/listings/listing_page.html:96
 #: listings/templates/listings/listing_page.html:118
 msgid "Next"
-msgstr "Siguiente"
+msgstr "Próximo"
 
 #: listings/templates/listings/listing_page.html:133
 msgid "Price per night:"
-msgstr "Precio por noche:"
+msgstr "Preço por noite:"
 
 #: listings/templates/listings/listing_page.html:159
 msgid "Customers reviews:"
-msgstr "Opiniones de clientes:"
+msgstr "Avaliações dos clientes:"
 
 #: listings/templates/listings/listing_page.html:166
 msgid "Owner's Reply:"
-msgstr "Respuesta Del Dropietario:"
+msgstr "Resposta do proprietário:"
 
 #: listings/templates/listings/listing_page.html:173
 #: listings/templates/listings/listing_page.html:185
 msgid "Edit Reply"
-msgstr "Editar Respuesta"
+msgstr "Editar Resposta"
 
 #: listings/templates/listings/listing_page.html:176
 msgid "Delete Reply"
-msgstr "Eliminar Respuesta"
+msgstr "Excluir Resposta"
 
 #: listings/templates/listings/listing_page.html:192
 #: listings/templates/listings/listing_page.html:207
@@ -417,44 +417,44 @@ msgstr "Responder"
 #: listings/templates/listings/listing_page.html:196
 #: listings/templates/listings/listing_page.html:226
 msgid "Submit Reply"
-msgstr "Enviar Respuesta"
+msgstr "Enviar Resposta"
 
 #: listings/templates/listings/listing_page.html:215
 msgid "Reply to Review"
-msgstr "Responder a la Reseña"
+msgstr "Responder à Avaliação"
 
 #: listings/templates/listings/listing_page.html:238
 #: listings/templates/listings/listing_page.html:295
 msgid "Edit Review"
-msgstr "Editar Reseña"
+msgstr "Editar Avaliação"
 
 #: listings/templates/listings/listing_page.html:241
 msgid "Delete Review"
-msgstr "Eliminar Reseña"
+msgstr "Excluir Avaliação"
 
 #: listings/templates/listings/listing_page.html:248
 msgid "Approve Review"
-msgstr "Aprobar Reseña"
+msgstr "Aprovar Avaliação"
 
 #: listings/templates/listings/listing_page.html:258
 #: listings/templates/listings/listing_page.html:267
 msgid "Leave a Review"
-msgstr "Dejar una Reseña"
+msgstr "Deixar uma Avaliação"
 
 #: listings/templates/listings/listing_page.html:274
 #: listings/templates/listings/listing_page.html:302
 msgid "Rating"
-msgstr "Calificación"
+msgstr "Avaliação"
 
 #: listings/templates/listings/listing_page.html:278
 #: listings/templates/listings/listing_page.html:306
 msgid "Comment"
-msgstr "Comentario"
+msgstr "Comentário"
 
 #: listings/templates/listings/listing_page.html:282
 #: listings/templates/listings/listing_page.html:310
 msgid "Submit Review"
-msgstr "Enviar Reseña"
+msgstr "Enviar Avaliação"
 
 #: listings/templates/listings/listing_page.html:323
 msgid "Edit caravan"
@@ -462,241 +462,253 @@ msgstr "Editar caravana"
 
 #: listings/templates/listings/listing_page.html:329
 msgid "Delete caravan"
-msgstr "Eliminar Caravana"
+msgstr "Excluir caravana"
 
 #: listings/templates/listings/listing_page.html:337
 msgid "BOOK CARAVAN NOW"
-msgstr "RESERVA LA CARAVANA AHORA"
+msgstr "RESERVAR CARAVANA AGORA"
 
 #: listings/templates/listings/listing_page.html:340
 msgid "Not Available"
-msgstr "No Disponible"
+msgstr "Indisponível"
 
 #: listings/templates/listings/listing_page.html:348
 msgid "No caravans available"
-msgstr "No hay caravanas disponibles"
+msgstr "Nenhuma caravana disponível"
 
 #: main/templates/main/contact.html:6
 msgid "Contact Us"
-msgstr "Contacta con Nosotros"
+msgstr "Contato"
 
 #: main/templates/main/contact.html:11
 msgid "Send Message"
-msgstr "Enviar Mensaje"
+msgstr "Enviar Mensagem"
 
 #: main/templates/main/home.html:9
 msgid "Welcome to Nomad Nation"
-msgstr "Bienvenidos a la Nación Nómada"
+msgstr "Bem-vindo ao Nomad Nation"
 
 #: main/templates/main/home.html:10
-msgid "Your trusted platform for finding and renting the perfect caravan for your "
+msgid ""
+"Your trusted platform for finding and renting the perfect caravan for your "
 "adventure"
-msgstr "Tu plataforma de confianza para encontrar y alquilar la caravana perfecta "
-"para tu aventura"
+msgstr ""
+"Sua plataforma confiável para encontrar e alugar a caravana perfeita para sua "
+"aventura"
 
 #: main/templates/main/home.html:14
 msgid "What we do"
-msgstr "Lo que hacemos"
+msgstr "O que fazemos"
 
 #: main/templates/main/home.html:16
-msgid "At Nomad Nation, we connect caravan owners with travelers looking for unique "
+msgid ""
+"At Nomad Nation, we connect caravan owners with travelers looking for unique "
 "holiday experiences. Whether you're a caravan owner looking to earn extra "
 "income or a traveler seeking a hassle-free holiday, we've got you covered."
-msgstr "En Nomad Nation, conectamos a los propietarios de caravanas con viajeros que "
-"buscan experiencias vacacionales únicas. Ya sea que seas un propietario de "
-"caravana que busca ganar ingresos adicionales o un viajero que busca unas "
-"vacaciones sin complicaciones, te tenemos cubierto."
+msgstr ""
+"No Nomad Nation, conectamos proprietários de caravanas com viajantes que buscam "
+"experiências únicas de férias. Seja você um proprietário de caravana procurando "
+"ganhar uma renda extra ou um viajante em busca de férias sem complicações, nós "
+"temos o que você precisa."
 
 #: main/templates/main/home.html:26
 msgid "Reliable Rentals"
-msgstr "Alquileres Confiables"
+msgstr "Aluguéis Confiáveis"
 
 #: main/templates/main/home.html:27
 msgid "All rentals are verified to ensure your safety and satisfaction."
-msgstr "Todos los alquileres están verificados para garantizar tu seguridad y "
-"satisfacción."
+msgstr "Todos os aluguéis são verificados para garantir sua segurança e satisfação."
 
 #: main/templates/main/home.html:35
 msgid "Community-Driven"
-msgstr "Impulsado por la Comunidad"
+msgstr "Movido pela Comunidade"
 
 #: main/templates/main/home.html:36
 msgid "Join a growing community of caravan enthusiasts."
-msgstr "Únete a una comunidad creciente de entusiastas de las caravanas."
+msgstr "Junte-se a uma comunidade crescente de entusiastas de caravanas."
 
 #: main/templates/main/home.html:44
 msgid "Secure Payments"
-msgstr "Pagos Seguros"
+msgstr "Pagamentos Seguros"
 
 #: main/templates/main/home.html:45
 msgid "Easy and secure booking for peace of mind."
-msgstr "Reserva fácil y segura para tu tranquilidad."
+msgstr "Reserva fácil e segura para sua tranquilidade."
 
 #: templates/account/login.html:6 templates/account/login.html:14
 msgid "Log In"
-msgstr "Iniciar Sesión"
+msgstr "Entrar"
 
 #: templates/account/login.html:8
 msgid "Don't have an account yet?"
-msgstr "¿Aún no tienes una cuenta?"
+msgstr "Ainda não tem uma conta?"
 
 #: templates/account/login.html:8
 msgid "register here"
-msgstr "regístrate aquí"
+msgstr "registre-se aqui"
 
 #: templates/account/logout.html:6 templates/account/logout.html:11
 msgid "Sign Out"
-msgstr "Cerrar Sesión"
+msgstr "Sair"
 
 #: templates/account/logout.html:7
 msgid "Are you sure you want to sign out?"
-msgstr "¿Estás seguro de que quieres cerrar sesión?"
+msgstr "Tem certeza de que deseja sair?"
 
 #: templates/account/logout.html:14
 msgid "return to the homepage"
-msgstr "volver a la página principal"
+msgstr "voltar para a página inicial"
 
 #: templates/account/password_reset.html:6
 msgid "Password Reset"
-msgstr "Restablecer Contraseña"
+msgstr "Redefinir Senha"
 
 #: templates/account/password_reset.html:14
-msgid "Forgotten your password? Enter your username or email address below, and "
+msgid ""
+"Forgotten your password? Enter your username or email address below, and "
 "we'll send you an email allowing you to reset it."
-msgstr "¿Olvidaste tu contraseña? Ingresa tu nombre de usuario o dirección de correo electrónico a continuación, "
-"y te enviaremos un correo electrónico que te permitirá restablecerla."
+msgstr ""
+"Esqueceu sua senha? Digite seu nome de usuário ou endereço de e-mail abaixo, e "
+"enviamos um e-mail para que você possa redefini-la."
 
 #: templates/account/password_reset.html:20
 msgid "Reset My Password"
-msgstr "Restablecer Mi Contraseña"
+msgstr "Redefinir Minha Senha"
 
 #: templates/account/password_reset.html:30
 msgid "Remember your password?"
-msgstr "¿Recuerdas tu contraseña?"
+msgstr "Lembrou sua senha?"
 
 #: templates/account/password_reset.html:30
 msgid "Log in"
-msgstr "Iniciar sesión"
+msgstr "Entrar"
 
 #: templates/account/password_reset.html:32
 msgid "Please contact us if you have any trouble resetting your password."
-msgstr "Por favor contáctanos si tienes algún problema para restablecer tu contraseña."
+msgstr "Por favor, entre em contato conosco se tiver problemas ao redefinir sua senha."
 
 #: templates/account/password_reset_done.html:6
 msgid "Password Reset Requested"
-msgstr "Solicitud de Restablecimiento de Contraseña"
+msgstr "Redefinição de Senha Solicitada"
 
 #: templates/account/password_reset_done.html:7
-msgid "If an account exists with the provided email address, a password reset email "
+msgid ""
+"If an account exists with the provided email address, a password reset email "
 "has been sent."
-msgstr "Si existe una cuenta con la dirección de correo electrónico proporcionada, se ha enviado un correo electrónico de restablecimiento de contraseña."
+msgstr ""
+"Se uma conta existir com o endereço de e-mail fornecido, um e-mail de redefinição "
+"de senha foi enviado."
 
 #: templates/account/password_reset_done.html:8
-msgid "Please check your inbox and follow the instructions to reset your password."
-msgstr "Por favor revisa tu bandeja de entrada y sigue las instrucciones para restablecer tu contraseña."
+msgid ""
+"Please check your inbox and follow the instructions to reset your password."
+msgstr ""
+"Por favor, verifique sua caixa de entrada e siga as instruções para redefinir sua senha."
 
 #: templates/account/password_reset_done.html:9
 #: templates/account/password_reset_from_key_done.html:8
 msgid "Return to Login"
-msgstr "Volver a Iniciar Sesión"
+msgstr "Voltar para Login"
 
 #: templates/account/password_reset_from_key.html:6
 msgid "Reset Your Password"
-msgstr "Restablecer Tu Contraseña"
+msgstr "Redefina Sua Senha"
 
 #: templates/account/password_reset_from_key.html:10
 msgid "Change Password"
-msgstr "Cambiar Contraseña"
+msgstr "Alterar Senha"
 
 #: templates/account/password_reset_from_key_done.html:6
 msgid "Password Reset Successful"
-msgstr "Restablecimiento de Contraseña Exitoso"
+msgstr "Redefinição de Senha Bem-Sucedida"
 
 #: templates/account/password_reset_from_key_done.html:7
-msgid "Your password has been successfully reset. You can now log in with your new "
+msgid ""
+"Your password has been successfully reset. You can now log in with your new "
 "password."
-msgstr "Tu contraseña ha sido restablecida exitosamente. Ahora puedes iniciar sesión con tu nueva contraseña."
+msgstr ""
+"Sua senha foi redefinida com sucesso. Agora você pode entrar com sua nova senha."
 
 #: templates/account/signup.html:6 templates/account/signup.html:20
 msgid "Sign Up"
-msgstr "Registrarse"
+msgstr "Cadastrar"
 
 #: templates/account/signup.html:14
 msgid "Already have an account? Then"
-msgstr "¿Ya tienes una cuenta? Entonces"
+msgstr "Já tem uma conta? Então"
 
 #: templates/account/signup.html:14
 msgid "sign in"
-msgstr "inicia sesión"
+msgstr "faça login"
 
-#: templates/base.html:13 templates/base.html:35
+#: templates/base.html:14 templates/base.html:36
 msgid "Nomad Nation"
-msgstr "Nación Nómada"
+msgstr "Nomad Nation"
 
-#: templates/base.html:44
+#: templates/base.html:45
 msgid "Home"
-msgstr "Inicio"
+msgstr "Início"
 
-#: templates/base.html:47
+#: templates/base.html:48
 msgid "Contact"
-msgstr "Contacta"
+msgstr "Contato"
 
-#: templates/base.html:52
+#: templates/base.html:53
 msgid "Dashboard"
-msgstr "Panel de Control"
+msgstr "Painel de Controle"
 
-#: templates/base.html:55
+#: templates/base.html:56
 msgid "Caravan listings"
-msgstr "Listados de caravanas"
+msgstr "Anúncios de Caravanas"
 
-#: templates/base.html:58
+#: templates/base.html:59
 msgid "Bookings"
 msgstr "Reservas"
 
-#: templates/base.html:61
+#: templates/base.html:62
 msgid "Account settings"
-msgstr "Configuración de la cuenta"
+msgstr "Configurações da Conta"
 
-#: templates/base.html:64
+#: templates/base.html:65
 msgid "Notifications"
-msgstr "Notificaciones"
+msgstr "Notificações"
 
-#: templates/base.html:67
+#: templates/base.html:68
 msgid "Logout"
-msgstr "Cerrar Sesión"
+msgstr "Sair"
 
-#: templates/base.html:72
+#: templates/base.html:73
 msgid "Register"
-msgstr "Registrarse"
+msgstr "Registrar"
 
-#: templates/base.html:75
+#: templates/base.html:76
 msgid "Login"
-msgstr "Iniciar Sesión"
+msgstr "Login"
 
-#: templates/base.html:103
+#: templates/base.html:104
 msgid "Made by"
-msgstr "Hecho por"
+msgstr "Feito por"
 
-#: templates/base.html:106
+#: templates/base.html:107
 msgid "Follow us:"
-msgstr "Síguenos:"
+msgstr "Siga-nos:"
 
 #: user_settings/templates/user_settings/account_settings.html:6
 msgid "Account Settings"
-msgstr "Configuración de la cuenta"
+msgstr "Configurações da Conta"
 
 #: user_settings/templates/user_settings/account_settings.html:10
 msgid "Personal Details"
-msgstr "Detalles Personales"
+msgstr "Detalhes Pessoais"
 
 #: user_settings/templates/user_settings/account_settings.html:17
 #: user_settings/templates/user_settings/account_settings.html:73
 msgid "Edit Personal Details"
-msgstr "Editar detalles personales"
+msgstr "Editar Detalhes Pessoais"
 
 #: user_settings/templates/user_settings/account_settings.html:24
 msgid "Preferences"
-msgstr "Preferencias"
+msgstr "Preferências"
 
 #: user_settings/templates/user_settings/account_settings.html:27
 msgid "Language:"
@@ -704,65 +716,65 @@ msgstr "Idioma:"
 
 #: user_settings/templates/user_settings/account_settings.html:28
 msgid "Currency:"
-msgstr "Moneda:"
+msgstr "Moeda:"
 
 #: user_settings/templates/user_settings/account_settings.html:29
 msgid "Appearance:"
-msgstr "Apariencia:"
+msgstr "Aparência:"
 
 #: user_settings/templates/user_settings/account_settings.html:30
 msgid "Notifications Enabled:"
-msgstr "Notificaciones habilitadas:"
+msgstr "Notificações Ativadas:"
 
 #: user_settings/templates/user_settings/account_settings.html:32
 #: user_settings/templates/user_settings/account_settings.html:105
 msgid "Edit Preferences"
-msgstr "Editar preferencias"
+msgstr "Editar Preferências"
 
 #: user_settings/templates/user_settings/account_settings.html:39
 msgid "Payment Details"
-msgstr "Detalles de pago"
+msgstr "Detalhes de Pagamento"
 
 #: user_settings/templates/user_settings/account_settings.html:45
 msgid "No payment details available."
-msgstr "No hay detalles de pago disponibles."
+msgstr "Nenhum detalhe de pagamento disponível."
 
 #: user_settings/templates/user_settings/account_settings.html:48
 #: user_settings/templates/user_settings/account_settings.html:154
 msgid "Edit Payment Details"
-msgstr "Editar detalles de pago"
+msgstr "Editar Detalhes de Pagamento"
 
 #: user_settings/templates/user_settings/account_settings.html:55
 msgid "Privacy Settings"
-msgstr "Configuración de privacidad"
+msgstr "Configurações de Privacidade"
 
 #: user_settings/templates/user_settings/account_settings.html:58
 msgid "Data Sharing Enabled:"
-msgstr "Compartición de datos habilitada:"
+msgstr "Compartilhamento de Dados Ativado:"
 
 #: user_settings/templates/user_settings/account_settings.html:60
 #: user_settings/templates/user_settings/account_settings.html:185
 msgid "Edit Privacy Settings"
-msgstr "Editar configuración de privacidad"
+msgstr "Editar Configurações de Privacidade"
 
 #: user_settings/templates/user_settings/account_settings.html:80
 msgid "Name"
-msgstr "Nombre"
+msgstr "Nome"
 
 #: user_settings/templates/user_settings/account_settings.html:84
 msgid "Email"
-msgstr "Correo electrónico"
+msgstr "E-mail"
 
 #: user_settings/templates/user_settings/account_settings.html:88
 msgid "Phone Number"
-msgstr "Número de teléfono"
+msgstr "Número de Telefone"
 
 #: user_settings/templates/user_settings/account_settings.html:92
 #: user_settings/templates/user_settings/account_settings.html:142
 #: user_settings/templates/user_settings/account_settings.html:173
 #: user_settings/templates/user_settings/account_settings.html:196
 msgid "Save Changes"
-msgstr "Guardar cambios"
+msgstr "Salvar Alterações"
 
 #: user_settings/templates/user_settings/account_settings.html:112
 msgid "Language"
@@ -770,19 +782,19 @@ msgstr "Idioma"
 
 #: user_settings/templates/user_settings/account_settings.html:114
 msgid "English"
-msgstr "Inglés"
+msgstr "Inglês"
 
 #: user_settings/templates/user_settings/account_settings.html:115
 msgid "Spanish"
-msgstr "Español"
+msgstr "Espanhol"
 
 #: user_settings/templates/user_settings/account_settings.html:116
 msgid "French"
-msgstr "Francés"
+msgstr "Francês"
 
 #: user_settings/templates/user_settings/account_settings.html:117
 msgid "German"
-msgstr "Alemán"
+msgstr "Alemão"
 
 #: user_settings/templates/user_settings/account_settings.html:118
 msgid "Italian"
@@ -790,19 +802,19 @@ msgstr "Italiano"
 
 #: user_settings/templates/user_settings/account_settings.html:119
 msgid "Portuguese"
-msgstr "Portugués"
+msgstr "Português"
 
 #: user_settings/templates/user_settings/account_settings.html:120
 msgid "Russian"
-msgstr "Ruso"
+msgstr "Russo"
 
 #: user_settings/templates/user_settings/account_settings.html:121
 msgid "Chinese"
-msgstr "Chino"
+msgstr "Chinês"
 
 #: user_settings/templates/user_settings/account_settings.html:122
 msgid "Japanese"
-msgstr "Japonés"
+msgstr "Japonês"
 
 #: user_settings/templates/user_settings/account_settings.html:123
 msgid "Hindi"
@@ -810,11 +822,11 @@ msgstr "Hindi"
 
 #: user_settings/templates/user_settings/account_settings.html:127
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Moeda"
 
 #: user_settings/templates/user_settings/account_settings.html:131
 msgid "Appearance"
-msgstr "Apariencia"
+msgstr "Aparência"
 
 #: user_settings/templates/user_settings/account_settings.html:133
 msgid "Light"
@@ -822,24 +834,24 @@ msgstr "Claro"
 
 #: user_settings/templates/user_settings/account_settings.html:134
 msgid "Dark"
-msgstr "Oscuro"
+msgstr "Escuro"
 
 #: user_settings/templates/user_settings/account_settings.html:138
 msgid "Notifications Enabled"
-msgstr "Notificaciones habilitadas"
+msgstr "Notificações Ativadas"
 
 #: user_settings/templates/user_settings/account_settings.html:161
 msgid "Payment Method"
-msgstr "Método de pago"
+msgstr "Método de Pagamento"
 
 #: user_settings/templates/user_settings/account_settings.html:165
 msgid "Card Last Four Digits"
-msgstr "Últimos cuatro dígitos de la tarjeta"
+msgstr "Últimos Quatro Dígitos do Cartão"
 
 #: user_settings/templates/user_settings/account_settings.html:169
 msgid "Billing Address"
-msgstr "Dirección de facturación"
+msgstr "Endereço de Faturamento"
 
 #: user_settings/templates/user_settings/account_settings.html:192
 msgid "Data Sharing Enabled"
-msgstr "Compartición de datos habilitada"
+msgstr "Compartilhamento de Dados Ativado"

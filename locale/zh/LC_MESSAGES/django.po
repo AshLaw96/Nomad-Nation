@@ -2,69 +2,68 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-18 11:47+0000\n"
+"POT-Creation-Date: 2025-02-18 19:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: es\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: dashboard/templates/dashboard/dashboard.html:6
 msgid "Welcome to your Dashboard"
-msgstr "Bienvenido a tu Panel de Control"
+msgstr "欢迎来到您的仪表板"
 
 #: dashboard/templates/dashboard/dashboard.html:8
 msgid "Superuser!"
-msgstr "¡Superusuario!"
+msgstr "超级用户！"
 
 #: dashboard/templates/dashboard/dashboard.html:9
 msgid "To manage the site go to admin page:"
-msgstr "Para gestionar el sitio, ve a la página de administración:"
+msgstr "要管理站点，请前往管理页面："
 
 #: dashboard/templates/dashboard/dashboard.html:10
 msgid "Here"
-msgstr "Aquí"
+msgstr "这里"
 
 #: dashboard/templates/dashboard/dashboard.html:22
 msgid "Upcoming stays"
-msgstr "Próximas estancias"
+msgstr "即将到来的住宿"
 
 #: dashboard/templates/dashboard/dashboard.html:25
 msgid "View and manage your upcoming bookings."
-msgstr "Ver y gestionar tus próximas reservas."
+msgstr "查看和管理您的即将到来的预订。"
 
 #: dashboard/templates/dashboard/dashboard.html:35
 msgid "No upcoming stays"
-msgstr "No hay próximas estancias"
+msgstr "没有即将到来的住宿"
 
 #: dashboard/templates/dashboard/dashboard.html:45
 msgid "Favourites"
-msgstr "Favoritos"
+msgstr "收藏夹"
 
 #: dashboard/templates/dashboard/dashboard.html:48
 msgid "View your Favourites caravans."
-msgstr "Ver tus caravanas favoritas."
+msgstr "查看您收藏的房车。"
 
 #: dashboard/templates/dashboard/dashboard.html:54
 #: listings/templates/listings/booking.html:90
 #: listings/templates/listings/booking.html:186
 msgid "Owner:"
-msgstr "Propietario:"
+msgstr "所有者："
 
 #: dashboard/templates/dashboard/dashboard.html:58
 msgid "No items in your favourites"
-msgstr "No hay elementos en tus favoritos"
+msgstr "您的收藏夹中没有项目"
 
 #: dashboard/templates/dashboard/dashboard.html:68
 msgid "Previous stays"
-msgstr "Estancias anteriores"
+msgstr "过去的住宿"
 
 #: dashboard/templates/dashboard/dashboard.html:71
 msgid "View your previous stays."
-msgstr "Ver tus estancias anteriores."
+msgstr "查看您的过去住宿。"
 
 #: dashboard/templates/dashboard/dashboard.html:77
 #: dashboard/templates/dashboard/dashboard.html:109
@@ -73,773 +72,770 @@ msgstr "Ver tus estancias anteriores."
 #: listings/templates/listings/booking.html:153
 #: listings/templates/listings/booking.html:189
 msgid "to"
-msgstr "a"
+msgstr "到"
 
 #: dashboard/templates/dashboard/dashboard.html:81
 msgid "No previous stays"
-msgstr "No hay estancias anteriores"
+msgstr "没有过去的住宿"
 
 #: dashboard/templates/dashboard/dashboard.html:97
 msgid "Booking requests"
-msgstr "Solicitudes de reserva"
+msgstr "预订请求"
 
 #: dashboard/templates/dashboard/dashboard.html:100
 msgid "View and manage requests from customers."
-msgstr "Ver y gestionar solicitudes de clientes."
+msgstr "查看和管理客户的预订请求。"
 
 #: dashboard/templates/dashboard/dashboard.html:108
 msgid "requested from"
-msgstr "solicitado desde"
+msgstr "请求来自"
 
 #: dashboard/templates/dashboard/dashboard.html:114
 msgid "No current requests"
-msgstr "No hay solicitudes actuales"
+msgstr "没有当前请求"
 
 #: dashboard/templates/dashboard/dashboard.html:124
 msgid "Your caravans"
-msgstr "Tus caravanas"
+msgstr "您的房车"
 
 #: dashboard/templates/dashboard/dashboard.html:127
 msgid "View and manage your caravan listings."
-msgstr "Ver y gestionar tus listados de caravanas."
+msgstr "查看和管理您的房车列表。"
 
 #: dashboard/templates/dashboard/dashboard.html:129
 msgid "Current caravan names:"
-msgstr "Nombres actuales de caravanas:"
+msgstr "当前房车名称："
 
 #: dashboard/templates/dashboard/dashboard.html:133
 msgid "No caravans listed"
-msgstr "No hay caravanas listadas"
+msgstr "没有房车列表"
 
 #: dashboard/templates/dashboard/dashboard.html:137
 msgid "View All Listings"
-msgstr "Ver todos los listados"
+msgstr "查看所有列表"
 
 #: dashboard/templates/dashboard/dashboard.html:146
 #: listings/templates/listings/listing_page.html:153
 msgid "Reviews"
-msgstr "Reseñas"
+msgstr "评论"
 
 #: dashboard/templates/dashboard/dashboard.html:149
 msgid "Check reviews from customers."
-msgstr "Ver reseñas de clientes."
+msgstr "查看客户的评论。"
 
 #: dashboard/templates/dashboard/dashboard.html:156
 #: listings/templates/listings/listing_page.html:162
 msgid "rated"
-msgstr "calificado"
+msgstr "评分"
 
 #: dashboard/templates/dashboard/dashboard.html:156
 msgid "stars"
-msgstr "estrellas"
+msgstr "星级"
 
 #: dashboard/templates/dashboard/dashboard.html:160
 msgid "No reviews"
-msgstr "No hay reseñas"
+msgstr "没有评论"
 
 #: listings/templates/listings/add_caravan.html:6
 #: listings/templates/listings/listing_page.html:353
 msgid "Add Caravan"
-msgstr "Añadir Caravana"
+msgstr "添加房车"
 
 #: listings/templates/listings/add_caravan.html:12
 msgid "Title:"
-msgstr "Título:"
+msgstr "标题："
 
 #: listings/templates/listings/add_caravan.html:16
 msgid "Description:"
-msgstr "Descripción:"
+msgstr "描述："
 
 #: listings/templates/listings/add_caravan.html:20
 msgid "Image:"
-msgstr "Imagen:"
+msgstr "图片："
 
 #: listings/templates/listings/add_caravan.html:24
 #: listings/templates/listings/listing_page.html:127
 msgid "Berth:"
-msgstr "Plazas:"
+msgstr "床位："
 
 #: listings/templates/listings/add_caravan.html:28
 #: listings/templates/listings/listing_page.html:136
 msgid "Amenities:"
-msgstr "Servicios:"
+msgstr "设施："
 
 #: listings/templates/listings/add_caravan.html:32
 msgid "Add Amenity"
-msgstr "Agregar Servicio"
+msgstr "添加设施"
 
 #: listings/templates/listings/add_caravan.html:35
 #: listings/templates/listings/listing_page.html:130
 msgid "Location:"
-msgstr "Ubicación:"
+msgstr "位置："
 
 #: listings/templates/listings/add_caravan.html:39
 msgid "Price Per Night:"
-msgstr "Precio por Noche:"
+msgstr "每晚价格："
 
 #: listings/templates/listings/add_caravan.html:44
 msgid "Availability:"
-msgstr "Disponibilidad:"
+msgstr "可用性："
 
 #: listings/templates/listings/add_caravan.html:49
 msgid "Add"
-msgstr "Añadir"
+msgstr "添加"
 
 #: listings/templates/listings/booking.html:8
 msgid "Your Bookings"
-msgstr "Tus Reservas"
+msgstr "您的预订"
 
 #: listings/templates/listings/booking.html:10
 msgid "Your Caravan's Bookings"
-msgstr "Las Reservas de tu Caravana"
+msgstr "您房车的预订"
 
 #: listings/templates/listings/booking.html:16
 msgid "Pending Bookings"
-msgstr "Reservas Pendientes"
+msgstr "待处理的预订"
 
 #: listings/templates/listings/booking.html:30
 msgid "View Details"
-msgstr "Ver Detalles"
+msgstr "查看详情"
 
 #: listings/templates/listings/booking.html:36
 msgid "Accept"
-msgstr "Aceptar"
+msgstr "接受"
 
 #: listings/templates/listings/booking.html:41
 msgid "Decline"
-msgstr "Rechazar"
+msgstr "拒绝"
 
 #: listings/templates/listings/booking.html:51
 msgid "Booking Details"
-msgstr "Detalles de la Reserva"
+msgstr "预订详情"
 
 #: listings/templates/listings/booking.html:55
 #: user_settings/templates/user_settings/account_settings.html:13
 msgid "Name:"
-msgstr "Nombre:"
+msgstr "姓名："
 
 #: listings/templates/listings/booking.html:56
 #: user_settings/templates/user_settings/account_settings.html:14
 msgid "Email:"
-msgstr "Correo Electrónico:"
+msgstr "电子邮件："
 
 #: listings/templates/listings/booking.html:57
 #: user_settings/templates/user_settings/account_settings.html:15
 msgid "Phone Number:"
-msgstr "Número de Teléfono:"
+msgstr "电话号码："
 
 #: listings/templates/listings/booking.html:58
 msgid "Message:"
-msgstr "Mensaje:"
+msgstr "留言："
 
 #: listings/templates/listings/booking.html:59
 msgid "Start Date:"
-msgstr "Fecha de Inicio:"
+msgstr "开始日期："
 
 #: listings/templates/listings/booking.html:60
 msgid "End Date:"
-msgstr "Fecha de Fin:"
+msgstr "结束日期："
 
 #: listings/templates/listings/booking.html:63
 msgid "Close"
-msgstr "Cerrar"
+msgstr "关闭"
 
 #: listings/templates/listings/booking.html:71
 msgid "No pending bookings."
-msgstr "No hay reservas pendientes."
+msgstr "没有待处理的预订。"
 
 #: listings/templates/listings/booking.html:72
 #: listings/templates/listings/booking.html:137
 msgid "Go back to listings"
-msgstr "Volver a los anuncios"
+msgstr "返回列表"
 
 #: listings/templates/listings/booking.html:79
 msgid "Upcoming Bookings"
-msgstr "Próximas Reservas"
+msgstr "即将到来的预订"
 
 #: listings/templates/listings/booking.html:92
 msgid "Customer:"
-msgstr "Cliente:"
+msgstr "客户："
 
 #: listings/templates/listings/booking.html:98
 #: listings/templates/listings/booking.html:107
 msgid "Modify Booking"
-msgstr "Modificar Reserva"
+msgstr "修改预订"
 
 #: listings/templates/listings/booking.html:114
 msgid "Start Date"
-msgstr "Fecha de Inicio"
+msgstr "开始日期"
 
 #: listings/templates/listings/booking.html:118
 msgid "End Date"
-msgstr "Fecha de Fin"
+msgstr "结束日期"
 
 #: listings/templates/listings/booking.html:122
 msgid "Message"
-msgstr "Mensaje"
+msgstr "留言"
 
 #: listings/templates/listings/booking.html:126
 #: listings/templates/listings/booking.html:196
 msgid "Submit"
-msgstr "Enviar"
+msgstr "提交"
 
 #: listings/templates/listings/booking.html:136
 msgid "No upcoming bookings."
-msgstr "No hay reservas próximas."
+msgstr "没有即将到来的预订。"
 
 #: listings/templates/listings/booking.html:144
 msgid "Previous Bookings"
-msgstr "Reservas Anteriores"
+msgstr "以往的预订"
 
 #: listings/templates/listings/booking.html:159
 msgid "No previous bookings."
-msgstr "Sin reservas previas."
+msgstr "没有以往的预订。"
 
 #: listings/templates/listings/booking.html:167
 msgid "Request a Booking"
-msgstr "Solicitar una Reserva"
+msgstr "请求预订"
 
 #: listings/templates/listings/booking.html:171
 #: listings/templates/listings/booking.html:181
 msgid "Request Booking"
-msgstr "Solicitar Reserva"
+msgstr "请求预订"
 
 #: listings/templates/listings/booking.html:187
 #: listings/templates/listings/listing_page.html:144
 msgid "Available Dates:"
-msgstr "Fechas Disponibles:"
+msgstr "可用日期："
 
 #: listings/templates/listings/listing_page.html:6
 msgid "Welcome to your Listings Page"
-msgstr "Bienvenido a tu Pagina de Listados"
+msgstr "欢迎来到您的列表页面"
 
 #: listings/templates/listings/listing_page.html:10
 msgid "Search caravans..."
-msgstr "Buscar caravanas"
+msgstr "搜索房车..."
 
 #: listings/templates/listings/listing_page.html:13
 msgid "Search"
-msgstr "Buscar"
+msgstr "搜索"
 
 #: listings/templates/listings/listing_page.html:14
 msgid "Reset"
-msgstr "Restablecer"
+msgstr "重置"
 
 #: listings/templates/listings/listing_page.html:19
 msgid "Filters"
-msgstr "Filtros"
+msgstr "筛选条件"
 
 #: listings/templates/listings/listing_page.html:27
 msgid "Filter by berth"
-msgstr "Filtrar por plaza"
+msgstr "按床位数筛选"
 
 #: listings/templates/listings/listing_page.html:28
 msgid "Two"
-msgstr "Dos"
+msgstr "两人"
 
 #: listings/templates/listings/listing_page.html:29
 msgid "Four"
-msgstr "Cuatro"
+msgstr "四人"
 
 #: listings/templates/listings/listing_page.html:30
 msgid "Six"
-msgstr "Seis"
+msgstr "六人"
 
 #: listings/templates/listings/listing_page.html:35
 msgid "Location"
-msgstr "Ubicación"
+msgstr "位置"
 
 #: listings/templates/listings/listing_page.html:39
 msgid "Min Price"
-msgstr "Precio mínimo"
+msgstr "最低价格"
 
 #: listings/templates/listings/listing_page.html:43
 msgid "Max Price"
-msgstr "Precio máximo"
+msgstr "最高价格"
 
 #: listings/templates/listings/listing_page.html:46
 msgid "Available From"
-msgstr "Disponible Desde"
+msgstr "可用开始日期"
 
 #: listings/templates/listings/listing_page.html:49
 msgid "Available To"
-msgstr "Disponible Para"
+msgstr "可用结束日期"
 
 #: listings/templates/listings/listing_page.html:53
 msgid "Select Amenities:"
-msgstr "Seleccione Servicios:"
+msgstr "选择设施："
 
 #: listings/templates/listings/listing_page.html:63
 msgid "Apply Filters"
-msgstr "Aplicar Filtros"
+msgstr "应用筛选"
 
 #: listings/templates/listings/listing_page.html:76
 msgid "Click to add to favourites"
-msgstr "Haga clic para agregar a favoritos"
+msgstr "点击以添加到收藏"
 
 #: listings/templates/listings/listing_page.html:92
 #: listings/templates/listings/listing_page.html:114
 msgid "Previous"
-msgstr "Previo"
+msgstr "上一页"
 
 #: listings/templates/listings/listing_page.html:96
 #: listings/templates/listings/listing_page.html:118
 msgid "Next"
-msgstr "Siguiente"
+msgstr "下一页"
 
 #: listings/templates/listings/listing_page.html:133
 msgid "Price per night:"
-msgstr "Precio por noche:"
+msgstr "每晚价格："
 
 #: listings/templates/listings/listing_page.html:159
 msgid "Customers reviews:"
-msgstr "Opiniones de clientes:"
+msgstr "客户评价："
 
 #: listings/templates/listings/listing_page.html:166
 msgid "Owner's Reply:"
-msgstr "Respuesta Del Dropietario:"
+msgstr "房东回复："
 
 #: listings/templates/listings/listing_page.html:173
 #: listings/templates/listings/listing_page.html:185
 msgid "Edit Reply"
-msgstr "Editar Respuesta"
+msgstr "编辑回复"
 
 #: listings/templates/listings/listing_page.html:176
 msgid "Delete Reply"
-msgstr "Eliminar Respuesta"
+msgstr "删除回复"
 
 #: listings/templates/listings/listing_page.html:192
 #: listings/templates/listings/listing_page.html:207
 #: listings/templates/listings/listing_page.html:222
 msgid "Reply"
-msgstr "Responder"
+msgstr "回复"
 
 #: listings/templates/listings/listing_page.html:196
 #: listings/templates/listings/listing_page.html:226
 msgid "Submit Reply"
-msgstr "Enviar Respuesta"
+msgstr "提交回复"
 
 #: listings/templates/listings/listing_page.html:215
 msgid "Reply to Review"
-msgstr "Responder a la Reseña"
+msgstr "回复评价"
 
 #: listings/templates/listings/listing_page.html:238
 #: listings/templates/listings/listing_page.html:295
 msgid "Edit Review"
-msgstr "Editar Reseña"
+msgstr "编辑评价"
 
 #: listings/templates/listings/listing_page.html:241
 msgid "Delete Review"
-msgstr "Eliminar Reseña"
+msgstr "删除评价"
 
 #: listings/templates/listings/listing_page.html:248
 msgid "Approve Review"
-msgstr "Aprobar Reseña"
+msgstr "批准评价"
 
 #: listings/templates/listings/listing_page.html:258
 #: listings/templates/listings/listing_page.html:267
 msgid "Leave a Review"
-msgstr "Dejar una Reseña"
+msgstr "留下评价"
 
 #: listings/templates/listings/listing_page.html:274
 #: listings/templates/listings/listing_page.html:302
 msgid "Rating"
-msgstr "Calificación"
+msgstr "评分"
 
 #: listings/templates/listings/listing_page.html:278
 #: listings/templates/listings/listing_page.html:306
 msgid "Comment"
-msgstr "Comentario"
+msgstr "评论"
 
 #: listings/templates/listings/listing_page.html:282
 #: listings/templates/listings/listing_page.html:310
 msgid "Submit Review"
-msgstr "Enviar Reseña"
+msgstr "提交评价"
 
 #: listings/templates/listings/listing_page.html:323
 msgid "Edit caravan"
-msgstr "Editar caravana"
+msgstr "编辑房车"
 
 #: listings/templates/listings/listing_page.html:329
 msgid "Delete caravan"
-msgstr "Eliminar Caravana"
+msgstr "删除房车"
 
 #: listings/templates/listings/listing_page.html:337
 msgid "BOOK CARAVAN NOW"
-msgstr "RESERVA LA CARAVANA AHORA"
+msgstr "立即预订房车"
 
 #: listings/templates/listings/listing_page.html:340
 msgid "Not Available"
-msgstr "No Disponible"
+msgstr "不可用"
 
 #: listings/templates/listings/listing_page.html:348
 msgid "No caravans available"
-msgstr "No hay caravanas disponibles"
+msgstr "没有可用的房车"
 
 #: main/templates/main/contact.html:6
 msgid "Contact Us"
-msgstr "Contacta con Nosotros"
+msgstr "联系我们"
 
 #: main/templates/main/contact.html:11
 msgid "Send Message"
-msgstr "Enviar Mensaje"
+msgstr "发送消息"
 
 #: main/templates/main/home.html:9
 msgid "Welcome to Nomad Nation"
-msgstr "Bienvenidos a la Nación Nómada"
+msgstr "欢迎来到 Nomad Nation"
 
 #: main/templates/main/home.html:10
-msgid "Your trusted platform for finding and renting the perfect caravan for your "
-"adventure"
-msgstr "Tu plataforma de confianza para encontrar y alquilar la caravana perfecta "
-"para tu aventura"
+msgid ""
+"Your trusted platform for finding and renting the perfect caravan for your adventure"
+msgstr "您值得信赖的房车租赁平台，助您寻找完美的旅行房车"
 
 #: main/templates/main/home.html:14
 msgid "What we do"
-msgstr "Lo que hacemos"
+msgstr "我们的服务"
 
 #: main/templates/main/home.html:16
-msgid "At Nomad Nation, we connect caravan owners with travelers looking for unique "
-"holiday experiences. Whether you're a caravan owner looking to earn extra "
-"income or a traveler seeking a hassle-free holiday, we've got you covered."
-msgstr "En Nomad Nation, conectamos a los propietarios de caravanas con viajeros que "
-"buscan experiencias vacacionales únicas. Ya sea que seas un propietario de "
-"caravana que busca ganar ingresos adicionales o un viajero que busca unas "
-"vacaciones sin complicaciones, te tenemos cubierto."
+msgid ""
+"At Nomad Nation, we connect caravan owners with travelers looking for unique holiday experiences. Whether you're a caravan owner looking to earn extra income or a traveler seeking a hassle-free holiday, we've got you covered."
+msgstr "在 Nomad Nation，我们为寻找独特假期体验的旅行者与房车车主搭建桥梁。无论您是希望赚取额外收入的房车车主，还是希望享受轻松假期的旅行者，我们都能满足您的需求。"
 
 #: main/templates/main/home.html:26
 msgid "Reliable Rentals"
-msgstr "Alquileres Confiables"
+msgstr "可靠的租赁"
 
 #: main/templates/main/home.html:27
 msgid "All rentals are verified to ensure your safety and satisfaction."
-msgstr "Todos los alquileres están verificados para garantizar tu seguridad y "
-"satisfacción."
+msgstr "所有租赁均经过验证，确保您的安全与满意。"
 
 #: main/templates/main/home.html:35
 msgid "Community-Driven"
-msgstr "Impulsado por la Comunidad"
+msgstr "社区驱动"
 
 #: main/templates/main/home.html:36
 msgid "Join a growing community of caravan enthusiasts."
-msgstr "Únete a una comunidad creciente de entusiastas de las caravanas."
+msgstr "加入不断壮大的房车爱好者社区。"
 
 #: main/templates/main/home.html:44
 msgid "Secure Payments"
-msgstr "Pagos Seguros"
+msgstr "安全支付"
 
 #: main/templates/main/home.html:45
 msgid "Easy and secure booking for peace of mind."
-msgstr "Reserva fácil y segura para tu tranquilidad."
+msgstr "轻松、安全的预订让您无忧出行。"
 
 #: templates/account/login.html:6 templates/account/login.html:14
 msgid "Log In"
-msgstr "Iniciar Sesión"
+msgstr "登录"
 
 #: templates/account/login.html:8
 msgid "Don't have an account yet?"
-msgstr "¿Aún no tienes una cuenta?"
+msgstr "还没有账户？"
 
 #: templates/account/login.html:8
 msgid "register here"
-msgstr "regístrate aquí"
+msgstr "点击这里注册"
 
 #: templates/account/logout.html:6 templates/account/logout.html:11
 msgid "Sign Out"
-msgstr "Cerrar Sesión"
+msgstr "退出"
 
 #: templates/account/logout.html:7
 msgid "Are you sure you want to sign out?"
-msgstr "¿Estás seguro de que quieres cerrar sesión?"
+msgstr "您确定要退出吗？"
 
 #: templates/account/logout.html:14
 msgid "return to the homepage"
-msgstr "volver a la página principal"
+msgstr "返回主页"
 
 #: templates/account/password_reset.html:6
 msgid "Password Reset"
-msgstr "Restablecer Contraseña"
+msgstr "密码重置"
 
 #: templates/account/password_reset.html:14
-msgid "Forgotten your password? Enter your username or email address below, and "
-"we'll send you an email allowing you to reset it."
-msgstr "¿Olvidaste tu contraseña? Ingresa tu nombre de usuario o dirección de correo electrónico a continuación, "
-"y te enviaremos un correo electrónico que te permitirá restablecerla."
+msgid ""
+"Forgotten your password? Enter your username or email address below, and we'll send you an email allowing you to reset it."
+msgstr "忘记密码？请输入您的用户名或电子邮箱，我们将发送邮件帮助您重置密码。"
 
 #: templates/account/password_reset.html:20
 msgid "Reset My Password"
-msgstr "Restablecer Mi Contraseña"
+msgstr "重置我的密码"
 
 #: templates/account/password_reset.html:30
 msgid "Remember your password?"
-msgstr "¿Recuerdas tu contraseña?"
+msgstr "记得你的密码吗？"
 
 #: templates/account/password_reset.html:30
 msgid "Log in"
-msgstr "Iniciar sesión"
+msgstr "登录"
 
 #: templates/account/password_reset.html:32
 msgid "Please contact us if you have any trouble resetting your password."
-msgstr "Por favor contáctanos si tienes algún problema para restablecer tu contraseña."
+msgstr "如果您在重置密码时遇到问题，请联系我们。"
 
 #: templates/account/password_reset_done.html:6
 msgid "Password Reset Requested"
-msgstr "Solicitud de Restablecimiento de Contraseña"
+msgstr "密码重置请求"
 
 #: templates/account/password_reset_done.html:7
-msgid "If an account exists with the provided email address, a password reset email "
+msgid ""
+"If an account exists with the provided email address, a password reset email "
 "has been sent."
-msgstr "Si existe una cuenta con la dirección de correo electrónico proporcionada, se ha enviado un correo electrónico de restablecimiento de contraseña."
+msgstr ""
+"如果提供的电子邮件地址存在账户，密码重置邮件已发送。"
 
 #: templates/account/password_reset_done.html:8
-msgid "Please check your inbox and follow the instructions to reset your password."
-msgstr "Por favor revisa tu bandeja de entrada y sigue las instrucciones para restablecer tu contraseña."
+msgid ""
+"Please check your inbox and follow the instructions to reset your password."
+msgstr "请检查您的收件箱并按照指示重置密码。"
 
 #: templates/account/password_reset_done.html:9
 #: templates/account/password_reset_from_key_done.html:8
 msgid "Return to Login"
-msgstr "Volver a Iniciar Sesión"
+msgstr "返回登录"
 
 #: templates/account/password_reset_from_key.html:6
 msgid "Reset Your Password"
-msgstr "Restablecer Tu Contraseña"
+msgstr "重置您的密码"
 
 #: templates/account/password_reset_from_key.html:10
 msgid "Change Password"
-msgstr "Cambiar Contraseña"
+msgstr "更改密码"
 
 #: templates/account/password_reset_from_key_done.html:6
 msgid "Password Reset Successful"
-msgstr "Restablecimiento de Contraseña Exitoso"
+msgstr "密码重置成功"
 
 #: templates/account/password_reset_from_key_done.html:7
-msgid "Your password has been successfully reset. You can now log in with your new "
+msgid ""
+"Your password has been successfully reset. You can now log in with your new "
 "password."
-msgstr "Tu contraseña ha sido restablecida exitosamente. Ahora puedes iniciar sesión con tu nueva contraseña."
+msgstr "您的密码已成功重置。您现在可以使用新密码登录。"
 
 #: templates/account/signup.html:6 templates/account/signup.html:20
 msgid "Sign Up"
-msgstr "Registrarse"
+msgstr "注册"
 
 #: templates/account/signup.html:14
 msgid "Already have an account? Then"
-msgstr "¿Ya tienes una cuenta? Entonces"
+msgstr "已经有账户？那么"
 
 #: templates/account/signup.html:14
 msgid "sign in"
-msgstr "inicia sesión"
+msgstr "登录"
 
-#: templates/base.html:13 templates/base.html:35
+#: templates/base.html:14 templates/base.html:36
 msgid "Nomad Nation"
-msgstr "Nación Nómada"
+msgstr "Nomad Nation"
 
-#: templates/base.html:44
+#: templates/base.html:45
 msgid "Home"
-msgstr "Inicio"
+msgstr "首页"
 
-#: templates/base.html:47
+#: templates/base.html:48
 msgid "Contact"
-msgstr "Contacta"
+msgstr "联系我们"
 
-#: templates/base.html:52
+#: templates/base.html:53
 msgid "Dashboard"
-msgstr "Panel de Control"
+msgstr "仪表盘"
 
-#: templates/base.html:55
+#: templates/base.html:56
 msgid "Caravan listings"
-msgstr "Listados de caravanas"
+msgstr "房车列表"
 
-#: templates/base.html:58
+#: templates/base.html:59
 msgid "Bookings"
-msgstr "Reservas"
+msgstr "预订"
 
-#: templates/base.html:61
+#: templates/base.html:62
 msgid "Account settings"
-msgstr "Configuración de la cuenta"
+msgstr "账户设置"
 
-#: templates/base.html:64
+#: templates/base.html:65
 msgid "Notifications"
-msgstr "Notificaciones"
+msgstr "通知"
 
-#: templates/base.html:67
+#: templates/base.html:68
 msgid "Logout"
-msgstr "Cerrar Sesión"
+msgstr "退出"
 
-#: templates/base.html:72
+#: templates/base.html:73
 msgid "Register"
-msgstr "Registrarse"
+msgstr "注册"
 
-#: templates/base.html:75
+#: templates/base.html:76
 msgid "Login"
-msgstr "Iniciar Sesión"
+msgstr "登录"
 
-#: templates/base.html:103
+#: templates/base.html:104
 msgid "Made by"
-msgstr "Hecho por"
+msgstr "制作人"
 
-#: templates/base.html:106
+#: templates/base.html:107
 msgid "Follow us:"
-msgstr "Síguenos:"
+msgstr "关注我们："
 
 #: user_settings/templates/user_settings/account_settings.html:6
 msgid "Account Settings"
-msgstr "Configuración de la cuenta"
+msgstr "账户设置"
 
 #: user_settings/templates/user_settings/account_settings.html:10
 msgid "Personal Details"
-msgstr "Detalles Personales"
+msgstr "个人资料"
 
 #: user_settings/templates/user_settings/account_settings.html:17
 #: user_settings/templates/user_settings/account_settings.html:73
 msgid "Edit Personal Details"
-msgstr "Editar detalles personales"
+msgstr "编辑个人资料"
 
 #: user_settings/templates/user_settings/account_settings.html:24
 msgid "Preferences"
-msgstr "Preferencias"
+msgstr "偏好设置"
 
 #: user_settings/templates/user_settings/account_settings.html:27
 msgid "Language:"
-msgstr "Idioma:"
+msgstr "语言："
 
 #: user_settings/templates/user_settings/account_settings.html:28
 msgid "Currency:"
-msgstr "Moneda:"
+msgstr "货币："
 
 #: user_settings/templates/user_settings/account_settings.html:29
 msgid "Appearance:"
-msgstr "Apariencia:"
+msgstr "外观："
 
 #: user_settings/templates/user_settings/account_settings.html:30
 msgid "Notifications Enabled:"
-msgstr "Notificaciones habilitadas:"
+msgstr "启用通知："
 
 #: user_settings/templates/user_settings/account_settings.html:32
 #: user_settings/templates/user_settings/account_settings.html:105
 msgid "Edit Preferences"
-msgstr "Editar preferencias"
+msgstr "编辑偏好设置"
 
 #: user_settings/templates/user_settings/account_settings.html:39
 msgid "Payment Details"
-msgstr "Detalles de pago"
+msgstr "支付详情"
 
 #: user_settings/templates/user_settings/account_settings.html:45
 msgid "No payment details available."
-msgstr "No hay detalles de pago disponibles."
+msgstr "没有可用的支付详情。"
 
 #: user_settings/templates/user_settings/account_settings.html:48
 #: user_settings/templates/user_settings/account_settings.html:154
 msgid "Edit Payment Details"
-msgstr "Editar detalles de pago"
+msgstr "编辑支付详情"
 
 #: user_settings/templates/user_settings/account_settings.html:55
 msgid "Privacy Settings"
-msgstr "Configuración de privacidad"
+msgstr "隐私设置"
 
 #: user_settings/templates/user_settings/account_settings.html:58
 msgid "Data Sharing Enabled:"
-msgstr "Compartición de datos habilitada:"
+msgstr "启用数据共享："
 
 #: user_settings/templates/user_settings/account_settings.html:60
 #: user_settings/templates/user_settings/account_settings.html:185
 msgid "Edit Privacy Settings"
-msgstr "Editar configuración de privacidad"
+msgstr "编辑隐私设置"
 
 #: user_settings/templates/user_settings/account_settings.html:80
 msgid "Name"
-msgstr "Nombre"
+msgstr "姓名"
 
 #: user_settings/templates/user_settings/account_settings.html:84
 msgid "Email"
-msgstr "Correo electrónico"
+msgstr "电子邮件"
 
 #: user_settings/templates/user_settings/account_settings.html:88
 msgid "Phone Number"
-msgstr "Número de teléfono"
+msgstr "电话号码"
 
 #: user_settings/templates/user_settings/account_settings.html:92
 #: user_settings/templates/user_settings/account_settings.html:142
 #: user_settings/templates/user_settings/account_settings.html:173
 #: user_settings/templates/user_settings/account_settings.html:196
 msgid "Save Changes"
-msgstr "Guardar cambios"
+msgstr "保存更改"
 
 #: user_settings/templates/user_settings/account_settings.html:112
 msgid "Language"
-msgstr "Idioma"
+msgstr "语言"
 
 #: user_settings/templates/user_settings/account_settings.html:114
 msgid "English"
-msgstr "Inglés"
+msgstr "英语"
 
 #: user_settings/templates/user_settings/account_settings.html:115
 msgid "Spanish"
-msgstr "Español"
+msgstr "西班牙语"
 
 #: user_settings/templates/user_settings/account_settings.html:116
 msgid "French"
-msgstr "Francés"
+msgstr "法语"
 
 #: user_settings/templates/user_settings/account_settings.html:117
 msgid "German"
-msgstr "Alemán"
+msgstr "德语"
 
 #: user_settings/templates/user_settings/account_settings.html:118
 msgid "Italian"
-msgstr "Italiano"
+msgstr "意大利语"
 
 #: user_settings/templates/user_settings/account_settings.html:119
 msgid "Portuguese"
-msgstr "Portugués"
+msgstr "葡萄牙语"
 
 #: user_settings/templates/user_settings/account_settings.html:120
 msgid "Russian"
-msgstr "Ruso"
+msgstr "俄语"
 
 #: user_settings/templates/user_settings/account_settings.html:121
 msgid "Chinese"
-msgstr "Chino"
+msgstr "中文"
 
 #: user_settings/templates/user_settings/account_settings.html:122
 msgid "Japanese"
-msgstr "Japonés"
+msgstr "日语"
 
 #: user_settings/templates/user_settings/account_settings.html:123
 msgid "Hindi"
-msgstr "Hindi"
+msgstr "印地语"
 
 #: user_settings/templates/user_settings/account_settings.html:127
 msgid "Currency"
-msgstr "Moneda"
+msgstr "货币"
 
 #: user_settings/templates/user_settings/account_settings.html:131
 msgid "Appearance"
-msgstr "Apariencia"
+msgstr "外观"
 
 #: user_settings/templates/user_settings/account_settings.html:133
 msgid "Light"
-msgstr "Claro"
+msgstr "浅色"
 
 #: user_settings/templates/user_settings/account_settings.html:134
 msgid "Dark"
-msgstr "Oscuro"
+msgstr "深色"
 
 #: user_settings/templates/user_settings/account_settings.html:138
 msgid "Notifications Enabled"
-msgstr "Notificaciones habilitadas"
+msgstr "启用通知"
 
 #: user_settings/templates/user_settings/account_settings.html:161
 msgid "Payment Method"
-msgstr "Método de pago"
+msgstr "支付方式"
 
 #: user_settings/templates/user_settings/account_settings.html:165
 msgid "Card Last Four Digits"
-msgstr "Últimos cuatro dígitos de la tarjeta"
+msgstr "卡片最后四位数字"
 
 #: user_settings/templates/user_settings/account_settings.html:169
 msgid "Billing Address"
-msgstr "Dirección de facturación"
+msgstr "账单地址"
 
 #: user_settings/templates/user_settings/account_settings.html:192
 msgid "Data Sharing Enabled"
-msgstr "Compartición de datos habilitada"
+msgstr "启用数据共享"
