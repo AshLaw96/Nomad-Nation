@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-18 16:22+0000\n"
+"POT-Creation-Date: 2025-02-19 12:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -489,27 +489,24 @@ msgid "Welcome to Nomad Nation"
 msgstr "Bienvenue sur Nomad Nation"
 
 #: main/templates/main/home.html:10
-msgid ""
-"Your trusted platform for finding and renting the perfect caravan for your "
+msgid "Your trusted platform for finding and renting the perfect caravan for your "
 "adventure"
-msgstr ""
-"Votre plateforme de confiance pour trouver et louer la caravane parfaite pour "
-"votre aventure"
+msgstr "Votre plateforme de confiance pour trouver et louer la caravane parfaite "
+"pour votre aventure"
 
 #: main/templates/main/home.html:14
 msgid "What we do"
 msgstr "Ce que nous faisons"
 
 #: main/templates/main/home.html:16
-msgid ""
-"At Nomad Nation, we connect caravan owners with travelers looking for unique "
+msgid "At Nomad Nation, we connect caravan owners with travelers looking for unique "
 "holiday experiences. Whether you're a caravan owner looking to earn extra "
 "income or a traveler seeking a hassle-free holiday, we've got you covered."
-msgstr ""
-"Chez Nomad Nation, nous mettons en relation les propriétaires de caravanes et "
-"les voyageurs à la recherche d'expériences de vacances uniques. Que vous soyez "
-"un propriétaire de caravane souhaitant gagner un revenu supplémentaire ou un "
-"voyageur à la recherche de vacances sans tracas, nous avons tout ce qu'il vous faut."
+msgstr "Chez Nomad Nation, nous mettons en relation les propriétaires de caravanes "
+"et les voyageurs à la recherche d'expériences de vacances uniques. Que vous "
+"soyez un propriétaire de caravane souhaitant gagner un revenu supplémentaire "
+"ou un voyageur à la recherche de vacances sans tracas, nous avons tout ce "
+"qu'il vous faut."
 
 #: main/templates/main/home.html:26
 msgid "Reliable Rentals"
@@ -517,7 +514,8 @@ msgstr "Locations fiables"
 
 #: main/templates/main/home.html:27
 msgid "All rentals are verified to ensure your safety and satisfaction."
-msgstr "Toutes les locations sont vérifiées pour garantir votre sécurité et votre satisfaction."
+msgstr "Toutes les locations sont vérifiées pour garantir votre sécurité et votre "
+"satisfaction."
 
 #: main/templates/main/home.html:35
 msgid "Community-Driven"
@@ -564,13 +562,11 @@ msgid "Password Reset"
 msgstr "Réinitialisation du mot de passe"
 
 #: templates/account/password_reset.html:14
-msgid ""
-"Forgotten your password? Enter your username or email address below, and "
+msgid "Forgotten your password? Enter your username or email address below, and "
 "we'll send you an email allowing you to reset it."
-msgstr ""
-"Vous avez oublié votre mot de passe ? Entrez votre nom d'utilisateur ou "
-"adresse e-mail ci-dessous, et nous vous enverrons un e-mail vous permettant de "
-"le réinitialiser."
+msgstr "Vous avez oublié votre mot de passe ? Entrez votre nom d'utilisateur ou "
+"adresse e-mail ci-dessous, et nous vous enverrons un e-mail vous permettant "
+"de le réinitialiser."
 
 #: templates/account/password_reset.html:20
 msgid "Reset My Password"
@@ -586,25 +582,22 @@ msgstr "Se connecter"
 
 #: templates/account/password_reset.html:32
 msgid "Please contact us if you have any trouble resetting your password."
-msgstr "Veuillez nous contacter si vous avez des difficultés à réinitialiser votre mot de passe."
+msgstr "Veuillez nous contacter si vous avez des difficultés à réinitialiser votre "
+"mot de passe."
 
 #: templates/account/password_reset_done.html:6
 msgid "Password Reset Requested"
 msgstr "Réinitialisation du mot de passe demandée"
 
 #: templates/account/password_reset_done.html:7
-msgid ""
-"If an account exists with the provided email address, a password reset email "
+msgid "If an account exists with the provided email address, a password reset email "
 "has been sent."
-msgstr ""
-"Si un compte existe avec l'adresse e-mail fournie, un e-mail de réinitialisation "
-"du mot de passe a été envoyé."
+msgstr "Si un compte existe avec l'adresse e-mail fournie, un e-mail de "
+"réinitialisation du mot de passe a été envoyé."
 
 #: templates/account/password_reset_done.html:8
-msgid ""
-"Please check your inbox and follow the instructions to reset your password."
-msgstr ""
-"Veuillez vérifier votre boîte de réception et suivre les instructions pour "
+msgid "Please check your inbox and follow the instructions to reset your password."
+msgstr "Veuillez vérifier votre boîte de réception et suivre les instructions pour "
 "réinitialiser votre mot de passe."
 
 #: templates/account/password_reset_done.html:9
@@ -625,12 +618,10 @@ msgid "Password Reset Successful"
 msgstr "Réinitialisation du mot de passe réussie"
 
 #: templates/account/password_reset_from_key_done.html:7
-msgid ""
-"Your password has been successfully reset. You can now log in with your new "
+msgid "Your password has been successfully reset. You can now log in with your new "
 "password."
-msgstr ""
-"Votre mot de passe a été réinitialisé avec succès. Vous pouvez désormais vous "
-"connecter avec votre nouveau mot de passe."
+msgstr "Votre mot de passe a été réinitialisé avec succès. Vous pouvez désormais "
+"vous connecter avec votre nouveau mot de passe."
 
 #: templates/account/signup.html:6 templates/account/signup.html:20
 msgid "Sign Up"
@@ -743,7 +734,7 @@ msgid "No payment details available."
 msgstr "Aucun détail de paiement disponible."
 
 #: user_settings/templates/user_settings/account_settings.html:48
-#: user_settings/templates/user_settings/account_settings.html:154
+#: user_settings/templates/user_settings/account_settings.html:162
 msgid "Edit Payment Details"
 msgstr "Modifier les détails de paiement"
 
@@ -756,7 +747,7 @@ msgid "Data Sharing Enabled:"
 msgstr "Partage des données activé :"
 
 #: user_settings/templates/user_settings/account_settings.html:60
-#: user_settings/templates/user_settings/account_settings.html:185
+#: user_settings/templates/user_settings/account_settings.html:193
 msgid "Edit Privacy Settings"
 msgstr "Modifier les paramètres de confidentialité"
 
@@ -773,9 +764,9 @@ msgid "Phone Number"
 msgstr "Numéro de téléphone"
 
 #: user_settings/templates/user_settings/account_settings.html:92
-#: user_settings/templates/user_settings/account_settings.html:142
-#: user_settings/templates/user_settings/account_settings.html:173
-#: user_settings/templates/user_settings/account_settings.html:196
+#: user_settings/templates/user_settings/account_settings.html:150
+#: user_settings/templates/user_settings/account_settings.html:181
+#: user_settings/templates/user_settings/account_settings.html:204
 msgid "Save Changes"
 msgstr "Sauvegarder les modifications"
 
@@ -827,34 +818,62 @@ msgstr "Hindi"
 msgid "Currency"
 msgstr "Monnaie"
 
+#: user_settings/templates/user_settings/account_settings.html:129
+msgid "British Pound"
+msgstr "Livre Sterling"
+
+#: user_settings/templates/user_settings/account_settings.html:130
+msgid "US Dollar"
+msgstr "Dollar Américain"
+
 #: user_settings/templates/user_settings/account_settings.html:131
+msgid "Euro"
+msgstr "Euro"
+
+#: user_settings/templates/user_settings/account_settings.html:132
+msgid "Russian Ruble"
+msgstr "Rouble Russe"
+
+#: user_settings/templates/user_settings/account_settings.html:133
+msgid "Chinese Yuan"
+msgstr "Yuan Chinois"
+
+#: user_settings/templates/user_settings/account_settings.html:134
+msgid "Japanese Yen"
+msgstr "Yens japonais"
+
+#: user_settings/templates/user_settings/account_settings.html:135
+msgid "Indian Rupee"
+msgstr "Roupie Indienne"
+
+#: user_settings/templates/user_settings/account_settings.html:139
 msgid "Appearance"
 msgstr "Apparence"
 
-#: user_settings/templates/user_settings/account_settings.html:133
+#: user_settings/templates/user_settings/account_settings.html:141
 msgid "Light"
 msgstr "Clair"
 
-#: user_settings/templates/user_settings/account_settings.html:134
+#: user_settings/templates/user_settings/account_settings.html:142
 msgid "Dark"
 msgstr "Sombre"
 
-#: user_settings/templates/user_settings/account_settings.html:138
+#: user_settings/templates/user_settings/account_settings.html:146
 msgid "Notifications Enabled"
 msgstr "Notifications activées"
 
-#: user_settings/templates/user_settings/account_settings.html:161
+#: user_settings/templates/user_settings/account_settings.html:169
 msgid "Payment Method"
 msgstr "Méthode de paiement"
 
-#: user_settings/templates/user_settings/account_settings.html:165
+#: user_settings/templates/user_settings/account_settings.html:173
 msgid "Card Last Four Digits"
 msgstr "Derniers quatre chiffres de la carte"
 
-#: user_settings/templates/user_settings/account_settings.html:169
+#: user_settings/templates/user_settings/account_settings.html:177
 msgid "Billing Address"
 msgstr "Adresse de facturation"
 
-#: user_settings/templates/user_settings/account_settings.html:192
+#: user_settings/templates/user_settings/account_settings.html:200
 msgid "Data Sharing Enabled"
 msgstr "Partage des données activé"

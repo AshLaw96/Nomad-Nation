@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-18 19:54+0000\n"
+"POT-Creation-Date: 2025-02-19 11:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -489,23 +489,22 @@ msgid "Welcome to Nomad Nation"
 msgstr "नोमैड नेशन में स्वागत है"
 
 #: main/templates/main/home.html:10
-msgid ""
-"Your trusted platform for finding and renting the perfect caravan for your "
+msgid "Your trusted platform for finding and renting the perfect caravan for your "
 "adventure"
-msgstr ""
-"आपकी विश्वासमंद प्लेटफॉर्म, जहाँ आप अपनी यात्रा के लिए सही कारवां ढूंढ सकते हैं और किराए पर ले सकते हैं।"
+msgstr "आपकी विश्वासमंद प्लेटफॉर्म, जहाँ आप अपनी यात्रा के लिए सही कारवां ढूंढ सकते हैं और किराए "
+"पर ले सकते हैं।"
 
 #: main/templates/main/home.html:14
 msgid "What we do"
 msgstr "हम क्या करते हैं"
 
 #: main/templates/main/home.html:16
-msgid ""
-"At Nomad Nation, we connect caravan owners with travelers looking for unique "
+msgid "At Nomad Nation, we connect caravan owners with travelers looking for unique "
 "holiday experiences. Whether you're a caravan owner looking to earn extra "
 "income or a traveler seeking a hassle-free holiday, we've got you covered."
-msgstr ""
-"नोमैड नेशन में, हम कारवां मालिकों को उन यात्रियों से जोड़ते हैं जो अद्वितीय छुट्टियों का अनुभव चाहते हैं। चाहे आप एक कारवां मालिक हों जो अतिरिक्त आय अर्जित करना चाहते हों या एक यात्री जो बिना किसी परेशानी के छुट्टियां चाहते हों, हम आपकी मदद के लिए तैयार हैं।"
+msgstr "नोमैड नेशन में, हम कारवां मालिकों को उन यात्रियों से जोड़ते हैं जो अद्वितीय छुट्टियों का अनुभव "
+"चाहते हैं। चाहे आप एक कारवां मालिक हों जो अतिरिक्त आय अर्जित करना चाहते हों या एक "
+"यात्री जो बिना किसी परेशानी के छुट्टियां चाहते हों, हम आपकी मदद के लिए तैयार हैं।"
 
 #: main/templates/main/home.html:26
 msgid "Reliable Rentals"
@@ -560,11 +559,10 @@ msgid "Password Reset"
 msgstr "पासवर्ड रीसेट"
 
 #: templates/account/password_reset.html:14
-msgid ""
-"Forgotten your password? Enter your username or email address below, and "
+msgid "Forgotten your password? Enter your username or email address below, and "
 "we'll send you an email allowing you to reset it."
-msgstr ""
-"क्या आप अपना पासवर्ड भूल गए हैं? नीचे अपना उपयोगकर्ता नाम या ईमेल पता दर्ज करें, और हम आपको एक ईमेल भेजेंगे जिससे आप इसे रीसेट कर सकें।"
+msgstr "क्या आप अपना पासवर्ड भूल गए हैं? नीचे अपना उपयोगकर्ता नाम या ईमेल पता दर्ज करें, और हम "
+"आपको एक ईमेल भेजेंगे जिससे आप इसे रीसेट कर सकें।"
 
 #: templates/account/password_reset.html:20
 msgid "Reset My Password"
@@ -587,17 +585,13 @@ msgid "Password Reset Requested"
 msgstr "पासवर्ड रीसेट का अनुरोध किया गया"
 
 #: templates/account/password_reset_done.html:7
-msgid ""
-"If an account exists with the provided email address, a password reset email "
+msgid "If an account exists with the provided email address, a password reset email "
 "has been sent."
-msgstr ""
-"यदि दिए गए ईमेल पते के साथ खाता मौजूद है, तो एक पासवर्ड रीसेट ईमेल भेजा गया है।"
+msgstr "यदि दिए गए ईमेल पते के साथ खाता मौजूद है, तो एक पासवर्ड रीसेट ईमेल भेजा गया है।"
 
 #: templates/account/password_reset_done.html:8
-msgid ""
-"Please check your inbox and follow the instructions to reset your password."
-msgstr ""
-"कृपया अपना इनबॉक्स चेक करें और अपने पासवर्ड को रीसेट करने के लिए निर्देशों का पालन करें।"
+msgid "Please check your inbox and follow the instructions to reset your password."
+msgstr "कृपया अपना इनबॉक्स चेक करें और अपने पासवर्ड को रीसेट करने के लिए निर्देशों का पालन करें।"
 
 #: templates/account/password_reset_done.html:9
 #: templates/account/password_reset_from_key_done.html:8
@@ -617,11 +611,9 @@ msgid "Password Reset Successful"
 msgstr "पासवर्ड रीसेट सफल"
 
 #: templates/account/password_reset_from_key_done.html:7
-msgid ""
-"Your password has been successfully reset. You can now log in with your new "
+msgid "Your password has been successfully reset. You can now log in with your new "
 "password."
-msgstr ""
-"आपका पासवर्ड सफलतापूर्वक रीसेट हो गया है। अब आप अपने नए पासवर्ड से लॉगिन कर सकते हैं।"
+msgstr "आपका पासवर्ड सफलतापूर्वक रीसेट हो गया है। अब आप अपने नए पासवर्ड से लॉगिन कर सकते हैं।"
 
 #: templates/account/signup.html:6 templates/account/signup.html:20
 msgid "Sign Up"
@@ -734,7 +726,7 @@ msgid "No payment details available."
 msgstr "कोई भुगतान विवरण उपलब्ध नहीं।"
 
 #: user_settings/templates/user_settings/account_settings.html:48
-#: user_settings/templates/user_settings/account_settings.html:154
+#: user_settings/templates/user_settings/account_settings.html:162
 msgid "Edit Payment Details"
 msgstr "भुगतान विवरण संपादित करें"
 
@@ -747,7 +739,7 @@ msgid "Data Sharing Enabled:"
 msgstr "डेटा साझाकरण सक्षम किया गया:"
 
 #: user_settings/templates/user_settings/account_settings.html:60
-#: user_settings/templates/user_settings/account_settings.html:185
+#: user_settings/templates/user_settings/account_settings.html:193
 msgid "Edit Privacy Settings"
 msgstr "गोपनीयता सेटिंग्स संपादित करें"
 
@@ -764,9 +756,9 @@ msgid "Phone Number"
 msgstr "फोन नंबर"
 
 #: user_settings/templates/user_settings/account_settings.html:92
-#: user_settings/templates/user_settings/account_settings.html:142
-#: user_settings/templates/user_settings/account_settings.html:173
-#: user_settings/templates/user_settings/account_settings.html:196
+#: user_settings/templates/user_settings/account_settings.html:150
+#: user_settings/templates/user_settings/account_settings.html:181
+#: user_settings/templates/user_settings/account_settings.html:204
 msgid "Save Changes"
 msgstr "परिवर्तन सहेजें"
 
@@ -818,34 +810,62 @@ msgstr "हिंदी"
 msgid "Currency"
 msgstr "मुद्रा"
 
+#: user_settings/templates/user_settings/account_settings.html:129
+msgid "British Pound"
+msgstr "ब्रिटिश पाउंड"
+
+#: user_settings/templates/user_settings/account_settings.html:130
+msgid "US Dollar"
+msgstr "अमेरिकी डॉलर"
+
 #: user_settings/templates/user_settings/account_settings.html:131
+msgid "Euro"
+msgstr "यूरो"
+
+#: user_settings/templates/user_settings/account_settings.html:132
+msgid "Russian Ruble"
+msgstr "रूसी रूबल"
+
+#: user_settings/templates/user_settings/account_settings.html:133
+msgid "Chinese Yuan"
+msgstr "चीनी युवान"
+
+#: user_settings/templates/user_settings/account_settings.html:134
+msgid "Japanese Yen"
+msgstr "जापानी येन"
+
+#: user_settings/templates/user_settings/account_settings.html:135
+msgid "Indian Rupee"
+msgstr "भारतीय रुपया"
+
+#: user_settings/templates/user_settings/account_settings.html:139
 msgid "Appearance"
 msgstr "रूपरेखा"
 
-#: user_settings/templates/user_settings/account_settings.html:133
+#: user_settings/templates/user_settings/account_settings.html:141
 msgid "Light"
 msgstr "हल्का"
 
-#: user_settings/templates/user_settings/account_settings.html:134
+#: user_settings/templates/user_settings/account_settings.html:142
 msgid "Dark"
 msgstr "अंधेरा"
 
-#: user_settings/templates/user_settings/account_settings.html:138
+#: user_settings/templates/user_settings/account_settings.html:146
 msgid "Notifications Enabled"
 msgstr "सूचनाएँ सक्षम की गईं"
 
-#: user_settings/templates/user_settings/account_settings.html:161
+#: user_settings/templates/user_settings/account_settings.html:169
 msgid "Payment Method"
 msgstr "भुगतान विधि"
 
-#: user_settings/templates/user_settings/account_settings.html:165
+#: user_settings/templates/user_settings/account_settings.html:173
 msgid "Card Last Four Digits"
 msgstr "कार्ड के आखिरी चार अंक"
 
-#: user_settings/templates/user_settings/account_settings.html:169
+#: user_settings/templates/user_settings/account_settings.html:177
 msgid "Billing Address"
 msgstr "बिलिंग पता"
 
-#: user_settings/templates/user_settings/account_settings.html:192
+#: user_settings/templates/user_settings/account_settings.html:200
 msgid "Data Sharing Enabled"
 msgstr "डेटा साझाकरण सक्षम किया गया"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-18 18:48+0000\n"
+"POT-Creation-Date: 2025-02-19 12:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -489,23 +489,23 @@ msgid "Welcome to Nomad Nation"
 msgstr "Benvenuto in Nomad Nation"
 
 #: main/templates/main/home.html:10
-msgid ""
-"Your trusted platform for finding and renting the perfect caravan for your "
+msgid "Your trusted platform for finding and renting the perfect caravan for your "
 "adventure"
-msgstr ""
-"La tua piattaforma di fiducia per trovare e noleggiare la roulotte perfetta per la tua avventura"
+msgstr "La tua piattaforma di fiducia per trovare e noleggiare la roulotte perfetta "
+"per la tua avventura"
 
 #: main/templates/main/home.html:14
 msgid "What we do"
 msgstr "Cosa facciamo"
 
 #: main/templates/main/home.html:16
-msgid ""
-"At Nomad Nation, we connect caravan owners with travelers looking for unique "
+msgid "At Nomad Nation, we connect caravan owners with travelers looking for unique "
 "holiday experiences. Whether you're a caravan owner looking to earn extra "
 "income or a traveler seeking a hassle-free holiday, we've got you covered."
-msgstr ""
-"In Nomad Nation, colleghiamo i proprietari di roulotte con i viaggiatori in cerca di esperienze di vacanza uniche. Che tu sia un proprietario di roulotte in cerca di guadagnare un reddito extra o un viaggiatore che cerca una vacanza senza stress, ci pensiamo noi."
+msgstr "In Nomad Nation, colleghiamo i proprietari di roulotte con i viaggiatori in "
+"cerca di esperienze di vacanza uniche. Che tu sia un proprietario di "
+"roulotte in cerca di guadagnare un reddito extra o un viaggiatore che cerca "
+"una vacanza senza stress, ci pensiamo noi."
 
 #: main/templates/main/home.html:26
 msgid "Reliable Rentals"
@@ -513,7 +513,8 @@ msgstr "Noleggi affidabili"
 
 #: main/templates/main/home.html:27
 msgid "All rentals are verified to ensure your safety and satisfaction."
-msgstr "Tutti i noleggi sono verificati per garantire la tua sicurezza e soddisfazione."
+msgstr "Tutti i noleggi sono verificati per garantire la tua sicurezza e "
+"soddisfazione."
 
 #: main/templates/main/home.html:35
 msgid "Community-Driven"
@@ -560,12 +561,10 @@ msgid "Password Reset"
 msgstr "Reimposta la password"
 
 #: templates/account/password_reset.html:14
-msgid ""
-"Forgotten your password? Enter your username or email address below, and "
+msgid "Forgotten your password? Enter your username or email address below, and "
 "we'll send you an email allowing you to reset it."
-msgstr ""
-"Password dimenticata? Inserisci il tuo nome utente o indirizzo email qui sotto, e "
-"ti invieremo un'email per reimpostarla."
+msgstr "Password dimenticata? Inserisci il tuo nome utente o indirizzo email qui "
+"sotto, e ti invieremo un'email per reimpostarla."
 
 #: templates/account/password_reset.html:20
 msgid "Reset My Password"
@@ -588,18 +587,15 @@ msgid "Password Reset Requested"
 msgstr "Richiesta di reimpostazione password"
 
 #: templates/account/password_reset_done.html:7
-msgid ""
-"If an account exists with the provided email address, a password reset email "
+msgid "If an account exists with the provided email address, a password reset email "
 "has been sent."
-msgstr ""
-"Se esiste un account con l'indirizzo email fornito, è stata inviata un'email "
+msgstr "Se esiste un account con l'indirizzo email fornito, è stata inviata un'email "
 "per reimpostare la password."
 
 #: templates/account/password_reset_done.html:8
-msgid ""
-"Please check your inbox and follow the instructions to reset your password."
-msgstr ""
-"Controlla la tua casella di posta e segui le istruzioni per reimpostare la tua password."
+msgid "Please check your inbox and follow the instructions to reset your password."
+msgstr "Controlla la tua casella di posta e segui le istruzioni per reimpostare la "
+"tua password."
 
 #: templates/account/password_reset_done.html:9
 #: templates/account/password_reset_from_key_done.html:8
@@ -619,12 +615,10 @@ msgid "Password Reset Successful"
 msgstr "Reimpostazione della password riuscita"
 
 #: templates/account/password_reset_from_key_done.html:7
-msgid ""
-"Your password has been successfully reset. You can now log in with your new "
+msgid "Your password has been successfully reset. You can now log in with your new "
 "password."
-msgstr ""
-"La tua password è stata reimpostata con successo. Ora puoi accedere con la tua nuova "
-"password."
+msgstr "La tua password è stata reimpostata con successo. Ora puoi accedere con la "
+"tua nuova password."
 
 #: templates/account/signup.html:6 templates/account/signup.html:20
 msgid "Sign Up"
@@ -737,7 +731,7 @@ msgid "No payment details available."
 msgstr "Nessun dettaglio di pagamento disponibile."
 
 #: user_settings/templates/user_settings/account_settings.html:48
-#: user_settings/templates/user_settings/account_settings.html:154
+#: user_settings/templates/user_settings/account_settings.html:162
 msgid "Edit Payment Details"
 msgstr "Modifica dettagli di pagamento"
 
@@ -750,7 +744,7 @@ msgid "Data Sharing Enabled:"
 msgstr "Condivisione dei dati attivata:"
 
 #: user_settings/templates/user_settings/account_settings.html:60
-#: user_settings/templates/user_settings/account_settings.html:185
+#: user_settings/templates/user_settings/account_settings.html:193
 msgid "Edit Privacy Settings"
 msgstr "Modifica impostazioni sulla privacy"
 
@@ -767,9 +761,9 @@ msgid "Phone Number"
 msgstr "Numero di telefono"
 
 #: user_settings/templates/user_settings/account_settings.html:92
-#: user_settings/templates/user_settings/account_settings.html:142
-#: user_settings/templates/user_settings/account_settings.html:173
-#: user_settings/templates/user_settings/account_settings.html:196
+#: user_settings/templates/user_settings/account_settings.html:150
+#: user_settings/templates/user_settings/account_settings.html:181
+#: user_settings/templates/user_settings/account_settings.html:204
 msgid "Save Changes"
 msgstr "Salva modifiche"
 
@@ -821,34 +815,62 @@ msgstr "Hindi"
 msgid "Currency"
 msgstr "Valuta"
 
+#: user_settings/templates/user_settings/account_settings.html:129
+msgid "British Pound"
+msgstr "Sterlina Britannica"
+
+#: user_settings/templates/user_settings/account_settings.html:130
+msgid "US Dollar"
+msgstr "Dollaro americano"
+
 #: user_settings/templates/user_settings/account_settings.html:131
+msgid "Euro"
+msgstr "Euro"
+
+#: user_settings/templates/user_settings/account_settings.html:132
+msgid "Russian Ruble"
+msgstr "Rublo russo"
+
+#: user_settings/templates/user_settings/account_settings.html:133
+msgid "Chinese Yuan"
+msgstr "Yuan Cinese"
+
+#: user_settings/templates/user_settings/account_settings.html:134
+msgid "Japanese Yen"
+msgstr "Yen Giapponesi"
+
+#: user_settings/templates/user_settings/account_settings.html:135
+msgid "Indian Rupee"
+msgstr "Rupia Indiana"
+
+#: user_settings/templates/user_settings/account_settings.html:139
 msgid "Appearance"
 msgstr "Aspetto"
 
-#: user_settings/templates/user_settings/account_settings.html:133
+#: user_settings/templates/user_settings/account_settings.html:141
 msgid "Light"
 msgstr "Chiaro"
 
-#: user_settings/templates/user_settings/account_settings.html:134
+#: user_settings/templates/user_settings/account_settings.html:142
 msgid "Dark"
 msgstr "Scuro"
 
-#: user_settings/templates/user_settings/account_settings.html:138
+#: user_settings/templates/user_settings/account_settings.html:146
 msgid "Notifications Enabled"
 msgstr "Notifiche attivate"
 
-#: user_settings/templates/user_settings/account_settings.html:161
+#: user_settings/templates/user_settings/account_settings.html:169
 msgid "Payment Method"
 msgstr "Metodo di pagamento"
 
-#: user_settings/templates/user_settings/account_settings.html:165
+#: user_settings/templates/user_settings/account_settings.html:173
 msgid "Card Last Four Digits"
 msgstr "Ultimi quattro cifre della carta"
 
-#: user_settings/templates/user_settings/account_settings.html:169
+#: user_settings/templates/user_settings/account_settings.html:177
 msgid "Billing Address"
 msgstr "Indirizzo di fatturazione"
 
-#: user_settings/templates/user_settings/account_settings.html:192
+#: user_settings/templates/user_settings/account_settings.html:200
 msgid "Data Sharing Enabled"
 msgstr "Condivisione dei dati attivata"

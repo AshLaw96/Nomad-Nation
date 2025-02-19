@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-18 19:27+0000\n"
+"POT-Creation-Date: 2025-02-19 12:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -488,8 +488,8 @@ msgid "Welcome to Nomad Nation"
 msgstr "欢迎来到 Nomad Nation"
 
 #: main/templates/main/home.html:10
-msgid ""
-"Your trusted platform for finding and renting the perfect caravan for your adventure"
+msgid "Your trusted platform for finding and renting the perfect caravan for your "
+"adventure"
 msgstr "您值得信赖的房车租赁平台，助您寻找完美的旅行房车"
 
 #: main/templates/main/home.html:14
@@ -497,9 +497,12 @@ msgid "What we do"
 msgstr "我们的服务"
 
 #: main/templates/main/home.html:16
-msgid ""
-"At Nomad Nation, we connect caravan owners with travelers looking for unique holiday experiences. Whether you're a caravan owner looking to earn extra income or a traveler seeking a hassle-free holiday, we've got you covered."
-msgstr "在 Nomad Nation，我们为寻找独特假期体验的旅行者与房车车主搭建桥梁。无论您是希望赚取额外收入的房车车主，还是希望享受轻松假期的旅行者，我们都能满足您的需求。"
+msgid "At Nomad Nation, we connect caravan owners with travelers looking for unique "
+"holiday experiences. Whether you're a caravan owner looking to earn extra "
+"income or a traveler seeking a hassle-free holiday, we've got you covered."
+msgstr "在 Nomad Nation，我们为寻找独特假期体验的旅行者与房车车主搭建桥梁。无论您是希"
+"望赚取额外收入的房车车主，还是希望享受轻松假期的旅行者，我们都能满足您的需"
+"求。"
 
 #: main/templates/main/home.html:26
 msgid "Reliable Rentals"
@@ -554,8 +557,8 @@ msgid "Password Reset"
 msgstr "密码重置"
 
 #: templates/account/password_reset.html:14
-msgid ""
-"Forgotten your password? Enter your username or email address below, and we'll send you an email allowing you to reset it."
+msgid "Forgotten your password? Enter your username or email address below, and "
+"we'll send you an email allowing you to reset it."
 msgstr "忘记密码？请输入您的用户名或电子邮箱，我们将发送邮件帮助您重置密码。"
 
 #: templates/account/password_reset.html:20
@@ -579,15 +582,12 @@ msgid "Password Reset Requested"
 msgstr "密码重置请求"
 
 #: templates/account/password_reset_done.html:7
-msgid ""
-"If an account exists with the provided email address, a password reset email "
+msgid "If an account exists with the provided email address, a password reset email "
 "has been sent."
-msgstr ""
-"如果提供的电子邮件地址存在账户，密码重置邮件已发送。"
+msgstr "如果提供的电子邮件地址存在账户，密码重置邮件已发送。"
 
 #: templates/account/password_reset_done.html:8
-msgid ""
-"Please check your inbox and follow the instructions to reset your password."
+msgid "Please check your inbox and follow the instructions to reset your password."
 msgstr "请检查您的收件箱并按照指示重置密码。"
 
 #: templates/account/password_reset_done.html:9
@@ -608,8 +608,7 @@ msgid "Password Reset Successful"
 msgstr "密码重置成功"
 
 #: templates/account/password_reset_from_key_done.html:7
-msgid ""
-"Your password has been successfully reset. You can now log in with your new "
+msgid "Your password has been successfully reset. You can now log in with your new "
 "password."
 msgstr "您的密码已成功重置。您现在可以使用新密码登录。"
 
@@ -724,7 +723,7 @@ msgid "No payment details available."
 msgstr "没有可用的支付详情。"
 
 #: user_settings/templates/user_settings/account_settings.html:48
-#: user_settings/templates/user_settings/account_settings.html:154
+#: user_settings/templates/user_settings/account_settings.html:162
 msgid "Edit Payment Details"
 msgstr "编辑支付详情"
 
@@ -737,7 +736,7 @@ msgid "Data Sharing Enabled:"
 msgstr "启用数据共享："
 
 #: user_settings/templates/user_settings/account_settings.html:60
-#: user_settings/templates/user_settings/account_settings.html:185
+#: user_settings/templates/user_settings/account_settings.html:193
 msgid "Edit Privacy Settings"
 msgstr "编辑隐私设置"
 
@@ -754,9 +753,9 @@ msgid "Phone Number"
 msgstr "电话号码"
 
 #: user_settings/templates/user_settings/account_settings.html:92
-#: user_settings/templates/user_settings/account_settings.html:142
-#: user_settings/templates/user_settings/account_settings.html:173
-#: user_settings/templates/user_settings/account_settings.html:196
+#: user_settings/templates/user_settings/account_settings.html:150
+#: user_settings/templates/user_settings/account_settings.html:181
+#: user_settings/templates/user_settings/account_settings.html:204
 msgid "Save Changes"
 msgstr "保存更改"
 
@@ -808,34 +807,62 @@ msgstr "印地语"
 msgid "Currency"
 msgstr "货币"
 
+#: user_settings/templates/user_settings/account_settings.html:129
+msgid "British Pound"
+msgstr "英镑"
+
+#: user_settings/templates/user_settings/account_settings.html:130
+msgid "US Dollar"
+msgstr "美元"
+
 #: user_settings/templates/user_settings/account_settings.html:131
+msgid "Euro"
+msgstr "欧元"
+
+#: user_settings/templates/user_settings/account_settings.html:132
+msgid "Russian Ruble"
+msgstr "俄罗斯卢布"
+
+#: user_settings/templates/user_settings/account_settings.html:133
+msgid "Chinese Yuan"
+msgstr "人民币"
+
+#: user_settings/templates/user_settings/account_settings.html:134
+msgid "Japanese Yen"
+msgstr "日圆"
+
+#: user_settings/templates/user_settings/account_settings.html:135
+msgid "Indian Rupee"
+msgstr "印度卢比"
+
+#: user_settings/templates/user_settings/account_settings.html:139
 msgid "Appearance"
 msgstr "外观"
 
-#: user_settings/templates/user_settings/account_settings.html:133
+#: user_settings/templates/user_settings/account_settings.html:141
 msgid "Light"
 msgstr "浅色"
 
-#: user_settings/templates/user_settings/account_settings.html:134
+#: user_settings/templates/user_settings/account_settings.html:142
 msgid "Dark"
 msgstr "深色"
 
-#: user_settings/templates/user_settings/account_settings.html:138
+#: user_settings/templates/user_settings/account_settings.html:146
 msgid "Notifications Enabled"
 msgstr "启用通知"
 
-#: user_settings/templates/user_settings/account_settings.html:161
+#: user_settings/templates/user_settings/account_settings.html:169
 msgid "Payment Method"
 msgstr "支付方式"
 
-#: user_settings/templates/user_settings/account_settings.html:165
+#: user_settings/templates/user_settings/account_settings.html:173
 msgid "Card Last Four Digits"
 msgstr "卡片最后四位数字"
 
-#: user_settings/templates/user_settings/account_settings.html:169
+#: user_settings/templates/user_settings/account_settings.html:177
 msgid "Billing Address"
 msgstr "账单地址"
 
-#: user_settings/templates/user_settings/account_settings.html:192
+#: user_settings/templates/user_settings/account_settings.html:200
 msgid "Data Sharing Enabled"
 msgstr "启用数据共享"

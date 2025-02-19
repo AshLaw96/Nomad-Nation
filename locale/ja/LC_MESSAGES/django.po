@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-18 19:43+0000\n"
+"POT-Creation-Date: 2025-02-19 12:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -339,7 +339,7 @@ msgstr "二"
 
 #: listings/templates/listings/listing_page.html:29
 msgid "Four"
-msgstr ""
+msgstr "4"
 
 #: listings/templates/listings/listing_page.html:30
 msgid "Six"
@@ -489,24 +489,26 @@ msgid "Welcome to Nomad Nation"
 msgstr "ノマドネイションへようこそ"
 
 #: main/templates/main/home.html:10
-msgid ""
-"Your trusted platform for finding and renting the perfect caravan for your "
+msgid "Your trusted platform for finding and renting the perfect caravan for your "
 "adventure"
-msgstr ""
-"あなたの冒険に最適なキャラバンを見つけて借りるための信頼できるプラットフォーム"
+msgstr "あなたの冒険に最適なキャラバンを見つけて借りるための信頼できるプラットフォー"
+"ム"
 
 #: main/templates/main/home.html:14
 msgid "What we do"
 msgstr "私たちの仕事"
 
 #: main/templates/main/home.html:16
-msgid ""
-"At Nomad Nation, we connect caravan owners with travelers looking for unique "
+msgid "At Nomad Nation, we connect caravan owners with travelers looking for unique "
 "holiday experiences. Whether you're a caravan owner looking to earn extra "
 "income or a traveler seeking a hassle-free holiday, we've got you covered."
-msgstr ""
-"ノマドネイションでは、キャラバンオーナーとユニークな休暇体験を求める旅行者を繋げます。"
-"キャラバンオーナーが追加の収入を得ることを目指している場合や、ストレスのない休暇を求める旅行者であれば、私たちがサポートします。"
+msgstr "ノマドネイションでは、キャラバンオーナーとユニークな休暇体験を求める旅行者を"
+"繋げます。キャラバンオーナーが追加の収入を得ることを目指している場合や、スト"
+"レスのない休暇を求める旅行者であれば、私たちがサポートします。"
+
+#: main/templates/main/home.html:26
+msgid "Reliable Rentals"
+msgstr "信頼できるレンタル"
 
 #: main/templates/main/home.html:27
 msgid "All rentals are verified to ensure your safety and satisfaction."
@@ -557,11 +559,9 @@ msgid "Password Reset"
 msgstr "パスワードリセット"
 
 #: templates/account/password_reset.html:14
-msgid ""
-"Forgotten your password? Enter your username or email address below, and "
+msgid "Forgotten your password? Enter your username or email address below, and "
 "we'll send you an email allowing you to reset it."
-msgstr ""
-"パスワードをお忘れですか？以下にユーザー名またはメールアドレスを入力すると、"
+msgstr "パスワードをお忘れですか？以下にユーザー名またはメールアドレスを入力すると、"
 "リセット用のメールをお送りします。"
 
 #: templates/account/password_reset.html:20
@@ -585,17 +585,14 @@ msgid "Password Reset Requested"
 msgstr "パスワードリセットがリクエストされました"
 
 #: templates/account/password_reset_done.html:7
-msgid ""
-"If an account exists with the provided email address, a password reset email "
+msgid "If an account exists with the provided email address, a password reset email "
 "has been sent."
-msgstr ""
-"提供されたメールアドレスにアカウントが存在する場合、パスワードリセットのメールが送信されました。"
+msgstr "提供されたメールアドレスにアカウントが存在する場合、パスワードリセットのメー"
+"ルが送信されました。"
 
 #: templates/account/password_reset_done.html:8
-msgid ""
-"Please check your inbox and follow the instructions to reset your password."
-msgstr ""
-"受信箱を確認し、指示に従ってパスワードをリセットしてください。"
+msgid "Please check your inbox and follow the instructions to reset your password."
+msgstr "受信箱を確認し、指示に従ってパスワードをリセットしてください。"
 
 #: templates/account/password_reset_done.html:9
 #: templates/account/password_reset_from_key_done.html:8
@@ -615,11 +612,9 @@ msgid "Password Reset Successful"
 msgstr "パスワードリセット成功"
 
 #: templates/account/password_reset_from_key_done.html:7
-msgid ""
-"Your password has been successfully reset. You can now log in with your new "
+msgid "Your password has been successfully reset. You can now log in with your new "
 "password."
-msgstr ""
-"パスワードは正常にリセットされました。新しいパスワードでログインできます。"
+msgstr "パスワードは正常にリセットされました。新しいパスワードでログインできます。"
 
 #: templates/account/signup.html:6 templates/account/signup.html:20
 msgid "Sign Up"
@@ -732,7 +727,7 @@ msgid "No payment details available."
 msgstr "支払い詳細はありません。"
 
 #: user_settings/templates/user_settings/account_settings.html:48
-#: user_settings/templates/user_settings/account_settings.html:154
+#: user_settings/templates/user_settings/account_settings.html:162
 msgid "Edit Payment Details"
 msgstr "支払い詳細を編集"
 
@@ -745,7 +740,7 @@ msgid "Data Sharing Enabled:"
 msgstr "データ共有を有効にする："
 
 #: user_settings/templates/user_settings/account_settings.html:60
-#: user_settings/templates/user_settings/account_settings.html:185
+#: user_settings/templates/user_settings/account_settings.html:193
 msgid "Edit Privacy Settings"
 msgstr "プライバシー設定を編集"
 
@@ -762,9 +757,9 @@ msgid "Phone Number"
 msgstr "電話番号"
 
 #: user_settings/templates/user_settings/account_settings.html:92
-#: user_settings/templates/user_settings/account_settings.html:142
-#: user_settings/templates/user_settings/account_settings.html:173
-#: user_settings/templates/user_settings/account_settings.html:196
+#: user_settings/templates/user_settings/account_settings.html:150
+#: user_settings/templates/user_settings/account_settings.html:181
+#: user_settings/templates/user_settings/account_settings.html:204
 msgid "Save Changes"
 msgstr "変更を保存"
 
@@ -816,34 +811,62 @@ msgstr "ヒンディー語"
 msgid "Currency"
 msgstr "通貨"
 
+#: user_settings/templates/user_settings/account_settings.html:129
+msgid "British Pound"
+msgstr "英国ポンド"
+
+#: user_settings/templates/user_settings/account_settings.html:130
+msgid "US Dollar"
+msgstr "米ドル"
+
 #: user_settings/templates/user_settings/account_settings.html:131
+msgid "Euro"
+msgstr "ユーロ"
+
+#: user_settings/templates/user_settings/account_settings.html:132
+msgid "Russian Ruble"
+msgstr "ロシアルーブル"
+
+#: user_settings/templates/user_settings/account_settings.html:133
+msgid "Chinese Yuan"
+msgstr "中国人民元"
+
+#: user_settings/templates/user_settings/account_settings.html:134
+msgid "Japanese Yen"
+msgstr "日本円"
+
+#: user_settings/templates/user_settings/account_settings.html:135
+msgid "Indian Rupee"
+msgstr "インドルピー"
+
+#: user_settings/templates/user_settings/account_settings.html:139
 msgid "Appearance"
 msgstr "外観"
 
-#: user_settings/templates/user_settings/account_settings.html:133
+#: user_settings/templates/user_settings/account_settings.html:141
 msgid "Light"
 msgstr "ライト"
 
-#: user_settings/templates/user_settings/account_settings.html:134
+#: user_settings/templates/user_settings/account_settings.html:142
 msgid "Dark"
 msgstr "ダーク"
 
-#: user_settings/templates/user_settings/account_settings.html:138
+#: user_settings/templates/user_settings/account_settings.html:146
 msgid "Notifications Enabled"
 msgstr "通知を有効にする"
 
-#: user_settings/templates/user_settings/account_settings.html:161
+#: user_settings/templates/user_settings/account_settings.html:169
 msgid "Payment Method"
 msgstr "支払い方法"
 
-#: user_settings/templates/user_settings/account_settings.html:165
+#: user_settings/templates/user_settings/account_settings.html:173
 msgid "Card Last Four Digits"
 msgstr "カードの最後の4桁"
 
-#: user_settings/templates/user_settings/account_settings.html:169
+#: user_settings/templates/user_settings/account_settings.html:177
 msgid "Billing Address"
 msgstr "請求先住所"
 
-#: user_settings/templates/user_settings/account_settings.html:192
+#: user_settings/templates/user_settings/account_settings.html:200
 msgid "Data Sharing Enabled"
 msgstr "データ共有を有効にする"

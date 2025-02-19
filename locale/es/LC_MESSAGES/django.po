@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-18 11:47+0000\n"
+"POT-Creation-Date: 2025-02-19 12:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -563,8 +563,9 @@ msgstr "Restablecer Contraseña"
 #: templates/account/password_reset.html:14
 msgid "Forgotten your password? Enter your username or email address below, and "
 "we'll send you an email allowing you to reset it."
-msgstr "¿Olvidaste tu contraseña? Ingresa tu nombre de usuario o dirección de correo electrónico a continuación, "
-"y te enviaremos un correo electrónico que te permitirá restablecerla."
+msgstr "¿Olvidaste tu contraseña? Ingresa tu nombre de usuario o dirección de correo "
+"electrónico a continuación, y te enviaremos un correo electrónico que te "
+"permitirá restablecerla."
 
 #: templates/account/password_reset.html:20
 msgid "Reset My Password"
@@ -580,7 +581,8 @@ msgstr "Iniciar sesión"
 
 #: templates/account/password_reset.html:32
 msgid "Please contact us if you have any trouble resetting your password."
-msgstr "Por favor contáctanos si tienes algún problema para restablecer tu contraseña."
+msgstr "Por favor contáctanos si tienes algún problema para restablecer tu "
+"contraseña."
 
 #: templates/account/password_reset_done.html:6
 msgid "Password Reset Requested"
@@ -589,11 +591,13 @@ msgstr "Solicitud de Restablecimiento de Contraseña"
 #: templates/account/password_reset_done.html:7
 msgid "If an account exists with the provided email address, a password reset email "
 "has been sent."
-msgstr "Si existe una cuenta con la dirección de correo electrónico proporcionada, se ha enviado un correo electrónico de restablecimiento de contraseña."
+msgstr "Si existe una cuenta con la dirección de correo electrónico proporcionada, "
+"se ha enviado un correo electrónico de restablecimiento de contraseña."
 
 #: templates/account/password_reset_done.html:8
 msgid "Please check your inbox and follow the instructions to reset your password."
-msgstr "Por favor revisa tu bandeja de entrada y sigue las instrucciones para restablecer tu contraseña."
+msgstr "Por favor revisa tu bandeja de entrada y sigue las instrucciones para "
+"restablecer tu contraseña."
 
 #: templates/account/password_reset_done.html:9
 #: templates/account/password_reset_from_key_done.html:8
@@ -615,7 +619,8 @@ msgstr "Restablecimiento de Contraseña Exitoso"
 #: templates/account/password_reset_from_key_done.html:7
 msgid "Your password has been successfully reset. You can now log in with your new "
 "password."
-msgstr "Tu contraseña ha sido restablecida exitosamente. Ahora puedes iniciar sesión con tu nueva contraseña."
+msgstr "Tu contraseña ha sido restablecida exitosamente. Ahora puedes iniciar sesión "
+"con tu nueva contraseña."
 
 #: templates/account/signup.html:6 templates/account/signup.html:20
 msgid "Sign Up"
@@ -629,55 +634,55 @@ msgstr "¿Ya tienes una cuenta? Entonces"
 msgid "sign in"
 msgstr "inicia sesión"
 
-#: templates/base.html:13 templates/base.html:35
+#: templates/base.html:14 templates/base.html:36
 msgid "Nomad Nation"
 msgstr "Nación Nómada"
 
-#: templates/base.html:44
+#: templates/base.html:45
 msgid "Home"
 msgstr "Inicio"
 
-#: templates/base.html:47
+#: templates/base.html:48
 msgid "Contact"
 msgstr "Contacta"
 
-#: templates/base.html:52
+#: templates/base.html:53
 msgid "Dashboard"
 msgstr "Panel de Control"
 
-#: templates/base.html:55
+#: templates/base.html:56
 msgid "Caravan listings"
 msgstr "Listados de caravanas"
 
-#: templates/base.html:58
+#: templates/base.html:59
 msgid "Bookings"
 msgstr "Reservas"
 
-#: templates/base.html:61
+#: templates/base.html:62
 msgid "Account settings"
 msgstr "Configuración de la cuenta"
 
-#: templates/base.html:64
+#: templates/base.html:65
 msgid "Notifications"
 msgstr "Notificaciones"
 
-#: templates/base.html:67
+#: templates/base.html:68
 msgid "Logout"
 msgstr "Cerrar Sesión"
 
-#: templates/base.html:72
+#: templates/base.html:73
 msgid "Register"
 msgstr "Registrarse"
 
-#: templates/base.html:75
+#: templates/base.html:76
 msgid "Login"
 msgstr "Iniciar Sesión"
 
-#: templates/base.html:103
+#: templates/base.html:104
 msgid "Made by"
 msgstr "Hecho por"
 
-#: templates/base.html:106
+#: templates/base.html:107
 msgid "Follow us:"
 msgstr "Síguenos:"
 
@@ -728,7 +733,7 @@ msgid "No payment details available."
 msgstr "No hay detalles de pago disponibles."
 
 #: user_settings/templates/user_settings/account_settings.html:48
-#: user_settings/templates/user_settings/account_settings.html:154
+#: user_settings/templates/user_settings/account_settings.html:162
 msgid "Edit Payment Details"
 msgstr "Editar detalles de pago"
 
@@ -741,7 +746,7 @@ msgid "Data Sharing Enabled:"
 msgstr "Compartición de datos habilitada:"
 
 #: user_settings/templates/user_settings/account_settings.html:60
-#: user_settings/templates/user_settings/account_settings.html:185
+#: user_settings/templates/user_settings/account_settings.html:193
 msgid "Edit Privacy Settings"
 msgstr "Editar configuración de privacidad"
 
@@ -758,9 +763,9 @@ msgid "Phone Number"
 msgstr "Número de teléfono"
 
 #: user_settings/templates/user_settings/account_settings.html:92
-#: user_settings/templates/user_settings/account_settings.html:142
-#: user_settings/templates/user_settings/account_settings.html:173
-#: user_settings/templates/user_settings/account_settings.html:196
+#: user_settings/templates/user_settings/account_settings.html:150
+#: user_settings/templates/user_settings/account_settings.html:181
+#: user_settings/templates/user_settings/account_settings.html:204
 msgid "Save Changes"
 msgstr "Guardar cambios"
 
@@ -812,34 +817,62 @@ msgstr "Hindi"
 msgid "Currency"
 msgstr "Moneda"
 
+#: user_settings/templates/user_settings/account_settings.html:129
+msgid "British Pound"
+msgstr "Libra Británica"
+
+#: user_settings/templates/user_settings/account_settings.html:130
+msgid "US Dollar"
+msgstr "Dólar Estadounidense"
+
 #: user_settings/templates/user_settings/account_settings.html:131
+msgid "Euro"
+msgstr "Euro"
+
+#: user_settings/templates/user_settings/account_settings.html:132
+msgid "Russian Ruble"
+msgstr "Rublo Ruso"
+
+#: user_settings/templates/user_settings/account_settings.html:133
+msgid "Chinese Yuan"
+msgstr "Yuan Chino"
+
+#: user_settings/templates/user_settings/account_settings.html:134
+msgid "Japanese Yen"
+msgstr "Yen Japonés"
+
+#: user_settings/templates/user_settings/account_settings.html:135
+msgid "Indian Rupee"
+msgstr "Rupia India"
+
+#: user_settings/templates/user_settings/account_settings.html:139
 msgid "Appearance"
 msgstr "Apariencia"
 
-#: user_settings/templates/user_settings/account_settings.html:133
+#: user_settings/templates/user_settings/account_settings.html:141
 msgid "Light"
 msgstr "Claro"
 
-#: user_settings/templates/user_settings/account_settings.html:134
+#: user_settings/templates/user_settings/account_settings.html:142
 msgid "Dark"
 msgstr "Oscuro"
 
-#: user_settings/templates/user_settings/account_settings.html:138
+#: user_settings/templates/user_settings/account_settings.html:146
 msgid "Notifications Enabled"
 msgstr "Notificaciones habilitadas"
 
-#: user_settings/templates/user_settings/account_settings.html:161
+#: user_settings/templates/user_settings/account_settings.html:169
 msgid "Payment Method"
 msgstr "Método de pago"
 
-#: user_settings/templates/user_settings/account_settings.html:165
+#: user_settings/templates/user_settings/account_settings.html:173
 msgid "Card Last Four Digits"
 msgstr "Últimos cuatro dígitos de la tarjeta"
 
-#: user_settings/templates/user_settings/account_settings.html:169
+#: user_settings/templates/user_settings/account_settings.html:177
 msgid "Billing Address"
 msgstr "Dirección de facturación"
 
-#: user_settings/templates/user_settings/account_settings.html:192
+#: user_settings/templates/user_settings/account_settings.html:200
 msgid "Data Sharing Enabled"
 msgstr "Compartición de datos habilitada"

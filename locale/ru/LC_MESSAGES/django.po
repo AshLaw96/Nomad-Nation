@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-18 19:10+0000\n"
+"POT-Creation-Date: 2025-02-19 12:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -491,16 +491,23 @@ msgid "Welcome to Nomad Nation"
 msgstr "Добро пожаловать в Nomad Nation"
 
 #: main/templates/main/home.html:10
-msgid "Your trusted platform for finding and renting the perfect caravan for your adventure"
-msgstr "Ваша надежная платформа для поиска и аренды идеального каравана для вашего приключения"
+msgid "Your trusted platform for finding and renting the perfect caravan for your "
+"adventure"
+msgstr "Ваша надежная платформа для поиска и аренды идеального каравана для вашего "
+"приключения"
 
 #: main/templates/main/home.html:14
 msgid "What we do"
 msgstr "Чем мы занимаемся"
 
 #: main/templates/main/home.html:16
-msgid "At Nomad Nation, we connect caravan owners with travelers looking for unique holiday experiences. Whether you're a caravan owner looking to earn extra income or a traveler seeking a hassle-free holiday, we've got you covered."
-msgstr "В Nomad Nation мы соединяем владельцев караванов с путешественниками, ищущими уникальные впечатления от отдыха. Будь вы владелец каравана, желающий заработать дополнительный доход, или путешественник, стремящийся к беззаботному отдыху, мы поможем вам."
+msgid "At Nomad Nation, we connect caravan owners with travelers looking for unique "
+"holiday experiences. Whether you're a caravan owner looking to earn extra "
+"income or a traveler seeking a hassle-free holiday, we've got you covered."
+msgstr "В Nomad Nation мы соединяем владельцев караванов с путешественниками, "
+"ищущими уникальные впечатления от отдыха. Будь вы владелец каравана, "
+"желающий заработать дополнительный доход, или путешественник, стремящийся к "
+"беззаботному отдыху, мы поможем вам."
 
 #: main/templates/main/home.html:26
 msgid "Reliable Rentals"
@@ -555,8 +562,10 @@ msgid "Password Reset"
 msgstr "Сброс пароля"
 
 #: templates/account/password_reset.html:14
-msgid "Forgotten your password? Enter your username or email address below, and we'll send you an email allowing you to reset it."
-msgstr "Забыли пароль? Введите ниже свое имя пользователя или адрес электронной почты, и мы отправим вам письмо с инструкцией по его сбросу."
+msgid "Forgotten your password? Enter your username or email address below, and "
+"we'll send you an email allowing you to reset it."
+msgstr "Забыли пароль? Введите ниже свое имя пользователя или адрес электронной "
+"почты, и мы отправим вам письмо с инструкцией по его сбросу."
 
 #: templates/account/password_reset.html:20
 msgid "Reset My Password"
@@ -572,15 +581,18 @@ msgstr "Войти"
 
 #: templates/account/password_reset.html:32
 msgid "Please contact us if you have any trouble resetting your password."
-msgstr "Пожалуйста, свяжитесь с нами, если у вас возникнут проблемы со сбросом пароля."
+msgstr "Пожалуйста, свяжитесь с нами, если у вас возникнут проблемы со сбросом "
+"пароля."
 
 #: templates/account/password_reset_done.html:6
 msgid "Password Reset Requested"
 msgstr "Запрос на сброс пароля"
 
 #: templates/account/password_reset_done.html:7
-msgid "If an account exists with the provided email address, a password reset email has been sent."
-msgstr "Если аккаунт с указанным адресом электронной почты существует, мы отправили письмо с инструкцией по сбросу пароля."
+msgid "If an account exists with the provided email address, a password reset email "
+"has been sent."
+msgstr "Если аккаунт с указанным адресом электронной почты существует, мы отправили "
+"письмо с инструкцией по сбросу пароля."
 
 #: templates/account/password_reset_done.html:8
 msgid "Please check your inbox and follow the instructions to reset your password."
@@ -604,7 +616,8 @@ msgid "Password Reset Successful"
 msgstr "Пароль успешно сброшен"
 
 #: templates/account/password_reset_from_key_done.html:7
-msgid "Your password has been successfully reset. You can now log in with your new password."
+msgid "Your password has been successfully reset. You can now log in with your new "
+"password."
 msgstr "Ваш пароль успешно сброшен. Теперь вы можете войти с новым паролем."
 
 #: templates/account/signup.html:6 templates/account/signup.html:20
@@ -718,7 +731,7 @@ msgid "No payment details available."
 msgstr "Нет доступных платежных данных."
 
 #: user_settings/templates/user_settings/account_settings.html:48
-#: user_settings/templates/user_settings/account_settings.html:154
+#: user_settings/templates/user_settings/account_settings.html:162
 msgid "Edit Payment Details"
 msgstr "Редактировать платежные данные"
 
@@ -731,7 +744,7 @@ msgid "Data Sharing Enabled:"
 msgstr "Включено совместное использование данных:"
 
 #: user_settings/templates/user_settings/account_settings.html:60
-#: user_settings/templates/user_settings/account_settings.html:185
+#: user_settings/templates/user_settings/account_settings.html:193
 msgid "Edit Privacy Settings"
 msgstr "Редактировать настройки конфиденциальности"
 
@@ -748,9 +761,9 @@ msgid "Phone Number"
 msgstr "Номер телефона"
 
 #: user_settings/templates/user_settings/account_settings.html:92
-#: user_settings/templates/user_settings/account_settings.html:142
-#: user_settings/templates/user_settings/account_settings.html:173
-#: user_settings/templates/user_settings/account_settings.html:196
+#: user_settings/templates/user_settings/account_settings.html:150
+#: user_settings/templates/user_settings/account_settings.html:181
+#: user_settings/templates/user_settings/account_settings.html:204
 msgid "Save Changes"
 msgstr "Сохранить изменения"
 
@@ -802,34 +815,62 @@ msgstr "Хинди"
 msgid "Currency"
 msgstr "Валюта"
 
+#: user_settings/templates/user_settings/account_settings.html:129
+msgid "British Pound"
+msgstr "Британский фунт"
+
+#: user_settings/templates/user_settings/account_settings.html:130
+msgid "US Dollar"
+msgstr "Доллар США"
+
 #: user_settings/templates/user_settings/account_settings.html:131
+msgid "Euro"
+msgstr "Евро"
+
+#: user_settings/templates/user_settings/account_settings.html:132
+msgid "Russian Ruble"
+msgstr "Российский рубль"
+
+#: user_settings/templates/user_settings/account_settings.html:133
+msgid "Chinese Yuan"
+msgstr "Китайский юань"
+
+#: user_settings/templates/user_settings/account_settings.html:134
+msgid "Japanese Yen"
+msgstr "Японская иена"
+
+#: user_settings/templates/user_settings/account_settings.html:135
+msgid "Indian Rupee"
+msgstr "Индийская рупия"
+
+#: user_settings/templates/user_settings/account_settings.html:139
 msgid "Appearance"
 msgstr "Внешний вид"
 
-#: user_settings/templates/user_settings/account_settings.html:133
+#: user_settings/templates/user_settings/account_settings.html:141
 msgid "Light"
 msgstr "Светлая"
 
-#: user_settings/templates/user_settings/account_settings.html:134
+#: user_settings/templates/user_settings/account_settings.html:142
 msgid "Dark"
 msgstr "Темная"
 
-#: user_settings/templates/user_settings/account_settings.html:138
+#: user_settings/templates/user_settings/account_settings.html:146
 msgid "Notifications Enabled"
 msgstr "Уведомления включены"
 
-#: user_settings/templates/user_settings/account_settings.html:161
+#: user_settings/templates/user_settings/account_settings.html:169
 msgid "Payment Method"
 msgstr "Способ оплаты"
 
-#: user_settings/templates/user_settings/account_settings.html:165
+#: user_settings/templates/user_settings/account_settings.html:173
 msgid "Card Last Four Digits"
 msgstr "Последние четыре цифры карты"
 
-#: user_settings/templates/user_settings/account_settings.html:169
+#: user_settings/templates/user_settings/account_settings.html:177
 msgid "Billing Address"
 msgstr "Платежный адрес"
 
-#: user_settings/templates/user_settings/account_settings.html:192
+#: user_settings/templates/user_settings/account_settings.html:200
 msgid "Data Sharing Enabled"
 msgstr "Совместное использование данных включено"

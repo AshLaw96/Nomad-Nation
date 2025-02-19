@@ -125,7 +125,15 @@
                     </div>
                     <div class="mb-3">
                         <label for="currency" class="form-label">{% trans "Currency" %}</label>
-                        <input type="text" class="form-control" id="currency" name="currency" value="{{ user_profile.currency }}" required>
+                        <select class="form-control" id="currency" name="currency" required>
+                            <option value="GBP" {% if user_profile.currency == 'GBP' %}selected{% endif %}>{% trans "British Pound" %}</option>
+                            <option value="USD" {% if user_profile.currency == 'USD' %}selected{% endif %}>{% trans "US Dollar" %}</option>
+                            <option value="EUR" {% if user_profile.currency == 'EUR' %}selected{% endif %}>{% trans "Euro" %}</option>
+                            <option value="RUB" {% if user_profile.currency == 'RUB' %}selected{% endif %}>{% trans "Russian Ruble" %}</option>
+                            <option value="CNY" {% if user_profile.currency == 'CNY' %}selected{% endif %}>{% trans "Chinese Yuan" %}</option>
+                            <option value="JPY" {% if user_profile.currency == 'JPY' %}selected{% endif %}>{% trans "Japanese Yen" %}</option>
+                            <option value="INR" {% if user_profile.currency == 'INR' %}selected{% endif %}>{% trans "Indian Rupee" %}</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="appearance" class="form-label">{% trans "Appearance" %}</label>
