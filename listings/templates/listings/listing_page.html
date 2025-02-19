@@ -130,7 +130,9 @@
                 <strong>{% trans "Location:" %}</strong> {{ caravan.location }}
             </p>
             <p>
-                <strong>{% trans "Price per night:" %}</strong> ${{ caravan.price_per_night }}
+                <strong>{% trans "Price per night:" %}</strong> <span class="price" data-original-price="{{ caravan.price_per_night }}" data-original-currency="{{ caravan.currency }}">
+                    {{ user_currency }}: {{ caravan.price_per_night }}
+                </span>
             </p>
             <p>
                 <strong>{% trans "Amenities:" %}</strong>

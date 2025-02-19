@@ -33,6 +33,7 @@ class Caravan(models.Model):
         ]
     )
     price_per_night = models.DecimalField(max_digits=6, decimal_places=2)
+    currency = models.CharField(max_length=3, default="GBP")
     location = models.CharField(max_length=100)
     amenities = models.ManyToManyField(Amenity, related_name='caravans')
     favourites = models.ManyToManyField(
