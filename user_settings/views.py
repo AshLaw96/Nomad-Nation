@@ -3,8 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.conf import settings
 from django.utils import translation
-from django.http import HttpResponseRedirect
+from django.http import JsonResponse
+import json
 from .models import UserProfile, PaymentDetails, PrivacySettings
+from .currency import convert_currency
 
 
 @login_required
@@ -57,12 +59,25 @@ def edit_preferences(request):
         translation.activate(user_profile.language)
         request.session[settings.LANGUAGE_COOKIE_NAME] = user_profile.language
 
-        # Redirect with the language code
-        response = HttpResponseRedirect('/user_settings/account_settings/')
-        response.set_cookie(
-            settings.LANGUAGE_COOKIE_NAME, user_profile.language
-        )
-        return response
+        # Return JSON response
+        return JsonResponse({
+            'currency': user_profile.currency,
+            'message': 'Preferences updated successfully.'
+        })
+
+
+def convert_price_view(request):
+    amount = float(request.GET.get('amount', 0))
+    from_currency = request.GET.get('from', 'GBP')
+    to_currency = request.GET.get('to', 'GBP')
+
+    # Convert only if necessary
+    if from_currency != to_currency:
+        converted_price = convert_currency(amount, from_currency, to_currency)
+    else:
+        converted_price = amount
+
+    return JsonResponse({'converted_price': converted_price})
 
 
 @login_required
@@ -91,3 +106,29 @@ def edit_privacy_settings(request):
 
         messages.success(request, 'Privacy settings updated successfully.')
         return redirect('account_settings')
+
+
+@login_required
+def convert_currency_view(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            new_currency = data['new_currency']
+            user_profile = UserProfile.objects.get(user=request.user)
+            user_profile.currency = new_currency
+            user_profile.save()
+
+            # Get the conversion rate
+            rate = convert_currency(1, 'GBP', new_currency)
+
+            return JsonResponse({'rate': rate})
+
+        except KeyError as e:
+            messages.error(request, f"Error: {str(e)}")
+            return JsonResponse({'error': str(e)}, status=400)
+
+        except Exception:
+            messages.error(request, 'An unexpected error occurred.')
+            return JsonResponse(
+                {'error': 'An unexpected error occurred.'}, status=500
+            )

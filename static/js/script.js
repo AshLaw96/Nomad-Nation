@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initialiseCarousel();
   initialiseFilterToggle();
   initialiseSelect2();
-  initaliseRequestBooking();
+  initialiseRequestBooking();
   initialiseBookingButton();
   initialiseImageModal();
   initialiseFavouriteIcons();
@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initialiseReplyToReviewModal();
   initialiseEditReplyModal();
   initialiseDeleteReviewAndReply();
+  initialiseCurrencyChange();
 });
 
 // Utility functions
@@ -397,7 +398,7 @@ function initialiseFavouriteIcons() {
 }
 
 // Initialise request booking form
-function initaliseRequestBooking() {
+function initialiseRequestBooking() {
   const requestBookingCard = document.getElementById("requestBookingCard");
   if (requestBookingCard) {
     const bookNowClicked = localStorage.getItem("bookNowClicked");
@@ -529,4 +530,84 @@ function handleDelete(url) {
       console.error("Error:", error);
       showInAppMessage("An error occurred while deleting the review.");
     });
+}
+
+// Function to handle currency change
+function initialiseCurrencyChange() {
+  const currencySelect = document.getElementById("currency");
+  const saveBtn = document.getElementById("save-changes-btn");
+
+  if (saveBtn && currencySelect) {
+    saveBtn.addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent form submission
+
+      const newCurrency = currencySelect.value;
+
+      // Correctly grab the form element by ID
+      const form = document.getElementById("preferences-form");
+
+      if (form) {
+        // Use FormData to send form data
+        const formData = new FormData(form);
+
+        fetch("/user_settings/edit_preferences/", {
+          method: "POST",
+          headers: {
+            "X-CSRFToken": getCookie("csrftoken"),
+          },
+          // Serialise form data
+          body: new URLSearchParams(formData),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.error) {
+              console.error("Error:", data.error);
+            } else {
+              // Once the currency is updated, recalculate the prices
+              document.querySelectorAll(".price").forEach((priceElement) => {
+                const originalPrice = parseFloat(
+                  priceElement.dataset.originalPrice
+                );
+                const originalCurrency = priceElement.dataset.originalCurrency;
+
+                // If the current price is in a different currency, convert it
+                if (originalCurrency !== data.currency) {
+                  fetch(
+                    `/convert_price/?amount=${originalPrice}&from=${originalCurrency}&to=${data.currency}`
+                  )
+                    .then((response) => response.json())
+                    .then((convertedData) => {
+                      priceElement.textContent =
+                        convertedData.converted_price.toFixed(2) +
+                        " " +
+                        data.currency;
+                    })
+                    .catch((error) =>
+                      console.error("Conversion error:", error)
+                    );
+                } else {
+                  // If currency matches, keep the stored price
+                  priceElement.textContent =
+                    originalPrice.toFixed(2) + " " + data.currency;
+                }
+              });
+              // Close the modal programmatically
+              const modal = bootstrap.Modal.getInstance(
+                document.getElementById("editPreferencesModal")
+              );
+              modal.hide();
+
+              // Show a success message
+              showInAppMessage(data.message);
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            showInAppMessage("An error occurred while changing the currency.");
+          });
+      } else {
+        console.error('Form with id "preferences-form" not found.');
+      }
+    });
+  }
 }

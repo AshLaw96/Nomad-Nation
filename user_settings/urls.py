@@ -20,4 +20,9 @@ urlpatterns = [
         views.edit_privacy_settings,
         name='edit_privacy_settings'
     ),
+    path(
+        'convert_currency/',
+        views.convert_currency_view,
+        name='convert_currency'
+    ),
 ]
