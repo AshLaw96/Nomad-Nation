@@ -9,12 +9,14 @@ class UserLanguageMiddleware:
 
     def __call__(self, request):
         if request.user.is_authenticated:
-            user_profile = UserProfile.objects.get(user=request.user)
-            language = user_profile.language
+            try:
+                user_profile = UserProfile.objects.get(user=request.user)
+                language = user_profile.language
+            except UserProfile.DoesNotExist:
+                language = settings.LANGUAGE_CODE
         else:
             language = settings.LANGUAGE_CODE
 
-        print(f"Activating language: {language}")
         translation.activate(language)
         request.session[settings.LANGUAGE_COOKIE_NAME] = language
         response = self.get_response(request)

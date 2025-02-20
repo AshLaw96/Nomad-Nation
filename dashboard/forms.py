@@ -12,6 +12,7 @@ class CustomSignupForm(SignupForm):
     def save(self, request):
         user = super().save(request)
         UserProfile.objects.create(
-            user=user, user_type=self.cleaned_data['user_type']
+            user=user,
+            user_type=self.cleaned_data['user_type'],
         )
         return user

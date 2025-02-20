@@ -602,7 +602,8 @@ function updatePrices(newCurrency) {
 
 // Ensure prices update immediately when loading the page
 function updatePricesOnLoad() {
-  const userCurrency = document.body.dataset.userCurrency; // Store user currency in body dataset in the template
+  // Store user currency in body dataset in the template
+  const userCurrency = document.body.dataset.userCurrency;
   if (userCurrency) {
     updatePrices(userCurrency);
   }
