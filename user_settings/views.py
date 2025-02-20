@@ -4,9 +4,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.utils import translation
 from django.http import JsonResponse
-import json
 from .models import UserProfile, PaymentDetails, PrivacySettings
-from .currency import convert_currency
 
 
 @login_required
@@ -112,29 +110,3 @@ def edit_privacy_settings(request):
 
         messages.success(request, 'Privacy settings updated successfully.')
         return redirect('account_settings')
-
-
-@login_required
-def convert_currency_view(request):
-    if request.method == 'POST':
-        try:
-            data = json.loads(request.body)
-            new_currency = data['new_currency']
-            user_profile = UserProfile.objects.get(user=request.user)
-            user_profile.currency = new_currency
-            user_profile.save()
-
-            # Get the conversion rate
-            rate = convert_currency(1, 'GBP', new_currency)
-
-            return JsonResponse({'rate': rate})
-
-        except KeyError as e:
-            messages.error(request, f"Error: {str(e)}")
-            return JsonResponse({'error': str(e)}, status=400)
-
-        except Exception:
-            messages.error(request, 'An unexpected error occurred.')
-            return JsonResponse(
-                {'error': 'An unexpected error occurred.'}, status=500
-            )

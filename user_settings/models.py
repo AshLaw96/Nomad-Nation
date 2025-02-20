@@ -30,7 +30,7 @@ class UserProfile(models.Model):
         choices=[('light', 'Light'), ('dark', 'Dark')],
         default='light'
     )
-    currency = models.CharField(max_length=10, default='GBP')
+    currency = models.CharField(max_length=3, default='GBP')
     notifications = models.BooleanField(default=True)
 
     def __str__(self):

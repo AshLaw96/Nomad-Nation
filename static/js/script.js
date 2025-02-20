@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initialiseEditReplyModal();
   initialiseDeleteReviewAndReply();
   initialiseCurrencyChange();
+  updatePricesOnLoad();
+  initialiseAppearanceChange();
+  applyThemeFromCookie();
 });
 
 // Utility functions
@@ -578,15 +581,45 @@ function initialiseCurrencyChange() {
   });
 }
 
+// Function to update prices dynamically
+function updatePrices(newCurrency) {
+  document.querySelectorAll(".price").forEach((priceElement) => {
+    const originalAmount = priceElement.dataset.amount;
+    if (!originalAmount) return;
+
+    fetch(
+      `/listings/convert_price/?amount=${originalAmount}&currency=${newCurrency}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        priceElement.textContent = `${data.converted_amount} ${newCurrency}`;
+      })
+      .catch((error) => {
+        console.error("Error updating prices:", error);
+      });
+  });
+}
+
+// Ensure prices update immediately when loading the page
+function updatePricesOnLoad() {
+  const userCurrency = document.body.dataset.userCurrency; // Store user currency in body dataset in the template
+  if (userCurrency) {
+    updatePrices(userCurrency);
+  }
+}
+
+// Function to handle appearance change
+function initialiseAppearanceChange() {
+  const appearanceSelect = document.getElementById("appearance");
   const saveBtn = document.getElementById("save-changes-btn");
 
-  if (saveBtn && currencySelect) {
+  if (saveBtn && appearanceSelect) {
     saveBtn.addEventListener("click", function (event) {
-      event.preventDefault(); // Prevent form submission
+      // Prevent form submission
+      event.preventDefault();
 
-      const newCurrency = currencySelect.value;
+      const newAppearance = appearanceSelect.value;
 
-      // Correctly grab the form element by ID
       const form = document.getElementById("preferences-form");
 
       if (form) {
@@ -598,7 +631,7 @@ function initialiseCurrencyChange() {
           headers: {
             "X-CSRFToken": getCookie("csrftoken"),
           },
-          // Serialise form data
+          // Serialize form data
           body: new URLSearchParams(formData),
         })
           .then((response) => response.json())
@@ -606,34 +639,17 @@ function initialiseCurrencyChange() {
             if (data.error) {
               console.error("Error:", data.error);
             } else {
-              // Once the currency is updated, recalculate the prices
-              document.querySelectorAll(".price").forEach((priceElement) => {
-                const originalPrice = parseFloat(
-                  priceElement.dataset.originalPrice
-                );
-                const originalCurrency = priceElement.dataset.originalCurrency;
+              // Apply the new appearance theme
+              document.body.classList.remove("light-theme", "dark-theme");
+              document.body.classList.add(`${newAppearance}-theme`);
 
-                // If the current price is in a different currency, convert it
-                if (originalCurrency !== data.currency) {
-                  fetch(
-                    `/convert_price/?amount=${originalPrice}&from=${originalCurrency}&to=${data.currency}`
-                  )
-                    .then((response) => response.json())
-                    .then((convertedData) => {
-                      priceElement.textContent =
-                        convertedData.converted_price.toFixed(2) +
-                        " " +
-                        data.currency;
-                    })
-                    .catch((error) =>
-                      console.error("Conversion error:", error)
-                    );
-                } else {
-                  // If currency matches, keep the stored price
-                  priceElement.textContent =
-                    originalPrice.toFixed(2) + " " + data.currency;
-                }
-              });
+              // Store the theme preference in a cookie
+              document.cookie = `theme=${newAppearance}; path=/`;
+
+              // Update the preferences section with the new values
+              document.getElementById("preferences-appearance").textContent =
+                data.appearance;
+
               // Close the modal programmatically
               const modal = bootstrap.Modal.getInstance(
                 document.getElementById("editPreferencesModal")
@@ -646,11 +662,30 @@ function initialiseCurrencyChange() {
           })
           .catch((error) => {
             console.error("Error:", error);
-            showInAppMessage("An error occurred while changing the currency.");
+            showInAppMessage(
+              "An error occurred while changing the appearance."
+            );
           });
       } else {
         console.error('Form with id "preferences-form" not found.');
       }
+    });
+  }
+}
+
+// Apply the theme from the cookie on page load if not the homepage
+function applyThemeFromCookie() {
+  const theme = getCookie("theme");
+  const isHomepage = window.location.pathname === "/";
+
+  // If the theme is set in the cookie, apply it
+  if (theme && !isHomepage) {
+    document.body.classList.remove("light-theme", "dark-theme");
+    document.body.classList.add(`${theme}-theme`);
+
+    // Exclude modal from theme change
+    document.querySelectorAll(".modal").forEach((modal) => {
+      modal.classList.remove("light-theme", "dark-theme");
     });
   }
 }
