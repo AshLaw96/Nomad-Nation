@@ -24,10 +24,19 @@
             <h2 class="h5 mb-0">{% trans "Preferences" %}</h2>
         </div>
         <div class="card-body text-white">
-            <p><strong>{% trans "Language:" %}</strong> {{ user_profile.get_language_display }}</p>
-            <p><strong>{% trans "Currency:" %}</strong> {{ user_profile.currency }}</p>
-            <p><strong>{% trans "Appearance:" %}</strong> {{ user_profile.appearance }}</p>
-            <p><strong>{% trans "Notifications Enabled:" %}</strong> {{ user_profile.notifications }}</p>
+            <p>
+                <strong>{% trans "Language:" %}</strong> <span id="preferences-language">{{ user_profile.get_language_display }}</span>
+            </p>
+            <p>
+                <strong>{% trans "Currency:" %}</strong> <span id="preferences-currency">{{ user_profile.currency }}</span>
+            </p>
+            <p>
+                <strong>{% trans "Appearance:" %}</strong> <span id="preferences-appearance">{{ user_profile.appearance }}</span>
+            </p>
+            <p>
+                <strong>{% trans "Notifications:" %}</strong> <span id="preferences-notifications">
+                    {% if user_profile.notifications %}Enabled{% else %}Disabled{% endif %}</span>
+            </p>
             <button type="button" class="btn btn-primary mt-3 btn-styles" data-bs-toggle="modal" data-bs-target="#editPreferencesModal">
                 {% trans "Edit Preferences" %}
             </button>
@@ -124,7 +133,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="currency" class="form-label">{% trans "Currency" %}</label>
+                        <label for="currency" class="form-label" name="currency">{% trans "Currency" %}</label>
                         <select class="form-control" id="currency" name="currency" required>
                             <option value="GBP" {% if user_profile.currency == 'GBP' %}selected{% endif %}>{% trans "British Pound" %}</option>
                             <option value="USD" {% if user_profile.currency == 'USD' %}selected{% endif %}>{% trans "US Dollar" %}</option>

@@ -47,35 +47,41 @@ def edit_personal_details(request):
 
 @login_required
 def edit_preferences(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         user_profile = UserProfile.objects.get(user=request.user)
-        user_profile.language = request.POST['language']
-        user_profile.currency = request.POST['currency']
-        user_profile.appearance = request.POST['appearance']
-        user_profile.notifications = 'notifications' in request.POST
+        user_profile.language = request.POST.get(
+            "language", user_profile.language
+        )
+        user_profile.currency = request.POST.get("currency", "GBP")
+        user_profile.appearance = request.POST.get(
+            "appearance", user_profile.appearance
+        )
+        user_profile.notifications = "notifications" in request.POST
         user_profile.save()
 
         # Activate the selected language
         translation.activate(user_profile.language)
         request.session[settings.LANGUAGE_COOKIE_NAME] = user_profile.language
 
-        # Return JSON response
+        # Store the currency preference in the session
+        request.session["currency"] = user_profile.currency
+
         return JsonResponse({
-            'currency': user_profile.currency,
-            'message': 'Preferences updated successfully.'
+            "success": True,
+            "language": user_profile.language,
+            "language_display": user_profile.get_language_display(),
+            "currency": user_profile.currency,
+            "appearance": user_profile.appearance,
+            "notifications_enabled": user_profile.notifications,
         })
 
+    return JsonResponse({"success": False, "error": "Invalid request"})
 
-def convert_price_view(request):
+
+def convert_price(request):
     amount = float(request.GET.get('amount', 0))
-    from_currency = request.GET.get('from', 'GBP')
-    to_currency = request.GET.get('to', 'GBP')
-
-    # Convert only if necessary
-    if from_currency != to_currency:
-        converted_price = convert_currency(amount, from_currency, to_currency)
-    else:
-        converted_price = amount
+    currency = request.GET.get('currency', 'GBP')
+    converted_price = convert_price(amount, currency)
 
     return JsonResponse({'converted_price': converted_price})
 

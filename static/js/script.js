@@ -532,9 +532,52 @@ function handleDelete(url) {
     });
 }
 
-// Function to handle currency change
+// Handle saving currency preference
 function initialiseCurrencyChange() {
-  const currencySelect = document.getElementById("currency");
+  const saveBtn = document.getElementById("save-changes-btn");
+  if (!saveBtn) return;
+
+  saveBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const form = document.getElementById("preferences-form");
+    if (!form) return;
+
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        "X-CSRFToken": formData.get("csrfmiddlewaretoken"),
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          const modal = document.getElementById("editPreferencesModal");
+          const bootstrapModal = bootstrap.Modal.getInstance(modal);
+          bootstrapModal.hide();
+
+          // Update prices dynamically
+          updatePrices(data.currency);
+
+          showInAppMessage("Currency preference saved successfully.");
+        } else {
+          showInAppMessage(
+            "An error occurred while saving the currency preference."
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        showInAppMessage(
+          "An error occurred while saving the currency preference."
+        );
+      });
+  });
+}
+
   const saveBtn = document.getElementById("save-changes-btn");
 
   if (saveBtn && currencySelect) {

@@ -1,22 +1,51 @@
-import os
 import requests
+import os
+from django.core.cache import cache
+
+API_KEY = os.environ.get("EXCHANGE_RATE_API_KEY")
+
+API_URL = f'https://v6.exchangerate-api.com/v6/{API_KEY}/latest/GBP'
 
 
-def convert_currency(amount, from_currency, to_currency):
+def get_exchange_rates():
     """
-    Converts an amount from one currency to another using the
-    ExchangeRate API.
+    Fetches exchange rates from the API and caches them.
     """
-    api_key = os.environ.get('EXCHANGE_RATE_API_KEY')
-    url = (
-        f'https://v6.exchangerate-api.com/v6/{api_key}/latest/{from_currency}'
-    )
-    response = requests.get(url)
-    data = response.json()
+    cached_rates = cache.get("exchange_rates")
+    if cached_rates:
+        # Use cached rates
+        return cached_rates
 
-    if 'conversion_rates' not in data:
-        raise KeyError(f"Key 'conversion_rates' not found in response: {data}")
+    response = requests.get(API_URL)
+    try:
+        # Attempt to parse JSON
+        data = response.json()
+        print("API Response:", data)
 
-    rate = data['conversion_rates'][to_currency]
+        # Check if the API response contains "rates"
+        if "rates" in data:
+            # Cache for 1 hour
+            cache.set("exchange_rates", data["rates"], timeout=3600)
+            return data["rates"]
+        else:
+            print("Error: API response does not contain 'rates'.", data)
+            # Return empty rates to avoid KeyError
+            return {}
 
-    return amount * rate
+    except requests.exceptions.RequestException as e:
+        print("Request failed:", e)
+        return {}
+
+    except ValueError:
+        print("Error: Failed to decode JSON from API response.")
+        return {}
+
+
+def convert_currency(amount, target_currency):
+    """
+    Converts an amount from GBP to the target currency.
+    """
+    rates = get_exchange_rates()
+    if target_currency in rates:
+        return round(amount * rates[target_currency], 2)
+    return amount

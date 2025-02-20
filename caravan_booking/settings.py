@@ -93,7 +93,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
-                'user_settings.context_processors.user_currency',
+                'user_settings.context_processors.currency_context',
             ],
         },
     },

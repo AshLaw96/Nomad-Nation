@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import Caravan, Amenity, Availability, CaravanImage, Booking, \
     Review, Reply
 from .forms import CaravanForm, BookingForm, ReviewForm, ReplyForm
-from user_settings.models import UserProfile
+from user_settings.currency import convert_currency
 
 
 @login_required
@@ -19,6 +19,7 @@ def listings_view(request):
     Includes search and filtering functionality.
     """
     user_type = request.user.profile.user_type
+    user_currency = request.session.get('currency', 'GBP')
 
     if user_type == 'owner':
         caravans = Caravan.objects.filter(owner=request.user)
@@ -65,6 +66,12 @@ def listings_view(request):
         'amenities', 'images', 'availabilities'
     )
 
+    # Convert price for each caravan
+    for caravan in caravans:
+        caravan.converted_price = convert_currency(
+            caravan.price_per_night, user_currency
+        )
+
     # Check if each caravan is favourited by the current user
     for caravan in caravans:
         caravan.is_favourite = caravan.favourites.filter(
@@ -76,6 +83,7 @@ def listings_view(request):
         'username': request.user.username,
         'amenities': Amenity.objects.all(),
         'selected_amenities': filter_amenities,
+        'user_currency': user_currency,
     }
     return render(request, 'listings/listing_page.html', context)
 
@@ -105,14 +113,6 @@ def add_caravan(request):
             caravan = form.save(commit=False)
             caravan.owner = request.user
 
-            # Get the price and convert it to GBP before saving
-            price = float(request.POST.get('price_per_night', 0))
-            user_profile = UserProfile.objects.get(user=request.user)
-            # Save original currency
-            caravan.currency = user_profile.currency
-
-            # Save the price in GBP
-            caravan.price_per_night = price
             caravan.save()
             # Save ManyToMany field
             form.save_m2m()
@@ -156,10 +156,6 @@ def edit_caravan(request, pk):
         )
         if form.is_valid():
             caravan = form.save(commit=False)
-
-            # Get the updated price and keep its currency
-            price = float(request.POST.get('price_per_night', 0))
-            caravan.price_per_night = price
 
             caravan.save()
             # Save ManyToMany field
