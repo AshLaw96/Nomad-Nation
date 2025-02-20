@@ -71,9 +71,7 @@ def listings_view(request):
         caravan.converted_price = convert_currency(
             caravan.price_per_night, user_currency
         )
-
-    # Check if each caravan is favourited by the current user
-    for caravan in caravans:
+        # Check if each caravan is favourited by the current user
         caravan.is_favourite = caravan.favourites.filter(
             id=request.user.id).exists()
 

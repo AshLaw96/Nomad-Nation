@@ -87,15 +87,32 @@ def convert_price(request):
 @login_required
 def edit_payment_details(request):
     if request.method == 'POST':
+        card_last_four = request.POST.get('card_last_four', '')
+
+        # Ensure card last four digits are exactly 4 numbers
+        if not card_last_four.isdigit() or len(card_last_four) != 4:
+            return JsonResponse({
+                'success': False,
+                'error': 'Invalid card number format.'
+            })
+
         payment_details, created = PaymentDetails.objects.get_or_create(
-            user=request.user)
-        payment_details.payment_method = request.POST['payment_method']
-        payment_details.card_last_four = request.POST['card_last_four']
-        payment_details.billing_address = request.POST['billing_address']
+            user=request.user
+        )
+        payment_details.payment_method = request.POST.get('payment_method', '')
+        payment_details.card_last_four = card_last_four
+        payment_details.billing_address = request.POST.get(
+            'billing_address', ''
+        )
         payment_details.save()
 
-        messages.success(request, 'Payment details updated successfully.')
-        return redirect('account_settings')
+        return JsonResponse({
+            'success': True,
+            'payment_method': payment_details.payment_method,
+            'card_last_four': payment_details.card_last_four,
+        })
+
+    return JsonResponse({'success': False})
 
 
 @login_required

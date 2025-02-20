@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updatePricesOnLoad();
   initialiseAppearanceChange();
   applyThemeFromCookie();
+  initialisePaymentDetailsUpdate();
 });
 
 // Utility functions
@@ -688,5 +689,74 @@ function applyThemeFromCookie() {
     document.querySelectorAll(".modal").forEach((modal) => {
       modal.classList.remove("light-theme", "dark-theme");
     });
+  }
+}
+// Function to handle saving payment details
+function initialisePaymentDetailsUpdate() {
+  const saveBtn = document.querySelector(
+    "#editPaymentDetailsModal button[type='submit']"
+  );
+
+  if (!saveBtn) return;
+
+  saveBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const form = document.querySelector("#editPaymentDetailsModal form");
+    if (!form) return;
+
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        "X-CSRFToken": formData.get("csrfmiddlewaretoken"),
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          // Close the modal
+          const modalElement = document.getElementById(
+            "editPaymentDetailsModal"
+          );
+          const modal = bootstrap.Modal.getInstance(modalElement);
+          modal.hide();
+
+          // Update the displayed payment details dynamically
+          updatePaymentDetails(data.payment_method, data.card_last_four);
+
+          showInAppMessage("Payment details updated successfully.", "success");
+        } else {
+          showInAppMessage(
+            "An error occurred while updating payment details.",
+            "error"
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        showInAppMessage(
+          "An error occurred while updating payment details.",
+          "error"
+        );
+      });
+  });
+}
+
+// Function to update payment details on the page dynamically
+function updatePaymentDetails(paymentMethod, cardLastFour) {
+  const paymentDetailsContainer = document.querySelector(
+    ".card-body.text-white"
+  );
+
+  if (paymentDetailsContainer) {
+    paymentDetailsContainer.innerHTML = `
+          <p><strong>${paymentMethod}:</strong> **** **** **** ${cardLastFour}</p>
+          <button type="button" class="btn btn-primary mt-3 btn-styles" data-bs-toggle="modal" data-bs-target="#editPaymentDetailsModal">
+              Edit Payment Details
+          </button>
+      `;
   }
 }

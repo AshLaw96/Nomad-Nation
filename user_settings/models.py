@@ -46,7 +46,7 @@ class PaymentDetails(models.Model):
     billing_address = models.TextField()
 
     def __str__(self):
-        return f"{self.user.username} - {self.payment_method}"
+        return f"{self.payment_method} **** **** **** {self.card_last_four}"
 
 
 class PrivacySettings(models.Model):

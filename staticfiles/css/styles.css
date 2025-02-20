@@ -42,6 +42,64 @@ html, body {
     color: var(--p-text);
 }
 
+/* Light theme */
+body.light-theme {
+    background-color: var(--b-colour);
+    color: var(--p-text);
+}
+
+.light-theme .container {
+    background-color: var(--b-colour);
+    color: var(--p-text);
+}
+
+.light-theme .container-fluid {
+    background-color: var(--b-colour);
+    color: var(--p-text);
+}
+
+.light-theme .card {
+    background-color: var(--b-colour);
+    color: var(--p-text);
+}
+
+.light-theme .list-group-item {
+    background-color: var(--b-colour);
+    color: var(--p-text);
+}
+
+/* Dark theme */
+body.dark-theme {
+    background-color: var(--p-text);
+    color: var(--b-colour);
+}
+
+.dark-theme .container {
+    background-color: var(--p-text);
+    color: var(--b-colour);
+}
+
+.dark-theme .container-fluid {
+    background-color: var(--p-text);
+    color: var(--b-colour);
+}
+
+.dark-theme .card {
+    background-color: var(--p-text);
+    color: var(--b-colour);
+}
+
+.dark-theme .list-group-item {
+    background-color: var(--p-text);
+    color: var(--b-colour);
+}
+
+/* Exclude modals from theme change */
+.modal {
+    background-color: initial;
+    color: initial;
+}
+
 .title {
     font-family: 'Lato', sans-serif !important;
 }
