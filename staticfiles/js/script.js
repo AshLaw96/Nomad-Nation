@@ -14,6 +14,26 @@ document.addEventListener("DOMContentLoaded", () => {
   initialiseEditReplyModal();
   initialiseDeleteReviewAndReply();
   initialiseCurrencyChange();
+  updatePricesOnLoad();
+  initialiseAppearanceChange();
+  applyThemeFromCookie();
+  initialisePaymentDetailsUpdate();
+  // Check for notifications every 30 seconds
+  setInterval(checkNotifications, 30000);
+  checkNotifications();
+
+  // Open modal when notification icon is clicked
+  const notificationIcon = document.getElementById("notification-icon");
+  if (notificationIcon) {
+    notificationIcon.addEventListener("click", () => {
+      const modal = new bootstrap.Modal(
+        document.getElementById("notificationModal")
+      );
+      modal.show();
+      // Mark notifications as read when opened
+      markNotificationsAsRead();
+    });
+  }
 });
 
 // Utility functions
@@ -532,63 +552,126 @@ function handleDelete(url) {
     });
 }
 
-// Function to handle currency change
+// Handle saving currency preference
 function initialiseCurrencyChange() {
-  const currencySelect = document.getElementById("currency");
+  const saveBtn = document.getElementById("save-changes-btn");
+  if (!saveBtn) return;
+
+  saveBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const form = document.getElementById("preferences-form");
+    if (!form) return;
+
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        "X-CSRFToken": formData.get("csrfmiddlewaretoken"),
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          const modal = document.getElementById("editPreferencesModal");
+          const bootstrapModal = bootstrap.Modal.getInstance(modal);
+          bootstrapModal.hide();
+
+          // Update prices dynamically
+          updatePrices(data.currency);
+
+          showInAppMessage("Currency preference saved successfully.");
+
+          setTimeout(() => {
+            location.reload();
+          }, 100);
+        } else {
+          showInAppMessage(
+            "An error occurred while saving the currency preference."
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        showInAppMessage(
+          "An error occurred while saving the currency preference."
+        );
+      });
+  });
+}
+
+// Function to update prices dynamically
+function updatePrices(newCurrency) {
+  document.querySelectorAll(".price").forEach((priceElement) => {
+    const originalAmount = priceElement.dataset.amount;
+    if (!originalAmount) return;
+
+    fetch(
+      `/listings/convert_price/?amount=${originalAmount}&currency=${newCurrency}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        priceElement.textContent = `${data.converted_amount} ${newCurrency}`;
+      })
+      .catch((error) => {
+        console.error("Error updating prices:", error);
+      });
+  });
+}
+
+// Ensure prices update immediately when loading the page
+function updatePricesOnLoad() {
+  // Store user currency in body dataset in the template
+  const userCurrency = document.body.dataset.userCurrency;
+  if (userCurrency) {
+    updatePrices(userCurrency);
+  }
+}
+
+// Function to handle appearance change
+function initialiseAppearanceChange() {
+  const appearanceSelect = document.getElementById("appearance");
   const saveBtn = document.getElementById("save-changes-btn");
 
-  if (saveBtn && currencySelect) {
+  if (saveBtn && appearanceSelect) {
     saveBtn.addEventListener("click", function (event) {
-      event.preventDefault(); // Prevent form submission
+      // Prevent form submission
+      event.preventDefault();
 
-      const newCurrency = currencySelect.value;
+      const newAppearance = appearanceSelect.value;
 
-      // Correctly grab the form element by ID (ensure the form has the correct ID)
       const form = document.getElementById("preferences-form");
 
       if (form) {
-        const formData = new FormData(form); // Use FormData to send form data
+        // Use FormData to send form data
+        const formData = new FormData(form);
 
         fetch("/user_settings/edit_preferences/", {
           method: "POST",
           headers: {
             "X-CSRFToken": getCookie("csrftoken"),
           },
-          body: new URLSearchParams(formData), // Serialize form data
+          // Serialize form data
+          body: new URLSearchParams(formData),
         })
           .then((response) => response.json())
           .then((data) => {
             if (data.error) {
               console.error("Error:", data.error);
             } else {
-              // Once the currency is updated, recalculate the prices
-              document.querySelectorAll(".price").forEach((priceElement) => {
-                const originalPrice = parseFloat(
-                  priceElement.dataset.originalPrice
-                );
-                const originalCurrency = priceElement.dataset.originalCurrency;
+              // Apply the new appearance theme
+              document.body.classList.remove("light-theme", "dark-theme");
+              document.body.classList.add(`${newAppearance}-theme`);
 
-                // If the current price is in a different currency, convert it
-                if (originalCurrency !== data.currency) {
-                  fetch(
-                    `/convert_price/?amount=${originalPrice}&from=${originalCurrency}&to=${data.currency}`
-                  )
-                    .then((response) => response.json())
-                    .then((convertedData) => {
-                      priceElement.textContent =
-                        convertedData.converted_price.toFixed(2) +
-                        " " +
-                        data.currency;
-                    })
-                    .catch((error) =>
-                      console.error("Conversion error:", error)
-                    );
-                } else {
-                  // If currency matches, keep the stored price
-                  priceElement.textContent =
-                    originalPrice.toFixed(2) + " " + data.currency;
-                }
-              });
+              // Store the theme preference in a cookie
+              document.cookie = `theme=${newAppearance}; path=/`;
+
+              // Update the preferences section with the new values
+              document.getElementById("preferences-appearance").textContent =
+                data.appearance;
+
               // Close the modal programmatically
               const modal = bootstrap.Modal.getInstance(
                 document.getElementById("editPreferencesModal")
@@ -601,11 +684,175 @@ function initialiseCurrencyChange() {
           })
           .catch((error) => {
             console.error("Error:", error);
-            showInAppMessage("An error occurred while changing the currency.");
+            showInAppMessage(
+              "An error occurred while changing the appearance."
+            );
           });
       } else {
         console.error('Form with id "preferences-form" not found.');
       }
     });
+  }
+}
+
+// Apply the theme from the cookie on page load if not the homepage
+function applyThemeFromCookie() {
+  const theme = getCookie("theme");
+  const isHomepage = window.location.pathname === "/";
+
+  // If the theme is set in the cookie, apply it
+  if (theme && !isHomepage) {
+    document.body.classList.remove("light-theme", "dark-theme");
+    document.body.classList.add(`${theme}-theme`);
+
+    // Exclude modal from theme change
+    document.querySelectorAll(".modal").forEach((modal) => {
+      modal.classList.remove("light-theme", "dark-theme");
+    });
+  }
+}
+
+function checkNotifications() {
+  // Check if the user is logged in (you can use any condition here)
+  const isLoggedIn = document.body.classList.contains("logged-in"); // Example condition
+
+  if (!isLoggedIn) {
+    console.log("User is not logged in. Skipping notification fetch.");
+    return; // Exit the function if the user is not logged in
+  }
+
+  fetch("/user_settings/get_notifications/")
+    .then((response) => response.json())
+    .then((data) => {
+      const notificationCount = document.getElementById("notification-count");
+      const notificationIcon = document.getElementById("notification-icon");
+      const notificationList = document.getElementById("notifications-list");
+
+      if (data.count > 0) {
+        notificationCount.textContent = data.count;
+        notificationCount.style.display = "inline";
+        notificationIcon.classList.add("flash", "shake");
+
+        // Clear previous notifications and add new ones
+        notificationList.innerHTML = "";
+
+        data.notifications.forEach((notification) => {
+          const p = document.createElement("p");
+
+          // Create a brief overview of the notification
+          const overview = document.createElement("span");
+          overview.classList.add("notification-type");
+          overview.textContent = `${notification.type}: `; // Add notification type
+
+          const message = document.createElement("span");
+          message.classList.add("notification-message");
+          message.textContent = `${notification.message} (${notification.created_at})`; // Add message content
+
+          // Append the overview and message to the paragraph
+          p.appendChild(overview);
+          p.appendChild(message);
+
+          // Append the paragraph to the modal's notification list
+          notificationList.appendChild(p);
+        });
+      } else {
+        notificationCount.style.display = "none";
+        notificationIcon.classList.remove("flash", "shake");
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching notifications:", error);
+    });
+}
+
+// Function to mark notifications as read
+function markNotificationsAsRead() {
+  fetch("/user_settings/mark_notifications_read/", {
+    method: "POST",
+    headers: {
+      "X-CSRFToken": getCookie("csrftoken"),
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({}),
+  })
+    .then((response) => response.json())
+    .then(() => {
+      document.getElementById("notification-count").style.display = "none";
+      document
+        .getElementById("notification-icon")
+        .classList.remove("flash", "shake");
+    })
+    .catch((error) =>
+      console.error("Error marking notifications as read:", error)
+    );
+}
+
+// Function to handle saving payment details
+function initialisePaymentDetailsUpdate() {
+  const saveBtn = document.querySelector(
+    "#editPaymentDetailsModal button[type='submit']"
+  );
+
+  if (!saveBtn) return;
+
+  saveBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const form = document.querySelector("#editPaymentDetailsModal form");
+    if (!form) return;
+
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        "X-CSRFToken": formData.get("csrfmiddlewaretoken"),
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          // Close the modal
+          const modalElement = document.getElementById(
+            "editPaymentDetailsModal"
+          );
+          const modal = bootstrap.Modal.getInstance(modalElement);
+          modal.hide();
+
+          // Update the displayed payment details dynamically
+          updatePaymentDetails(data.payment_method, data.card_last_four);
+
+          showInAppMessage("Payment details updated successfully.", "success");
+        } else {
+          showInAppMessage(
+            "An error occurred while updating payment details.",
+            "error"
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        showInAppMessage(
+          "An error occurred while updating payment details.",
+          "error"
+        );
+      });
+  });
+}
+
+// Function to update payment details on the page dynamically
+function updatePaymentDetails(paymentMethod, cardLastFour) {
+  const paymentDetailsContainer = document.querySelector(
+    ".card-body.text-white"
+  );
+
+  if (paymentDetailsContainer) {
+    paymentDetailsContainer.innerHTML = `
+          <p><strong>${paymentMethod}:</strong> **** **** **** ${cardLastFour}</p>
+          <button type="button" class="btn btn-primary mt-3 btn-styles" data-bs-toggle="modal" data-bs-target="#editPaymentDetailsModal">
+              Edit Payment Details
+          </button>
+      `;
   }
 }

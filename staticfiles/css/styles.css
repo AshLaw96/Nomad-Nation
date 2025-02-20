@@ -112,6 +112,59 @@ a:hover {
     color: var(--p-accent);
 }
 
+/* Position the notification icon next to the navbar toggler button */
+#notification-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.navbar-toggler {
+    position: relative;
+    z-index: 1001;
+}
+
+/* Flashing animation */
+@keyframes flash {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.flash {
+    animation: flash 1s infinite;
+}
+
+/* Shaking animation */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+.shake {
+    animation: shake 0.5s infinite;
+}
+
+.notification-type {
+    font-weight: bold;
+    color: var(--p-accent);
+}
+  
+.notification-message {
+    color: var(--p-text);
+}
+
 .navbar, footer {
     background-color: var(--p-colour);
     color: var(--b-colour);
@@ -301,10 +354,13 @@ textarea {
 }
 
 /* Footer section */
-
 footer {
     width: 100%;
     padding: 20px;
     background-color: var(--p-colour);
     color: var(--b-colour);
+}
+
+footer a {
+    color: var(--p-text);
 }

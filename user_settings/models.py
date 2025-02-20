@@ -37,6 +37,35 @@ class UserProfile(models.Model):
         return self.user.username
 
 
+class Notification(models.Model):
+    REVIEW = 'review'
+    REPLY = 'reply_to_review'
+    BOOKING_REQUEST = 'booking_request'
+    BOOKING_CONFIRMATION = 'booking_confirmation'
+    CONTACT_FORM = 'contact_form_message'
+
+    NOTIFICATION_TYPE_CHOICES = [
+        (REVIEW, 'Review'),
+        (REPLY, 'Reply to Review'),
+        (BOOKING_REQUEST, 'Booking Request'),
+        (BOOKING_CONFIRMATION, 'Booking Confirmation'),
+        (CONTACT_FORM, 'Contact Form Message'),
+    ]
+
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='notifications'
+    )
+    message = models.TextField()
+    type = models.CharField(
+        max_length=20, choices=NOTIFICATION_TYPE_CHOICES, default=REVIEW
+    )
+    is_read = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Notification for {self.user.username} - {self.message}'
+
+
 class PaymentDetails(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='payment_details'

@@ -4,7 +4,8 @@ from django.contrib import messages
 from django.conf import settings
 from django.utils import translation
 from django.http import JsonResponse
-from .models import UserProfile, PaymentDetails, PrivacySettings
+from django.views.decorators.http import require_POST
+from .models import UserProfile, PaymentDetails, PrivacySettings, Notification
 
 
 @login_required
@@ -82,6 +83,31 @@ def convert_price(request):
     converted_price = convert_price(amount, currency)
 
     return JsonResponse({'converted_price': converted_price})
+
+
+@login_required
+def get_notifications(request):
+    user = request.user
+    notifications = Notification.objects.filter(user=user, is_read=False)
+    notifications_list = [
+        {
+            'message': n.message,
+            'type': n.get_type_display(),
+            'created_at': n.created_at.strftime('%Y-%m-%d %H:%M:%S')
+        } for n in notifications
+    ]
+    return JsonResponse({
+        'count': notifications.count(),
+        'notifications': notifications_list
+    })
+
+
+@login_required
+@require_POST
+def mark_notifications_read(request):
+    user = request.user
+    Notification.objects.filter(user=user, is_read=False).update(is_read=True)
+    return JsonResponse({'success': True})
 
 
 @login_required
