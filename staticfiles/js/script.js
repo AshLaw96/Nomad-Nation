@@ -1,4 +1,9 @@
+let isAuthenticated = false;
+
 document.addEventListener("DOMContentLoaded", () => {
+  // Set authenticated status
+  isAuthenticated = document.body.dataset.authenticated === "true";
+
   initialiseAddCaravan();
   initialiseEditCaravan();
   initialiseCarousel();
@@ -18,10 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
   initialiseAppearanceChange();
   applyThemeFromCookie();
   initialisePaymentDetailsUpdate();
-  // Check for notifications every 30 seconds
-  setInterval(checkNotifications, 30000);
-  checkNotifications();
-
+  // Only check notifications if the user is authenticated
+  if (isAuthenticated) {
+    setInterval(checkNotifications, 30000);
+    checkNotifications();
+  }
   // Open modal when notification icon is clicked
   const notificationIcon = document.getElementById("notification-icon");
   if (notificationIcon) {
@@ -46,6 +52,7 @@ function parseJSON(input) {
   }
 }
 
+// Remove duplicate dates
 function removeDuplicates(dates) {
   return dates.filter(
     (value, index, self) =>
@@ -712,18 +719,17 @@ function applyThemeFromCookie() {
   }
 }
 
+// Function to check for new notifications
 function checkNotifications() {
-  // Check if the user is logged in (you can use any condition here)
-  const isLoggedIn = document.body.classList.contains("logged-in"); // Example condition
-
-  if (!isLoggedIn) {
-    console.log("User is not logged in. Skipping notification fetch.");
-    return; // Exit the function if the user is not logged in
+  if (!isAuthenticated) {
+    // Skip fetching notifications if the user is not authenticated
+    return;
   }
 
   fetch("/user_settings/get_notifications/")
     .then((response) => response.json())
     .then((data) => {
+      console.log("Notifications:", data);
       const notificationCount = document.getElementById("notification-count");
       const notificationIcon = document.getElementById("notification-icon");
       const notificationList = document.getElementById("notifications-list");
@@ -740,15 +746,30 @@ function checkNotifications() {
           const p = document.createElement("p");
 
           // Create a brief overview of the notification
-          const overview = document.createElement("span");
+          const overview = document.createElement("strong");
           overview.classList.add("notification-type");
-          overview.textContent = `${notification.type}: `; // Add notification type
+          // Add notification type
+          overview.textContent = `${notification.type}: `;
 
           const message = document.createElement("span");
           message.classList.add("notification-message");
-          message.textContent = `${notification.message} (${notification.created_at})`; // Add message content
+          // Add message content
+          message.textContent = `${notification.message} (${notification.created_at})`;
 
-          // Append the overview and message to the paragraph
+          // Create a clickable link
+          if (notification.link) {
+            const link = document.createElement("a");
+            link.href = notification.link;
+            link.textContent = " View Details";
+            link.classList.add("notification-link");
+            // Add some spacing
+            link.style.marginLeft = "5px";
+            // Open in new tab
+            link.target = "_blank";
+            message.appendChild(link);
+          }
+
+          // Append elements to the paragraph
           p.appendChild(overview);
           p.appendChild(message);
 

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 from django.contrib import messages
 from django.conf import settings
 from django.utils import translation
@@ -87,15 +88,60 @@ def convert_price(request):
 
 @login_required
 def get_notifications(request):
+    print("Requesting received")
     user = request.user
+    print(f"User: {user}")
     notifications = Notification.objects.filter(user=user, is_read=False)
-    notifications_list = [
-        {
+    print(f"Notifications: {notifications}")
+    notifications_list = []
+
+    for n in notifications:
+        # Default if no link is available
+        link = "#"
+
+        if n.type == "review":
+            # reviews on listings page
+            if n.caravan:
+                link = reverse("listings") + f"#{n.caravan.id}"
+            else:
+                link = reverse("listings")  # Fallback if no caravan
+        elif n.type == "message":
+            link = reverse("contact")
+        elif n.type == "booking_request":
+            link = reverse("booking_page")
+        elif n.type == "booking_accepted":
+            if n.booking:
+                link = reverse(
+                    "manage_booking", kwargs={"booking_id": n.booking.id}
+                )
+        elif n.type == "booking_declined":
+            if n.booking:
+                link = reverse(
+                    "manage_booking", kwargs={"booking_id": n.booking.id}
+                )
+        elif n.type == "booking_modified_request":
+            if n.booking:
+                link = reverse(
+                    "manage_booking", kwargs={"booking_id": n.booking.id}
+                )
+        elif n.booking:
+            link = reverse(
+                "manage_booking", kwargs={"booking_id": n.booking.id}
+            )
+        elif n.caravan:
+            link = reverse(
+                "listings_caravan",
+                kwargs={"caravan_id": n.caravan.id}
+            )
+
+        notifications_list.append({
             'message': n.message,
             'type': n.get_type_display(),
-            'created_at': n.created_at.strftime('%Y-%m-%d %H:%M:%S')
-        } for n in notifications
-    ]
+            'created_at': n.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+            # Include link in response
+            'link': link,
+        })
+
     return JsonResponse({
         'count': notifications.count(),
         'notifications': notifications_list
@@ -105,8 +151,9 @@ def get_notifications(request):
 @login_required
 @require_POST
 def mark_notifications_read(request):
-    user = request.user
-    Notification.objects.filter(user=user, is_read=False).update(is_read=True)
+    Notification.objects.filter(
+        user=request.user, is_read=False
+    ).update(is_read=True)
     return JsonResponse({'success': True})
 
 

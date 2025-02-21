@@ -10,6 +10,7 @@ from .models import Caravan, Amenity, Availability, CaravanImage, Booking, \
     Review, Reply
 from .forms import CaravanForm, BookingForm, ReviewForm, ReplyForm
 from user_settings.currency import convert_currency
+from user_settings.models import Notification
 
 
 @login_required
@@ -257,6 +258,18 @@ def book_caravan(request, caravan_id):
                 # Save booking as "pending" to await owner's response
                 booking.status = "pending"
                 booking.save()
+
+                # Notify the owner of the booking request
+                Notification.objects.create(
+                    user=caravan.owner,
+                    type='Booking Request',
+                    message=(
+                        f"Booking request for {caravan.title} from "
+                        f"{booking.customer.username}.",
+                    ),
+                    link=f"/caravans/{caravan.id}/bookings/{booking.id}/"
+                )
+
                 messages.success(
                     request,
                     f"Booking request for {caravan.title} sent successfully "
@@ -342,9 +355,29 @@ def manage_booking(request, booking_id):
         if action == "accept":
             booking.status = "accepted"
             messages.success(request, "Booking accepted!")
+
+            # Notify the customer of the booking confirmation
+            Notification.objects.create(
+                user=booking.customer,
+                type='Booking Accepted',
+                message=(
+                    f"Booking for {booking.caravan.title} has been accepted."
+                ),
+                link=f"/caravans/{booking.caravan.id}/bookings/{booking.id}/"
+            )
         elif action == "decline":
             booking.status = "declined"
             messages.warning(request, "Booking declined.")
+
+            # Notify the customer of the booking rejection
+            Notification.objects.create(
+                user=booking.customer,
+                type='Booking Declined',
+                message=(
+                    f"Booking for {booking.caravan.title} has been declined."
+                ),
+                link=f"/caravans/{booking.caravan.id}/bookings/{booking.id}/"
+            )
 
         booking.save()
         return redirect("booking_view", caravan_id=booking.caravan.id)
@@ -367,6 +400,17 @@ def modify_booking(request, booking_id):
         booking.status = "pending"
         booking.save()
 
+        # Notify the owner of the booking modification request
+        Notification.objects.create(
+            user=booking.caravan.owner,
+            type='Booking Modification Request',
+            message=(
+                f"Booking modification request for {booking.caravan.title} "
+                f"from {booking.customer.username}."
+            ),
+            link=f"/caravans/{booking.caravan.id}/bookings/{booking.id}/"
+        )
+
         messages.success(
             request, "Booking modification request sent to the owner."
         )
@@ -386,6 +430,21 @@ def submit_review(request, caravan_id):
             review.caravan = caravan
             review.customer = request.user
             review.save()
+
+            # Create notification for the caravan owner
+            owner = caravan.owner
+            notification_message = (
+                f"New review from {review.customer.username} on your caravan!"
+            )
+
+            Notification.objects.create(
+                # The owner gets the notification
+                user=owner,
+                message=notification_message,
+                type=Notification.REVIEW,
+                # Associate the notification with this caravan
+                caravan=caravan,
+            )
 
             messages.success(request, "Review submitted successfully!")
 

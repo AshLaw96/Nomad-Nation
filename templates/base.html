@@ -29,7 +29,7 @@
     <!-- Select2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css">
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100" data-authenticated="{{ request.user.is_authenticated|yesno:'true,false' }}">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container_fluid">
@@ -94,11 +94,15 @@
                     <h5 class="modal-title" id="notificationModalLabel">{% trans "New Notifications" %}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" id="notifications-list">
-                    <p>{% trans "You have new notifications." %}</p>
+                <div class="modal-body">
+                    <div id="notifications-list">
+                        <!-- Notifications will be dynamically inserted here -->
+                    </div>
                 </div>
                 <div class="modal-footer text-center">
-                    <button type="button" class="btn btn-secondary btn-styles" data-bs-dismiss="modal">{% trans "Close" %}</button>
+                    <button type="button" class="btn btn-secondary btn-styles" data-bs-dismiss="modal">
+                        {% trans "Close" %}
+                    </button>
                 </div>
             </div>
         </div>
