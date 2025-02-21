@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-19 11:59+0000\n"
+"POT-Creation-Date: 2025-02-21 10:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,7 +116,7 @@ msgid "View All Listings"
 msgstr "सभी लिस्टिंग देखें"
 
 #: dashboard/templates/dashboard/dashboard.html:146
-#: listings/templates/listings/listing_page.html:153
+#: listings/templates/listings/listing_page.html:156
 msgid "Reviews"
 msgstr "समीक्षाएं"
 
@@ -125,7 +125,7 @@ msgid "Check reviews from customers."
 msgstr "ग्राहकों से समीक्षाएं देखें।"
 
 #: dashboard/templates/dashboard/dashboard.html:156
-#: listings/templates/listings/listing_page.html:162
+#: listings/templates/listings/listing_page.html:165
 msgid "rated"
 msgstr "रेटेड"
 
@@ -138,7 +138,7 @@ msgid "No reviews"
 msgstr "कोई समीक्षाएं नहीं"
 
 #: listings/templates/listings/add_caravan.html:6
-#: listings/templates/listings/listing_page.html:353
+#: listings/templates/listings/listing_page.html:356
 msgid "Add Caravan"
 msgstr "कारवां जोड़ें"
 
@@ -160,7 +160,7 @@ msgid "Berth:"
 msgstr "बर्थ:"
 
 #: listings/templates/listings/add_caravan.html:28
-#: listings/templates/listings/listing_page.html:136
+#: listings/templates/listings/listing_page.html:139
 msgid "Amenities:"
 msgstr "सुविधाएं:"
 
@@ -240,7 +240,7 @@ msgstr "प्रारंभ तिथि:"
 msgid "End Date:"
 msgstr "समाप्ति तिथि:"
 
-#: listings/templates/listings/booking.html:63
+#: listings/templates/listings/booking.html:63 templates/base.html:101
 msgid "Close"
 msgstr "बंद करें"
 
@@ -305,7 +305,7 @@ msgid "Request Booking"
 msgstr "बुकिंग अनुरोध करें"
 
 #: listings/templates/listings/booking.html:187
-#: listings/templates/listings/listing_page.html:144
+#: listings/templates/listings/listing_page.html:147
 msgid "Available Dates:"
 msgstr "उपलब्ध तिथियां:"
 
@@ -391,88 +391,88 @@ msgstr "अगला"
 msgid "Price per night:"
 msgstr "प्रति रात कीमत:"
 
-#: listings/templates/listings/listing_page.html:159
+#: listings/templates/listings/listing_page.html:162
 msgid "Customers reviews:"
 msgstr "ग्राहकों की समीक्षाएँ:"
 
-#: listings/templates/listings/listing_page.html:166
+#: listings/templates/listings/listing_page.html:169
 msgid "Owner's Reply:"
 msgstr "स्वामी की प्रतिक्रिया:"
 
-#: listings/templates/listings/listing_page.html:173
-#: listings/templates/listings/listing_page.html:185
+#: listings/templates/listings/listing_page.html:176
+#: listings/templates/listings/listing_page.html:188
 msgid "Edit Reply"
 msgstr "प्रतिक्रिया संपादित करें"
 
-#: listings/templates/listings/listing_page.html:176
+#: listings/templates/listings/listing_page.html:179
 msgid "Delete Reply"
 msgstr "प्रतिक्रिया हटाएं"
 
-#: listings/templates/listings/listing_page.html:192
-#: listings/templates/listings/listing_page.html:207
-#: listings/templates/listings/listing_page.html:222
+#: listings/templates/listings/listing_page.html:195
+#: listings/templates/listings/listing_page.html:210
+#: listings/templates/listings/listing_page.html:225
 msgid "Reply"
 msgstr "प्रतिक्रिया दें"
 
-#: listings/templates/listings/listing_page.html:196
-#: listings/templates/listings/listing_page.html:226
+#: listings/templates/listings/listing_page.html:199
+#: listings/templates/listings/listing_page.html:229
 msgid "Submit Reply"
 msgstr "प्रतिक्रिया सबमिट करें"
 
-#: listings/templates/listings/listing_page.html:215
+#: listings/templates/listings/listing_page.html:218
 msgid "Reply to Review"
 msgstr "समीक्षा पर प्रतिक्रिया दें"
 
-#: listings/templates/listings/listing_page.html:238
-#: listings/templates/listings/listing_page.html:295
+#: listings/templates/listings/listing_page.html:241
+#: listings/templates/listings/listing_page.html:298
 msgid "Edit Review"
 msgstr "समीक्षा संपादित करें"
 
-#: listings/templates/listings/listing_page.html:241
+#: listings/templates/listings/listing_page.html:244
 msgid "Delete Review"
 msgstr "समीक्षा हटाएं"
 
-#: listings/templates/listings/listing_page.html:248
+#: listings/templates/listings/listing_page.html:251
 msgid "Approve Review"
 msgstr "समीक्षा स्वीकृत करें"
 
-#: listings/templates/listings/listing_page.html:258
-#: listings/templates/listings/listing_page.html:267
+#: listings/templates/listings/listing_page.html:261
+#: listings/templates/listings/listing_page.html:270
 msgid "Leave a Review"
 msgstr "समीक्षा छोड़ें"
 
-#: listings/templates/listings/listing_page.html:274
-#: listings/templates/listings/listing_page.html:302
+#: listings/templates/listings/listing_page.html:277
+#: listings/templates/listings/listing_page.html:305
 msgid "Rating"
 msgstr "रेटिंग"
 
-#: listings/templates/listings/listing_page.html:278
-#: listings/templates/listings/listing_page.html:306
+#: listings/templates/listings/listing_page.html:281
+#: listings/templates/listings/listing_page.html:309
 msgid "Comment"
 msgstr "टिप्पणी"
 
-#: listings/templates/listings/listing_page.html:282
-#: listings/templates/listings/listing_page.html:310
+#: listings/templates/listings/listing_page.html:285
+#: listings/templates/listings/listing_page.html:313
 msgid "Submit Review"
 msgstr "समीक्षा सबमिट करें"
 
-#: listings/templates/listings/listing_page.html:323
+#: listings/templates/listings/listing_page.html:326
 msgid "Edit caravan"
 msgstr "कारवां संपादित करें"
 
-#: listings/templates/listings/listing_page.html:329
+#: listings/templates/listings/listing_page.html:332
 msgid "Delete caravan"
 msgstr "कारवां हटाएं"
 
-#: listings/templates/listings/listing_page.html:337
+#: listings/templates/listings/listing_page.html:340
 msgid "BOOK CARAVAN NOW"
 msgstr "अब कारवां बुक करें"
 
-#: listings/templates/listings/listing_page.html:340
+#: listings/templates/listings/listing_page.html:343
 msgid "Not Available"
 msgstr "उपलब्ध नहीं"
 
-#: listings/templates/listings/listing_page.html:348
+#: listings/templates/listings/listing_page.html:351
 msgid "No caravans available"
 msgstr "कोई कारवां उपलब्ध नहीं"
 
@@ -631,51 +631,55 @@ msgstr "साइन इन करें"
 msgid "Nomad Nation"
 msgstr "नोमैड नेशन"
 
-#: templates/base.html:45
+#: templates/base.html:54
 msgid "Home"
 msgstr "मुख्य पृष्ठ"
 
-#: templates/base.html:48
+#: templates/base.html:57
 msgid "Contact"
 msgstr "संपर्क"
 
-#: templates/base.html:53
+#: templates/base.html:62
 msgid "Dashboard"
 msgstr "डैशबोर्ड"
 
-#: templates/base.html:56
+#: templates/base.html:65
 msgid "Caravan listings"
 msgstr "कारवां लिस्टिंग्स"
 
-#: templates/base.html:59
+#: templates/base.html:68
 msgid "Bookings"
 msgstr "बुकिंग्स"
 
-#: templates/base.html:62
+#: templates/base.html:71
 msgid "Account settings"
 msgstr "खाता सेटिंग्स"
 
-#: templates/base.html:65
-msgid "Notifications"
-msgstr "सूचनाएँ"
-
-#: templates/base.html:68
+#: templates/base.html:74
 msgid "Logout"
 msgstr "साइन आउट"
 
-#: templates/base.html:73
+#: templates/base.html:79
 msgid "Register"
 msgstr "रजिस्टर करें"
 
-#: templates/base.html:76
+#: templates/base.html:82
 msgid "Login"
 msgstr "लॉगिन करें"
 
-#: templates/base.html:104
+#: templates/base.html:94
+msgid "New Notifications"
+msgstr "नई सूचनाएं"
+
+#: templates/base.html:98
+msgid "You have new notifications."
+msgstr "आपके पास नई सूचनाएं हैं."
+
+#: templates/base.html:127
 msgid "Made by"
 msgstr "बनाया गया"
 
-#: templates/base.html:107
+#: templates/base.html:130
 msgid "Follow us:"
 msgstr "हमारा अनुसरण करें:"
 
@@ -688,7 +692,7 @@ msgid "Personal Details"
 msgstr "व्यक्तिगत विवरण"
 
 #: user_settings/templates/user_settings/account_settings.html:17
-#: user_settings/templates/user_settings/account_settings.html:73
+#: user_settings/templates/user_settings/account_settings.html:87
 msgid "Edit Personal Details"
 msgstr "व्यक्तिगत विवरण संपादित करें"
 
@@ -696,176 +700,203 @@ msgstr "व्यक्तिगत विवरण संपादित कर
 msgid "Preferences"
 msgstr "प्राथमिकताएँ"
 
-#: user_settings/templates/user_settings/account_settings.html:27
+#: user_settings/templates/user_settings/account_settings.html:28
 msgid "Language:"
 msgstr "भाषा:"
 
-#: user_settings/templates/user_settings/account_settings.html:28
+#: user_settings/templates/user_settings/account_settings.html:31
 msgid "Currency:"
 msgstr "मुद्रा:"
 
-#: user_settings/templates/user_settings/account_settings.html:29
+#: user_settings/templates/user_settings/account_settings.html:34
 msgid "Appearance:"
 msgstr "रूपरेखा:"
 
-#: user_settings/templates/user_settings/account_settings.html:30
-msgid "Notifications Enabled:"
-msgstr "सूचनाएँ सक्षम की गईं:"
+#: user_settings/templates/user_settings/account_settings.html:37
+msgid "Notifications:"
+msgstr "सूचनाएँ:"
 
-#: user_settings/templates/user_settings/account_settings.html:32
-#: user_settings/templates/user_settings/account_settings.html:105
+#: user_settings/templates/user_settings/account_settings.html:41
+#: user_settings/templates/user_settings/account_settings.html:119
 msgid "Edit Preferences"
 msgstr "प्राथमिकताएँ संपादित करें"
 
-#: user_settings/templates/user_settings/account_settings.html:39
+#: user_settings/templates/user_settings/account_settings.html:48
 msgid "Payment Details"
 msgstr "भुगतान विवरण"
 
-#: user_settings/templates/user_settings/account_settings.html:45
+#: user_settings/templates/user_settings/account_settings.html:56
+msgid "Billing Address:"
+msgstr "बिलिंग पता:"
+
+#: user_settings/templates/user_settings/account_settings.html:59
 msgid "No payment details available."
 msgstr "कोई भुगतान विवरण उपलब्ध नहीं।"
 
-#: user_settings/templates/user_settings/account_settings.html:48
-#: user_settings/templates/user_settings/account_settings.html:162
+#: user_settings/templates/user_settings/account_settings.html:62
+#: user_settings/templates/user_settings/account_settings.html:176
 msgid "Edit Payment Details"
 msgstr "भुगतान विवरण संपादित करें"
 
-#: user_settings/templates/user_settings/account_settings.html:55
+#: user_settings/templates/user_settings/account_settings.html:69
 msgid "Privacy Settings"
 msgstr "गोपनीयता सेटिंग्स"
 
-#: user_settings/templates/user_settings/account_settings.html:58
+#: user_settings/templates/user_settings/account_settings.html:72
 msgid "Data Sharing Enabled:"
 msgstr "डेटा साझाकरण सक्षम किया गया:"
 
-#: user_settings/templates/user_settings/account_settings.html:60
-#: user_settings/templates/user_settings/account_settings.html:193
+#: user_settings/templates/user_settings/account_settings.html:74
+#: user_settings/templates/user_settings/account_settings.html:213
 msgid "Edit Privacy Settings"
 msgstr "गोपनीयता सेटिंग्स संपादित करें"
 
-#: user_settings/templates/user_settings/account_settings.html:80
+#: user_settings/templates/user_settings/account_settings.html:94
 msgid "Name"
 msgstr "नाम"
 
-#: user_settings/templates/user_settings/account_settings.html:84
+#: user_settings/templates/user_settings/account_settings.html:98
 msgid "Email"
 msgstr "ईमेल"
 
-#: user_settings/templates/user_settings/account_settings.html:88
+#: user_settings/templates/user_settings/account_settings.html:102
 msgid "Phone Number"
 msgstr "फोन नंबर"
 
-#: user_settings/templates/user_settings/account_settings.html:92
-#: user_settings/templates/user_settings/account_settings.html:150
-#: user_settings/templates/user_settings/account_settings.html:181
-#: user_settings/templates/user_settings/account_settings.html:204
+#: user_settings/templates/user_settings/account_settings.html:106
+#: user_settings/templates/user_settings/account_settings.html:164
+#: user_settings/templates/user_settings/account_settings.html:201
+#: user_settings/templates/user_settings/account_settings.html:224
 msgid "Save Changes"
 msgstr "परिवर्तन सहेजें"
 
-#: user_settings/templates/user_settings/account_settings.html:112
+#: user_settings/templates/user_settings/account_settings.html:126
 msgid "Language"
 msgstr "भाषा"
 
-#: user_settings/templates/user_settings/account_settings.html:114
+#: user_settings/templates/user_settings/account_settings.html:128
 msgid "English"
 msgstr "अंग्रेज़ी"
 
-#: user_settings/templates/user_settings/account_settings.html:115
+#: user_settings/templates/user_settings/account_settings.html:129
 msgid "Spanish"
 msgstr "स्पेनिश"
 
-#: user_settings/templates/user_settings/account_settings.html:116
+#: user_settings/templates/user_settings/account_settings.html:130
 msgid "French"
 msgstr "फ्रेंच"
 
-#: user_settings/templates/user_settings/account_settings.html:117
+#: user_settings/templates/user_settings/account_settings.html:131
 msgid "German"
 msgstr "जर्मन"
 
-#: user_settings/templates/user_settings/account_settings.html:118
+#: user_settings/templates/user_settings/account_settings.html:132
 msgid "Italian"
 msgstr "इतालवी"
 
-#: user_settings/templates/user_settings/account_settings.html:119
+#: user_settings/templates/user_settings/account_settings.html:133
 msgid "Portuguese"
 msgstr "पुर्तगाली"
 
-#: user_settings/templates/user_settings/account_settings.html:120
+#: user_settings/templates/user_settings/account_settings.html:134
 msgid "Russian"
 msgstr "रूसी"
 
-#: user_settings/templates/user_settings/account_settings.html:121
+#: user_settings/templates/user_settings/account_settings.html:135
 msgid "Chinese"
 msgstr "चीनी"
 
-#: user_settings/templates/user_settings/account_settings.html:122
+#: user_settings/templates/user_settings/account_settings.html:136
 msgid "Japanese"
 msgstr "जापानी"
 
-#: user_settings/templates/user_settings/account_settings.html:123
+#: user_settings/templates/user_settings/account_settings.html:137
 msgid "Hindi"
 msgstr "हिंदी"
 
-#: user_settings/templates/user_settings/account_settings.html:127
+#: user_settings/templates/user_settings/account_settings.html:141
 msgid "Currency"
 msgstr "मुद्रा"
 
-#: user_settings/templates/user_settings/account_settings.html:129
+#: user_settings/templates/user_settings/account_settings.html:143
 msgid "British Pound"
 msgstr "ब्रिटिश पाउंड"
 
-#: user_settings/templates/user_settings/account_settings.html:130
+#: user_settings/templates/user_settings/account_settings.html:144
 msgid "US Dollar"
 msgstr "अमेरिकी डॉलर"
 
-#: user_settings/templates/user_settings/account_settings.html:131
+#: user_settings/templates/user_settings/account_settings.html:145
 msgid "Euro"
 msgstr "यूरो"
 
-#: user_settings/templates/user_settings/account_settings.html:132
+#: user_settings/templates/user_settings/account_settings.html:146
 msgid "Russian Ruble"
 msgstr "रूसी रूबल"
 
-#: user_settings/templates/user_settings/account_settings.html:133
+#: user_settings/templates/user_settings/account_settings.html:147
 msgid "Chinese Yuan"
 msgstr "चीनी युवान"
 
-#: user_settings/templates/user_settings/account_settings.html:134
+#: user_settings/templates/user_settings/account_settings.html:148
 msgid "Japanese Yen"
 msgstr "जापानी येन"
 
-#: user_settings/templates/user_settings/account_settings.html:135
+#: user_settings/templates/user_settings/account_settings.html:149
 msgid "Indian Rupee"
 msgstr "भारतीय रुपया"
 
-#: user_settings/templates/user_settings/account_settings.html:139
+#: user_settings/templates/user_settings/account_settings.html:153
 msgid "Appearance"
 msgstr "रूपरेखा"
 
-#: user_settings/templates/user_settings/account_settings.html:141
+#: user_settings/templates/user_settings/account_settings.html:155
 msgid "Light"
 msgstr "हल्का"
 
-#: user_settings/templates/user_settings/account_settings.html:142
+#: user_settings/templates/user_settings/account_settings.html:156
 msgid "Dark"
 msgstr "अंधेरा"
 
-#: user_settings/templates/user_settings/account_settings.html:146
+#: user_settings/templates/user_settings/account_settings.html:160
 msgid "Notifications Enabled"
 msgstr "सूचनाएँ सक्षम की गईं"
 
-#: user_settings/templates/user_settings/account_settings.html:169
+#: user_settings/templates/user_settings/account_settings.html:183
 msgid "Payment Method"
 msgstr "भुगतान विधि"
 
-#: user_settings/templates/user_settings/account_settings.html:173
+#: user_settings/templates/user_settings/account_settings.html:185
+msgid "Visa"
+msgstr "वीज़ा"
+
+#: user_settings/templates/user_settings/account_settings.html:186
+msgid "MasterCard"
+msgstr "मास्टर कार्ड"
+
+#: user_settings/templates/user_settings/account_settings.html:187
+msgid "American Express"
+msgstr "अमेरिकन एक्सप्रेस"
+
+#: user_settings/templates/user_settings/account_settings.html:188
+msgid "PayPal"
+msgstr "पेपैल"
+
+#: user_settings/templates/user_settings/account_settings.html:192
 msgid "Card Last Four Digits"
 msgstr "कार्ड के आखिरी चार अंक"
 
-#: user_settings/templates/user_settings/account_settings.html:177
+#: user_settings/templates/user_settings/account_settings.html:194
+msgid "Enter the last four digits of your card."
+msgstr "अपने कार्ड के अंतिम चार अंक दर्ज करें."
+
+#: user_settings/templates/user_settings/account_settings.html:197
 msgid "Billing Address"
 msgstr "बिलिंग पता"
 
-#: user_settings/templates/user_settings/account_settings.html:200
+#: user_settings/templates/user_settings/account_settings.html:220
 msgid "Data Sharing Enabled"
 msgstr "डेटा साझाकरण सक्षम किया गया"
+
+#~ msgid "Notifications Enabled:"
+#~ msgstr "सूचनाएँ सक्षम की गईं:"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-19 12:01+0000\n"
+"POT-Creation-Date: 2025-02-21 10:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,7 +116,7 @@ msgid "View All Listings"
 msgstr "Visualizza tutti gli annunci"
 
 #: dashboard/templates/dashboard/dashboard.html:146
-#: listings/templates/listings/listing_page.html:153
+#: listings/templates/listings/listing_page.html:156
 msgid "Reviews"
 msgstr "Recensioni"
 
@@ -125,7 +125,7 @@ msgid "Check reviews from customers."
 msgstr "Controlla le recensioni dei clienti."
 
 #: dashboard/templates/dashboard/dashboard.html:156
-#: listings/templates/listings/listing_page.html:162
+#: listings/templates/listings/listing_page.html:165
 msgid "rated"
 msgstr "valutato"
 
@@ -138,7 +138,7 @@ msgid "No reviews"
 msgstr "Nessuna recensione"
 
 #: listings/templates/listings/add_caravan.html:6
-#: listings/templates/listings/listing_page.html:353
+#: listings/templates/listings/listing_page.html:356
 msgid "Add Caravan"
 msgstr "Aggiungi Caravan"
 
@@ -160,7 +160,7 @@ msgid "Berth:"
 msgstr "Posti letto:"
 
 #: listings/templates/listings/add_caravan.html:28
-#: listings/templates/listings/listing_page.html:136
+#: listings/templates/listings/listing_page.html:139
 msgid "Amenities:"
 msgstr "Servizi:"
 
@@ -240,7 +240,7 @@ msgstr "Data di inizio:"
 msgid "End Date:"
 msgstr "Data di fine:"
 
-#: listings/templates/listings/booking.html:63
+#: listings/templates/listings/booking.html:63 templates/base.html:101
 msgid "Close"
 msgstr "Chiudi"
 
@@ -305,7 +305,7 @@ msgid "Request Booking"
 msgstr "Richiedi prenotazione"
 
 #: listings/templates/listings/booking.html:187
-#: listings/templates/listings/listing_page.html:144
+#: listings/templates/listings/listing_page.html:147
 msgid "Available Dates:"
 msgstr "Date disponibili:"
 
@@ -391,88 +391,88 @@ msgstr "Successivo"
 msgid "Price per night:"
 msgstr "Prezzo per notte:"
 
-#: listings/templates/listings/listing_page.html:159
+#: listings/templates/listings/listing_page.html:162
 msgid "Customers reviews:"
 msgstr "Recensioni dei clienti:"
 
-#: listings/templates/listings/listing_page.html:166
+#: listings/templates/listings/listing_page.html:169
 msgid "Owner's Reply:"
 msgstr "Risposta del proprietario:"
 
-#: listings/templates/listings/listing_page.html:173
-#: listings/templates/listings/listing_page.html:185
+#: listings/templates/listings/listing_page.html:176
+#: listings/templates/listings/listing_page.html:188
 msgid "Edit Reply"
 msgstr "Modifica risposta"
 
-#: listings/templates/listings/listing_page.html:176
+#: listings/templates/listings/listing_page.html:179
 msgid "Delete Reply"
 msgstr "Elimina risposta"
 
-#: listings/templates/listings/listing_page.html:192
-#: listings/templates/listings/listing_page.html:207
-#: listings/templates/listings/listing_page.html:222
+#: listings/templates/listings/listing_page.html:195
+#: listings/templates/listings/listing_page.html:210
+#: listings/templates/listings/listing_page.html:225
 msgid "Reply"
 msgstr "Rispondi"
 
-#: listings/templates/listings/listing_page.html:196
-#: listings/templates/listings/listing_page.html:226
+#: listings/templates/listings/listing_page.html:199
+#: listings/templates/listings/listing_page.html:229
 msgid "Submit Reply"
 msgstr "Invia risposta"
 
-#: listings/templates/listings/listing_page.html:215
+#: listings/templates/listings/listing_page.html:218
 msgid "Reply to Review"
 msgstr "Rispondi alla recensione"
 
-#: listings/templates/listings/listing_page.html:238
-#: listings/templates/listings/listing_page.html:295
+#: listings/templates/listings/listing_page.html:241
+#: listings/templates/listings/listing_page.html:298
 msgid "Edit Review"
 msgstr "Modifica recensione"
 
-#: listings/templates/listings/listing_page.html:241
+#: listings/templates/listings/listing_page.html:244
 msgid "Delete Review"
 msgstr "Elimina recensione"
 
-#: listings/templates/listings/listing_page.html:248
+#: listings/templates/listings/listing_page.html:251
 msgid "Approve Review"
 msgstr "Approva recensione"
 
-#: listings/templates/listings/listing_page.html:258
-#: listings/templates/listings/listing_page.html:267
+#: listings/templates/listings/listing_page.html:261
+#: listings/templates/listings/listing_page.html:270
 msgid "Leave a Review"
 msgstr "Lascia una recensione"
 
-#: listings/templates/listings/listing_page.html:274
-#: listings/templates/listings/listing_page.html:302
+#: listings/templates/listings/listing_page.html:277
+#: listings/templates/listings/listing_page.html:305
 msgid "Rating"
 msgstr "Valutazione"
 
-#: listings/templates/listings/listing_page.html:278
-#: listings/templates/listings/listing_page.html:306
+#: listings/templates/listings/listing_page.html:281
+#: listings/templates/listings/listing_page.html:309
 msgid "Comment"
 msgstr "Commento"
 
-#: listings/templates/listings/listing_page.html:282
-#: listings/templates/listings/listing_page.html:310
+#: listings/templates/listings/listing_page.html:285
+#: listings/templates/listings/listing_page.html:313
 msgid "Submit Review"
 msgstr "Invia recensione"
 
-#: listings/templates/listings/listing_page.html:323
+#: listings/templates/listings/listing_page.html:326
 msgid "Edit caravan"
 msgstr "Modifica roulotte"
 
-#: listings/templates/listings/listing_page.html:329
+#: listings/templates/listings/listing_page.html:332
 msgid "Delete caravan"
 msgstr "Elimina roulotte"
 
-#: listings/templates/listings/listing_page.html:337
+#: listings/templates/listings/listing_page.html:340
 msgid "BOOK CARAVAN NOW"
 msgstr "PRENOTA ROULOTTE ORA"
 
-#: listings/templates/listings/listing_page.html:340
+#: listings/templates/listings/listing_page.html:343
 msgid "Not Available"
 msgstr "Non disponibile"
 
-#: listings/templates/listings/listing_page.html:348
+#: listings/templates/listings/listing_page.html:351
 msgid "No caravans available"
 msgstr "Nessuna roulotte disponibile"
 
@@ -636,51 +636,55 @@ msgstr "accedi"
 msgid "Nomad Nation"
 msgstr "Nomad Nation"
 
-#: templates/base.html:45
+#: templates/base.html:54
 msgid "Home"
 msgstr "Home"
 
-#: templates/base.html:48
+#: templates/base.html:57
 msgid "Contact"
 msgstr "Contatti"
 
-#: templates/base.html:53
+#: templates/base.html:62
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: templates/base.html:56
+#: templates/base.html:65
 msgid "Caravan listings"
 msgstr "Annunci roulotte"
 
-#: templates/base.html:59
+#: templates/base.html:68
 msgid "Bookings"
 msgstr "Prenotazioni"
 
-#: templates/base.html:62
+#: templates/base.html:71
 msgid "Account settings"
 msgstr "Impostazioni account"
 
-#: templates/base.html:65
-msgid "Notifications"
-msgstr "Notifiche"
-
-#: templates/base.html:68
+#: templates/base.html:74
 msgid "Logout"
 msgstr "Esci"
 
-#: templates/base.html:73
+#: templates/base.html:79
 msgid "Register"
 msgstr "Registrati"
 
-#: templates/base.html:76
+#: templates/base.html:82
 msgid "Login"
 msgstr "Accedi"
 
-#: templates/base.html:104
+#: templates/base.html:94
+msgid "New Notifications"
+msgstr "Nuove Notifiche"
+
+#: templates/base.html:98
+msgid "You have new notifications."
+msgstr "Hai nuove notifiche."
+
+#: templates/base.html:127
 msgid "Made by"
 msgstr "Creato da"
 
-#: templates/base.html:107
+#: templates/base.html:130
 msgid "Follow us:"
 msgstr "Seguici su:"
 
@@ -693,7 +697,7 @@ msgid "Personal Details"
 msgstr "Dettagli personali"
 
 #: user_settings/templates/user_settings/account_settings.html:17
-#: user_settings/templates/user_settings/account_settings.html:73
+#: user_settings/templates/user_settings/account_settings.html:87
 msgid "Edit Personal Details"
 msgstr "Modifica dettagli personali"
 
@@ -701,176 +705,203 @@ msgstr "Modifica dettagli personali"
 msgid "Preferences"
 msgstr "Preferenze"
 
-#: user_settings/templates/user_settings/account_settings.html:27
+#: user_settings/templates/user_settings/account_settings.html:28
 msgid "Language:"
 msgstr "Lingua:"
 
-#: user_settings/templates/user_settings/account_settings.html:28
+#: user_settings/templates/user_settings/account_settings.html:31
 msgid "Currency:"
 msgstr "Valuta:"
 
-#: user_settings/templates/user_settings/account_settings.html:29
+#: user_settings/templates/user_settings/account_settings.html:34
 msgid "Appearance:"
 msgstr "Aspetto:"
 
-#: user_settings/templates/user_settings/account_settings.html:30
-msgid "Notifications Enabled:"
-msgstr "Notifiche attivate:"
+#: user_settings/templates/user_settings/account_settings.html:37
+msgid "Notifications:"
+msgstr "Notifiche:"
 
-#: user_settings/templates/user_settings/account_settings.html:32
-#: user_settings/templates/user_settings/account_settings.html:105
+#: user_settings/templates/user_settings/account_settings.html:41
+#: user_settings/templates/user_settings/account_settings.html:119
 msgid "Edit Preferences"
 msgstr "Modifica preferenze"
 
-#: user_settings/templates/user_settings/account_settings.html:39
+#: user_settings/templates/user_settings/account_settings.html:48
 msgid "Payment Details"
 msgstr "Dettagli di pagamento"
 
-#: user_settings/templates/user_settings/account_settings.html:45
+#: user_settings/templates/user_settings/account_settings.html:56
+msgid "Billing Address:"
+msgstr "Indirizzo di fatturazione:"
+
+#: user_settings/templates/user_settings/account_settings.html:59
 msgid "No payment details available."
 msgstr "Nessun dettaglio di pagamento disponibile."
 
-#: user_settings/templates/user_settings/account_settings.html:48
-#: user_settings/templates/user_settings/account_settings.html:162
+#: user_settings/templates/user_settings/account_settings.html:62
+#: user_settings/templates/user_settings/account_settings.html:176
 msgid "Edit Payment Details"
 msgstr "Modifica dettagli di pagamento"
 
-#: user_settings/templates/user_settings/account_settings.html:55
+#: user_settings/templates/user_settings/account_settings.html:69
 msgid "Privacy Settings"
 msgstr "Impostazioni sulla privacy"
 
-#: user_settings/templates/user_settings/account_settings.html:58
+#: user_settings/templates/user_settings/account_settings.html:72
 msgid "Data Sharing Enabled:"
 msgstr "Condivisione dei dati attivata:"
 
-#: user_settings/templates/user_settings/account_settings.html:60
-#: user_settings/templates/user_settings/account_settings.html:193
+#: user_settings/templates/user_settings/account_settings.html:74
+#: user_settings/templates/user_settings/account_settings.html:213
 msgid "Edit Privacy Settings"
 msgstr "Modifica impostazioni sulla privacy"
 
-#: user_settings/templates/user_settings/account_settings.html:80
+#: user_settings/templates/user_settings/account_settings.html:94
 msgid "Name"
 msgstr "Nome"
 
-#: user_settings/templates/user_settings/account_settings.html:84
+#: user_settings/templates/user_settings/account_settings.html:98
 msgid "Email"
 msgstr "Email"
 
-#: user_settings/templates/user_settings/account_settings.html:88
+#: user_settings/templates/user_settings/account_settings.html:102
 msgid "Phone Number"
 msgstr "Numero di telefono"
 
-#: user_settings/templates/user_settings/account_settings.html:92
-#: user_settings/templates/user_settings/account_settings.html:150
-#: user_settings/templates/user_settings/account_settings.html:181
-#: user_settings/templates/user_settings/account_settings.html:204
+#: user_settings/templates/user_settings/account_settings.html:106
+#: user_settings/templates/user_settings/account_settings.html:164
+#: user_settings/templates/user_settings/account_settings.html:201
+#: user_settings/templates/user_settings/account_settings.html:224
 msgid "Save Changes"
 msgstr "Salva modifiche"
 
-#: user_settings/templates/user_settings/account_settings.html:112
+#: user_settings/templates/user_settings/account_settings.html:126
 msgid "Language"
 msgstr "Lingua"
 
-#: user_settings/templates/user_settings/account_settings.html:114
+#: user_settings/templates/user_settings/account_settings.html:128
 msgid "English"
 msgstr "Inglese"
 
-#: user_settings/templates/user_settings/account_settings.html:115
+#: user_settings/templates/user_settings/account_settings.html:129
 msgid "Spanish"
 msgstr "Spagnolo"
 
-#: user_settings/templates/user_settings/account_settings.html:116
+#: user_settings/templates/user_settings/account_settings.html:130
 msgid "French"
 msgstr "Francese"
 
-#: user_settings/templates/user_settings/account_settings.html:117
+#: user_settings/templates/user_settings/account_settings.html:131
 msgid "German"
 msgstr "Tedesco"
 
-#: user_settings/templates/user_settings/account_settings.html:118
+#: user_settings/templates/user_settings/account_settings.html:132
 msgid "Italian"
 msgstr "Italiano"
 
-#: user_settings/templates/user_settings/account_settings.html:119
+#: user_settings/templates/user_settings/account_settings.html:133
 msgid "Portuguese"
 msgstr "Portoghese"
 
-#: user_settings/templates/user_settings/account_settings.html:120
+#: user_settings/templates/user_settings/account_settings.html:134
 msgid "Russian"
 msgstr "Russo"
 
-#: user_settings/templates/user_settings/account_settings.html:121
+#: user_settings/templates/user_settings/account_settings.html:135
 msgid "Chinese"
 msgstr "Cinese"
 
-#: user_settings/templates/user_settings/account_settings.html:122
+#: user_settings/templates/user_settings/account_settings.html:136
 msgid "Japanese"
 msgstr "Giapponese"
 
-#: user_settings/templates/user_settings/account_settings.html:123
+#: user_settings/templates/user_settings/account_settings.html:137
 msgid "Hindi"
 msgstr "Hindi"
 
-#: user_settings/templates/user_settings/account_settings.html:127
+#: user_settings/templates/user_settings/account_settings.html:141
 msgid "Currency"
 msgstr "Valuta"
 
-#: user_settings/templates/user_settings/account_settings.html:129
+#: user_settings/templates/user_settings/account_settings.html:143
 msgid "British Pound"
 msgstr "Sterlina Britannica"
 
-#: user_settings/templates/user_settings/account_settings.html:130
+#: user_settings/templates/user_settings/account_settings.html:144
 msgid "US Dollar"
 msgstr "Dollaro americano"
 
-#: user_settings/templates/user_settings/account_settings.html:131
+#: user_settings/templates/user_settings/account_settings.html:145
 msgid "Euro"
 msgstr "Euro"
 
-#: user_settings/templates/user_settings/account_settings.html:132
+#: user_settings/templates/user_settings/account_settings.html:146
 msgid "Russian Ruble"
 msgstr "Rublo russo"
 
-#: user_settings/templates/user_settings/account_settings.html:133
+#: user_settings/templates/user_settings/account_settings.html:147
 msgid "Chinese Yuan"
 msgstr "Yuan Cinese"
 
-#: user_settings/templates/user_settings/account_settings.html:134
+#: user_settings/templates/user_settings/account_settings.html:148
 msgid "Japanese Yen"
 msgstr "Yen Giapponesi"
 
-#: user_settings/templates/user_settings/account_settings.html:135
+#: user_settings/templates/user_settings/account_settings.html:149
 msgid "Indian Rupee"
 msgstr "Rupia Indiana"
 
-#: user_settings/templates/user_settings/account_settings.html:139
+#: user_settings/templates/user_settings/account_settings.html:153
 msgid "Appearance"
 msgstr "Aspetto"
 
-#: user_settings/templates/user_settings/account_settings.html:141
+#: user_settings/templates/user_settings/account_settings.html:155
 msgid "Light"
 msgstr "Chiaro"
 
-#: user_settings/templates/user_settings/account_settings.html:142
+#: user_settings/templates/user_settings/account_settings.html:156
 msgid "Dark"
 msgstr "Scuro"
 
-#: user_settings/templates/user_settings/account_settings.html:146
+#: user_settings/templates/user_settings/account_settings.html:160
 msgid "Notifications Enabled"
 msgstr "Notifiche attivate"
 
-#: user_settings/templates/user_settings/account_settings.html:169
+#: user_settings/templates/user_settings/account_settings.html:183
 msgid "Payment Method"
 msgstr "Metodo di pagamento"
 
-#: user_settings/templates/user_settings/account_settings.html:173
+#: user_settings/templates/user_settings/account_settings.html:185
+msgid "Visa"
+msgstr "Visa"
+
+#: user_settings/templates/user_settings/account_settings.html:186
+msgid "MasterCard"
+msgstr "MasterCard"
+
+#: user_settings/templates/user_settings/account_settings.html:187
+msgid "American Express"
+msgstr "American Express"
+
+#: user_settings/templates/user_settings/account_settings.html:188
+msgid "PayPal"
+msgstr "PayPal"
+
+#: user_settings/templates/user_settings/account_settings.html:192
 msgid "Card Last Four Digits"
 msgstr "Ultimi quattro cifre della carta"
 
-#: user_settings/templates/user_settings/account_settings.html:177
+#: user_settings/templates/user_settings/account_settings.html:194
+msgid "Enter the last four digits of your card."
+msgstr "Inserisci le ultime quattro cifre della tua carta."
+
+#: user_settings/templates/user_settings/account_settings.html:197
 msgid "Billing Address"
 msgstr "Indirizzo di fatturazione"
 
-#: user_settings/templates/user_settings/account_settings.html:200
+#: user_settings/templates/user_settings/account_settings.html:220
 msgid "Data Sharing Enabled"
 msgstr "Condivisione dei dati attivata"
+
+#~ msgid "Notifications Enabled:"
+#~ msgstr "Notifiche attivate:"

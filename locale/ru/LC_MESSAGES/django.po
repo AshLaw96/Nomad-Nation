@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-19 12:00+0000\n"
+"POT-Creation-Date: 2025-02-21 10:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,7 +118,7 @@ msgid "View All Listings"
 msgstr "Просмотр всех объявлений"
 
 #: dashboard/templates/dashboard/dashboard.html:146
-#: listings/templates/listings/listing_page.html:153
+#: listings/templates/listings/listing_page.html:156
 msgid "Reviews"
 msgstr "Отзывы"
 
@@ -127,7 +127,7 @@ msgid "Check reviews from customers."
 msgstr "Просмотрите отзывы от клиентов."
 
 #: dashboard/templates/dashboard/dashboard.html:156
-#: listings/templates/listings/listing_page.html:162
+#: listings/templates/listings/listing_page.html:165
 msgid "rated"
 msgstr "оценено"
 
@@ -140,7 +140,7 @@ msgid "No reviews"
 msgstr "Нет отзывов"
 
 #: listings/templates/listings/add_caravan.html:6
-#: listings/templates/listings/listing_page.html:353
+#: listings/templates/listings/listing_page.html:356
 msgid "Add Caravan"
 msgstr "Добавить караван"
 
@@ -162,7 +162,7 @@ msgid "Berth:"
 msgstr "Кровать:"
 
 #: listings/templates/listings/add_caravan.html:28
-#: listings/templates/listings/listing_page.html:136
+#: listings/templates/listings/listing_page.html:139
 msgid "Amenities:"
 msgstr "Удобства:"
 
@@ -242,7 +242,7 @@ msgstr "Дата начала:"
 msgid "End Date:"
 msgstr "Дата окончания:"
 
-#: listings/templates/listings/booking.html:63
+#: listings/templates/listings/booking.html:63 templates/base.html:101
 msgid "Close"
 msgstr "Закрыть"
 
@@ -307,7 +307,7 @@ msgid "Request Booking"
 msgstr "Запросить бронирование"
 
 #: listings/templates/listings/booking.html:187
-#: listings/templates/listings/listing_page.html:144
+#: listings/templates/listings/listing_page.html:147
 msgid "Available Dates:"
 msgstr "Доступные даты:"
 
@@ -393,88 +393,88 @@ msgstr "Следующая"
 msgid "Price per night:"
 msgstr "Цена за ночь:"
 
-#: listings/templates/listings/listing_page.html:159
+#: listings/templates/listings/listing_page.html:162
 msgid "Customers reviews:"
 msgstr "Отзывы клиентов:"
 
-#: listings/templates/listings/listing_page.html:166
+#: listings/templates/listings/listing_page.html:169
 msgid "Owner's Reply:"
 msgstr "Ответ владельца:"
 
-#: listings/templates/listings/listing_page.html:173
-#: listings/templates/listings/listing_page.html:185
+#: listings/templates/listings/listing_page.html:176
+#: listings/templates/listings/listing_page.html:188
 msgid "Edit Reply"
 msgstr "Редактировать ответ"
 
-#: listings/templates/listings/listing_page.html:176
+#: listings/templates/listings/listing_page.html:179
 msgid "Delete Reply"
 msgstr "Удалить ответ"
 
-#: listings/templates/listings/listing_page.html:192
-#: listings/templates/listings/listing_page.html:207
-#: listings/templates/listings/listing_page.html:222
+#: listings/templates/listings/listing_page.html:195
+#: listings/templates/listings/listing_page.html:210
+#: listings/templates/listings/listing_page.html:225
 msgid "Reply"
 msgstr "Ответить"
 
-#: listings/templates/listings/listing_page.html:196
-#: listings/templates/listings/listing_page.html:226
+#: listings/templates/listings/listing_page.html:199
+#: listings/templates/listings/listing_page.html:229
 msgid "Submit Reply"
 msgstr "Отправить ответ"
 
-#: listings/templates/listings/listing_page.html:215
+#: listings/templates/listings/listing_page.html:218
 msgid "Reply to Review"
 msgstr "Ответить на отзыв"
 
-#: listings/templates/listings/listing_page.html:238
-#: listings/templates/listings/listing_page.html:295
+#: listings/templates/listings/listing_page.html:241
+#: listings/templates/listings/listing_page.html:298
 msgid "Edit Review"
 msgstr "Редактировать отзыв"
 
-#: listings/templates/listings/listing_page.html:241
+#: listings/templates/listings/listing_page.html:244
 msgid "Delete Review"
 msgstr "Удалить отзыв"
 
-#: listings/templates/listings/listing_page.html:248
+#: listings/templates/listings/listing_page.html:251
 msgid "Approve Review"
 msgstr "Одобрить отзыв"
 
-#: listings/templates/listings/listing_page.html:258
-#: listings/templates/listings/listing_page.html:267
+#: listings/templates/listings/listing_page.html:261
+#: listings/templates/listings/listing_page.html:270
 msgid "Leave a Review"
 msgstr "Оставить отзыв"
 
-#: listings/templates/listings/listing_page.html:274
-#: listings/templates/listings/listing_page.html:302
+#: listings/templates/listings/listing_page.html:277
+#: listings/templates/listings/listing_page.html:305
 msgid "Rating"
 msgstr "Рейтинг"
 
-#: listings/templates/listings/listing_page.html:278
-#: listings/templates/listings/listing_page.html:306
+#: listings/templates/listings/listing_page.html:281
+#: listings/templates/listings/listing_page.html:309
 msgid "Comment"
 msgstr "Комментарий"
 
-#: listings/templates/listings/listing_page.html:282
-#: listings/templates/listings/listing_page.html:310
+#: listings/templates/listings/listing_page.html:285
+#: listings/templates/listings/listing_page.html:313
 msgid "Submit Review"
 msgstr "Отправить отзыв"
 
-#: listings/templates/listings/listing_page.html:323
+#: listings/templates/listings/listing_page.html:326
 msgid "Edit caravan"
 msgstr "Редактировать караван"
 
-#: listings/templates/listings/listing_page.html:329
+#: listings/templates/listings/listing_page.html:332
 msgid "Delete caravan"
 msgstr "Удалить караван"
 
-#: listings/templates/listings/listing_page.html:337
+#: listings/templates/listings/listing_page.html:340
 msgid "BOOK CARAVAN NOW"
 msgstr "ЗАБРОНИРОВАТЬ КАРАВАН СЕЙЧАС"
 
-#: listings/templates/listings/listing_page.html:340
+#: listings/templates/listings/listing_page.html:343
 msgid "Not Available"
 msgstr "Недоступно"
 
-#: listings/templates/listings/listing_page.html:348
+#: listings/templates/listings/listing_page.html:351
 msgid "No caravans available"
 msgstr "Нет доступных караванов"
 
@@ -636,51 +636,55 @@ msgstr "войдите"
 msgid "Nomad Nation"
 msgstr "Nomad Nation"
 
-#: templates/base.html:45
+#: templates/base.html:54
 msgid "Home"
 msgstr "Главная"
 
-#: templates/base.html:48
+#: templates/base.html:57
 msgid "Contact"
 msgstr "Контакты"
 
-#: templates/base.html:53
+#: templates/base.html:62
 msgid "Dashboard"
 msgstr "Панель управления"
 
-#: templates/base.html:56
+#: templates/base.html:65
 msgid "Caravan listings"
 msgstr "Список караванов"
 
-#: templates/base.html:59
+#: templates/base.html:68
 msgid "Bookings"
 msgstr "Бронирования"
 
-#: templates/base.html:62
+#: templates/base.html:71
 msgid "Account settings"
 msgstr "Настройки аккаунта"
 
-#: templates/base.html:65
-msgid "Notifications"
-msgstr "Уведомления"
-
-#: templates/base.html:68
+#: templates/base.html:74
 msgid "Logout"
 msgstr "Выйти"
 
-#: templates/base.html:73
+#: templates/base.html:79
 msgid "Register"
 msgstr "Регистрация"
 
-#: templates/base.html:76
+#: templates/base.html:82
 msgid "Login"
 msgstr "Войти"
 
-#: templates/base.html:104
+#: templates/base.html:94
+msgid "New Notifications"
+msgstr "Новые уведомления"
+
+#: templates/base.html:98
+msgid "You have new notifications."
+msgstr "У вас есть новые уведомления."
+
+#: templates/base.html:127
 msgid "Made by"
 msgstr "Сделано"
 
-#: templates/base.html:107
+#: templates/base.html:130
 msgid "Follow us:"
 msgstr "Подписывайтесь на нас:"
 
@@ -693,7 +697,7 @@ msgid "Personal Details"
 msgstr "Личные данные"
 
 #: user_settings/templates/user_settings/account_settings.html:17
-#: user_settings/templates/user_settings/account_settings.html:73
+#: user_settings/templates/user_settings/account_settings.html:87
 msgid "Edit Personal Details"
 msgstr "Редактировать личные данные"
 
@@ -701,176 +705,203 @@ msgstr "Редактировать личные данные"
 msgid "Preferences"
 msgstr "Настройки"
 
-#: user_settings/templates/user_settings/account_settings.html:27
+#: user_settings/templates/user_settings/account_settings.html:28
 msgid "Language:"
 msgstr "Язык:"
 
-#: user_settings/templates/user_settings/account_settings.html:28
+#: user_settings/templates/user_settings/account_settings.html:31
 msgid "Currency:"
 msgstr "Валюта:"
 
-#: user_settings/templates/user_settings/account_settings.html:29
+#: user_settings/templates/user_settings/account_settings.html:34
 msgid "Appearance:"
 msgstr "Внешний вид:"
 
-#: user_settings/templates/user_settings/account_settings.html:30
-msgid "Notifications Enabled:"
-msgstr "Уведомления включены:"
+#: user_settings/templates/user_settings/account_settings.html:37
+msgid "Notifications:"
+msgstr "Уведомления:"
 
-#: user_settings/templates/user_settings/account_settings.html:32
-#: user_settings/templates/user_settings/account_settings.html:105
+#: user_settings/templates/user_settings/account_settings.html:41
+#: user_settings/templates/user_settings/account_settings.html:119
 msgid "Edit Preferences"
 msgstr "Редактировать настройки"
 
-#: user_settings/templates/user_settings/account_settings.html:39
+#: user_settings/templates/user_settings/account_settings.html:48
 msgid "Payment Details"
 msgstr "Платежные данные"
 
-#: user_settings/templates/user_settings/account_settings.html:45
+#: user_settings/templates/user_settings/account_settings.html:56
+msgid "Billing Address:"
+msgstr "Платежный адрес:"
+
+#: user_settings/templates/user_settings/account_settings.html:59
 msgid "No payment details available."
 msgstr "Нет доступных платежных данных."
 
-#: user_settings/templates/user_settings/account_settings.html:48
-#: user_settings/templates/user_settings/account_settings.html:162
+#: user_settings/templates/user_settings/account_settings.html:62
+#: user_settings/templates/user_settings/account_settings.html:176
 msgid "Edit Payment Details"
 msgstr "Редактировать платежные данные"
 
-#: user_settings/templates/user_settings/account_settings.html:55
+#: user_settings/templates/user_settings/account_settings.html:69
 msgid "Privacy Settings"
 msgstr "Настройки конфиденциальности"
 
-#: user_settings/templates/user_settings/account_settings.html:58
+#: user_settings/templates/user_settings/account_settings.html:72
 msgid "Data Sharing Enabled:"
 msgstr "Включено совместное использование данных:"
 
-#: user_settings/templates/user_settings/account_settings.html:60
-#: user_settings/templates/user_settings/account_settings.html:193
+#: user_settings/templates/user_settings/account_settings.html:74
+#: user_settings/templates/user_settings/account_settings.html:213
 msgid "Edit Privacy Settings"
 msgstr "Редактировать настройки конфиденциальности"
 
-#: user_settings/templates/user_settings/account_settings.html:80
+#: user_settings/templates/user_settings/account_settings.html:94
 msgid "Name"
 msgstr "Имя"
 
-#: user_settings/templates/user_settings/account_settings.html:84
+#: user_settings/templates/user_settings/account_settings.html:98
 msgid "Email"
 msgstr "Электронная почта"
 
-#: user_settings/templates/user_settings/account_settings.html:88
+#: user_settings/templates/user_settings/account_settings.html:102
 msgid "Phone Number"
 msgstr "Номер телефона"
 
-#: user_settings/templates/user_settings/account_settings.html:92
-#: user_settings/templates/user_settings/account_settings.html:150
-#: user_settings/templates/user_settings/account_settings.html:181
-#: user_settings/templates/user_settings/account_settings.html:204
+#: user_settings/templates/user_settings/account_settings.html:106
+#: user_settings/templates/user_settings/account_settings.html:164
+#: user_settings/templates/user_settings/account_settings.html:201
+#: user_settings/templates/user_settings/account_settings.html:224
 msgid "Save Changes"
 msgstr "Сохранить изменения"
 
-#: user_settings/templates/user_settings/account_settings.html:112
+#: user_settings/templates/user_settings/account_settings.html:126
 msgid "Language"
 msgstr "Язык"
 
-#: user_settings/templates/user_settings/account_settings.html:114
+#: user_settings/templates/user_settings/account_settings.html:128
 msgid "English"
 msgstr "Английский"
 
-#: user_settings/templates/user_settings/account_settings.html:115
+#: user_settings/templates/user_settings/account_settings.html:129
 msgid "Spanish"
 msgstr "Испанский"
 
-#: user_settings/templates/user_settings/account_settings.html:116
+#: user_settings/templates/user_settings/account_settings.html:130
 msgid "French"
 msgstr "Французский"
 
-#: user_settings/templates/user_settings/account_settings.html:117
+#: user_settings/templates/user_settings/account_settings.html:131
 msgid "German"
 msgstr "Немецкий"
 
-#: user_settings/templates/user_settings/account_settings.html:118
+#: user_settings/templates/user_settings/account_settings.html:132
 msgid "Italian"
 msgstr "Итальянский"
 
-#: user_settings/templates/user_settings/account_settings.html:119
+#: user_settings/templates/user_settings/account_settings.html:133
 msgid "Portuguese"
 msgstr "Португальский"
 
-#: user_settings/templates/user_settings/account_settings.html:120
+#: user_settings/templates/user_settings/account_settings.html:134
 msgid "Russian"
 msgstr "Русский"
 
-#: user_settings/templates/user_settings/account_settings.html:121
+#: user_settings/templates/user_settings/account_settings.html:135
 msgid "Chinese"
 msgstr "Китайский"
 
-#: user_settings/templates/user_settings/account_settings.html:122
+#: user_settings/templates/user_settings/account_settings.html:136
 msgid "Japanese"
 msgstr "Японский"
 
-#: user_settings/templates/user_settings/account_settings.html:123
+#: user_settings/templates/user_settings/account_settings.html:137
 msgid "Hindi"
 msgstr "Хинди"
 
-#: user_settings/templates/user_settings/account_settings.html:127
+#: user_settings/templates/user_settings/account_settings.html:141
 msgid "Currency"
 msgstr "Валюта"
 
-#: user_settings/templates/user_settings/account_settings.html:129
+#: user_settings/templates/user_settings/account_settings.html:143
 msgid "British Pound"
 msgstr "Британский фунт"
 
-#: user_settings/templates/user_settings/account_settings.html:130
+#: user_settings/templates/user_settings/account_settings.html:144
 msgid "US Dollar"
 msgstr "Доллар США"
 
-#: user_settings/templates/user_settings/account_settings.html:131
+#: user_settings/templates/user_settings/account_settings.html:145
 msgid "Euro"
 msgstr "Евро"
 
-#: user_settings/templates/user_settings/account_settings.html:132
+#: user_settings/templates/user_settings/account_settings.html:146
 msgid "Russian Ruble"
 msgstr "Российский рубль"
 
-#: user_settings/templates/user_settings/account_settings.html:133
+#: user_settings/templates/user_settings/account_settings.html:147
 msgid "Chinese Yuan"
 msgstr "Китайский юань"
 
-#: user_settings/templates/user_settings/account_settings.html:134
+#: user_settings/templates/user_settings/account_settings.html:148
 msgid "Japanese Yen"
 msgstr "Японская иена"
 
-#: user_settings/templates/user_settings/account_settings.html:135
+#: user_settings/templates/user_settings/account_settings.html:149
 msgid "Indian Rupee"
 msgstr "Индийская рупия"
 
-#: user_settings/templates/user_settings/account_settings.html:139
+#: user_settings/templates/user_settings/account_settings.html:153
 msgid "Appearance"
 msgstr "Внешний вид"
 
-#: user_settings/templates/user_settings/account_settings.html:141
+#: user_settings/templates/user_settings/account_settings.html:155
 msgid "Light"
 msgstr "Светлая"
 
-#: user_settings/templates/user_settings/account_settings.html:142
+#: user_settings/templates/user_settings/account_settings.html:156
 msgid "Dark"
 msgstr "Темная"
 
-#: user_settings/templates/user_settings/account_settings.html:146
+#: user_settings/templates/user_settings/account_settings.html:160
 msgid "Notifications Enabled"
 msgstr "Уведомления включены"
 
-#: user_settings/templates/user_settings/account_settings.html:169
+#: user_settings/templates/user_settings/account_settings.html:183
 msgid "Payment Method"
 msgstr "Способ оплаты"
 
-#: user_settings/templates/user_settings/account_settings.html:173
+#: user_settings/templates/user_settings/account_settings.html:185
+msgid "Visa"
+msgstr "Виза"
+
+#: user_settings/templates/user_settings/account_settings.html:186
+msgid "MasterCard"
+msgstr "МастерКард"
+
+#: user_settings/templates/user_settings/account_settings.html:187
+msgid "American Express"
+msgstr "Американ Экспресс"
+
+#: user_settings/templates/user_settings/account_settings.html:188
+msgid "PayPal"
+msgstr "PayPal"
+
+#: user_settings/templates/user_settings/account_settings.html:192
 msgid "Card Last Four Digits"
 msgstr "Последние четыре цифры карты"
 
-#: user_settings/templates/user_settings/account_settings.html:177
+#: user_settings/templates/user_settings/account_settings.html:194
+msgid "Enter the last four digits of your card."
+msgstr "Введите последние четыре цифры вашей карты."
+
+#: user_settings/templates/user_settings/account_settings.html:197
 msgid "Billing Address"
 msgstr "Платежный адрес"
 
-#: user_settings/templates/user_settings/account_settings.html:200
+#: user_settings/templates/user_settings/account_settings.html:220
 msgid "Data Sharing Enabled"
 msgstr "Совместное использование данных включено"
+
+#~ msgid "Notifications Enabled:"
+#~ msgstr "Уведомления включены:"
