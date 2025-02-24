@@ -4,11 +4,43 @@
 {% block content %}
 <div class="container d-flex flex-column justify-content-center align-items-center bg-styles log-wrap">
     <h1 class="text-center mb-4 title">{% trans "Contact Us" %}</h1>
-    <!-- Contact form -->
+
+    <!-- Contact Form -->
     <form method="post" class="p-4 border rounded shadow-sm mx-auto w-100">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary w-100 mt-3 btn-styles">{% trans "Send Message" %}</button>
+        <button type="submit" class="btn btn-primary w-100 mt-3 btn-styles">
+            {% trans "Send Message" %}
+        </button>
     </form>
+
+    <!-- Received Messages Section -->
+    {% if user.is_authenticated and received_messages %}
+    <h2 class="text-center mt-5">{% trans "Received Messages" %}</h2>
+    <div class="list-group w-100 mt-3">
+        {% for message in received_messages %}
+            <div class="list-group-item border rounded shadow-sm mb-2 d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>{% trans "From:" %} </strong> 
+                    {{ message.sender.username|default:"Guest" }} <br>
+                    <strong>{% trans "Message:" %} </strong>
+                    <p>{{ message.message }}</p>
+                    <small class="text-muted">
+                        {% trans "Received on" %} {{ message.sent_at|date:"F j, Y H:i" }}
+                    </small>
+                </div>
+                <!-- Delete Button -->
+                <form method="post" action="{% url 'delete_message' message.id %}" class="ml-3 border-0">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm btn-styles">
+                        {% trans "Delete" %}
+                    </button>
+                </form>
+            </div>
+        {% empty %}
+            <p class="text-center">{% trans "No messages received." %}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
 </div>
 {% endblock %}

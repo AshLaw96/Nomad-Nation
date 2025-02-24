@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 from django.urls import reverse
 from django.contrib import messages
 from django.conf import settings
@@ -89,11 +90,8 @@ def convert_price(request):
 
 @login_required
 def get_notifications(request):
-    print("Requesting received")
     user = request.user
-    print(f"User: {user}")
     notifications = Notification.objects.filter(user=user, is_read=False)
-    print(f"Notifications: {notifications}")
     notifications_list = []
 
     for n in notifications:
@@ -179,14 +177,16 @@ def edit_payment_details(request):
 
 
 @login_required
-def edit_privacy_settings(request):
-    if request.method == 'POST':
-        privacy_settings, created = PrivacySettings.objects.get_or_create(
-            user=request.user)
-        privacy_settings.data_sharing_enabled = (
-            'data_sharing_enabled' in request.POST
+def delete_profile(request):
+    if request.method == "POST":
+        user = request.user
+        user.delete()
+        # Log out the user after deletion
+        logout(request)
+        messages.success(
+            request, _("Your profile has been deleted successfully.")
         )
-        privacy_settings.save()
+        # Redirect to homepage after deletion
+        return redirect("homepage")
 
-        messages.success(request, 'Privacy settings updated successfully.')
-        return redirect('account_settings')
+    return render(request, "main/delete_profile.html")

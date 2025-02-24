@@ -26,8 +26,8 @@ urlpatterns = [
         name='edit_payment_details'
     ),
     path(
-        'edit_privacy_settings/',
-        views.edit_privacy_settings,
-        name='edit_privacy_settings'
+        'delete_profile/',
+        views.delete_profile,
+        name='delete_profile'
     ),
 ]
