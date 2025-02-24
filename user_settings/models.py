@@ -1,19 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
 
 
 class UserProfile(models.Model):
     LANGUAGE_CHOICES = [
-        ('en', 'English'),
-        ('es', 'Spanish'),
-        ('fr', 'French'),
-        ('de', 'German'),
-        ('it', 'Italian'),
-        ('pt', 'Portuguese'),
-        ('ru', 'Russian'),
-        ('zh', 'Chinese'),
-        ('ja', 'Japanese'),
-        ('hi', 'Hindi'),
+        ('en', _('English')),
+        ('es', _('Spanish')),
+        ('fr', _('French')),
+        ('de', _('German')),
+        ('it', _('Italian')),
+        ('pt', _('Portuguese')),
+        ('ru', _('Russian')),
+        ('zh', _('Chinese')),
+        ('ja', _('Japanese')),
+        ('hi', _('Hindi')),
     ]
 
     user = models.OneToOneField(
@@ -47,13 +48,13 @@ class Notification(models.Model):
     CONTACT_FORM = 'contact_form_message'
 
     NOTIFICATION_TYPE_CHOICES = [
-        (REVIEW, 'Review'),
-        (REPLY, 'Reply to Review'),
-        (BOOKING_REQUEST, 'Booking Request'),
-        (BOOKING_ACCEPTED, 'Booking Accepted'),
-        (BOOKING_DECLINED, 'Booking Declined'),
-        (BOOKING_MODIFIED_REQUEST, 'Booking Modification Request'),
-        (CONTACT_FORM, 'Contact Form Message'),
+        (REVIEW, _('Review')),
+        (REPLY, _('Reply to Review')),
+        (BOOKING_REQUEST, _('Booking Request')),
+        (BOOKING_ACCEPTED, _('Booking Accepted')),
+        (BOOKING_DECLINED, _('Booking Declined')),
+        (BOOKING_MODIFIED_REQUEST, _('Booking Modification Request')),
+        (CONTACT_FORM, _('Contact Form Message')),
     ]
 
     user = models.ForeignKey(
@@ -89,7 +90,9 @@ class Notification(models.Model):
     )
 
     def __str__(self):
-        return f'Notification for {self.user.username} - {self.message}'
+        return (
+            _('Notification for ') + f'{self.user.username} - {self.message}'
+        )
 
     def mark_as_read(self):
         self.is_read = True
@@ -115,4 +118,4 @@ class PrivacySettings(models.Model):
     data_sharing_enabled = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"Privacy settings for {self.user.username}"
+        return _('Privacy settings for') + f' {self.user.username}'

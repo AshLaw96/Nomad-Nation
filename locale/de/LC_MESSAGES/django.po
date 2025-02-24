@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-21 10:15+0000\n"
+"POT-Creation-Date: 2025-02-24 18:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,6 +137,142 @@ msgstr "Sterne"
 msgid "No reviews"
 msgstr "Keine Bewertungen"
 
+#: listings/forms.py:10
+msgid "Add extra amenities"
+msgstr "Fügen Sie zusätzliche Annehmlichkeiten hinzu"
+
+#: listings/forms.py:30
+msgid "Caravan Title"
+msgstr "Caravan-Titel"
+
+#: listings/forms.py:31
+msgid "Caravan Description"
+msgstr "Beschreibung des Wohnwagens"
+
+#: listings/forms.py:32
+msgid "Berth Capacity"
+msgstr "Liegeplatzkapazität"
+
+#: listings/forms.py:33
+msgid "Select Amenities"
+msgstr "Wählen Sie Annehmlichkeiten aus"
+
+#: listings/forms.py:34 listings/templates/listings/listing_page.html:35
+msgid "Location"
+msgstr "Standort"
+
+#: listings/forms.py:35
+msgid "Price per Night"
+msgstr "Preis pro Nacht"
+
+#: listings/forms.py:36
+msgid "Available Dates"
+msgstr "Verfügbare Daten"
+
+#: listings/forms.py:41
+msgid "Select start date"
+msgstr "Wählen Sie das Startdatum"
+
+#: listings/forms.py:44
+msgid "Select end date"
+msgstr "Wählen Sie das Enddatum aus"
+
+#: listings/forms.py:63
+msgid "Caravan must have an owner."
+msgstr "Der Wohnwagen muss einen Besitzer haben."
+
+#: listings/forms.py:69
+msgid "This amenity already exists for your account."
+msgstr "Diese Annehmlichkeit existiert bereits für Ihr Konto."
+
+#: listings/forms.py:81
+msgid "Invalid date format. Expected a list of objects."
+msgstr "Ungültiges Datumsformat. Erwartet wurde eine Liste von Objekten."
+
+#: listings/forms.py:85
+msgid "Invalid JSON format for available dates."
+msgstr "Ungültiges JSON-Format für verfügbare Daten."
+
+#: listings/forms.py:91
+msgid "Each date entry must be a dictionary."
+msgstr "Jeder Datumseintrag muss ein Wörterbuch sein."
+
+#: listings/forms.py:96
+msgid "Each date entry must contain 'start_date' and 'end_date'."
+msgstr "Jeder Datumseintrag muss 'start_date' und 'end_date' enthalten."
+
+#: listings/forms.py:109
+msgid "Invalid date format. Use YYYY-MM-DD."
+msgstr "Ungültiges Datumsformat. Verwenden Sie JJJJ-MM-TT."
+
+#: listings/forms.py:113
+msgid "Start date cannot be after end date."
+msgstr "Das Startdatum darf nicht nach dem Enddatum liegen."
+
+#: listings/forms.py:150
+msgid "This booking does not have an associated caravan."
+msgstr "Diese Buchung hat keinen zugeordneten Wohnwagen."
+
+#: listings/forms.py:159 listings/models.py:87
+msgid "End date must be after start date."
+msgstr "Das Enddatum muss nach dem Startdatum liegen."
+
+#: listings/forms.py:172 listings/views.py:256
+msgid "The caravan is not available for the selected dates."
+msgstr "Der Wohnwagen ist für die ausgewählten Daten nicht verfügbar."
+
+#: listings/models.py:31
+msgid "Two-berth"
+msgstr "Zwei Schlafplätze"
+
+#: listings/models.py:32
+msgid "Four-berth"
+msgstr "Vier Schlafplätze"
+
+#: listings/models.py:33
+msgid "Six-berth"
+msgstr "Sechs Schlafplätze"
+
+#: listings/models.py:63
+msgid "Image for"
+msgstr "Bild für"
+
+#: listings/models.py:92
+msgid "Pending"
+msgstr "Ausstehende"
+
+#: listings/models.py:93
+msgid "Accepted"
+msgstr "Akzeptiert"
+
+#: listings/models.py:94
+msgid "Declined"
+msgstr "Abgelehnt"
+
+#: listings/models.py:115 listings/views.py:369
+msgid "Booking for"
+msgstr "Buchung für"
+
+#: listings/models.py:116
+msgid " by "
+msgstr " von "
+
+#: listings/models.py:135
+msgid "Review for"
+msgstr "Rezension für"
+
+#: listings/models.py:136
+msgid "by"
+msgstr "von"
+
+#: listings/models.py:153
+msgid "Reply by"
+msgstr "Antwort von"
+
+#: listings/models.py:154
+msgid "to review"
+msgstr "zu überprüfen"
+
 #: listings/templates/listings/add_caravan.html:6
 #: listings/templates/listings/listing_page.html:356
 msgid "Add Caravan"
@@ -229,6 +365,7 @@ msgid "Phone Number:"
 msgstr "Telefonnummer:"
 
 #: listings/templates/listings/booking.html:58
+#: main/templates/main/contact.html:26
 msgid "Message:"
 msgstr "Nachricht:"
 
@@ -240,7 +377,7 @@ msgstr "Startdatum:"
 msgid "End Date:"
 msgstr "Enddatum:"
 
-#: listings/templates/listings/booking.html:63 templates/base.html:101
+#: listings/templates/listings/booking.html:63 templates/base.html:104
 msgid "Close"
 msgstr "Schließen"
 
@@ -345,10 +482,6 @@ msgstr "Vier"
 msgid "Six"
 msgstr "Sechs"
 
-#: listings/templates/listings/listing_page.html:35
-msgid "Location"
-msgstr "Standort"
-
 #: listings/templates/listings/listing_page.html:39
 msgid "Min Price"
 msgstr "Mindestpreis"
@@ -419,7 +552,7 @@ msgstr "Antwort"
 msgid "Submit Reply"
 msgstr "Antwort absenden"
 
-#: listings/templates/listings/listing_page.html:218
+#: listings/templates/listings/listing_page.html:218 user_settings/models.py:52
 msgid "Reply to Review"
 msgstr "Auf Bewertung antworten"
 
@@ -476,13 +609,163 @@ msgstr "Nicht verfügbar"
 msgid "No caravans available"
 msgstr "Keine Wohnwagen verfügbar"
 
+#: listings/views.py:268
+msgid "Booking request for "
+msgstr "Buchungsanfrage für "
+
+#: listings/views.py:269
+msgid " from "
+msgstr " aus "
+
+#: listings/views.py:279
+msgid "Booking request for"
+msgstr "Buchungsanfrage für"
+
+#: listings/views.py:280
+msgid " sent successfully "
+msgstr " erfolgreich gesendet "
+
+#: listings/views.py:280
+msgid "to "
+msgstr "bis "
+
+#: listings/views.py:286
+msgid "There was an error with your booking request."
+msgstr "Bei Ihrer Buchungsanfrage ist ein Fehler aufgetreten."
+
+#: listings/views.py:354
+msgid "Booking has no associated caravan."
+msgstr "Der Buchung ist kein Wohnwagen zugeordnet."
+
+#: listings/views.py:362
+msgid "Booking accepted!"
+msgstr "Buchung angenommen!"
+
+#: listings/views.py:370
+msgid "has been accepted."
+msgstr "wurde angenommen."
+
+#: listings/views.py:379
+msgid "Booking declined."
+msgstr "Buchung abgelehnt."
+
+#: listings/views.py:386
+msgid "Booking for "
+msgstr "Buchung für "
+
+#: listings/views.py:387
+msgid " has been declined."
+msgstr " wurde abgelehnt."
+
+#: listings/views.py:420
+msgid "Booking modification request for "
+msgstr "Anfrage zur Buchungsänderung für "
+
+#: listings/views.py:422
+msgid "from"
+msgstr "aus"
+
+#: listings/views.py:430
+msgid "Booking modification request sent to the owner."
+msgstr "Anfrage zur Buchungsänderung an den Eigentümer gesendet."
+
+#: listings/views.py:453
+msgid "New review from "
+msgstr "Neue Rezension von "
+
+#: listings/views.py:454
+msgid "on your caravan!"
+msgstr "auf Ihrem Wohnwagen!"
+
+#: listings/views.py:462
+msgid "Review submitted successfully!"
+msgstr "Bewertung erfolgreich eingereicht!"
+
+#: listings/views.py:472 listings/views.py:518 listings/views.py:548
+#: listings/views.py:590 user_settings/views.py:80
+msgid "Invalid request"
+msgstr "Ungültige Anfrage"
+
+#: listings/views.py:483
+msgid "Review approved!"
+msgstr "Bewertung genehmigt!"
+
+#: listings/views.py:497
+msgid "Reply submitted successfully!"
+msgstr "Antwort erfolgreich eingereicht!"
+
+#: listings/views.py:503
+msgid "replied to your review"
+msgstr "habe auf Ihre Bewertung geantwortet"
+
+#: listings/views.py:528
+msgid "Review edited successfully!"
+msgstr "Bewertung erfolgreich bearbeitet!"
+
+#: listings/views.py:533
+msgid "Review edited by"
+msgstr "Bewertung bearbeitet von"
+
+#: listings/views.py:554
+msgid "Review deleted successfully!"
+msgstr "Bewertung erfolgreich gelöscht!"
+
+#: listings/views.py:567
+msgid "Reply edited successfully!"
+msgstr "Antwort erfolgreich bearbeitet!"
+
+#: listings/views.py:574
+msgid "edited their reply to "
+msgstr "bearbeitete ihre Antwort auf "
+
+#: listings/views.py:575
+msgid "your review"
+msgstr "Ihre Bewertung"
+
+#: listings/views.py:599
+msgid "Reply deleted successfully!"
+msgstr "Antwort erfolgreich gelöscht!"
+
+#: main/models.py:34
+msgid "Message from "
+msgstr "Nachricht von "
+
+#: main/models.py:35
+msgid " to"
+msgstr " bis"
+
+#: main/models.py:34
+#, python-brace-format
+msgid "{sender_name}"
+msgstr "{Absendername}"
+
 #: main/templates/main/contact.html:6
 msgid "Contact Us"
 msgstr "Kontaktiere uns"
 
-#: main/templates/main/contact.html:11
+#: main/templates/main/contact.html:13
 msgid "Send Message"
 msgstr "Nachricht senden"
+
+#: main/templates/main/contact.html:19
+msgid "Received Messages"
+msgstr "Empfangene Nachrichten"
+
+#: main/templates/main/contact.html:24
+msgid "From:"
+msgstr "Aus:"
+
+#: main/templates/main/contact.html:29
+msgid "Received on"
+msgstr "Erhalten am"
+
+#: main/templates/main/contact.html:36
+msgid "Delete"
+msgstr "Löschen"
+
+#: main/templates/main/contact.html:41
+msgid "No messages received."
+msgstr "Keine Nachrichten erhalten."
 
 #: main/templates/main/home.html:9
 msgid "Welcome to Nomad Nation"
@@ -531,6 +814,42 @@ msgstr "Sichere Zahlungen"
 #: main/templates/main/home.html:45
 msgid "Easy and secure booking for peace of mind."
 msgstr "Einfache und sichere Buchung für ein beruhigendes Gefühl."
+
+#: main/views.py:52
+msgid "Guest"
+msgstr "Gast"
+
+#: main/views.py:59
+msgid "New contact message from "
+msgstr "Neue Kontaktanfrage von "
+
+#: main/views.py:67
+msgid "Your message has been sent successfully."
+msgstr "Ihre Nachricht wurde erfolgreich gesendet."
+
+#: main/views.py:91
+msgid "Message deleted successfully."
+msgstr "Nachricht erfolgreich gelöscht."
+
+#: templates/404.html:9
+msgid "Oops! 404 - Page Not Found!"
+msgstr "Ups! 404 - Seite nicht gefunden!"
+
+#: templates/404.html:11
+msgid "It seems like you've taken a detour off the beaten path. The page you're looking for is nowhere to be found on Nomad Nation."
+msgstr "Es scheint, als hätten Sie einen Umweg gemacht. Die Seite, die Sie suchen, ist auf Nomad Nation nicht zu finden."
+
+#: templates/404.html:14
+msgid "But don't worry, our caravans are still here waiting for your next adventure!"
+msgstr "Aber keine Sorge, unsere Wohnwagen warten immer noch auf Ihr nächstes Abenteuer!"
+
+#: templates/404.html:23
+msgid "Take Me Back Home"
+msgstr "Zurück zur Startseite"
+
+#: templates/404.html:28
+msgid "Or, if you're feeling adventurous, try navigating a little differently!"
+msgstr "Oder, wenn Sie sich abenteuerlustig fühlen, versuchen Sie es auf eine andere Weise!"
 
 #: templates/account/login.html:6 templates/account/login.html:14
 msgid "Log In"
@@ -678,17 +997,95 @@ msgstr "Anmelden"
 msgid "New Notifications"
 msgstr "Neue Benachrichtigungen"
 
-#: templates/base.html:98
-msgid "You have new notifications."
-msgstr "Sie haben neue benachrichtigungen."
-
-#: templates/base.html:127
+#: templates/base.html:131
 msgid "Made by"
 msgstr "Hergestellt von"
 
-#: templates/base.html:130
+#: templates/base.html:134
 msgid "Follow us:"
 msgstr "Folge uns:"
+
+#: user_settings/models.py:8
+#: user_settings/templates/user_settings/account_settings.html:128
+msgid "English"
+msgstr "Englisch"
+
+#: user_settings/models.py:9
+#: user_settings/templates/user_settings/account_settings.html:129
+msgid "Spanish"
+msgstr "Spanisch"
+
+#: user_settings/models.py:10
+#: user_settings/templates/user_settings/account_settings.html:130
+msgid "French"
+msgstr "Französisch"
+
+#: user_settings/models.py:11
+#: user_settings/templates/user_settings/account_settings.html:131
+msgid "German"
+msgstr "Deutsch"
+
+#: user_settings/models.py:12
+#: user_settings/templates/user_settings/account_settings.html:132
+msgid "Italian"
+msgstr "Italienisch"
+
+#: user_settings/models.py:13
+#: user_settings/templates/user_settings/account_settings.html:133
+msgid "Portuguese"
+msgstr "Portugiesisch"
+
+#: user_settings/models.py:14
+#: user_settings/templates/user_settings/account_settings.html:134
+msgid "Russian"
+msgstr "Russisch"
+
+#: user_settings/models.py:15
+#: user_settings/templates/user_settings/account_settings.html:135
+msgid "Chinese"
+msgstr "Chinesisch"
+
+#: user_settings/models.py:16
+#: user_settings/templates/user_settings/account_settings.html:136
+msgid "Japanese"
+msgstr "Japanisch"
+
+#: user_settings/models.py:17
+#: user_settings/templates/user_settings/account_settings.html:137
+msgid "Hindi"
+msgstr "Hindi"
+
+#: user_settings/models.py:51
+msgid "Review"
+msgstr "Bewertungen"
+
+#: user_settings/models.py:53
+msgid "Booking Request"
+msgstr "Buchungsanfragen"
+
+#: user_settings/models.py:54
+msgid "Booking Accepted"
+msgstr "Buchung Angenommen"
+
+#: user_settings/models.py:55
+msgid "Booking Declined"
+msgstr "Buchung Abgelehnt"
+
+#: user_settings/models.py:56
+msgid "Booking Modification Request"
+msgstr "Anfrage Zur Buchungsänderung"
+
+#: user_settings/models.py:57
+msgid "Contact Form Message"
+msgstr "Kontaktformular-Nachricht"
+
+#: user_settings/models.py:104
+msgid "Notification for "
+msgstr "Benachrichtigung für "
+
+#: user_settings/models.py:131
+msgid "Privacy settings for"
+msgstr "Datenschutzeinstellungen für"
 
 #: user_settings/templates/user_settings/account_settings.html:6
 msgid "Account Settings"
@@ -732,7 +1129,7 @@ msgstr "Einstellungen bearbeiten"
 msgid "Payment Details"
 msgstr "Zahlungsdetails"
 
-#: user_settings/templates/user_settings/account_settings.html:5
+#: user_settings/templates/user_settings/account_settings.html:56
 msgid "Billing Address:"
 msgstr "Rechnungsadresse:"
 
@@ -746,17 +1143,12 @@ msgid "Edit Payment Details"
 msgstr "Zahlungsdetails bearbeiten"
 
 #: user_settings/templates/user_settings/account_settings.html:69
-msgid "Privacy Settings"
-msgstr "Datenschutzeinstellungen"
-
-#: user_settings/templates/user_settings/account_settings.html:72
-msgid "Data Sharing Enabled:"
-msgstr "Datenfreigabe aktiviert:"
+msgid "Profile Settings"
+msgstr "Profileinstellungen"
 
 #: user_settings/templates/user_settings/account_settings.html:74
-#: user_settings/templates/user_settings/account_settings.html:213
-msgid "Edit Privacy Settings"
-msgstr "Datenschutzeinstellungen bearbeiten"
+msgid "Delete Profile"
+msgstr "Profil Löschen"
 
 #: user_settings/templates/user_settings/account_settings.html:94
 msgid "Name"
@@ -773,53 +1165,12 @@ msgstr "Telefonnummer"
 #: user_settings/templates/user_settings/account_settings.html:106
 #: user_settings/templates/user_settings/account_settings.html:164
 #: user_settings/templates/user_settings/account_settings.html:201
-#: user_settings/templates/user_settings/account_settings.html:224
 msgid "Save Changes"
 msgstr "Änderungen speichern"
 
 #: user_settings/templates/user_settings/account_settings.html:126
 msgid "Language"
 msgstr "Sprache"
-
-#: user_settings/templates/user_settings/account_settings.html:128
-msgid "English"
-msgstr "Englisch"
-
-#: user_settings/templates/user_settings/account_settings.html:129
-msgid "Spanish"
-msgstr "Spanisch"
-
-#: user_settings/templates/user_settings/account_settings.html:130
-msgid "French"
-msgstr "Französisch"
-
-#: user_settings/templates/user_settings/account_settings.html:131
-msgid "German"
-msgstr "Deutsch"
-
-#: user_settings/templates/user_settings/account_settings.html:132
-msgid "Italian"
-msgstr "Italienisch"
-
-#: user_settings/templates/user_settings/account_settings.html:133
-msgid "Portuguese"
-msgstr "Portugiesisch"
-
-#: user_settings/templates/user_settings/account_settings.html:134
-msgid "Russian"
-msgstr "Russisch"
-
-#: user_settings/templates/user_settings/account_settings.html:135
-msgid "Chinese"
-msgstr "Chinesisch"
-
-#: user_settings/templates/user_settings/account_settings.html:136
-msgid "Japanese"
-msgstr "Japanisch"
-
-#: user_settings/templates/user_settings/account_settings.html:137
-msgid "Hindi"
-msgstr "Hindi"
 
 #: user_settings/templates/user_settings/account_settings.html:141
 msgid "Currency"
@@ -901,9 +1252,45 @@ msgstr "Geben Sie die letzten vier Ziffern Ihrer Karte ein."
 msgid "Billing Address"
 msgstr "Rechnungsadresse"
 
-#: user_settings/templates/user_settings/account_settings.html:220
-msgid "Data Sharing Enabled"
-msgstr "Datenfreigabe aktiviert"
+#: user_settings/templates/user_settings/account_settings.html:213
+msgid "Confirm Profile Deletion"
+msgstr "Profil Löschung bestätigen"
+
+#: user_settings/templates/user_settings/account_settings.html:217
+msgid "Are you sure you want to delete your profile? This action cannot be undone."
+msgstr "Sind Sie sicher, dass Sie Ihr Profil löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden."
+
+#: user_settings/templates/user_settings/account_settings.html:222
+msgid "DELETE"
+msgstr "LÖSCHEN"
+
+#: user_settings/templates/user_settings/account_settings.html:224
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: user_settings/views.py:46
+msgid "Personal details updated successfully."
+msgstr "Persönliche Daten erfolgreich aktualisiert."
+
+#: user_settings/views.py:157
+msgid "Invalid card number format."
+msgstr "Ungültiges Kartenformat."
+
+#: user_settings/views.py:187
+msgid "Your profile has been deleted successfully."
+msgstr "Ihr Profil wurde erfolgreich gelöscht."
+
+#~ msgid "You have new notifications."
+#~ msgstr "Sie haben neue benachrichtigungen."
+
+#~ msgid "Data Sharing Enabled:"
+#~ msgstr "Datenfreigabe aktiviert:"
+
+#~ msgid "Edit Privacy Settings"
+#~ msgstr "Datenschutzeinstellungen bearbeiten"
+
+#~ msgid "Data Sharing Enabled"
+#~ msgstr "Datenfreigabe aktiviert"
 
 #~ msgid "Notifications Enabled:"
 #~ msgstr "Benachrichtigungen aktiviert:"

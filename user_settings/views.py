@@ -6,6 +6,7 @@ from django.conf import settings
 from django.utils import translation
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
+from django.utils.translation import gettext_lazy as _
 from .models import UserProfile, PaymentDetails, PrivacySettings, Notification
 
 
@@ -41,7 +42,7 @@ def edit_personal_details(request):
         user_profile.phone_number = request.POST['phone_number']
         user_profile.save()
 
-        messages.success(request, 'Personal details updated successfully.')
+        messages.success(request, _('Personal details updated successfully.'))
         return redirect('account_settings')
 
 
@@ -75,7 +76,7 @@ def edit_preferences(request):
             "notifications_enabled": user_profile.notifications,
         })
 
-    return JsonResponse({"success": False, "error": "Invalid request"})
+    return JsonResponse({"success": False, "error": _("Invalid request")})
 
 
 def convert_price(request):
@@ -166,7 +167,7 @@ def edit_payment_details(request):
         if not card_last_four.isdigit() or len(card_last_four) != 4:
             return JsonResponse({
                 'success': False,
-                'error': 'Invalid card number format.'
+                'error': _('Invalid card number format.')
             })
 
         payment_details, created = PaymentDetails.objects.get_or_create(

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-21 10:15+0000\n"
+"POT-Creation-Date: 2025-02-24 18:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -139,6 +139,142 @@ msgstr "звезды"
 msgid "No reviews"
 msgstr "Нет отзывов"
 
+#: listings/forms.py:10
+msgid "Add extra amenities"
+msgstr "Добавить дополнительные удобства"
+
+#: listings/forms.py:30
+msgid "Caravan Title"
+msgstr "Название каравана"
+
+#: listings/forms.py:31
+msgid "Caravan Description"
+msgstr "Описание каравана"
+
+#: listings/forms.py:32
+msgid "Berth Capacity"
+msgstr "Вместимость спальных мест"
+
+#: listings/forms.py:33
+msgid "Select Amenities"
+msgstr "Выберите удобства"
+
+#: listings/forms.py:34 listings/templates/listings/listing_page.html:35
+msgid "Location"
+msgstr "Местоположение"
+
+#: listings/forms.py:35
+msgid "Price per Night"
+msgstr "Цена за ночь"
+
+#: listings/forms.py:36
+msgid "Available Dates"
+msgstr "Доступные даты"
+
+#: listings/forms.py:41
+msgid "Select start date"
+msgstr "Выберите дату начала"
+
+#: listings/forms.py:44
+msgid "Select end date"
+msgstr "Выберите дату окончания"
+
+#: listings/forms.py:63
+msgid "Caravan must have an owner."
+msgstr "У каравана должен быть владелец."
+
+#: listings/forms.py:69
+msgid "This amenity already exists for your account."
+msgstr "Это удобство уже существует для вашего аккаунта."
+
+#: listings/forms.py:81
+msgid "Invalid date format. Expected a list of objects."
+msgstr "Неверный формат даты. Ожидался список объектов."
+
+#: listings/forms.py:85
+msgid "Invalid JSON format for available dates."
+msgstr "Неверный формат JSON для доступных дат."
+
+#: listings/forms.py:91
+msgid "Each date entry must be a dictionary."
+msgstr "Каждая запись даты должна быть словарем."
+
+#: listings/forms.py:96
+msgid "Each date entry must contain 'start_date' and 'end_date'."
+msgstr "Каждая запись даты должна содержать 'start_date' и 'end_date'."
+
+#: listings/forms.py:109
+msgid "Invalid date format. Use YYYY-MM-DD."
+msgstr "Неверный формат даты. Используйте YYYY-MM-DD."
+
+#: listings/forms.py:113
+msgid "Start date cannot be after end date."
+msgstr "Дата начала не может быть позже даты окончания."
+
+#: listings/forms.py:150
+msgid "This booking does not have an associated caravan."
+msgstr "Это бронирование не связано с караваном."
+
+#: listings/forms.py:159 listings/models.py:87
+msgid "End date must be after start date."
+msgstr "Дата окончания должна быть позже даты начала."
+
+#: listings/forms.py:172 listings/views.py:256
+msgid "The caravan is not available for the selected dates."
+msgstr "Караван недоступен для выбранных дат."
+
+#: listings/models.py:31
+msgid "Two-berth"
+msgstr "Два спальных места"
+
+#: listings/models.py:32
+msgid "Four-berth"
+msgstr "Четыре спальных места"
+
+#: listings/models.py:33
+msgid "Six-berth"
+msgstr "Шесть спальных мест"
+
+#: listings/models.py:63
+msgid "Image for"
+msgstr "Изображение для"
+
+#: listings/models.py:92
+msgid "Pending"
+msgstr "В ожидании"
+
+#: listings/models.py:93
+msgid "Accepted"
+msgstr "Принято"
+
+#: listings/models.py:94
+msgid "Declined"
+msgstr "Отклонено"
+
+#: listings/models.py:115 listings/views.py:369
+msgid "Booking for"
+msgstr "Бронирование для"
+
+#: listings/models.py:116
+msgid " by "
+msgstr " от "
+
+#: listings/models.py:135
+msgid "Review for"
+msgstr "Отзыв для"
+
+#: listings/models.py:136
+msgid "by"
+msgstr "от"
+
+#: listings/models.py:153
+msgid "Reply by"
+msgstr "Ответ от"
+
+#: listings/models.py:154
+msgid "to review"
+msgstr "для отзыва"
+
 #: listings/templates/listings/add_caravan.html:6
 #: listings/templates/listings/listing_page.html:356
 msgid "Add Caravan"
@@ -231,6 +367,7 @@ msgid "Phone Number:"
 msgstr "Номер телефона:"
 
 #: listings/templates/listings/booking.html:58
+#: main/templates/main/contact.html:26
 msgid "Message:"
 msgstr "Сообщение:"
 
@@ -242,7 +379,7 @@ msgstr "Дата начала:"
 msgid "End Date:"
 msgstr "Дата окончания:"
 
-#: listings/templates/listings/booking.html:63 templates/base.html:101
+#: listings/templates/listings/booking.html:63 templates/base.html:104
 msgid "Close"
 msgstr "Закрыть"
 
@@ -347,10 +484,6 @@ msgstr "Четыре"
 msgid "Six"
 msgstr "Шесть"
 
-#: listings/templates/listings/listing_page.html:35
-msgid "Location"
-msgstr "Местоположение"
-
 #: listings/templates/listings/listing_page.html:39
 msgid "Min Price"
 msgstr "Минимальная цена"
@@ -421,7 +554,7 @@ msgstr "Ответить"
 msgid "Submit Reply"
 msgstr "Отправить ответ"
 
-#: listings/templates/listings/listing_page.html:218
+#: listings/templates/listings/listing_page.html:218 user_settings/models.py:52
 msgid "Reply to Review"
 msgstr "Ответить на отзыв"
 
@@ -478,13 +611,163 @@ msgstr "Недоступно"
 msgid "No caravans available"
 msgstr "Нет доступных караванов"
 
+#: listings/views.py:268
+msgid "Booking request for "
+msgstr "Запрос на бронирование для "
+
+#: listings/views.py:269
+msgid " from "
+msgstr " от "
+
+#: listings/views.py:279
+msgid "Booking request for"
+msgstr "Запрос на бронирование для"
+
+#: listings/views.py:280
+msgid " sent successfully "
+msgstr " успешно отправлен "
+
+#: listings/views.py:280
+msgid "to "
+msgstr "к "
+
+#: listings/views.py:286
+msgid "There was an error with your booking request."
+msgstr "Произошла ошибка с вашим запросом на бронирование."
+
+#: listings/views.py:354
+msgid "Booking has no associated caravan."
+msgstr "Бронирование не связано с караваном."
+
+#: listings/views.py:362
+msgid "Booking accepted!"
+msgstr "Бронирование принято!"
+
+#: listings/views.py:370
+msgid "has been accepted."
+msgstr "было принято."
+
+#: listings/views.py:379
+msgid "Booking declined."
+msgstr "Бронирование отклонено."
+
+#: listings/views.py:386
+msgid "Booking for "
+msgstr "Бронирование для "
+
+#: listings/views.py:387
+msgid " has been declined."
+msgstr " было отклонено."
+
+#: listings/views.py:420
+msgid "Booking modification request for "
+msgstr "Запрос на изменение бронирования для "
+
+#: listings/views.py:422
+msgid "from"
+msgstr "от"
+
+#: listings/views.py:430
+msgid "Booking modification request sent to the owner."
+msgstr "Запрос на изменение бронирования отправлен владельцу."
+
+#: listings/views.py:453
+msgid "New review from "
+msgstr "Новый отзыв от "
+
+#: listings/views.py:454
+msgid "on your caravan!"
+msgstr "на ваш караван!"
+
+#: listings/views.py:462
+msgid "Review submitted successfully!"
+msgstr "Отзыв успешно отправлен!"
+
+#: listings/views.py:472 listings/views.py:518 listings/views.py:548
+#: listings/views.py:590 user_settings/views.py:80
+msgid "Invalid request"
+msgstr "Неверный запрос"
+
+#: listings/views.py:483
+msgid "Review approved!"
+msgstr "Отзыв одобрен!"
+
+#: listings/views.py:497
+msgid "Reply submitted successfully!"
+msgstr "Ответ успешно отправлен!"
+
+#: listings/views.py:503
+msgid "replied to your review"
+msgstr "ответил на ваш отзыв"
+
+#: listings/views.py:528
+msgid "Review edited successfully!"
+msgstr "Отзыв успешно отредактирован!"
+
+#: listings/views.py:533
+msgid "Review edited by"
+msgstr "Отзыв отредактирован "
+
+#: listings/views.py:554
+msgid "Review deleted successfully!"
+msgstr "Отзыв успешно удален!"
+
+#: listings/views.py:567
+msgid "Reply edited successfully!"
+msgstr "Ответ успешно отредактирован!"
+
+#: listings/views.py:574
+msgid "edited their reply to "
+msgstr "отредактировал свой ответ на "
+
+#: listings/views.py:575
+msgid "your review"
+msgstr "ваш отзыв"
+
+#: listings/views.py:599
+msgid "Reply deleted successfully!"
+msgstr "Ответ успешно удален!"
+
+#: main/models.py:34
+msgid "Message from "
+msgstr "Сообщение от "
+
+#: main/models.py:35
+msgid " to"
+msgstr " до"
+
+#: main/models.py:34
+#, python-brace-format
+msgid "{sender_name}"
+msgstr "{имя_отправителя}"
+
 #: main/templates/main/contact.html:6
 msgid "Contact Us"
 msgstr "Свяжитесь с нами"
 
-#: main/templates/main/contact.html:11
+#: main/templates/main/contact.html:13
 msgid "Send Message"
 msgstr "Отправить сообщение"
+
+#: main/templates/main/contact.html:19
+msgid "Received Messages"
+msgstr "Полученные сообщения"
+
+#: main/templates/main/contact.html:24
+msgid "From:"
+msgstr "От:"
+
+#: main/templates/main/contact.html:29
+msgid "Received on"
+msgstr "Получено:"
+
+#: main/templates/main/contact.html:36
+msgid "Delete"
+msgstr "Удалить"
+
+#: main/templates/main/contact.html:41
+msgid "No messages received."
+msgstr "Сообщений не получено."
 
 #: main/templates/main/home.html:9
 msgid "Welcome to Nomad Nation"
@@ -532,6 +815,45 @@ msgstr "Безопасные платежи"
 #: main/templates/main/home.html:45
 msgid "Easy and secure booking for peace of mind."
 msgstr "Простое и безопасное бронирование для вашего спокойствия."
+
+#: main/views.py:52
+msgid "Guest"
+msgstr "Гость"
+
+#: main/views.py:59
+msgid "New contact message from "
+msgstr "Новое сообщение от "
+
+#: main/views.py:67
+msgid "Your message has been sent successfully."
+msgstr "Ваше сообщение было успешно отправлено."
+
+#: main/views.py:91
+msgid "Message deleted successfully."
+msgstr "Сообщение успешно удалено."
+
+#: templates/404.html:9
+msgid "Oops! 404 - Page Not Found!"
+msgstr "Упс! 404 - Страница не найдена!"
+
+#: templates/404.html:11
+msgid "It seems like you've taken a detour off the beaten path. The page you're "
+"looking for is nowhere to be found on Nomad Nation."
+msgstr "Похоже, вы свернули с проторенной дороги. Страница, которую вы ищете, "
+"не найдена на Nomad Nation."
+
+#: templates/404.html:14
+msgid "But don't worry, our caravans are still here waiting for your next adventure!"
+msgstr "Но не волнуйтесь, наши караваны все еще здесь и ждут вашего следующего "
+"приключения!"
+
+#: templates/404.html:23
+msgid "Take Me Back Home"
+msgstr "Вернуться на главную"
+
+#: templates/404.html:28
+msgid "Or, if you're feeling adventurous, try navigating a little differently!"
+msgstr "Или, если вы чувствуете себя авантюристом, попробуйте навигацию немного иначе!"
 
 #: templates/account/login.html:6 templates/account/login.html:14
 msgid "Log In"
@@ -676,17 +998,95 @@ msgstr "Войти"
 msgid "New Notifications"
 msgstr "Новые уведомления"
 
-#: templates/base.html:98
-msgid "You have new notifications."
-msgstr "У вас есть новые уведомления."
-
-#: templates/base.html:127
+#: templates/base.html:131
 msgid "Made by"
 msgstr "Сделано"
 
-#: templates/base.html:130
+#: templates/base.html:134
 msgid "Follow us:"
 msgstr "Подписывайтесь на нас:"
+
+#: user_settings/models.py:8
+#: user_settings/templates/user_settings/account_settings.html:128
+msgid "English"
+msgstr "Английский"
+
+#: user_settings/models.py:9
+#: user_settings/templates/user_settings/account_settings.html:129
+msgid "Spanish"
+msgstr "Испанский"
+
+#: user_settings/models.py:10
+#: user_settings/templates/user_settings/account_settings.html:130
+msgid "French"
+msgstr "Французский"
+
+#: user_settings/models.py:11
+#: user_settings/templates/user_settings/account_settings.html:131
+msgid "German"
+msgstr "Немецкий"
+
+#: user_settings/models.py:12
+#: user_settings/templates/user_settings/account_settings.html:132
+msgid "Italian"
+msgstr "Итальянский"
+
+#: user_settings/models.py:13
+#: user_settings/templates/user_settings/account_settings.html:133
+msgid "Portuguese"
+msgstr "Португальский"
+
+#: user_settings/models.py:14
+#: user_settings/templates/user_settings/account_settings.html:134
+msgid "Russian"
+msgstr "Русский"
+
+#: user_settings/models.py:15
+#: user_settings/templates/user_settings/account_settings.html:135
+msgid "Chinese"
+msgstr "Китайский"
+
+#: user_settings/models.py:16
+#: user_settings/templates/user_settings/account_settings.html:136
+msgid "Japanese"
+msgstr "Японский"
+
+#: user_settings/models.py:17
+#: user_settings/templates/user_settings/account_settings.html:137
+msgid "Hindi"
+msgstr "Хинди"
+
+#: user_settings/models.py:51
+msgid "Review"
+msgstr "Отзыв"
+
+#: user_settings/models.py:53
+msgid "Booking Request"
+msgstr "Запрос на бронирование"
+
+#: user_settings/models.py:54
+msgid "Booking Accepted"
+msgstr "Бронирование принято"
+
+#: user_settings/models.py:55
+msgid "Booking Declined"
+msgstr "Бронирование отклонено"
+
+#: user_settings/models.py:56
+msgid "Booking Modification Request"
+msgstr "Запрос на изменение бронирования"
+
+#: user_settings/models.py:57
+msgid "Contact Form Message"
+msgstr "Сообщение из контактной формы"
+
+#: user_settings/models.py:104
+msgid "Notification for "
+msgstr "Уведомление для "
+
+#: user_settings/models.py:131
+msgid "Privacy settings for"
+msgstr "Настройки конфиденциальности для"
 
 #: user_settings/templates/user_settings/account_settings.html:6
 msgid "Account Settings"
@@ -744,17 +1144,12 @@ msgid "Edit Payment Details"
 msgstr "Редактировать платежные данные"
 
 #: user_settings/templates/user_settings/account_settings.html:69
-msgid "Privacy Settings"
-msgstr "Настройки конфиденциальности"
-
-#: user_settings/templates/user_settings/account_settings.html:72
-msgid "Data Sharing Enabled:"
-msgstr "Включено совместное использование данных:"
+msgid "Profile Settings"
+msgstr "Настройки профиля"
 
 #: user_settings/templates/user_settings/account_settings.html:74
-#: user_settings/templates/user_settings/account_settings.html:213
-msgid "Edit Privacy Settings"
-msgstr "Редактировать настройки конфиденциальности"
+msgid "Delete Profile"
+msgstr "Удалить профиль"
 
 #: user_settings/templates/user_settings/account_settings.html:94
 msgid "Name"
@@ -771,53 +1166,12 @@ msgstr "Номер телефона"
 #: user_settings/templates/user_settings/account_settings.html:106
 #: user_settings/templates/user_settings/account_settings.html:164
 #: user_settings/templates/user_settings/account_settings.html:201
-#: user_settings/templates/user_settings/account_settings.html:224
 msgid "Save Changes"
 msgstr "Сохранить изменения"
 
 #: user_settings/templates/user_settings/account_settings.html:126
 msgid "Language"
 msgstr "Язык"
-
-#: user_settings/templates/user_settings/account_settings.html:128
-msgid "English"
-msgstr "Английский"
-
-#: user_settings/templates/user_settings/account_settings.html:129
-msgid "Spanish"
-msgstr "Испанский"
-
-#: user_settings/templates/user_settings/account_settings.html:130
-msgid "French"
-msgstr "Французский"
-
-#: user_settings/templates/user_settings/account_settings.html:131
-msgid "German"
-msgstr "Немецкий"
-
-#: user_settings/templates/user_settings/account_settings.html:132
-msgid "Italian"
-msgstr "Итальянский"
-
-#: user_settings/templates/user_settings/account_settings.html:133
-msgid "Portuguese"
-msgstr "Португальский"
-
-#: user_settings/templates/user_settings/account_settings.html:134
-msgid "Russian"
-msgstr "Русский"
-
-#: user_settings/templates/user_settings/account_settings.html:135
-msgid "Chinese"
-msgstr "Китайский"
-
-#: user_settings/templates/user_settings/account_settings.html:136
-msgid "Japanese"
-msgstr "Японский"
-
-#: user_settings/templates/user_settings/account_settings.html:137
-msgid "Hindi"
-msgstr "Хинди"
 
 #: user_settings/templates/user_settings/account_settings.html:141
 msgid "Currency"
@@ -899,9 +1253,45 @@ msgstr "Введите последние четыре цифры вашей к�
 msgid "Billing Address"
 msgstr "Платежный адрес"
 
-#: user_settings/templates/user_settings/account_settings.html:220
-msgid "Data Sharing Enabled"
-msgstr "Совместное использование данных включено"
+#: user_settings/templates/user_settings/account_settings.html:213
+msgid "Confirm Profile Deletion"
+msgstr "Подтвердите удаление профиля"
+
+#: user_settings/templates/user_settings/account_settings.html:217
+msgid "Are you sure you want to delete your profile? This action cannot be undone."
+msgstr "Вы уверены, что хотите удалить свой профиль? Это действие нельзя отменить."
+
+#: user_settings/templates/user_settings/account_settings.html:222
+msgid "DELETE"
+msgstr "УДАЛИТЬ"
+
+#: user_settings/templates/user_settings/account_settings.html:224
+msgid "Cancel"
+msgstr "Отмена"
+
+#: user_settings/views.py:46
+msgid "Personal details updated successfully."
+msgstr "Личные данные успешно обновлены."
+
+#: user_settings/views.py:157
+msgid "Invalid card number format."
+msgstr "Неверный формат номера карты."
+
+#: user_settings/views.py:187
+msgid "Your profile has been deleted successfully."
+msgstr "Ваш профиль был успешно удален."
+
+#~ msgid "You have new notifications."
+#~ msgstr "У вас есть новые уведомления."
+
+#~ msgid "Data Sharing Enabled:"
+#~ msgstr "Включено совместное использование данных:"
+
+#~ msgid "Edit Privacy Settings"
+#~ msgstr "Редактировать настройки конфиденциальности"
+
+#~ msgid "Data Sharing Enabled"
+#~ msgstr "Совместное использование данных включено"
 
 #~ msgid "Notifications Enabled:"
 #~ msgstr "Уведомления включены:"

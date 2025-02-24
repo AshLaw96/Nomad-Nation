@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
 
 
 class ContactMessage(models.Model):
@@ -20,8 +21,18 @@ class ContactMessage(models.Model):
     subject = models.CharField(max_length=200)
     message = models.TextField()
     sent_at = models.DateTimeField(auto_now_add=True)
+    is_read = models.BooleanField(default=False)
 
     def __str__(self):
-        return (
-            f"Message from {self.sender} to {self.recipient}: {self.subject}"
+        sender_name = (
+            self.sender.username if self.sender else _("Guest")
+        )
+        recipient_name = (
+            self.recipient.username if self.recipient else _("Unknown")
+        )
+        return _(
+            _("Message from ") + f"{sender_name}"
+            + _(" to") +
+            f" {recipient_name} - "
+            f"{self.subject} ({self.sent_at.strftime('%Y-%m-%d %H:%M:%S')})"
         )

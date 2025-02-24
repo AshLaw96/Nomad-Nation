@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
 from .forms import ContactForm
 
 
@@ -26,12 +27,10 @@ def contact_view(request):
                     is_superuser=True
                 ).first()
             else:
-                # Authenticated users can contact specific users
-                contact_message.recipient = form.cleaned_data.get('recipient')
-            contact_message.save()
+                    else _("Guest")
+                        _("New contact message from ") + f"{sender_name}."
             messages.success(
-                request,
-                'Your message has been sent successfully.'
+                request, _("Your message has been sent successfully.")
             )
             return redirect('homepage')
     else:
@@ -39,4 +38,4 @@ def contact_view(request):
             user=request.user if request.user.is_authenticated else None
         )
 
-    return render(request, 'main/contact.html', {'form': form})
+        messages.success(request, _("Message deleted successfully."))

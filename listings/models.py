@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 from datetime import date
 
 
@@ -27,9 +28,9 @@ class Caravan(models.Model):
     description = models.TextField()
     berth = models.CharField(
         max_length=10, choices=[
-            ('small', 'Two-berth'),
-            ('medium', 'Four-berth'),
-            ('large', 'Six-berth')
+            ('small', _('Two-berth')),
+            ('medium', _('Four-berth')),
+            ('large', _('Six-berth'))
         ]
     )
     price_per_night = models.DecimalField(max_digits=6, decimal_places=2)
@@ -59,7 +60,7 @@ class CaravanImage(models.Model):
     image = models.ImageField(upload_to='static/images/')
 
     def __str__(self):
-        return f"Image for {self.caravan.title}"
+        return _("Image for") + f" {self.caravan.title}"
 
 
 class Availability(models.Model):
@@ -83,14 +84,14 @@ class Availability(models.Model):
             self.start_date and self.end_date and
             self.start_date > self.end_date
         ):
-            raise ValidationError("End date must be after start date.")
+            raise ValidationError(_("End date must be after start date."))
 
 
 class Booking(models.Model):
     STATUS_CHOICES = [
-        ("pending", "Pending"),
-        ("accepted", "Accepted"),
-        ("declined", "Declined"),
+        ("pending", _("Pending")),
+        ("accepted", _("Accepted")),
+        ("declined", _("Declined")),
     ]
 
     caravan = models.ForeignKey(
@@ -110,7 +111,10 @@ class Booking(models.Model):
     )
 
     def __str__(self):
-        return f"Booking for {self.caravan.title} by {self.customer.username}"
+        return (
+            _("Booking for") + f" {self.caravan.title}" +
+            _(" by ") + f" {self.customer.username}"
+        )
 
 
 class Review(models.Model):
@@ -127,7 +131,10 @@ class Review(models.Model):
     approved = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"Review for {self.caravan.title} by {self.customer.username}"
+        return (
+            _("Review for") + f" {self.caravan.title} " +
+            _("by") + f" {self.customer.username}"
+        )
 
 
 class Reply(models.Model):
@@ -142,4 +149,7 @@ class Reply(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"Reply by {self.owner.username} to review {self.review.pk}"
+        return (
+            _("Reply by") + f" {self.owner.username} " +
+            _("to review") + f" {self.review.pk}"
+        )

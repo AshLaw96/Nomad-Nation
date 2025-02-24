@@ -1,12 +1,13 @@
 import json
 from django import forms
 from datetime import datetime
+from django.utils.translation import gettext_lazy as _
 from .models import Caravan, Amenity, CaravanImage, Booking, Review, Reply
 
 
 class CaravanForm(forms.ModelForm):
     extra_amenity = forms.CharField(
-        max_length=50, required=False, help_text="Add extra amenities"
+        max_length=50, required=False, help_text=_("Add extra amenities")
     )
     amenities = forms.ModelMultipleChoiceField(
         # Initially set empty
@@ -25,8 +26,23 @@ class CaravanForm(forms.ModelForm):
             'title', 'description', 'berth', 'amenities', 'location',
             'price_per_night', 'available_dates'
         ]
+        labels = {
+            'title': _('Caravan Title'),
+            'description': _('Caravan Description'),
+            'berth': _('Berth Capacity'),
+            'amenities': _('Select Amenities'),
+            'location': _('Location'),
+            'price_per_night': _('Price per Night'),
+            'available_dates': _('Available Dates'),
+        }
         widgets = {
-            'amenities': forms.CheckboxSelectMultiple()
+            'amenities': forms.CheckboxSelectMultiple(),
+            'start_date': forms.DateInput(
+                attrs={'type': 'date', 'placeholder': _('Select start date')}
+            ),
+            'end_date': forms.DateInput(
+                attrs={'type': 'date', 'placeholder': _('Select end date')}
+            ),
         }
 
     def __init__(self, *args, **kwargs):
@@ -44,13 +60,13 @@ class CaravanForm(forms.ModelForm):
         if extra_amenity:
             if not self.instance.owner:
                 raise forms.ValidationError(
-                    "Caravan must have an owner."
+                    _("Caravan must have an owner.")
                 )
             if Amenity.objects.filter(
                 name=extra_amenity, owner=self.instance.owner
             ).exists():
                 raise forms.ValidationError(
-                    "This amenity already exists for your account."
+                    _("This amenity already exists for your account.")
                 )
         return extra_amenity
 
@@ -62,21 +78,24 @@ class CaravanForm(forms.ModelForm):
             )
             if not isinstance(dates, list):
                 raise forms.ValidationError(
-                    "Invalid date format. Expected a list of objects."
+                    _("Invalid date format. Expected a list of objects.")
                 )
         except json.JSONDecodeError:
             raise forms.ValidationError(
-                "Invalid JSON format for available dates."
+                _("Invalid JSON format for available dates.")
             )
         # Validate each date entry
         for date_entry in dates:
             if not isinstance(date_entry, dict):
                 raise forms.ValidationError(
-                    "Each date entry must be a dictionary."
+                    _("Each date entry must be a dictionary.")
                 )
             if 'start_date' not in date_entry or 'end_date' not in date_entry:
                 raise forms.ValidationError(
-                    "Each date entry must contain 'start_date' and 'end_date'."
+                    _(
+                        "Each date entry must contain 'start_date' and "
+                        "'end_date'."
+                    )
                 )
             try:
                 start_date = datetime.strptime(
@@ -87,11 +106,11 @@ class CaravanForm(forms.ModelForm):
                 ).date()
             except ValueError:
                 raise forms.ValidationError(
-                    "Invalid date format. Use YYYY-MM-DD."
+                    _("Invalid date format. Use YYYY-MM-DD.")
                 )
             if start_date > end_date:
                 raise forms.ValidationError(
-                    "Start date cannot be after end date."
+                    _("Start date cannot be after end date.")
                 )
         return dates
 
@@ -128,7 +147,7 @@ class BookingForm(forms.ModelForm):
         # Ensure the Booking instance has a caravan before accessing it
         if not self.instance.caravan_id:
             raise forms.ValidationError(
-                "This booking does not have an associated caravan."
+                _("This booking does not have an associated caravan.")
             )
 
         # Now safe to access
@@ -137,7 +156,7 @@ class BookingForm(forms.ModelForm):
         if start_date and end_date:
             if start_date > end_date:
                 raise forms.ValidationError(
-                    "End date must be after start date."
+                    _("End date must be after start date.")
                 )
 
             # Check for overlapping bookings
@@ -150,7 +169,7 @@ class BookingForm(forms.ModelForm):
 
             if overlapping_bookings.exists():
                 raise forms.ValidationError(
-                    "The caravan is not available for the selected dates."
+                    _("The caravan is not available for the selected dates.")
                 )
 
         return cleaned_data

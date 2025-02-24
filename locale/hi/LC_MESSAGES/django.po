@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-21 10:15+0000\n"
+"POT-Creation-Date: 2025-02-24 18:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,6 +137,142 @@ msgstr "तारे"
 msgid "No reviews"
 msgstr "कोई समीक्षाएं नहीं"
 
+#: listings/forms.py:10
+msgid "Add extra amenities"
+msgstr "अतिरिक्त सुविधाएँ जोड़ें"
+
+#: listings/forms.py:30
+msgid "Caravan Title"
+msgstr "कारवां का शीर्षक"
+
+#: listings/forms.py:31
+msgid "Caravan Description"
+msgstr "कारवां का विवरण"
+
+#: listings/forms.py:32
+msgid "Berth Capacity"
+msgstr "बर्थ क्षमता"
+
+#: listings/forms.py:33
+msgid "Select Amenities"
+msgstr "सुविधाएँ चुनें"
+
+#: listings/forms.py:34 listings/templates/listings/listing_page.html:35
+msgid "Location"
+msgstr "स्थान"
+
+#: listings/forms.py:35
+msgid "Price per Night"
+msgstr "प्रति रात कीमत"
+
+#: listings/forms.py:36
+msgid "Available Dates"
+msgstr "उपलब्ध तिथियाँ"
+
+#: listings/forms.py:41
+msgid "Select start date"
+msgstr "प्रारंभ तिथि चुनें"
+
+#: listings/forms.py:44
+msgid "Select end date"
+msgstr "समाप्ति तिथि चुनें"
+
+#: listings/forms.py:63
+msgid "Caravan must have an owner."
+msgstr "कारवां का एक मालिक होना चाहिए।"
+
+#: listings/forms.py:69
+msgid "This amenity already exists for your account."
+msgstr "यह सुविधा पहले से ही आपके खाते में मौजूद है।"
+
+#: listings/forms.py:81
+msgid "Invalid date format. Expected a list of objects."
+msgstr "मान्य तिथि प्रारूप। वस्तुओं की सूची अपेक्षित थी।"
+
+#: listings/forms.py:85
+msgid "Invalid JSON format for available dates."
+msgstr "उपलब्ध तिथियों के लिए अमान्य JSON प्रारूप।"
+
+#: listings/forms.py:91
+msgid "Each date entry must be a dictionary."
+msgstr "प्रत्येक तिथि प्रविष्टि एक शब्दकोश होनी चाहिए।"
+
+#: listings/forms.py:96
+msgid "Each date entry must contain 'start_date' and 'end_date'."
+msgstr "प्रत्येक तिथि प्रविष्टि में 'start_date' और 'end_date' होना चाहिए।"
+
+#: listings/forms.py:109
+msgid "Invalid date format. Use YYYY-MM-DD."
+msgstr "अमान्य तिथि प्रारूप। YYYY-MM-DD का उपयोग करें।"
+
+#: listings/forms.py:113
+msgid "Start date cannot be after end date."
+msgstr "प्रारंभ तिथि समाप्ति तिथि के बाद नहीं हो सकती।"
+
+#: listings/forms.py:150
+msgid "This booking does not have an associated caravan."
+msgstr "इस बुकिंग का कोई संबंधित कारवां नहीं है।"
+
+#: listings/forms.py:159 listings/models.py:87
+msgid "End date must be after start date."
+msgstr "समाप्ति तिथि प्रारंभ तिथि के बाद होनी चाहिए।"
+
+#: listings/forms.py:172 listings/views.py:256
+msgid "The caravan is not available for the selected dates."
+msgstr "चयनित तिथियों के लिए कारवां उपलब्ध नहीं है।"
+
+#: listings/models.py:31
+msgid "Two-berth"
+msgstr "दो बर्थ"
+
+#: listings/models.py:32
+msgid "Four-berth"
+msgstr "चार बर्थ"
+
+#: listings/models.py:33
+msgid "Six-berth"
+msgstr "छह बर्थ"
+
+#: listings/models.py:63
+msgid "Image for"
+msgstr "के लिए छवि"
+
+#: listings/models.py:92
+msgid "Pending"
+msgstr "लंबित"
+
+#: listings/models.py:93
+msgid "Accepted"
+msgstr "स्वीकृत"
+
+#: listings/models.py:94
+msgid "Declined"
+msgstr "अस्वीकृत"
+
+#: listings/models.py:115 listings/views.py:369
+msgid "Booking for"
+msgstr "के लिए बुकिंग"
+
+#: listings/models.py:116
+msgid " by "
+msgstr " द्वारा "
+
+#: listings/models.py:135
+msgid "Review for"
+msgstr "के लिए समीक्षा"
+
+#: listings/models.py:136
+msgid "by"
+msgstr "द्वारा"
+
+#: listings/models.py:153
+msgid "Reply by"
+msgstr "द्वारा उत्तर"
+
+#: listings/models.py:154
+msgid "to review"
+msgstr "समीक्षा करने के लिए"
+
 #: listings/templates/listings/add_caravan.html:6
 #: listings/templates/listings/listing_page.html:356
 msgid "Add Caravan"
@@ -229,6 +365,7 @@ msgid "Phone Number:"
 msgstr "फोन नंबर:"
 
 #: listings/templates/listings/booking.html:58
+#: main/templates/main/contact.html:26
 msgid "Message:"
 msgstr "संदेश:"
 
@@ -240,7 +377,7 @@ msgstr "प्रारंभ तिथि:"
 msgid "End Date:"
 msgstr "समाप्ति तिथि:"
 
-#: listings/templates/listings/booking.html:63 templates/base.html:101
+#: listings/templates/listings/booking.html:63 templates/base.html:104
 msgid "Close"
 msgstr "बंद करें"
 
@@ -345,10 +482,6 @@ msgstr "चार"
 msgid "Six"
 msgstr "छह"
 
-#: listings/templates/listings/listing_page.html:35
-msgid "Location"
-msgstr "स्थान"
-
 #: listings/templates/listings/listing_page.html:39
 msgid "Min Price"
 msgstr "न्यूनतम कीमत"
@@ -419,7 +552,7 @@ msgstr "प्रतिक्रिया दें"
 msgid "Submit Reply"
 msgstr "प्रतिक्रिया सबमिट करें"
 
-#: listings/templates/listings/listing_page.html:218
+#: listings/templates/listings/listing_page.html:218 user_settings/models.py:52
 msgid "Reply to Review"
 msgstr "समीक्षा पर प्रतिक्रिया दें"
 
@@ -476,13 +609,163 @@ msgstr "उपलब्ध नहीं"
 msgid "No caravans available"
 msgstr "कोई कारवां उपलब्ध नहीं"
 
+#: listings/views.py:268
+msgid "Booking request for "
+msgstr "के लिए बुकिंग अनुरोध "
+
+#: listings/views.py:269
+msgid " from "
+msgstr " से "
+
+#: listings/views.py:279
+msgid "Booking request for"
+msgstr "के लिए बुकिंग अनुरोध"
+
+#: listings/views.py:280
+msgid " sent successfully "
+msgstr " सफलतापूर्वक भेजा गया "
+
+#: listings/views.py:280
+msgid "to "
+msgstr "को "
+
+#: listings/views.py:286
+msgid "There was an error with your booking request."
+msgstr "आपके बुकिंग अनुरोध में एक त्रुटि थी।"
+
+#: listings/views.py:354
+msgid "Booking has no associated caravan."
+msgstr "बुकिंग का कोई संबंधित कारवां नहीं है।"
+
+#: listings/views.py:362
+msgid "Booking accepted!"
+msgstr "बुकिंग स्वीकार की गई!"
+
+#: listings/views.py:370
+msgid "has been accepted."
+msgstr "स्वीकार कर लिया गया है।"
+
+#: listings/views.py:379
+msgid "Booking declined."
+msgstr "बुकिंग अस्वीकार कर दी गई।"
+
+#: listings/views.py:386
+msgid "Booking for "
+msgstr "के लिए बुकिंग "
+
+#: listings/views.py:387
+msgid " has been declined."
+msgstr " अस्वीकार कर दी गई है।"
+
+#: listings/views.py:420
+msgid "Booking modification request for "
+msgstr "के लिए बुकिंग संशोधन अनुरोध "
+
+#: listings/views.py:422
+msgid "from"
+msgstr "से"
+
+#: listings/views.py:430
+msgid "Booking modification request sent to the owner."
+msgstr "बुकिंग संशोधन अनुरोध मालिक को भेजा गया।"
+
+#: listings/views.py:453
+msgid "New review from "
+msgstr "से नई समीक्षा "
+
+#: listings/views.py:454
+msgid "on your caravan!"
+msgstr "आपके कारवां पर!"
+
+#: listings/views.py:462
+msgid "Review submitted successfully!"
+msgstr "समीक्षा सफलतापूर्वक सबमिट की गई!"
+
+#: listings/views.py:472 listings/views.py:518 listings/views.py:548
+#: listings/views.py:590 user_settings/views.py:80
+msgid "Invalid request"
+msgstr "अमान्य अनुरोध"
+
+#: listings/views.py:483
+msgid "Review approved!"
+msgstr "समीक्षा स्वीकृत!"
+
+#: listings/views.py:497
+msgid "Reply submitted successfully!"
+msgstr "उत्तर सफलतापूर्वक सबमिट किया गया!"
+
+#: listings/views.py:503
+msgid "replied to your review"
+msgstr "आपकी समीक्षा का उत्तर दिया"
+
+#: listings/views.py:528
+msgid "Review edited successfully!"
+msgstr "समीक्षा सफलतापूर्वक संपादित की गई!"
+
+#: listings/views.py:533
+msgid "Review edited by"
+msgstr "द्वारा समीक्षा संपादित की गई"
+
+#: listings/views.py:554
+msgid "Review deleted successfully!"
+msgstr "समीक्षा सफलतापूर्वक हटाई गई!"
+
+#: listings/views.py:567
+msgid "Reply edited successfully!"
+msgstr "उत्तर सफलतापूर्वक संपादित किया गया!"
+
+#: listings/views.py:574
+msgid "edited their reply to "
+msgstr "ने अपने उत्तर को संपादित किया "
+
+#: listings/views.py:575
+msgid "your review"
+msgstr "आपकी समीक्षा"
+
+#: listings/views.py:599
+msgid "Reply deleted successfully!"
+msgstr "उत्तर सफलतापूर्वक हटाया गया!"
+
+#: main/models.py:34
+msgid "Message from "
+msgstr "संदेश प्रेषक"
+
+#: main/models.py:35
+msgid " to"
+msgstr " तक"
+
+#: main/models.py:34
+#, python-brace-format
+msgid "{sender_name}"
+msgstr "{प्रेषक_नाम}"
+
 #: main/templates/main/contact.html:6
 msgid "Contact Us"
 msgstr "हमसे संपर्क करें"
 
-#: main/templates/main/contact.html:11
+#: main/templates/main/contact.html:13
 msgid "Send Message"
 msgstr "संदेश भेजें"
+
+#: main/templates/main/contact.html:19
+msgid "Received Messages"
+msgstr "संदेश प्राप्त हुए"
+
+#: main/templates/main/contact.html:24
+msgid "From:"
+msgstr "से:"
+
+#: main/templates/main/contact.html:29
+msgid "Received on"
+msgstr "पर प्राप्त हुआ"
+
+#: main/templates/main/contact.html:36
+msgid "Delete"
+msgstr "मिटाना"
+
+#: main/templates/main/contact.html:41
+msgid "No messages received."
+msgstr "कोई संदेश प्राप्त नहीं हुआ."
 
 #: main/templates/main/home.html:9
 msgid "Welcome to Nomad Nation"
@@ -529,6 +812,43 @@ msgstr "सुरक्षित भुगतान"
 #: main/templates/main/home.html:45
 msgid "Easy and secure booking for peace of mind."
 msgstr "चिंता-मुक्त अनुभव के लिए आसान और सुरक्षित बुकिंग।"
+
+#: main/views.py:52
+msgid "Guest"
+msgstr "अतिथि"
+
+#: main/views.py:59
+msgid "New contact message from "
+msgstr "से नया संपर्क संदेश "
+
+#: main/views.py:67
+msgid "Your message has been sent successfully."
+msgstr "आपका संदेश सफलतापूर्वक भेजा गया है।"
+
+#: main/views.py:91
+msgid "Message deleted successfully."
+msgstr "संदेश सफलतापूर्वक हटाया गया।"
+
+#: templates/404.html:9
+msgid "Oops! 404 - Page Not Found!"
+msgstr "ओह! 404 - पृष्ठ नहीं मिला!"
+
+#: templates/404.html:11
+msgid "It seems like you've taken a detour off the beaten path. The page you're "
+"looking for is nowhere to be found on Nomad Nation."
+msgstr "ऐसा लगता है कि आपने मुख्य मार्ग से हटकर एक चक्कर लगाया है। जिस पृष्ठ की आप तलाश कर रहे हैं, वह नोमैड नेशन पर कहीं नहीं मिला।"
+
+#: templates/404.html:14
+msgid "But don't worry, our caravans are still here waiting for your next adventure!"
+msgstr "लेकिन चिंता न करें, हमारे कारवां अभी भी यहाँ आपकी अगली यात्रा के लिए इंतजार कर रहे हैं!"
+
+#: templates/404.html:23
+msgid "Take Me Back Home"
+msgstr "मुझे घर वापस ले चलो"
+
+#: templates/404.html:28
+msgid "Or, if you're feeling adventurous, try navigating a little differently!"
+msgstr "या, यदि आप साहसी महसूस कर रहे हैं, तो थोड़ा अलग तरीके से नेविगेट करने का प्रयास करें!"
 
 #: templates/account/login.html:6 templates/account/login.html:14
 msgid "Log In"
@@ -671,17 +991,95 @@ msgstr "लॉगिन करें"
 msgid "New Notifications"
 msgstr "नई सूचनाएं"
 
-#: templates/base.html:98
-msgid "You have new notifications."
-msgstr "आपके पास नई सूचनाएं हैं."
-
-#: templates/base.html:127
+#: templates/base.html:131
 msgid "Made by"
 msgstr "बनाया गया"
 
-#: templates/base.html:130
+#: templates/base.html:134
 msgid "Follow us:"
 msgstr "हमारा अनुसरण करें:"
+
+#: user_settings/models.py:8
+#: user_settings/templates/user_settings/account_settings.html:128
+msgid "English"
+msgstr "अंग्रेज़ी"
+
+#: user_settings/models.py:9
+#: user_settings/templates/user_settings/account_settings.html:129
+msgid "Spanish"
+msgstr "स्पेनिश"
+
+#: user_settings/models.py:10
+#: user_settings/templates/user_settings/account_settings.html:130
+msgid "French"
+msgstr "फ्रेंच"
+
+#: user_settings/models.py:11
+#: user_settings/templates/user_settings/account_settings.html:131
+msgid "German"
+msgstr "जर्मन"
+
+#: user_settings/models.py:12
+#: user_settings/templates/user_settings/account_settings.html:132
+msgid "Italian"
+msgstr "इतालवी"
+
+#: user_settings/models.py:13
+#: user_settings/templates/user_settings/account_settings.html:133
+msgid "Portuguese"
+msgstr "पुर्तगाली"
+
+#: user_settings/models.py:14
+#: user_settings/templates/user_settings/account_settings.html:134
+msgid "Russian"
+msgstr "रूसी"
+
+#: user_settings/models.py:15
+#: user_settings/templates/user_settings/account_settings.html:135
+msgid "Chinese"
+msgstr "चीनी"
+
+#: user_settings/models.py:16
+#: user_settings/templates/user_settings/account_settings.html:136
+msgid "Japanese"
+msgstr "जापानी"
+
+#: user_settings/models.py:17
+#: user_settings/templates/user_settings/account_settings.html:137
+msgid "Hindi"
+msgstr "हिंदी"
+
+#: user_settings/models.py:51
+msgid "Review"
+msgstr "समीक्षा"
+
+#: user_settings/models.py:53
+msgid "Booking Request"
+msgstr "बुकिंग अनुरोध"
+
+#: user_settings/models.py:54
+msgid "Booking Accepted"
+msgstr "बुकिंग स्वीकार की गई"
+
+#: user_settings/models.py:55
+msgid "Booking Declined"
+msgstr "बुकिंग अस्वीकार की गई"
+
+#: user_settings/models.py:56
+msgid "Booking Modification Request"
+msgstr "बुकिंग संशोधन अनुरोध"
+
+#: user_settings/models.py:57
+msgid "Contact Form Message"
+msgstr "संपर्क फ़ॉर्म संदेश"
+
+#: user_settings/models.py:104
+msgid "Notification for "
+msgstr "के लिए सूचना "
+
+#: user_settings/models.py:131
+msgid "Privacy settings for"
+msgstr "के लिए गोपनीयता सेटिंग्स"
 
 #: user_settings/templates/user_settings/account_settings.html:6
 msgid "Account Settings"
@@ -739,17 +1137,12 @@ msgid "Edit Payment Details"
 msgstr "भुगतान विवरण संपादित करें"
 
 #: user_settings/templates/user_settings/account_settings.html:69
-msgid "Privacy Settings"
-msgstr "गोपनीयता सेटिंग्स"
-
-#: user_settings/templates/user_settings/account_settings.html:72
-msgid "Data Sharing Enabled:"
-msgstr "डेटा साझाकरण सक्षम किया गया:"
+msgid "Profile Settings"
+msgstr "प्रोफ़ाइल सेटिंग्स"
 
 #: user_settings/templates/user_settings/account_settings.html:74
-#: user_settings/templates/user_settings/account_settings.html:213
-msgid "Edit Privacy Settings"
-msgstr "गोपनीयता सेटिंग्स संपादित करें"
+msgid "Delete Profile"
+msgstr "प्रोफ़ाइल हटाएं"
 
 #: user_settings/templates/user_settings/account_settings.html:94
 msgid "Name"
@@ -766,53 +1159,12 @@ msgstr "फोन नंबर"
 #: user_settings/templates/user_settings/account_settings.html:106
 #: user_settings/templates/user_settings/account_settings.html:164
 #: user_settings/templates/user_settings/account_settings.html:201
-#: user_settings/templates/user_settings/account_settings.html:224
 msgid "Save Changes"
 msgstr "परिवर्तन सहेजें"
 
 #: user_settings/templates/user_settings/account_settings.html:126
 msgid "Language"
 msgstr "भाषा"
-
-#: user_settings/templates/user_settings/account_settings.html:128
-msgid "English"
-msgstr "अंग्रेज़ी"
-
-#: user_settings/templates/user_settings/account_settings.html:129
-msgid "Spanish"
-msgstr "स्पेनिश"
-
-#: user_settings/templates/user_settings/account_settings.html:130
-msgid "French"
-msgstr "फ्रेंच"
-
-#: user_settings/templates/user_settings/account_settings.html:131
-msgid "German"
-msgstr "जर्मन"
-
-#: user_settings/templates/user_settings/account_settings.html:132
-msgid "Italian"
-msgstr "इतालवी"
-
-#: user_settings/templates/user_settings/account_settings.html:133
-msgid "Portuguese"
-msgstr "पुर्तगाली"
-
-#: user_settings/templates/user_settings/account_settings.html:134
-msgid "Russian"
-msgstr "रूसी"
-
-#: user_settings/templates/user_settings/account_settings.html:135
-msgid "Chinese"
-msgstr "चीनी"
-
-#: user_settings/templates/user_settings/account_settings.html:136
-msgid "Japanese"
-msgstr "जापानी"
-
-#: user_settings/templates/user_settings/account_settings.html:137
-msgid "Hindi"
-msgstr "हिंदी"
 
 #: user_settings/templates/user_settings/account_settings.html:141
 msgid "Currency"
@@ -894,9 +1246,45 @@ msgstr "अपने कार्ड के अंतिम चार अंक 
 msgid "Billing Address"
 msgstr "बिलिंग पता"
 
-#: user_settings/templates/user_settings/account_settings.html:220
-msgid "Data Sharing Enabled"
-msgstr "डेटा साझाकरण सक्षम किया गया"
+#: user_settings/templates/user_settings/account_settings.html:213
+msgid "Confirm Profile Deletion"
+msgstr "प्रोफ़ाइल हटाने की पुष्टि करें"
+
+#: user_settings/templates/user_settings/account_settings.html:217
+msgid "Are you sure you want to delete your profile? This action cannot be undone."
+msgstr "क्या आप वाकई अपनी प्रोफ़ाइल हटाना चाहते हैं? यह क्रिया पूर्ववत नहीं की जा सकती।"
+
+#: user_settings/templates/user_settings/account_settings.html:222
+msgid "DELETE"
+msgstr "हटाएं"
+
+#: user_settings/templates/user_settings/account_settings.html:224
+msgid "Cancel"
+msgstr "रद्द करें"
+
+#: user_settings/views.py:46
+msgid "Personal details updated successfully."
+msgstr "व्यक्तिगत विवरण सफलतापूर्वक अपडेट किए गए।"
+
+#: user_settings/views.py:157
+msgid "Invalid card number format."
+msgstr "अमान्य कार्ड नंबर प्रारूप।"
+
+#: user_settings/views.py:187
+msgid "Your profile has been deleted successfully."
+msgstr "आपकी प्रोफ़ाइल सफलतापूर्वक हटा दी गई है।"
+
+#~ msgid "You have new notifications."
+#~ msgstr "आपके पास नई सूचनाएं हैं."
+
+#~ msgid "Data Sharing Enabled:"
+#~ msgstr "डेटा साझाकरण सक्षम किया गया:"
+
+#~ msgid "Edit Privacy Settings"
+#~ msgstr "गोपनीयता सेटिंग्स संपादित करें"
+
+#~ msgid "Data Sharing Enabled"
+#~ msgstr "डेटा साझाकरण सक्षम किया गया"
 
 #~ msgid "Notifications Enabled:"
 #~ msgstr "सूचनाएँ सक्षम की गईं:"
