@@ -21,7 +21,6 @@ def get_exchange_rates(target_currency):
     try:
         # Attempt to parse JSON
         data = response.json()
-        print("API Response:", data['conversion_rates'][target_currency])
 
         # Check if the API response contains "rates"
         if "conversion_rates" in data:
@@ -34,17 +33,13 @@ def get_exchange_rates(target_currency):
 
             return data["conversion_rates"][target_currency]
         else:
-            print("Error: API response does not contain 'conversion_rates'.")
-            print(data)
             # Return empty rates to avoid KeyError
             return {}
 
-    except requests.exceptions.RequestException as e:
-        print("Request failed:", e)
+    except requests.exceptions.RequestException:
         return {}
 
     except ValueError:
-        print("Error: Failed to decode JSON from API response.")
         return {}
 
 
