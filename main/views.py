@@ -28,7 +28,18 @@ def contact_view(request):
                 ).first()
             else:
                     else _("Guest")
+
+                Notification.objects.create(
+                    user=recipient,
+                    type=Notification.CONTACT_FORM,
+                    message=(
                         _("New contact message from ") + f"{sender_name}."
+                    ),
+                    created_by=(
+                        request.user if request.user.is_authenticated else None
+                    ),
+                )
+
             messages.success(
                 request, _("Your message has been sent successfully.")
             )

@@ -100,40 +100,29 @@ def get_notifications(request):
         # Default if no link is available
         link = "#"
 
-        if n.type == "review":
+        if n.type == "review" and n.review:
             # reviews on listings page
-            if n.caravan:
-                link = reverse("listings") + f"#{n.caravan.id}"
-            else:
-                link = reverse("listings")  # Fallback if no caravan
-        elif n.type == "message":
-            link = reverse("contact")
+            link = reverse("listings") + f"#review-{n.review.id}"
+        elif n.type == "review_reply" and n.review:
+            link = reverse("listings") + f"#review-{n.related_object.id}"
         elif n.type == "booking_request":
-            link = reverse("booking_page")
-        elif n.type == "booking_accepted":
-            if n.booking:
-                link = reverse(
-                    "manage_booking", kwargs={"booking_id": n.booking.id}
-                )
-        elif n.type == "booking_declined":
-            if n.booking:
-                link = reverse(
-                    "manage_booking", kwargs={"booking_id": n.booking.id}
-                )
-        elif n.type == "booking_modified_request":
-            if n.booking:
-                link = reverse(
-                    "manage_booking", kwargs={"booking_id": n.booking.id}
-                )
-        elif n.booking:
             link = reverse(
                 "manage_booking", kwargs={"booking_id": n.booking.id}
             )
-        elif n.caravan:
+        elif n.type == "booking_accepted":
             link = reverse(
-                "listings_caravan",
-                kwargs={"caravan_id": n.caravan.id}
+                    "booking_view", kwargs={"caravan_id": n.caravan.id}
+                )
+        elif n.type == "booking_declined":
+            link = reverse(
+                "booking_view", kwargs={"caravan_id": n.caravan.id}
             )
+        elif n.type == "booking_modified_request":
+            link = reverse(
+                "booking_view", kwargs={"caravan_id": n.caravan.id}
+            )
+        elif n.type == "contact_form_message":
+            link = reverse("contact")
 
         notifications_list.append({
             'message': n.message,
