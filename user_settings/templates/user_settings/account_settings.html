@@ -81,7 +81,7 @@
 
 <!-- Edit Personal Details Modal -->
 <div class="modal fade" id="editPersonalDetailsModal" tabindex="-1" aria-labelledby="editPersonalDetailsModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="editPersonalDetailsModalLabel">{% trans "Edit Personal Details" %}</h5>
@@ -90,15 +90,15 @@
             <div class="modal-body">
                 <form method="post" action="{% url 'edit_personal_details' %}">
                     {% csrf_token %}
-                    <div class="mb-3">
+                    <div class="mb-3 modal-input-spacing">
                         <label for="username" class="form-label">{% trans "Name" %}</label>
                         <input type="text" class="form-control" id="username" name="username" value="{{ user_profile.user.username }}" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 modal-input-spacing">
                         <label for="email" class="form-label">{% trans "Email" %}</label>
                         <input type="email" class="form-control" id="email" name="email" value="{{ user_profile.user.email }}" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 modal-input-spacing">
                         <label for="phone_number" class="form-label">{% trans "Phone Number" %}</label>
                         <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ user_profile.phone_number }}">
                     </div>
@@ -113,7 +113,7 @@
 
 <!-- Edit Preferences Modal -->
 <div class="modal fade" id="editPreferencesModal" tabindex="-1" aria-labelledby="editPreferencesModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="editPreferencesModalLabel">{% trans "Edit Preferences" %}</h5>
@@ -122,7 +122,7 @@
             <div class="modal-body">
                 <form method="post" action="{% url 'edit_preferences' %}" id="preferences-form">
                     {% csrf_token %}
-                    <div class="mb-3">
+                    <div class="mb-3 modal-input-spacing">
                         <label for="language" class="form-label">{% trans "Language" %}</label>
                         <select class="form-control" id="language" name="language" required>
                             <option value="en" {% if user_profile.language == 'en' %}selected{% endif %}>{% trans "English" %}</option>
@@ -137,7 +137,7 @@
                             <option value="hi" {% if user_profile.language == 'hi' %}selected{% endif %}>{% trans "Hindi" %}</option>
                         </select>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 modal-input-spacing">
                         <label for="currency" class="form-label" name="currency">{% trans "Currency" %}</label>
                         <select class="form-control" id="currency" name="currency" required>
                             <option value="GBP" {% if user_profile.currency == 'GBP' %}selected{% endif %}>{% trans "British Pound" %}</option>
@@ -149,14 +149,14 @@
                             <option value="INR" {% if user_profile.currency == 'INR' %}selected{% endif %}>{% trans "Indian Rupee" %}</option>
                         </select>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 modal-input-spacing">
                         <label for="appearance" class="form-label">{% trans "Appearance" %}</label>
                         <select class="form-control" id="appearance" name="appearance" required>
                             <option value="light" {% if user_profile.appearance == 'light' %}selected{% endif %}>{% trans "Light" %}</option>
                             <option value="dark" {% if user_profile.appearance == 'dark' %}selected{% endif %}>{% trans "Dark" %}</option>
                         </select>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 modal-input-spacing">
                         <label for="notifications" class="form-label">{% trans "Notifications Enabled" %}</label>
                         <input type="checkbox" class="form-check-input" id="notifications" name="notifications" {% if user_profile.notifications %}checked{% endif %}>
                     </div>
@@ -170,7 +170,7 @@
 </div>
 <!-- Edit Payment Details Modal -->
 <div class="modal fade" id="editPaymentDetailsModal" tabindex="-1" aria-labelledby="editPaymentDetailsModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="editPaymentDetailsModalLabel">{% trans "Edit Payment Details" %}</h5>
@@ -179,7 +179,7 @@
             <div class="modal-body">
                 <form id="payment-form" method="post" action="{% url 'edit_payment_details' %}">
                     {% csrf_token %}
-                    <div class="mb-3">
+                    <div class="mb-3 modal-input-spacing">
                         <label for="payment_method" class="form-label">{% trans "Payment Method" %}</label>
                         <select class="form-control" id="payment_method" name="payment_method" required>
                             <option value="Visa">{% trans "Visa" %}</option>
@@ -188,12 +188,12 @@
                             <option value="PayPal">{% trans "PayPal" %}</option>
                         </select>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 modal-input-spacing">
                         <label for="card_last_four" class="form-label">{% trans "Card Last Four Digits" %}</label>
                         <input type="text" class="form-control" id="card_last_four" name="card_last_four" pattern="\d{4}" maxlength="4" required placeholder="1234">
                         <small class="form-text text-muted">{% trans "Enter the last four digits of your card." %}</small>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 modal-input-spacing">
                         <label for="billing_address" class="form-label">{% trans "Billing Address" %}</label>
                         <textarea class="form-control" id="billing_address" name="billing_address" rows="3" required></textarea>
                     </div>
@@ -207,7 +207,7 @@
 </div>
 <!-- Edit profile settings Modal -->
 <div class="modal fade" id="deleteProfileModal" tabindex="-1" aria-labelledby="deleteProfileModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="deleteProfileModalLabel">{% trans "Confirm Profile Deletion" %}</h5>

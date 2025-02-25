@@ -212,7 +212,7 @@
                         </div>
                         <!-- Reply Modal -->
                         <div class="modal fade" id="replyModal{{ review.pk }}" tabindex="-1" aria-labelledby="replyModalLabel{{ review.pk }}" aria-hidden="true">
-                            <div class="modal-dialog">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="replyModalLabel{{ review.pk }}">{% trans "Reply to Review" %}</h5>
@@ -264,7 +264,7 @@
             {% endif %}
             <!-- Submit Review Modal -->
             <div class="modal fade" id="submitReviewModal{{ caravan.pk }}" tabindex="-1" aria-labelledby="submitReviewModalLabel{{ caravan.pk }}" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class=" modal-dialog-centered modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="submitReviewModalLabel{{ caravan.pk }}">{% trans "Leave a Review" %}</h5>
@@ -292,7 +292,7 @@
             <!-- Edit Review Modal -->
             {% for review in caravan.reviews.all %}
             <div class="modal fade" id="editReviewModal{{ review.pk }}" tabindex="-1" aria-labelledby="editReviewModalLabel{{ review.pk }}" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="editReviewModalLabel{{ review.pk }}">{% trans "Edit Review" %}</h5>
