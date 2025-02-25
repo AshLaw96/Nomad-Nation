@@ -100,7 +100,7 @@ class Booking(models.Model):
     customer = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="bookings"
     )
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=50)
     email = models.EmailField()
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     start_date = models.DateField()

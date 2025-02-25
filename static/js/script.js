@@ -225,10 +225,21 @@ function initialiseAddCaravan() {
         }
       },
       eventClick: function (info) {
+        console.log("Event clicked:", info.event);
         let dates = parseJSON(hiddenInputEl.value);
-        dates = dates.filter((d) => d.start_date !== info.event.startStr);
-        hiddenInputEl.value = JSON.stringify(dates);
+        // Remove event from stored dates
+        dates = dates.filter(
+          (d) =>
+            !(
+              d.start_date === info.event.startStr &&
+              d.end_date === info.event.endStr
+            )
+        );
+        // Update hidden input
+        hiddenInputEl.value = JSON.stringify(removeDuplicates(dates));
+        // Remove event from calendar
         info.event.remove();
+        calendar.refetchEvents();
       },
       events: parseJSON(hiddenInputEl.value),
     });
@@ -277,20 +288,47 @@ function initialiseEditCaravan() {
       select: function (info) {
         let dates = parseJSON(hiddenInputEl.value);
         let adjustedEnd = new Date(info.endStr);
-        if (
-          !dates.some(
-            (d) => d.start_date === info.startStr && d.end_date === info.endStr
-          )
-        ) {
+
+        // Check if the date range already exists
+        let existingEventIndex = dates.findIndex(
+          (d) => d.start_date === info.startStr && d.end_date === info.endStr
+        );
+        if (existingEventIndex === -1) {
+          // Add new event if it doesn't exist
           dates.push({ start_date: info.startStr, end_date: info.endStr });
           hiddenInputEl.value = JSON.stringify(dates);
+
+          calendar.addEvent({
+            title: "Available",
+            start: info.startStr,
+            end: info.endStr,
+            allDay: true,
+          });
+        } else {
+          console.log("Date range already exists.");
         }
-        calendar.addEvent({
-          start: info.startStr,
-          end: info.endStr,
-          allDay: true,
-        });
       },
+
+      // Click on an event to remove it
+      eventClick: function (info) {
+        let dates = parseJSON(hiddenInputEl.value);
+
+        // Filter out the clicked event
+        dates = dates.filter(
+          (d) =>
+            !(
+              d.start_date === info.event.startStr &&
+              d.end_date === info.event.endStr
+            )
+        );
+        // Update hidden input with new dates
+        hiddenInputEl.value = JSON.stringify(dates);
+
+        // Remove event from calendar
+        info.event.remove();
+      },
+      // Load existing events
+      events: parseJSON(hiddenInputEl.value),
     });
     calendar.render();
   }
