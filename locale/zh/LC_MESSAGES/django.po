@@ -1,12 +1,13 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Nomad Nation 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-24 18:35+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2025-02-25 20:59+0000\n"
+"PO-Revision-Date: 2025-02-25 12:00+0000\n"
+"Last-Translator: Ashley Lawrence <ashley.lawrence.students@codeinstitute."
+"net>\n"
+"Language-Team: Chinese <LL@li.org>\n"
+"Language: zh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -415,7 +416,7 @@ msgid "Message"
 msgstr "留言"
 
 #: listings/templates/listings/booking.html:126
-#: listings/templates/listings/booking.html:196
+#: listings/templates/listings/booking.html:202
 msgid "Submit"
 msgstr "提交"
 
@@ -725,6 +726,14 @@ msgstr "您的评论的回复"
 msgid "Reply deleted successfully!"
 msgstr "回复删除成功！"
 
+#: main/models.py:28 main/views.py:52
+msgid "Guest"
+msgstr "访客"
+
+#: main/models.py:31
+msgid "Unknown"
+msgstr "未知"
+
 #: main/models.py:34
 msgid "Message from "
 msgstr "消息来自 "
@@ -736,7 +745,7 @@ msgstr " 到"
 #: main/models.py:34
 #, python-brace-format
 msgid "{sender_name}"
-msgstr "{发送者姓名}"
+msgstr "{sender_name}"
 
 #: main/templates/main/contact.html:6
 msgid "Contact Us"
@@ -771,7 +780,8 @@ msgid "Welcome to Nomad Nation"
 msgstr "欢迎来到 Nomad Nation"
 
 #: main/templates/main/home.html:10
-msgid "Your trusted platform for finding and renting the perfect caravan for your "
+msgid ""
+"Your trusted platform for finding and renting the perfect caravan for your "
 "adventure"
 msgstr "您值得信赖的房车租赁平台，助您寻找完美的旅行房车"
 
@@ -780,10 +790,12 @@ msgid "What we do"
 msgstr "我们的服务"
 
 #: main/templates/main/home.html:16
-msgid "At Nomad Nation, we connect caravan owners with travelers looking for unique "
+msgid ""
+"At Nomad Nation, we connect caravan owners with travelers looking for unique "
 "holiday experiences. Whether you're a caravan owner looking to earn extra "
 "income or a traveler seeking a hassle-free holiday, we've got you covered."
-msgstr "在 Nomad Nation，我们为寻找独特假期体验的旅行者与房车车主搭建桥梁。无论您是希"
+msgstr ""
+"在 Nomad Nation，我们为寻找独特假期体验的旅行者与房车车主搭建桥梁。无论您是希"
 "望赚取额外收入的房车车主，还是希望享受轻松假期的旅行者，我们都能满足您的需"
 "求。"
 
@@ -811,10 +823,6 @@ msgstr "安全支付"
 msgid "Easy and secure booking for peace of mind."
 msgstr "轻松、安全的预订让您无忧出行。"
 
-#: main/views.py:52
-msgid "Guest"
-msgstr "访客"
-
 #: main/views.py:59
 msgid "New contact message from "
 msgstr "新的联系消息来自 "
@@ -832,12 +840,14 @@ msgid "Oops! 404 - Page Not Found!"
 msgstr "哎呀！404 - 页面未找到！"
 
 #: templates/404.html:11
-msgid "It seems like you've taken a detour off the beaten path. The page you're "
+msgid ""
+"It seems like you've taken a detour off the beaten path. The page you're "
 "looking for is nowhere to be found on Nomad Nation."
 msgstr "看起来您偏离了常规路径。您正在寻找的页面在 Nomad Nation 上找不到。"
 
 #: templates/404.html:14
-msgid "But don't worry, our caravans are still here waiting for your next adventure!"
+msgid ""
+"But don't worry, our caravans are still here waiting for your next adventure!"
 msgstr "但别担心，我们的房车仍在这里等待您的下一次冒险！"
 
 #: templates/404.html:23
@@ -877,7 +887,8 @@ msgid "Password Reset"
 msgstr "密码重置"
 
 #: templates/account/password_reset.html:14
-msgid "Forgotten your password? Enter your username or email address below, and "
+msgid ""
+"Forgotten your password? Enter your username or email address below, and "
 "we'll send you an email allowing you to reset it."
 msgstr "忘记密码？请输入您的用户名或电子邮箱，我们将发送邮件帮助您重置密码。"
 
@@ -902,12 +913,14 @@ msgid "Password Reset Requested"
 msgstr "密码重置请求"
 
 #: templates/account/password_reset_done.html:7
-msgid "If an account exists with the provided email address, a password reset email "
+msgid ""
+"If an account exists with the provided email address, a password reset email "
 "has been sent."
 msgstr "如果提供的电子邮件地址存在账户，密码重置邮件已发送。"
 
 #: templates/account/password_reset_done.html:8
-msgid "Please check your inbox and follow the instructions to reset your password."
+msgid ""
+"Please check your inbox and follow the instructions to reset your password."
 msgstr "请检查您的收件箱并按照指示重置密码。"
 
 #: templates/account/password_reset_done.html:9
@@ -928,7 +941,8 @@ msgid "Password Reset Successful"
 msgstr "密码重置成功"
 
 #: templates/account/password_reset_from_key_done.html:7
-msgid "Your password has been successfully reset. You can now log in with your new "
+msgid ""
+"Your password has been successfully reset. You can now log in with your new "
 "password."
 msgstr "您的密码已成功重置。您现在可以使用新密码登录。"
 
@@ -1217,190 +1231,6 @@ msgstr "支付方式"
 
 #: user_settings/templates/user_settings/account_settings.html:185
 msgid "Visa"
-msgstr "Visa"
-
-#: user_settings/templates/user_settings/account_settings.html:186
-msgid "MasterCard"
-msgstr "万事达"
-
-#: user_settings/templates/user_settings/account_settings.html:187
-msgid "American Express"
-msgstr "美国运通"
-
-#: user_settings/templates/user_settings/account_settings.html:188
-msgid "PayPal"
-msgstr "贝宝"
-
-#: user_settings/templates/user_settings/account_settings.html:192
-msgid "Card Last Four Digits"
-msgstr "卡片最后四位数字"
-
-#: user_settings/templates/user_settings/account_settings.html:194
-msgid "Enter the last four digits of your card."
-msgstr "输入卡的最后四位数字。"
-
-#: user_settings/templates/user_settings/account_settings.html:197
-msgid "Billing Address"
-msgstr "账单地址"
-
-#: user_settings/templates/user_settings/account_settings.html:213
-msgid "Confirm Profile Deletion"
-msgstr "确认删除个人资料"
-
-#: user_settings/templates/user_settings/account_settings.html:217
-msgid "Are you sure you want to delete your profile? This action cannot be undone."
-msgstr "您确定要删除您的个人资料吗？此操作无法撤销。"
-
-#: user_settings/templates/user_settings/account_settings.html:222
-msgid "DELETE"
-msgstr "删除"
-
-#: user_settings/templates/user_settings/account_settings.html:224
-msgid "Cancel"
-msgstr "取消"
-
-#: user_settings/views.py:46
-msgid "Personal details updated successfully."
-msgstr "个人资料已成功更新。"
-
-#: user_settings/views.py:157
-msgid "Invalid card number format."
-msgstr "卡号格式无效。"
-
-#: user_settings/views.py:187
-msgid "Your profile has been deleted successfully."
-msgstr "您的个人资料已成功删除。"
-
-#: user_settings/templates/user_settings/account_settings.html:6
-msgid "Account Settings"
-msgstr "账户设置"
-
-#: user_settings/templates/user_settings/account_settings.html:24
-msgid "Preferences"
-msgstr "偏好设置"
-
-#: user_settings/templates/user_settings/account_settings.html:28
-msgid "Language:"
-msgstr "语言："
-
-#: user_settings/templates/user_settings/account_settings.html:31
-msgid "Currency:"
-msgstr "货币："
-
-#: user_settings/templates/user_settings/account_settings.html:34
-msgid "Appearance:"
-msgstr "外观："
-
-#: user_settings/templates/user_settings/account_settings.html:37
-msgid "Notifications:"
-msgstr "通知:"
-
-#: user_settings/templates/user_settings/account_settings.html:41
-#: user_settings/templates/user_settings/account_settings.html:119
-msgid "Edit Preferences"
-msgstr "编辑偏好设置"
-
-#: user_settings/templates/user_settings/account_settings.html:48
-msgid "Payment Details"
-msgstr "支付详情"
-
-#: user_settings/templates/user_settings/account_settings.html:56
-msgid "Billing Address:"
-msgstr "账单地址:"
-
-#: user_settings/templates/user_settings/account_settings.html:59
-msgid "No payment details available."
-msgstr "没有可用的支付详情。"
-
-#: user_settings/templates/user_settings/account_settings.html:62
-#: user_settings/templates/user_settings/account_settings.html:176
-msgid "Edit Payment Details"
-msgstr "编辑支付详情"
-
-#: user_settings/templates/user_settings/account_settings.html:69
-msgid "Profile Settings"
-msgstr "配置文件设置"
-
-#: user_settings/templates/user_settings/account_settings.html:74
-msgid "Delete Profile"
-msgstr "删除个人资料"
-
-#: user_settings/templates/user_settings/account_settings.html:94
-msgid "Name"
-msgstr "姓名"
-
-#: user_settings/templates/user_settings/account_settings.html:98
-msgid "Email"
-msgstr "电子邮件"
-
-#: user_settings/templates/user_settings/account_settings.html:102
-msgid "Phone Number"
-msgstr "电话号码"
-
-#: user_settings/templates/user_settings/account_settings.html:106
-#: user_settings/templates/user_settings/account_settings.html:164
-#: user_settings/templates/user_settings/account_settings.html:201
-msgid "Save Changes"
-msgstr "保存更改"
-
-#: user_settings/templates/user_settings/account_settings.html:126
-msgid "Language"
-msgstr "语言"
-
-#: user_settings/templates/user_settings/account_settings.html:141
-msgid "Currency"
-msgstr "货币"
-
-#: user_settings/templates/user_settings/account_settings.html:143
-msgid "British Pound"
-msgstr "英镑"
-
-#: user_settings/templates/user_settings/account_settings.html:144
-msgid "US Dollar"
-msgstr "美元"
-
-#: user_settings/templates/user_settings/account_settings.html:145
-msgid "Euro"
-msgstr "欧元"
-
-#: user_settings/templates/user_settings/account_settings.html:146
-msgid "Russian Ruble"
-msgstr "俄罗斯卢布"
-
-#: user_settings/templates/user_settings/account_settings.html:147
-msgid "Chinese Yuan"
-msgstr "人民币"
-
-#: user_settings/templates/user_settings/account_settings.html:148
-msgid "Japanese Yen"
-msgstr "日圆"
-
-#: user_settings/templates/user_settings/account_settings.html:149
-msgid "Indian Rupee"
-msgstr "印度卢比"
-
-#: user_settings/templates/user_settings/account_settings.html:153
-msgid "Appearance"
-msgstr "外观"
-
-#: user_settings/templates/user_settings/account_settings.html:155
-msgid "Light"
-msgstr "浅色"
-
-#: user_settings/templates/user_settings/account_settings.html:156
-msgid "Dark"
-msgstr "深色"
-
-#: user_settings/templates/user_settings/account_settings.html:160
-msgid "Notifications Enabled"
-msgstr "启用通知"
-
-#: user_settings/templates/user_settings/account_settings.html:183
-msgid "Payment Method"
-msgstr "支付方式"
-
-#: user_settings/templates/user_settings/account_settings.html:185
-msgid "Visa"
 msgstr "签证"
 
 #: user_settings/templates/user_settings/account_settings.html:186
@@ -1432,7 +1262,8 @@ msgid "Confirm Profile Deletion"
 msgstr "确认删除个人资料"
 
 #: user_settings/templates/user_settings/account_settings.html:217
-msgid "Are you sure you want to delete your profile? This action cannot be undone."
+msgid ""
+"Are you sure you want to delete your profile? This action cannot be undone."
 msgstr "您确定要删除您的个人资料吗？此操作无法撤销。"
 
 #: user_settings/templates/user_settings/account_settings.html:222
@@ -1454,18 +1285,3 @@ msgstr "卡号格式无效。"
 #: user_settings/views.py:187
 msgid "Your profile has been deleted successfully."
 msgstr "您的个人资料已成功删除。"
-
-#~ msgid "You have new notifications."
-#~ msgstr "您有新通知。"
-
-#~ msgid "Data Sharing Enabled:"
-#~ msgstr "启用数据共享："
-
-#~ msgid "Edit Privacy Settings"
-#~ msgstr "编辑隐私设置"
-
-#~ msgid "Data Sharing Enabled"
-#~ msgstr "启用数据共享"
-
-#~ msgid "Notifications Enabled:"
-#~ msgstr "启用通知："

@@ -246,10 +246,10 @@ a:hover {
 
 /* Slide animation */
 @keyframes slideshow {
-    0% {background-image: url("../images/caravan-1.jpg");}
-    33% {background-image: url("../images/caravan-3.webp");}
-    66% {background-image: url("../images/caravan-2.webp");}
-    100% {background-image: url("../images/caravan-4.webp");}
+    0% {background-image: url("../images/caravan-1.20f78936b1c3.jpg");}
+    33% {background-image: url("../images/caravan-3.677061e1ef59.webp");}
+    66% {background-image: url("../images/caravan-2.8806f081205b.webp");}
+    100% {background-image: url("../images/caravan-4.3e097127cc1a.webp");}
 }
 
 /* Ensures content is visible and centered */

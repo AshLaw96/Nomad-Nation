@@ -1,12 +1,13 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Nomad Nation 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-24 18:35+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2025-02-25 20:59+0000\n"
+"PO-Revision-Date: 2025-02-25 12:00+0000\n"
+"Last-Translator: Ashley Lawrence <ashley.lawrence.students@codeinstitute."
+"net>\n"
+"Language-Team: Japanese <LL@li.org>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -199,7 +200,8 @@ msgstr "各日付エントリは辞書でなければなりません。"
 
 #: listings/forms.py:96
 msgid "Each date entry must contain 'start_date' and 'end_date'."
-msgstr "各日付エントリには「start_date」と「end_date」が含まれている必要があります。"
+msgstr ""
+"各日付エントリには「start_date」と「end_date」が含まれている必要があります。"
 
 #: listings/forms.py:109
 msgid "Invalid date format. Use YYYY-MM-DD."
@@ -416,7 +418,7 @@ msgid "Message"
 msgstr "メッセージ"
 
 #: listings/templates/listings/booking.html:126
-#: listings/templates/listings/booking.html:196
+#: listings/templates/listings/booking.html:202
 msgid "Submit"
 msgstr "送信"
 
@@ -726,6 +728,14 @@ msgstr "あなたのレビュー"
 msgid "Reply deleted successfully!"
 msgstr "返信が正常に削除されました！"
 
+#: main/models.py:28 main/views.py:52
+msgid "Guest"
+msgstr "ゲスト"
+
+#: main/models.py:31
+msgid "Unknown"
+msgstr "未知"
+
 #: main/models.py:34
 msgid "Message from "
 msgstr "からのメッセージ "
@@ -737,7 +747,7 @@ msgstr " へ"
 #: main/models.py:34
 #, python-brace-format
 msgid "{sender_name}"
-msgstr "{送信者名}"
+msgstr "{sender_name}"
 
 #: main/templates/main/contact.html:6
 msgid "Contact Us"
@@ -772,9 +782,11 @@ msgid "Welcome to Nomad Nation"
 msgstr "ノマドネイションへようこそ"
 
 #: main/templates/main/home.html:10
-msgid "Your trusted platform for finding and renting the perfect caravan for your "
+msgid ""
+"Your trusted platform for finding and renting the perfect caravan for your "
 "adventure"
-msgstr "あなたの冒険に最適なキャラバンを見つけて借りるための信頼できるプラットフォー"
+msgstr ""
+"あなたの冒険に最適なキャラバンを見つけて借りるための信頼できるプラットフォー"
 "ム"
 
 #: main/templates/main/home.html:14
@@ -782,10 +794,12 @@ msgid "What we do"
 msgstr "私たちの仕事"
 
 #: main/templates/main/home.html:16
-msgid "At Nomad Nation, we connect caravan owners with travelers looking for unique "
+msgid ""
+"At Nomad Nation, we connect caravan owners with travelers looking for unique "
 "holiday experiences. Whether you're a caravan owner looking to earn extra "
 "income or a traveler seeking a hassle-free holiday, we've got you covered."
-msgstr "ノマドネイションでは、キャラバンオーナーとユニークな休暇体験を求める旅行者を"
+msgstr ""
+"ノマドネイションでは、キャラバンオーナーとユニークな休暇体験を求める旅行者を"
 "繋げます。キャラバンオーナーが追加の収入を得ることを目指している場合や、スト"
 "レスのない休暇を求める旅行者であれば、私たちがサポートします。"
 
@@ -795,7 +809,8 @@ msgstr "信頼できるレンタル"
 
 #: main/templates/main/home.html:27
 msgid "All rentals are verified to ensure your safety and satisfaction."
-msgstr "すべてのレンタルは、あなたの安全と満足を確保するために確認されています。"
+msgstr ""
+"すべてのレンタルは、あなたの安全と満足を確保するために確認されています。"
 
 #: main/templates/main/home.html:35
 msgid "Community-Driven"
@@ -812,10 +827,6 @@ msgstr "安全な支払い"
 #: main/templates/main/home.html:45
 msgid "Easy and secure booking for peace of mind."
 msgstr "安心のための簡単で安全な予約。"
-
-#: main/views.py:52
-msgid "Guest"
-msgstr "ゲスト"
 
 #: main/views.py:59
 msgid "New contact message from "
@@ -834,13 +845,19 @@ msgid "Oops! 404 - Page Not Found!"
 msgstr "おっと！ 404 - ページが見つかりません！"
 
 #: templates/404.html:11
-msgid "It seems like you've taken a detour off the beaten path. The page you're "
+msgid ""
+"It seems like you've taken a detour off the beaten path. The page you're "
 "looking for is nowhere to be found on Nomad Nation."
-msgstr "あなたは道を外れてしまったようです。お探しのページはノマドネイションには見つかりません。"
+msgstr ""
+"あなたは道を外れてしまったようです。お探しのページはノマドネイションには見つ"
+"かりません。"
 
 #: templates/404.html:14
-msgid "But don't worry, our caravans are still here waiting for your next adventure!"
-msgstr "でも心配しないでください、私たちのキャラバンはまだここにあり、あなたの次の冒険を待っています！"
+msgid ""
+"But don't worry, our caravans are still here waiting for your next adventure!"
+msgstr ""
+"でも心配しないでください、私たちのキャラバンはまだここにあり、あなたの次の冒"
+"険を待っています！"
 
 #: templates/404.html:23
 msgid "Take Me Back Home"
@@ -879,9 +896,11 @@ msgid "Password Reset"
 msgstr "パスワードリセット"
 
 #: templates/account/password_reset.html:14
-msgid "Forgotten your password? Enter your username or email address below, and "
+msgid ""
+"Forgotten your password? Enter your username or email address below, and "
 "we'll send you an email allowing you to reset it."
-msgstr "パスワードをお忘れですか？以下にユーザー名またはメールアドレスを入力すると、"
+msgstr ""
+"パスワードをお忘れですか？以下にユーザー名またはメールアドレスを入力すると、"
 "リセット用のメールをお送りします。"
 
 #: templates/account/password_reset.html:20
@@ -905,13 +924,16 @@ msgid "Password Reset Requested"
 msgstr "パスワードリセットがリクエストされました"
 
 #: templates/account/password_reset_done.html:7
-msgid "If an account exists with the provided email address, a password reset email "
+msgid ""
+"If an account exists with the provided email address, a password reset email "
 "has been sent."
-msgstr "提供されたメールアドレスにアカウントが存在する場合、パスワードリセットのメー"
+msgstr ""
+"提供されたメールアドレスにアカウントが存在する場合、パスワードリセットのメー"
 "ルが送信されました。"
 
 #: templates/account/password_reset_done.html:8
-msgid "Please check your inbox and follow the instructions to reset your password."
+msgid ""
+"Please check your inbox and follow the instructions to reset your password."
 msgstr "受信箱を確認し、指示に従ってパスワードをリセットしてください。"
 
 #: templates/account/password_reset_done.html:9
@@ -932,9 +954,11 @@ msgid "Password Reset Successful"
 msgstr "パスワードリセット成功"
 
 #: templates/account/password_reset_from_key_done.html:7
-msgid "Your password has been successfully reset. You can now log in with your new "
+msgid ""
+"Your password has been successfully reset. You can now log in with your new "
 "password."
-msgstr "パスワードは正常にリセットされました。新しいパスワードでログインできます。"
+msgstr ""
+"パスワードは正常にリセットされました。新しいパスワードでログインできます。"
 
 #: templates/account/signup.html:6 templates/account/signup.html:20
 msgid "Sign Up"
@@ -1252,7 +1276,8 @@ msgid "Confirm Profile Deletion"
 msgstr "プロフィール削除の確認"
 
 #: user_settings/templates/user_settings/account_settings.html:217
-msgid "Are you sure you want to delete your profile? This action cannot be undone."
+msgid ""
+"Are you sure you want to delete your profile? This action cannot be undone."
 msgstr "本当にプロフィールを削除しますか？この操作は元に戻せません。"
 
 #: user_settings/templates/user_settings/account_settings.html:222

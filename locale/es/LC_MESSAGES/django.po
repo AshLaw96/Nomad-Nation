@@ -1,11 +1,12 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Nomad Nation 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-24 18:35+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2025-02-25 20:59+0000\n"
+"PO-Revision-Date: 2025-02-25 12:00+0000\n"
+"Last-Translator: Ashley Lawrence <ashley.lawrence.students@codeinstitute."
+"net>\n"
+"Language-Team: Spanish <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -416,7 +417,7 @@ msgid "Message"
 msgstr "Mensaje"
 
 #: listings/templates/listings/booking.html:126
-#: listings/templates/listings/booking.html:196
+#: listings/templates/listings/booking.html:202
 msgid "Submit"
 msgstr "Enviar"
 
@@ -726,6 +727,14 @@ msgstr "tu reseña"
 msgid "Reply deleted successfully!"
 msgstr "¡Respuesta eliminada con éxito!"
 
+#: main/models.py:28 main/views.py:52
+msgid "Guest"
+msgstr "Invitado"
+
+#: main/models.py:31
+msgid "Unknown"
+msgstr "Desconocido"
+
 #: main/models.py:34
 msgid "Message from "
 msgstr "Mensaje de "
@@ -737,7 +746,7 @@ msgstr " a"
 #: main/models.py:34
 #, python-brace-format
 msgid "{sender_name}"
-msgstr "{nombre_remitente}"
+msgstr "{sender_name}"
 
 #: main/templates/main/contact.html:6
 msgid "Contact Us"
@@ -772,9 +781,11 @@ msgid "Welcome to Nomad Nation"
 msgstr "Bienvenidos a la Nación Nómada"
 
 #: main/templates/main/home.html:10
-msgid "Your trusted platform for finding and renting the perfect caravan for your "
+msgid ""
+"Your trusted platform for finding and renting the perfect caravan for your "
 "adventure"
-msgstr "Tu plataforma de confianza para encontrar y alquilar la caravana perfecta "
+msgstr ""
+"Tu plataforma de confianza para encontrar y alquilar la caravana perfecta "
 "para tu aventura"
 
 #: main/templates/main/home.html:14
@@ -782,10 +793,12 @@ msgid "What we do"
 msgstr "Lo que hacemos"
 
 #: main/templates/main/home.html:16
-msgid "At Nomad Nation, we connect caravan owners with travelers looking for unique "
+msgid ""
+"At Nomad Nation, we connect caravan owners with travelers looking for unique "
 "holiday experiences. Whether you're a caravan owner looking to earn extra "
 "income or a traveler seeking a hassle-free holiday, we've got you covered."
-msgstr "En Nomad Nation, conectamos a los propietarios de caravanas con viajeros que "
+msgstr ""
+"En Nomad Nation, conectamos a los propietarios de caravanas con viajeros que "
 "buscan experiencias vacacionales únicas. Ya sea que seas un propietario de "
 "caravana que busca ganar ingresos adicionales o un viajero que busca unas "
 "vacaciones sin complicaciones, te tenemos cubierto."
@@ -796,7 +809,8 @@ msgstr "Alquileres Confiables"
 
 #: main/templates/main/home.html:27
 msgid "All rentals are verified to ensure your safety and satisfaction."
-msgstr "Todos los alquileres están verificados para garantizar tu seguridad y "
+msgstr ""
+"Todos los alquileres están verificados para garantizar tu seguridad y "
 "satisfacción."
 
 #: main/templates/main/home.html:35
@@ -815,10 +829,6 @@ msgstr "Pagos Seguros"
 msgid "Easy and secure booking for peace of mind."
 msgstr "Reserva fácil y segura para tu tranquilidad."
 
-#: main/views.py:52
-msgid "Guest"
-msgstr "Invitado"
-
 #: main/views.py:59
 msgid "New contact message from "
 msgstr "Nuevo mensaje de contacto de "
@@ -836,14 +846,18 @@ msgid "Oops! 404 - Page Not Found!"
 msgstr "¡Vaya! 404 - Página no encontrada!"
 
 #: templates/404.html:11
-msgid "It seems like you've taken a detour off the beaten path. The page you're "
+msgid ""
+"It seems like you've taken a detour off the beaten path. The page you're "
 "looking for is nowhere to be found on Nomad Nation."
-msgstr "Parece que has tomado un desvío fuera del camino. La página que estás "
+msgstr ""
+"Parece que has tomado un desvío fuera del camino. La página que estás "
 "buscando no se encuentra en Nomad Nation."
 
 #: templates/404.html:14
-msgid "But don't worry, our caravans are still here waiting for your next adventure!"
-msgstr "¡Pero no te preocupes, nuestras caravanas todavía están aquí esperando tu "
+msgid ""
+"But don't worry, our caravans are still here waiting for your next adventure!"
+msgstr ""
+"¡Pero no te preocupes, nuestras caravanas todavía están aquí esperando tu "
 "próxima aventura!"
 
 #: templates/404.html:23
@@ -883,9 +897,11 @@ msgid "Password Reset"
 msgstr "Restablecer Contraseña"
 
 #: templates/account/password_reset.html:14
-msgid "Forgotten your password? Enter your username or email address below, and "
+msgid ""
+"Forgotten your password? Enter your username or email address below, and "
 "we'll send you an email allowing you to reset it."
-msgstr "¿Olvidaste tu contraseña? Ingresa tu nombre de usuario o dirección de correo "
+msgstr ""
+"¿Olvidaste tu contraseña? Ingresa tu nombre de usuario o dirección de correo "
 "electrónico a continuación, y te enviaremos un correo electrónico que te "
 "permitirá restablecerla."
 
@@ -903,7 +919,8 @@ msgstr "Iniciar sesión"
 
 #: templates/account/password_reset.html:32
 msgid "Please contact us if you have any trouble resetting your password."
-msgstr "Por favor contáctanos si tienes algún problema para restablecer tu "
+msgstr ""
+"Por favor contáctanos si tienes algún problema para restablecer tu "
 "contraseña."
 
 #: templates/account/password_reset_done.html:6
@@ -911,14 +928,18 @@ msgid "Password Reset Requested"
 msgstr "Solicitud de Restablecimiento de Contraseña"
 
 #: templates/account/password_reset_done.html:7
-msgid "If an account exists with the provided email address, a password reset email "
+msgid ""
+"If an account exists with the provided email address, a password reset email "
 "has been sent."
-msgstr "Si existe una cuenta con la dirección de correo electrónico proporcionada, "
+msgstr ""
+"Si existe una cuenta con la dirección de correo electrónico proporcionada, "
 "se ha enviado un correo electrónico de restablecimiento de contraseña."
 
 #: templates/account/password_reset_done.html:8
-msgid "Please check your inbox and follow the instructions to reset your password."
-msgstr "Por favor revisa tu bandeja de entrada y sigue las instrucciones para "
+msgid ""
+"Please check your inbox and follow the instructions to reset your password."
+msgstr ""
+"Por favor revisa tu bandeja de entrada y sigue las instrucciones para "
 "restablecer tu contraseña."
 
 #: templates/account/password_reset_done.html:9
@@ -939,9 +960,11 @@ msgid "Password Reset Successful"
 msgstr "Restablecimiento de Contraseña Exitoso"
 
 #: templates/account/password_reset_from_key_done.html:7
-msgid "Your password has been successfully reset. You can now log in with your new "
+msgid ""
+"Your password has been successfully reset. You can now log in with your new "
 "password."
-msgstr "Tu contraseña ha sido restablecida exitosamente. Ahora puedes iniciar sesión "
+msgstr ""
+"Tu contraseña ha sido restablecida exitosamente. Ahora puedes iniciar sesión "
 "con tu nueva contraseña."
 
 #: templates/account/signup.html:6 templates/account/signup.html:20
@@ -1260,8 +1283,11 @@ msgid "Confirm Profile Deletion"
 msgstr "Confirmar Eliminación de Perfil"
 
 #: user_settings/templates/user_settings/account_settings.html:217
-msgid "Are you sure you want to delete your profile? This action cannot be undone."
-msgstr "¿Estás seguro de que quieres eliminar tu perfil? Esta acción no se puede deshacer."
+msgid ""
+"Are you sure you want to delete your profile? This action cannot be undone."
+msgstr ""
+"¿Estás seguro de que quieres eliminar tu perfil? Esta acción no se puede "
+"deshacer."
 
 #: user_settings/templates/user_settings/account_settings.html:222
 msgid "DELETE"

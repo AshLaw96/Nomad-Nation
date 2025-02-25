@@ -1,12 +1,13 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Nomad Nation 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-24 18:35+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2025-02-25 20:59+0000\n"
+"PO-Revision-Date: 2025-02-25 12:00+0000\n"
+"Last-Translator: Ashley Lawrence <ashley.lawrence.students@codeinstitute."
+"net>\n"
+"Language-Team: Hindi <LL@li.org>\n"
+"Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -416,7 +417,7 @@ msgid "Message"
 msgstr "संदेश"
 
 #: listings/templates/listings/booking.html:126
-#: listings/templates/listings/booking.html:196
+#: listings/templates/listings/booking.html:202
 msgid "Submit"
 msgstr "सबमिट करें"
 
@@ -726,6 +727,14 @@ msgstr "आपकी समीक्षा"
 msgid "Reply deleted successfully!"
 msgstr "उत्तर सफलतापूर्वक हटाया गया!"
 
+#: main/models.py:28 main/views.py:52
+msgid "Guest"
+msgstr "अतिथि"
+
+#: main/models.py:31
+msgid "Unknown"
+msgstr "अज्ञात"
+
 #: main/models.py:34
 msgid "Message from "
 msgstr "संदेश प्रेषक"
@@ -737,7 +746,7 @@ msgstr " तक"
 #: main/models.py:34
 #, python-brace-format
 msgid "{sender_name}"
-msgstr "{प्रेषक_नाम}"
+msgstr "{sender_name}"
 
 #: main/templates/main/contact.html:6
 msgid "Contact Us"
@@ -772,9 +781,11 @@ msgid "Welcome to Nomad Nation"
 msgstr "नोमैड नेशन में स्वागत है"
 
 #: main/templates/main/home.html:10
-msgid "Your trusted platform for finding and renting the perfect caravan for your "
+msgid ""
+"Your trusted platform for finding and renting the perfect caravan for your "
 "adventure"
-msgstr "आपकी विश्वासमंद प्लेटफॉर्म, जहाँ आप अपनी यात्रा के लिए सही कारवां ढूंढ सकते हैं और किराए "
+msgstr ""
+"आपकी विश्वासमंद प्लेटफॉर्म, जहाँ आप अपनी यात्रा के लिए सही कारवां ढूंढ सकते हैं और किराए "
 "पर ले सकते हैं।"
 
 #: main/templates/main/home.html:14
@@ -782,10 +793,12 @@ msgid "What we do"
 msgstr "हम क्या करते हैं"
 
 #: main/templates/main/home.html:16
-msgid "At Nomad Nation, we connect caravan owners with travelers looking for unique "
+msgid ""
+"At Nomad Nation, we connect caravan owners with travelers looking for unique "
 "holiday experiences. Whether you're a caravan owner looking to earn extra "
 "income or a traveler seeking a hassle-free holiday, we've got you covered."
-msgstr "नोमैड नेशन में, हम कारवां मालिकों को उन यात्रियों से जोड़ते हैं जो अद्वितीय छुट्टियों का अनुभव "
+msgstr ""
+"नोमैड नेशन में, हम कारवां मालिकों को उन यात्रियों से जोड़ते हैं जो अद्वितीय छुट्टियों का अनुभव "
 "चाहते हैं। चाहे आप एक कारवां मालिक हों जो अतिरिक्त आय अर्जित करना चाहते हों या एक "
 "यात्री जो बिना किसी परेशानी के छुट्टियां चाहते हों, हम आपकी मदद के लिए तैयार हैं।"
 
@@ -813,10 +826,6 @@ msgstr "सुरक्षित भुगतान"
 msgid "Easy and secure booking for peace of mind."
 msgstr "चिंता-मुक्त अनुभव के लिए आसान और सुरक्षित बुकिंग।"
 
-#: main/views.py:52
-msgid "Guest"
-msgstr "अतिथि"
-
 #: main/views.py:59
 msgid "New contact message from "
 msgstr "से नया संपर्क संदेश "
@@ -834,13 +843,18 @@ msgid "Oops! 404 - Page Not Found!"
 msgstr "ओह! 404 - पृष्ठ नहीं मिला!"
 
 #: templates/404.html:11
-msgid "It seems like you've taken a detour off the beaten path. The page you're "
+msgid ""
+"It seems like you've taken a detour off the beaten path. The page you're "
 "looking for is nowhere to be found on Nomad Nation."
-msgstr "ऐसा लगता है कि आपने मुख्य मार्ग से हटकर एक चक्कर लगाया है। जिस पृष्ठ की आप तलाश कर रहे हैं, वह नोमैड नेशन पर कहीं नहीं मिला।"
+msgstr ""
+"ऐसा लगता है कि आपने मुख्य मार्ग से हटकर एक चक्कर लगाया है। जिस पृष्ठ की आप तलाश कर रहे "
+"हैं, वह नोमैड नेशन पर कहीं नहीं मिला।"
 
 #: templates/404.html:14
-msgid "But don't worry, our caravans are still here waiting for your next adventure!"
-msgstr "लेकिन चिंता न करें, हमारे कारवां अभी भी यहाँ आपकी अगली यात्रा के लिए इंतजार कर रहे हैं!"
+msgid ""
+"But don't worry, our caravans are still here waiting for your next adventure!"
+msgstr ""
+"लेकिन चिंता न करें, हमारे कारवां अभी भी यहाँ आपकी अगली यात्रा के लिए इंतजार कर रहे हैं!"
 
 #: templates/404.html:23
 msgid "Take Me Back Home"
@@ -848,7 +862,8 @@ msgstr "मुझे घर वापस ले चलो"
 
 #: templates/404.html:28
 msgid "Or, if you're feeling adventurous, try navigating a little differently!"
-msgstr "या, यदि आप साहसी महसूस कर रहे हैं, तो थोड़ा अलग तरीके से नेविगेट करने का प्रयास करें!"
+msgstr ""
+"या, यदि आप साहसी महसूस कर रहे हैं, तो थोड़ा अलग तरीके से नेविगेट करने का प्रयास करें!"
 
 #: templates/account/login.html:6 templates/account/login.html:14
 msgid "Log In"
@@ -879,9 +894,11 @@ msgid "Password Reset"
 msgstr "पासवर्ड रीसेट"
 
 #: templates/account/password_reset.html:14
-msgid "Forgotten your password? Enter your username or email address below, and "
+msgid ""
+"Forgotten your password? Enter your username or email address below, and "
 "we'll send you an email allowing you to reset it."
-msgstr "क्या आप अपना पासवर्ड भूल गए हैं? नीचे अपना उपयोगकर्ता नाम या ईमेल पता दर्ज करें, और हम "
+msgstr ""
+"क्या आप अपना पासवर्ड भूल गए हैं? नीचे अपना उपयोगकर्ता नाम या ईमेल पता दर्ज करें, और हम "
 "आपको एक ईमेल भेजेंगे जिससे आप इसे रीसेट कर सकें।"
 
 #: templates/account/password_reset.html:20
@@ -905,13 +922,16 @@ msgid "Password Reset Requested"
 msgstr "पासवर्ड रीसेट का अनुरोध किया गया"
 
 #: templates/account/password_reset_done.html:7
-msgid "If an account exists with the provided email address, a password reset email "
+msgid ""
+"If an account exists with the provided email address, a password reset email "
 "has been sent."
 msgstr "यदि दिए गए ईमेल पते के साथ खाता मौजूद है, तो एक पासवर्ड रीसेट ईमेल भेजा गया है।"
 
 #: templates/account/password_reset_done.html:8
-msgid "Please check your inbox and follow the instructions to reset your password."
-msgstr "कृपया अपना इनबॉक्स चेक करें और अपने पासवर्ड को रीसेट करने के लिए निर्देशों का पालन करें।"
+msgid ""
+"Please check your inbox and follow the instructions to reset your password."
+msgstr ""
+"कृपया अपना इनबॉक्स चेक करें और अपने पासवर्ड को रीसेट करने के लिए निर्देशों का पालन करें।"
 
 #: templates/account/password_reset_done.html:9
 #: templates/account/password_reset_from_key_done.html:8
@@ -931,9 +951,11 @@ msgid "Password Reset Successful"
 msgstr "पासवर्ड रीसेट सफल"
 
 #: templates/account/password_reset_from_key_done.html:7
-msgid "Your password has been successfully reset. You can now log in with your new "
+msgid ""
+"Your password has been successfully reset. You can now log in with your new "
 "password."
-msgstr "आपका पासवर्ड सफलतापूर्वक रीसेट हो गया है। अब आप अपने नए पासवर्ड से लॉगिन कर सकते हैं।"
+msgstr ""
+"आपका पासवर्ड सफलतापूर्वक रीसेट हो गया है। अब आप अपने नए पासवर्ड से लॉगिन कर सकते हैं।"
 
 #: templates/account/signup.html:6 templates/account/signup.html:20
 msgid "Sign Up"
@@ -1251,7 +1273,8 @@ msgid "Confirm Profile Deletion"
 msgstr "प्रोफ़ाइल हटाने की पुष्टि करें"
 
 #: user_settings/templates/user_settings/account_settings.html:217
-msgid "Are you sure you want to delete your profile? This action cannot be undone."
+msgid ""
+"Are you sure you want to delete your profile? This action cannot be undone."
 msgstr "क्या आप वाकई अपनी प्रोफ़ाइल हटाना चाहते हैं? यह क्रिया पूर्ववत नहीं की जा सकती।"
 
 #: user_settings/templates/user_settings/account_settings.html:222
