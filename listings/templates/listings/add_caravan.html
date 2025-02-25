@@ -4,27 +4,27 @@
 {% block content %}
 <div class="container d-flex flex-column justify-content-center align-items-center log-wrap bg-styles">
     <h2 class="text-center title">{% trans "Add Caravan" %}</h2>
-    <form method="post" enctype="multipart/form-data" class="p-4 border rounded shadow-sm mx-auto">
+    <form method="post" enctype="multipart/form-data" class="p-4 border rounded shadow-sm mx-auto w-100">
         {% csrf_token %}
         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group mb-2">
+            <div class="col-md-12">
+                <div class="form-group mb-2 text-start">
                     <label for="id_title">{% trans "Title:" %}</label>
                     {{ form.title }}
                 </div>
-                <div class="form-group mb-2">
+                <div class="form-group mb-2 text-start">
                     <label for="id_description">{% trans "Description:" %}</label>
                     {{ form.description }}
                 </div>
-                <div class="form-group mb-3">
+                <div class="form-group mb-3 text-start">
                     <label for="id_image">{% trans "Image:" %}</label>
                     <input type="file" class="form-control-file" id="id_images" name="images" multiple>
                 </div>
-                <div class="form-group mb-2">
+                <div class="form-group mb-2 text-start">
                 <label for="id_berth">{% trans "Berth:" %}</label>
                 {{ form.berth }}
                 </div>
-                <div class="form-group mb-2">
+                <div class="form-group mb-2 text-start">
                     <label for="id_amenities">{% trans "Amenities:" %}</label>
                     <div id="amenities-container">
                         {{ form.amenities }}
@@ -35,12 +35,12 @@
                     <label for="{{ form.location.id_for_label }}">{% trans "Location:" %}</label>
                     {{ form.location }}
                 </div>
-                <div class="form-group mb-2">
+                <div class="form-group mb-2 text-start">
                     <label for="id_price_per_night">{% trans "Price Per Night:" %}</label>
                     {{ form.price_per_night }}
                 </div>
                 <!-- Availability calendar -->
-                <div class="form-group mb-3">
+                <div class="form-group mb-3 text-start">
                     <label id="calendar-label">{% trans "Availability:" %}</label>
                     <div id="calendar" class="w-100" aria-labelledby="calendar-label" role="application"></div>
                     <div id="selected-dates" class="mt-2"></div>

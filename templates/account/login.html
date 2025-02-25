@@ -8,7 +8,7 @@
         {% trans "Don't have an account yet?" %} <a href="{% url 'account_signup' %}">{% trans "register here" %}</a>.
     </p>
     <!-- Login form -->
-    <form method="post" action="{% url 'account_login' %}" class="p-4 border rounded shadow-sm mx-auto">
+    <form method="post" action="{% url 'account_login' %}" class="p-4 border rounded shadow-sm mx-auto custom-login-form">
         {% csrf_token %}
         {{ form.as_p }}
         <button class="btn btn-primary w-100 mt-3 btn-styles" type="submit">{% trans "Log In" %}</button>

@@ -9,7 +9,7 @@
         <div class="col-md-8">
             <input type="text" class="form-control" placeholder="{% trans "Search caravans..." %}" name="search" value="{{ request.GET.search }}">
         </div>
-        <div class="col-md-4 mt-2 mb-1 d-flex justify-content-between">
+        <div class="col-md-4 mt-2 mb-1 d-flex justify-content-between search-custom-styles">
             <button type="submit" class="btn btn-primary btn-styles">{% trans "Search" %}</button>
             <a href="{% url 'listings' %}" class="btn btn-secondary btn-styles ml-auto">{% trans "Reset" %}</a>
         </div>
@@ -72,7 +72,7 @@
             <h2>{{ caravan.title }}</h2>
             {% if user_type == "customer" %}
             <!-- Favourites icon -->
-            <i class="fa fa-star favourite-icon {% if caravan.is_favourite %}favourite{% endif %} text-center" data-caravan-id="{{ caravan.pk }}"></i>
+            <i class="fa fa-star mb-2 favourite-icon {% if caravan.is_favourite %}favourite{% endif %} text-center" data-caravan-id="{{ caravan.pk }}"></i>
             <span class="ms-2">{% trans "Click to add to favourites" %}</span>
             {% endif %}
             <!-- Carousel for multiple images -->
@@ -98,7 +98,7 @@
             </div>
             <!-- Modal for Enlarging Images -->
             <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title title text-center" id="imageModalLabel"></h5>
@@ -171,11 +171,11 @@
                             <p>{{ reply.owner.username }}</p>
                             <p>{{ reply.reply }}</p>
                             {% if user_type == "owner" %}
-                                <div class="text-center">
+                                <div class="d-flex justify-content-center align-items-center gap-2">
                                     <button type="button" class="btn btn-warning mt-2 btn-styles edit-reply-btn" data-bs-toggle="modal" data-bs-target="#editReplyModal{{ reply.pk }}" data-reply-text="{{ reply.reply }}" data-reply-id="{{ reply.pk }}">
                                         {% trans "Edit Reply" %}
                                     </button>
-                                    <button type="button" class="btn btn-danger btn-styles mt-2 mb-3 delete-reply-btn" data-url="{% url 'delete_reply' reply.pk %}">
+                                    <button type="button" class="btn btn-danger btn-styles mt-2 delete-reply-btn" data-url="{% url 'delete_reply' reply.pk %}">
                                         {% trans "Delete Reply" %}
                                     </button>
                                 </div>
@@ -191,7 +191,7 @@
                                         <div class="modal-body">
                                             <form method="post" action="{% url 'edit_reply' reply.pk %}">
                                                 {% csrf_token %}
-                                                <div class="mb-3">
+                                                <div class="mb-2 modal-input-spacing">
                                                     <label for="reply" class="form-label">{% trans "Reply" %}</label>
                                                     <textarea class="form-control" id="reply" name="reply" rows="3" required>{{ reply.reply }}</textarea>
                                                 </div>
@@ -221,7 +221,7 @@
                                     <div class="modal-body">
                                         <form method="post" action="{% url 'submit_reply' review.pk %}">
                                             {% csrf_token %}
-                                            <div class="mb-3">
+                                            <div class="mb-2 modal-input-spacing">
                                                 <label for="reply" class="form-label">{% trans "Reply" %}</label>
                                                 <textarea class="form-control" id="reply" name="reply" rows="3" required></textarea>
                                             </div>
@@ -236,7 +236,7 @@
                         {% endif %}
                     </div>
                     {% if user_type == "customer" %}
-                        <div class="text-center">
+                        <div class="d-flex justify-content-center align-items-center gap-2">
                             <button type="button" class="btn btn-warning mt-1 mb-2 btn-styles edit-review-btn" data-bs-toggle="modal" data-bs-target="#editReviewModal{{ review.pk }}" data-review-id="{{ review.pk }}" data-rating="{{ review.rating }}" data-comment="{{ review.comment }}">
                                 {% trans "Edit Review" %}
                             </button>
@@ -273,11 +273,11 @@
                         <div class="modal-body">
                             <form method="post" action="{% url 'submit_review' caravan.pk %}">
                                 {% csrf_token %}
-                                <div class="mb-3">
+                                <div class="mb-2 modal-input-spacing">
                                     <label for="rating" class="form-label">{% trans "Rating" %}</label>
                                     <input type="number" class="form-control" id="rating" name="rating" min="1" max="5" required>
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-2 modal-input-spacing">
                                     <label for="comment" class="form-label">{% trans "Comment" %}</label>
                                     <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
                                 </div>
@@ -301,11 +301,11 @@
                         <div class="modal-body">
                             <form method="post" action="{% url 'edit_review' review.pk %}">
                                 {% csrf_token %}
-                                <div class="mb-3">
+                                <div class="mb-2 modal-input-spacing">
                                     <label for="rating" class="form-label">{% trans "Rating" %}</label>
                                     <input type="number" class="form-control" id="rating-{{ review.pk }}" name="rating" min="1" max="5" value="{{ review.rating }}" required>
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-2 modal-input-spacing">
                                     <label for="comment" class="form-label">{% trans "Comment" %}</label>
                                     <textarea class="form-control" id="comment-{{ review.pk }}" name="comment" rows="3" required>{{ review.comment }}</textarea>
                                 </div>

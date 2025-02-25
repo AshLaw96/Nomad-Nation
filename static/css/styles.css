@@ -87,10 +87,16 @@ body.dark-theme {
 .dark-theme .card {
     background-color: var(--p-text);
     color: var(--b-colour);
+    border: solid 1px var(--b-colour);
 }
 
 .dark-theme .list-group-item {
     background-color: var(--p-text);
+    color: var(--b-colour);
+    border: solid 1px var(--b-colour);
+}
+
+.dark-theme .favourite-icon {
     color: var(--b-colour);
 }
 
@@ -112,6 +118,20 @@ a:hover {
     color: var(--p-accent);
 }
 
+#main-title {
+    margin-left: 10px;
+}
+
+.modal-input-spacing {
+    margin: 5px 5px 0 5px;
+}
+
+.modal-body form input[name="name"],
+.modal-body form input[name="email"],
+.modal-body form input[name="phone_number"] {
+    max-width: 100%;
+}
+
 /* Position the notification icon next to the navbar toggler button */
 #notification-icon {
     position: absolute;
@@ -123,6 +143,10 @@ a:hover {
 .navbar-toggler {
     position: relative;
     z-index: 1001;
+}
+
+.nav-item {
+    margin-left: 10px;
 }
 
 /* Flashing animation */
@@ -177,6 +201,11 @@ a:hover {
 .navbar-nav .nav-link.active {
     color: var(--b-colour);
     font-weight: bold;
+}
+
+.custom-login-form span {
+    display: block;
+    margin-top: 5px;
 }
 
 /* Homepage section */
@@ -353,6 +382,33 @@ textarea {
     border: none;
 }
 
+/* FullCalendar styles */
+#calendar {
+    /* Prevent overflow */
+    max-width: 100%; 
+    width: 100%; 
+    min-height: 300px;
+    max-height: 400px;
+    /* Allow scrolling if needed */
+    overflow-y: auto; 
+}
+
+.fc-col-header-cell {
+    font-size: 10px !important;
+    padding: 5px 1px !important;
+}
+
+.fc-col-header-cell-cushion {
+    padding: 0 !important;
+}
+
+.fc-today-button {
+    background-color: var(--p-colour) !important;
+    color: var(--b-colour) !important;
+    margin-left: 20% !important;
+    margin-bottom: 5px !important;
+}
+
 /* Footer section */
 footer {
     width: 100%;
@@ -363,4 +419,36 @@ footer {
 
 footer a {
     color: var(--p-text);
+}
+
+/* Styles for screens larger than 575px */
+@media screen and (min-width: 576px) {
+    input[name="search"] {
+        margin-bottom: 5px;
+    }
+
+    .search-custom-styles a, .search-custom-styles button {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    .carousel-inner {
+        height: 40vh;
+    }
+
+    #calendar {
+        min-height: 500px;
+        max-height: 600px;
+    }
+
+    .fc-col-header-cell {
+        font-size: 16px !important;
+    }
+}
+
+/* Styles for screens larger than 1199px */
+@media screen and (min-width: 1200px) {
+    .carousel-inner {
+        height: 50vh;
+    }
 }
