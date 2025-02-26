@@ -4,6 +4,20 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UserProfile(models.Model):
+    """
+    Represents a user's profile containing personal details and preferences.
+    Attributes:
+        - user (OneToOneField): Links to the User model.
+        - profile_pic (ImageField): Stores the user's profile picture.
+        - bio (TextField): A short biography about the user.
+        - phone_number (CharField): The user's contact number.
+        - language (CharField): Stores the user's preferred language.
+        - appearance (CharField): Stores the user's theme preference
+          (light/dark).
+        - currency (CharField): The preferred currency for transactions.
+        - notifications (BooleanField): Determines if notifications are
+          enabled.
+    """
     LANGUAGE_CHOICES = [
         ('en', _('English')),
         ('es', _('Spanish')),
@@ -35,10 +49,29 @@ class UserProfile(models.Model):
     notifications = models.BooleanField(default=True)
 
     def __str__(self):
+        """
+        Returns the username of the associated user.
+        """
         return self.user.username
 
 
 class Notification(models.Model):
+    """
+    Stores notifications for users about various actions.
+    Attributes:
+        - user (ForeignKey): The recipient of the notification.
+        - message (TextField): The content of the notification.
+        - type (CharField): The type of notification (e.g., review, booking).
+        - booking (ForeignKey): Links to a booking (if applicable).
+        - caravan (ForeignKey): Links to a caravan (if applicable).
+        - review (ForeignKey): Links to a review (if applicable).
+        - is_read (BooleanField): Indicates if the notification has been read.
+        - created_at (DateTimeField): Timestamp of when the notification was
+          created.
+        - created_by (ForeignKey): The user who triggered the notification.
+        - related_object_id (PositiveIntegerField): Stores the ID of the
+          related object.
+    """
     REVIEW = 'review'
     REPLY = 'reply_to_review'
     BOOKING_REQUEST = 'booking_request'
@@ -100,16 +133,30 @@ class Notification(models.Model):
     related_object_id = models.PositiveIntegerField(null=True, blank=True)
 
     def __str__(self):
+        """
+        Returns a formatted notification message for the user.
+        """
         return (
             _('Notification for ') + f'{self.user.username} - {self.message}'
         )
 
     def mark_as_read(self):
+        """
+        Marks the notification as read.
+        """
         self.is_read = True
         self.save()
 
 
 class PaymentDetails(models.Model):
+    """
+    Stores payment details associated with a user.
+    Attributes:
+        - user (ForeignKey): The user associated with the payment details.
+        - card_last_four (CharField): Stores the last four digits of the card.
+        - payment_method (CharField): The type of payment method used.
+        - billing_address (TextField): The billing address for the payment.
+    """
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='payment_details'
     )
@@ -118,14 +165,27 @@ class PaymentDetails(models.Model):
     billing_address = models.TextField()
 
     def __str__(self):
+        """
+        Returns a masked card display with the payment method.
+        """
         return f"{self.payment_method} **** **** **** {self.card_last_four}"
 
 
 class PrivacySettings(models.Model):
+    """
+    Stores user privacy preferences.
+    Attributes:
+        - user (OneToOneField): The user linked to these privacy settings.
+        - data_sharing_enabled (BooleanField): Whether the user has enabled
+          data sharing.
+    """
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='privacy_settings'
     )
     data_sharing_enabled = models.BooleanField(default=False)
 
     def __str__(self):
+        """
+        Returns a readable string for the privacy settings.
+        """
         return _('Privacy settings for') + f' {self.user.username}'

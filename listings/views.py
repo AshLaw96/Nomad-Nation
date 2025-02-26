@@ -92,6 +92,11 @@ def listings_view(request):
 @require_POST
 @login_required
 def toggle_favourite(request, caravan_id):
+    """
+    Handles favouriting/unfavouriting a caravan.
+    Allows logged-in users to toggle a caravan as a favorite.
+    Returns a JSON response indicating success and the new favorite status.
+    """
     try:
         caravan = get_object_or_404(Caravan, pk=caravan_id)
         if request.user in caravan.favourites.all():
@@ -107,6 +112,12 @@ def toggle_favourite(request, caravan_id):
 
 @login_required
 def add_caravan(request):
+    """
+    Handles adding a new caravan listing.
+    Processes form submissions, saves the caravan, amenities, images,
+    and availability.
+    Redirects to the listings page upon successful submission.
+    """
     if request.method == 'POST':
         form = CaravanForm(request.POST, request.FILES, user=request.user)
         if form.is_valid():
@@ -142,6 +153,11 @@ def add_caravan(request):
 
 @login_required
 def edit_caravan(request, pk):
+    """
+    Handles editing an existing caravan listing.
+    Ensures only the caravan owner can edit their listing.
+    Processes form submission and updates caravan details.
+    """
     caravan = get_object_or_404(
         Caravan,
         pk=pk,
@@ -172,12 +188,18 @@ def edit_caravan(request, pk):
                 CaravanImage.objects.create(caravan=caravan, image=image)
             return redirect('listings')
     else:
+        print(form.errors)
         form = CaravanForm(instance=caravan, user=request.user)
     return render(request, 'listings/add_caravan.html', {'form': form})
 
 
 @login_required
 def delete_caravan(request, pk):
+    """
+    Handles deleting a caravan listing.
+    Only the caravan owner can delete their listing.
+    Redirects to the listings page after deletion.
+    """
     caravan = get_object_or_404(Caravan, pk=pk, owner=request.user)
     if request.method == "POST":
         caravan.delete()
@@ -233,6 +255,11 @@ def booking_page_view(request):
 
 @login_required
 def book_caravan(request, caravan_id):
+    """
+    Handles booking a caravan.
+    Checks availability and prevents overlapping bookings.
+    Creates a pending booking request and notifies the owner.
+    """
     caravan = get_object_or_404(Caravan, pk=caravan_id)
 
     if request.method == "POST":
@@ -309,6 +336,11 @@ def book_caravan(request, caravan_id):
 
 @login_required
 def booking_view(request, caravan_id):
+    """
+    Displays bookings for a specific caravan.
+    Shows pending, upcoming, and past bookings.
+    Determines if a booking can be modified.
+    """
     caravan = get_object_or_404(Caravan, id=caravan_id)
     user = request.user
     user_type = user.profile.user_type
@@ -348,6 +380,12 @@ def booking_view(request, caravan_id):
 
 @login_required
 def manage_booking(request, booking_id):
+    """
+    Handles the acceptance or rejection of a booking request.
+    Only allows the caravan owner to manage the booking.
+    Notifies the customer when their booking is accepted or declined.
+    Redirects to the booking view after processing.
+    """
     booking = get_object_or_404(Booking, pk=booking_id)
 
     if not booking.caravan:
@@ -399,6 +437,13 @@ def manage_booking(request, booking_id):
 
 @login_required
 def modify_booking(request, booking_id):
+    """
+    Handles modification of a booking request.
+    Allows the customer to request changes to the booking dates.
+    Saves the new dates and sets the status to pending for owner approval.
+    Notifies the caravan owner about the modification request.
+    Redirects to the booking view after updating.
+    """
     booking = get_object_or_404(Booking, pk=booking_id)
 
     if request.method == "POST":
@@ -436,6 +481,11 @@ def modify_booking(request, booking_id):
 
 @login_required
 def submit_review(request, caravan_id):
+    """
+    Handles review submission for a caravan.
+    Only logged-in customers can leave a review.
+    Notifies the caravan owner about the new review.
+    """
     caravan = get_object_or_404(Caravan, pk=caravan_id)
 
     if request.method == "POST":
@@ -474,6 +524,11 @@ def submit_review(request, caravan_id):
 
 @login_required
 def approve_review(request, review_id):
+    """
+    Handles approval of a review by the caravan owner.
+    Only the owner of the caravan can approve a review.
+    Marks the review as approved and redirects to the listings page.
+    """
     review = get_object_or_404(
         Review, pk=review_id, caravan__owner=request.user
     )
@@ -486,6 +541,12 @@ def approve_review(request, review_id):
 
 @login_required
 def submit_reply(request, review_id):
+    """
+    Handles submission of a reply to a review.
+    Allows the logged-in user to reply to a specific review.
+    Saves the reply and notifies the original reviewer.
+    Returns a JSON response for AJAX requests.
+    """
     review = get_object_or_404(Review, pk=review_id)
     if request.method == "POST":
         form = ReplyForm(request.POST)
@@ -520,6 +581,12 @@ def submit_reply(request, review_id):
 
 @login_required
 def edit_review(request, pk):
+    """
+    Handles editing an existing review.
+    Ensures only the customer who wrote the review can edit it.
+    Saves the updated review and notifies the caravan owner.
+    Returns a JSON response for AJAX requests.
+    """
     review = get_object_or_404(Review, pk=pk, customer=request.user)
     if request.method == "POST":
         form = ReviewForm(request.POST, instance=review)
@@ -549,6 +616,11 @@ def edit_review(request, pk):
 
 
 def delete_review(request, pk):
+    """
+    Handles deletion of a review.
+    Ensures only the customer who wrote the review can delete it.
+    Returns a JSON response indicating success.
+    """
     review = get_object_or_404(Review, pk=pk, customer=request.user)
     review.delete()
     messages.success(request, _("Review deleted successfully!"))
@@ -557,6 +629,12 @@ def delete_review(request, pk):
 
 @login_required
 def edit_reply(request, pk):
+    """
+    Handles editing an existing reply to a review.
+    Ensures only the caravan owner can edit their reply.
+    Saves the updated reply and notifies the original reviewer.
+    Returns a JSON response for AJAX requests.
+    """
     reply = get_object_or_404(
         Reply, pk=pk, review__caravan__owner=request.user
     )
@@ -592,6 +670,11 @@ def edit_reply(request, pk):
 
 @login_required
 def delete_reply(request, pk):
+    """
+    Handles deletion of a reply to a review.
+    Ensures only the caravan owner can delete their reply.
+    Returns a JSON response indicating success.
+    """
     reply = get_object_or_404(
         Reply, pk=pk, review__caravan__owner=request.user
     )

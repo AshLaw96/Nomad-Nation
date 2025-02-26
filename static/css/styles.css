@@ -13,6 +13,7 @@
     --bs-dark: var(--p-text);
   }
 
+/* Full site style section */
 html, body {
     min-height: 100%;
     width: 100%;
@@ -118,6 +119,11 @@ a:hover {
     color: var(--p-accent);
 }
 
+.custom-login-form span {
+    display: block;
+    margin-top: 5px;
+}
+
 #main-title {
     margin-left: 10px;
 }
@@ -132,21 +138,22 @@ a:hover {
     max-width: 100%;
 }
 
+.card {
+    margin-bottom: 30px;
+    background-color: var(--p-text) !important;
+}
+
+.text-white {
+    color: var(--b-colour) !important;
+}
+
+/* Notification styles */
 /* Position the notification icon next to the navbar toggler button */
 #notification-icon {
     position: absolute;
     top: 10px;
     right: 10px;
     z-index: 1000;
-}
-
-.navbar-toggler {
-    position: relative;
-    z-index: 1001;
-}
-
-.nav-item {
-    margin-left: 10px;
 }
 
 /* Flashing animation */
@@ -189,6 +196,16 @@ a:hover {
     color: var(--p-text);
 }
 
+/* Navigation section */
+.navbar-toggler {
+    position: relative;
+    z-index: 1001;
+}
+
+.nav-item {
+    margin-left: 10px;
+}
+
 .navbar, footer {
     background-color: var(--p-colour);
     color: var(--b-colour);
@@ -201,11 +218,6 @@ a:hover {
 .navbar-nav .nav-link.active {
     color: var(--b-colour);
     font-weight: bold;
-}
-
-.custom-login-form span {
-    display: block;
-    margin-top: 5px;
 }
 
 /* Homepage section */
@@ -258,22 +270,9 @@ a:hover {
     z-index: 1;
 }
 
-.card {
-    margin-bottom: 30px;
-    background-color: var(--p-text) !important;
-}
-
-.text-white {
-    color: var(--b-colour) !important;
-}
-
-.about {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    display: inline-block;
-    margin-top: 20px;
+/* Dashboard section */
+.card-header {
+    background-color: var(--p-colour);
 }
 
 .dashboard-style li, .booking-style li {
@@ -285,7 +284,6 @@ a:hover {
 }
 
 /* All form sections */
-
 .log-wrap {
     /* Prevent horizontal scroll */
     max-width: 100%;
@@ -316,6 +314,14 @@ input[type="file"] {
 }
 
 /* Contact section */
+.about {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 20px;
+}
 
 textarea {
     width: 100%;
@@ -323,14 +329,7 @@ textarea {
     box-sizing: border-box;
 }
 
-/* Dashboard section */
-
-.card-header {
-    background-color: var(--p-colour);
-}
-
 /* Listing section */
-
 .carousel-inner {
     display: flex;
     align-items: center;

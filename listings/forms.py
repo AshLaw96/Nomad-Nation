@@ -6,6 +6,11 @@ from .models import Caravan, Amenity, CaravanImage, Booking, Review, Reply
 
 
 class CaravanForm(forms.ModelForm):
+    """
+    Form for creating or updating a Caravan listing.
+    Includes fields for amenities, available dates, and an optional extra
+    amenity.
+    """
     extra_amenity = forms.CharField(
         max_length=50, required=False, help_text=_("Add extra amenities")
     )
@@ -46,6 +51,10 @@ class CaravanForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
+        """
+        Custom initialization to filter the amenities based on the logged-in
+        user.
+        """
         user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
         if user:
@@ -54,6 +63,10 @@ class CaravanForm(forms.ModelForm):
             )
 
     def clean_extra_amenity(self):
+        """
+        Validates the extra amenity field to ensure it does not duplicate
+        an existing amenity for the owner.
+        """
         extra_amenity = self.cleaned_data.get('extra_amenity')
         if self.instance.pk is None:
             return extra_amenity
@@ -71,6 +84,10 @@ class CaravanForm(forms.ModelForm):
         return extra_amenity
 
     def clean_available_dates(self):
+        """
+        Validates the available_dates field to ensure it is a properly
+        formatted JSON list containing valid start and end dates.
+        """
         available_dates = self.cleaned_data.get('available_dates', '[]')
         try:
             dates = json.loads(
@@ -116,12 +133,20 @@ class CaravanForm(forms.ModelForm):
 
 
 class CaravanImageForm(forms.ModelForm):
+    """
+    Form for uploading images associated with a Caravan listing.
+    """
     class Meta:
         model = CaravanImage
         fields = ['image']
 
 
 class BookingForm(forms.ModelForm):
+    """
+    Form for creating a booking request for a Caravan.
+    Ensures that the selected dates are valid and do not overlap with
+    existing bookings.
+    """
     class Meta:
         model = Booking
         fields = [
@@ -134,12 +159,19 @@ class BookingForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
+        """
+        Custom initialization to associate the booking with a specific caravan.
+        """
         self.caravan = kwargs.pop('caravan', None)
         super().__init__(*args, **kwargs)
         if self.caravan:
             self.instance.caravan = self.caravan
 
     def clean(self):
+        """
+        Validates that the booking has a valid caravan and that the
+        requested dates do not overlap with existing accepted bookings.
+        """
         cleaned_data = super().clean()
         start_date = cleaned_data.get('start_date')
         end_date = cleaned_data.get('end_date')
@@ -176,12 +208,18 @@ class BookingForm(forms.ModelForm):
 
 
 class ReviewForm(forms.ModelForm):
+    """
+    Form for submitting a review for a Caravan.
+    """
     class Meta:
         model = Review
         fields = ['rating', 'comment']
 
 
 class ReplyForm(forms.ModelForm):
+    """
+    Form for replying to a review.
+    """
     class Meta:
         model = Reply
         fields = ['reply']

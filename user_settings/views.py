@@ -7,12 +7,20 @@ from django.conf import settings
 from django.utils import translation
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
+import json
 from django.utils.translation import gettext_lazy as _
 from .models import UserProfile, PaymentDetails, PrivacySettings, Notification
 
 
 @login_required
 def account_settings(request):
+    """
+    View for displaying user account settings, including:
+    - User profile information
+    - Payment details
+    - Privacy settings
+    Ensures UserProfile and PrivacySettings exist before rendering.
+    """
     user_profile, created = UserProfile.objects.get_or_create(
         user=request.user
     )
@@ -33,6 +41,13 @@ def account_settings(request):
 
 @login_required
 def edit_personal_details(request):
+    """
+    View to handle editing of personal details such as:
+    - Username
+    - Email
+    - Phone number (stored in UserProfile)
+    Updates user data and redirects to account settings upon success.
+    """
     if request.method == 'POST':
         user = request.user
         user.username = request.POST['username']
@@ -49,6 +64,15 @@ def edit_personal_details(request):
 
 @login_required
 def edit_preferences(request):
+    """
+    View to update user preferences including:
+    - Language
+    - Currency
+    - Appearance mode (light/dark)
+    - Notification preferences
+    Updates the session with language and currency settings and returns
+    JSON response.
+    """
     if request.method == "POST":
         user_profile = UserProfile.objects.get(user=request.user)
         user_profile.language = request.POST.get(
@@ -81,6 +105,13 @@ def edit_preferences(request):
 
 
 def convert_price(request):
+    """
+    View to convert a given amount to the selected currency.
+    The request should include:
+    - amount: The numeric value to be converted
+    - currency: The target currency (defaults to GBP)
+    Returns a JSON response with the converted price.
+    """
     amount = float(request.GET.get('amount', 0))
     currency = request.GET.get('currency', 'GBP')
     converted_price = convert_price(amount, currency)
@@ -90,6 +121,12 @@ def convert_price(request):
 
 @login_required
 def get_notifications(request):
+    """
+    Fetches all unread notifications for the logged-in user.
+    Returns a JSON response containing:
+    - Notification count
+    - List of notifications with message, type, timestamp, and relevant links.
+    """
     user = request.user
     notifications = Notification.objects.filter(user=user, is_read=False)
     notifications_list = []
@@ -139,6 +176,10 @@ def get_notifications(request):
 @login_required
 @require_POST
 def mark_notifications_read(request):
+    """
+    Marks all unread notifications as read for the logged-in user.
+    Returns a JSON response confirming success.
+    """
     Notification.objects.filter(
         user=request.user, is_read=False
     ).update(is_read=True)
@@ -147,8 +188,24 @@ def mark_notifications_read(request):
 
 @login_required
 def edit_payment_details(request):
+    """
+    Updates a user's payment details.
+    - Parses JSON data from request
+    - Validates card last four digits
+    - Saves new payment details for the user
+    Returns a JSON response confirming success or error message.
+    """
     if request.method == 'POST':
-        card_last_four = request.POST.get('card_last_four', '')
+        try:
+            # Parse JSON data
+            data = json.loads(request.body)
+        except json.JSONDecodeError:
+            return JsonResponse({
+                'success': False,
+                'error': _('Invalid JSON format.')
+            })
+
+        card_last_four = data.get('card_last_four', '')
 
         # Ensure card last four digits are exactly 4 numbers
         if not card_last_four.isdigit() or len(card_last_four) != 4:
@@ -160,11 +217,9 @@ def edit_payment_details(request):
         payment_details, created = PaymentDetails.objects.get_or_create(
             user=request.user
         )
-        payment_details.payment_method = request.POST.get('payment_method', '')
+        payment_details.payment_method = data.get('payment_method', '')
         payment_details.card_last_four = card_last_four
-        payment_details.billing_address = request.POST.get(
-            'billing_address', ''
-        )
+        payment_details.billing_address = data.get('billing_address', '')
         payment_details.save()
 
         return JsonResponse({
@@ -178,6 +233,11 @@ def edit_payment_details(request):
 
 @login_required
 def delete_profile(request):
+    """
+    Allows a user to delete their profile.
+    - Upon confirmation (POST request), the user's account is deleted.
+    - Logs out the user and redirects to the homepage.
+    """
     if request.method == "POST":
         user = request.user
         user.delete()

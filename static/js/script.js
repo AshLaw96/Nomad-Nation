@@ -43,6 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Utility functions
+/**
+ * Attempts to parse a JSON string into a JavaScript object.
+ * If the input is empty or invalid, returns an empty array.
+ * Logs an error to the console if parsing fails.
+ *
+ * @param {string} input - The JSON string to be parsed.
+ * @returns {Object|Array} - The parsed JavaScript object, or an empty array if parsing fails.
+ */
 function parseJSON(input) {
   try {
     return input.trim() ? JSON.parse(input) : [];
@@ -53,6 +61,13 @@ function parseJSON(input) {
 }
 
 // Remove duplicate dates
+/**
+ * Removes duplicate date objects from an array of date objects.
+ * Compares both start_date and end_date to identify duplicates.
+ *
+ * @param {Array} dates - An array of date objects with `start_date` and `end_date` properties.
+ * @returns {Array} - A new array with duplicates removed, retaining the first occurrence of each unique date pair.
+ */
 function removeDuplicates(dates) {
   return dates.filter(
     (value, index, self) =>
@@ -65,6 +80,13 @@ function removeDuplicates(dates) {
 }
 
 // Get CSRF token
+/**
+ * Retrieves the value of a specific cookie by name.
+ * This is typically used to get the CSRF token from the document's cookies.
+ *
+ * @param {string} name - The name of the cookie to retrieve.
+ * @returns {string|null} - The value of the cookie, or `null` if the cookie is not found.
+ */
 function getCookie(name) {
   let cookieValue = null;
   if (document.cookie && document.cookie !== "") {
@@ -81,6 +103,13 @@ function getCookie(name) {
 }
 
 // Show in-app success message
+/**
+ * Displays a success message in the app for 5 seconds.
+ * The message is shown in the container with the ID "success-message-container".
+ * After 5 seconds, the message is hidden automatically.
+ *
+ * @param {string} message - The success message to display.
+ */
 function showInAppMessage(message) {
   const messageContainer = document.getElementById("success-message-container");
 
@@ -96,6 +125,11 @@ function showInAppMessage(message) {
 }
 
 // Initialise Select2 for the amenities dropdown
+/**
+ * Initializes the Select2 library on the amenities dropdown.
+ * This provides a styled and enhanced select input with search functionality and placeholder.
+ * If jQuery is not found, an error message is logged to the console.
+ */
 function initialiseSelect2() {
   if (window.jQuery) {
     $(document).ready(function () {
@@ -111,6 +145,13 @@ function initialiseSelect2() {
 }
 
 // Initialise filter toggle and auto submission
+/**
+ * Initializes the functionality for toggling the visibility of filter options
+ * and automatically submitting the filter form when an amenity is selected.
+ *
+ * 1. Shows or hides the filter container when the "toggle-filters" button is clicked.
+ * 2. Submits the filter form automatically when the amenities dropdown value is changed.
+ */
 function initialiseFilterToggle() {
   const toggleFiltersBtn = document.getElementById("toggle-filters");
   const filterForm = document.getElementById("filter-form");
@@ -137,6 +178,17 @@ function initialiseFilterToggle() {
 }
 
 // Initialise calendar on Add Caravan page
+/**
+ * Initializes the page for adding a new caravan, including:
+ * 1. **Calendar functionality** using FullCalendar to manage available dates (select, resize, drag events).
+ * 2. **Multiple amenities** input functionality, allowing users to dynamically add new amenities to the form.
+ * 3. **Form submission** to correctly submit newly added amenities as unique form fields.
+ *
+ * Features:
+ * - Users can select, resize, and drag events on the calendar to define availability.
+ * - Events on the calendar are stored in a hidden input field as JSON.
+ * - The form is dynamically updated to handle added amenities before submission.
+ */
 function initialiseAddCaravan() {
   const calendarEl = document.getElementById("calendar");
   const hiddenInputEl = document.getElementById("available_dates");
@@ -248,6 +300,19 @@ function initialiseAddCaravan() {
 }
 
 // Initialise calendar on Edit Caravan page
+/**
+ * This function initializes the Edit Caravan page with:
+ * 1. **Calendar functionality** to manage availability dates using FullCalendar.
+ * 2. **Multiple amenities** input functionality, allowing users to dynamically add new amenities to the form.
+ * 3. **Event handling** for selecting and removing available dates from the calendar.
+ * 4. **Modal form functionality** for pre-populating data (like title, description, etc.) when editing a caravan.
+ *
+ * Features:
+ * - Users can select or deselect date ranges on the calendar, with dates being stored in a hidden input field as JSON.
+ * - When submitting the form, dynamically added amenities are handled and correctly submitted with unique names.
+ * - An edit modal is populated with the caravan's existing details (like title, description, and price) when opened.
+ * - The `amenities` field in the modal handles multiple selections, allowing users to toggle amenities.
+ */
 function initialiseEditCaravan() {
   const calendarEl = document.getElementById("calendar");
   const hiddenInputEl = document.getElementById("available_dates");
@@ -370,6 +435,17 @@ function initialiseEditCaravan() {
 }
 
 // Initialise carousel
+/**
+ * Initialises all carousel components on the page using Bootstrap's Carousel functionality.
+ *
+ * This function looks for all elements with the class `.carousel` and applies the Bootstrap
+ * `Carousel` component to them. It disables the automatic sliding of items by setting
+ * `interval` to `false`, meaning the carousel will not move automatically.
+ *
+ * It can be useful for pages with multiple carousels that need to be initialised.
+ *
+ * @function
+ */
 function initialiseCarousel() {
   document.querySelectorAll(".carousel").forEach(function (carousel) {
     new bootstrap.Carousel(carousel, {
@@ -379,6 +455,17 @@ function initialiseCarousel() {
 }
 
 // Initialise image modal
+/**
+ * Initializes the image modal to display the selected carousel items when triggered.
+ *
+ * This function sets up an event listener for showing the image modal. When the modal is
+ * triggered, it fetches the corresponding carousel (based on the data attribute of the button
+ * that triggered the modal). It clones each carousel item and populates the modal's carousel
+ * with the items, ensuring the first item is marked as active. It also sets the modal's title
+ * to the title of the associated caravan.
+ *
+ * @function
+ */
 function initialiseImageModal() {
   const imageModal = document.getElementById("imageModal");
   const modalCarouselInner = document.getElementById("modalCarouselInner");
@@ -425,6 +512,17 @@ function initialiseImageModal() {
 }
 
 // Initialise favourite icons
+/**
+ * Initialises the favourite icon functionality for each carousel item.
+ *
+ * This function sets up event listeners on all elements with the `favourite-icon` class. When
+ * a user clicks on an icon, the function toggles the "favourite" state of the icon (using the
+ * `favourite` class) and sends an update request to the server to mark the item as a favourite
+ * or not. If the server request fails, the favourite state is reverted on the client side to
+ * ensure the UI remains consistent.
+ *
+ * @function
+ */
 function initialiseFavouriteIcons() {
   const favouriteIcons = document.querySelectorAll(".favourite-icon");
   favouriteIcons.forEach((icon) => {
@@ -463,6 +561,16 @@ function initialiseFavouriteIcons() {
 }
 
 // Initialise request booking form
+/**
+ * Initialises the request booking form by displaying the booking card if a "Book Now" action
+ * was previously triggered, and setting up a reset action for the booking form on submission.
+ *
+ * This function checks the local storage for a flag indicating whether the "Book Now" button
+ * was clicked, and if so, it displays the booking card. Additionally, it listens for the
+ * submission of the booking form and resets the form after a short delay.
+ *
+ * @function
+ */
 function initialiseRequestBooking() {
   const requestBookingCard = document.getElementById("requestBookingCard");
   if (requestBookingCard) {
@@ -484,6 +592,17 @@ function initialiseRequestBooking() {
 }
 
 // Initialise booking button
+/**
+ * Initialises the "Book Now" buttons by attaching click event listeners to them.
+ * When a "Book Now" button is clicked, it stores the "Book Now" action flag and
+ * the caravan's ID in localStorage.
+ *
+ * This function is used to track when a user clicks the "Book Now" button,
+ * saving the necessary data (such as the caravan's ID) in localStorage for later use
+ * (for example, to display the booking form on a different page or after a page reload).
+ *
+ * @function
+ */
 function initialiseBookingButton() {
   const bookNowBtn = document.querySelectorAll(".book-now-btn");
   bookNowBtn.forEach((button) => {
@@ -494,7 +613,18 @@ function initialiseBookingButton() {
   });
 }
 
-// Initialise review modal
+// Initialise submit review modal
+/**
+ * Initialises the review modal by attaching event listeners to "Leave Review" buttons.
+ * When a button is clicked, the corresponding review modal for the selected caravan is shown,
+ * allowing the user to enter a rating and comment.
+ *
+ * This function is used to display a modal for users to submit their reviews for a specific caravan.
+ * The correct modal is identified by the caravan's ID, and the modal inputs (rating and comment) are cleared
+ * before the modal is displayed.
+ *
+ * @function
+ */
 function initialiseReviewModal() {
   const reviewButtons = document.querySelectorAll(".leave-review-btn");
   reviewButtons.forEach((button) => {
@@ -512,6 +642,17 @@ function initialiseReviewModal() {
 }
 
 // Initialise edit review modal
+/**
+ * Initialises the edit review modal by attaching event listeners to "Edit Review" buttons.
+ * When a button is clicked, the corresponding review modal is shown with pre-filled rating
+ * and comment values, allowing the user to edit their review.
+ *
+ * This function is used to pre-populate the review modal with the current rating and comment
+ * of a specific review. The correct modal is identified by the review ID, and the modal inputs
+ * (rating and comment) are set to the values associated with the review.
+ *
+ * @function
+ */
 function initialiseEditReviewModal() {
   const editReviewButtons = document.querySelectorAll(".edit-review-btn");
   editReviewButtons.forEach((button) => {
@@ -531,6 +672,17 @@ function initialiseEditReviewModal() {
 }
 
 // Initialise reply to review modal
+/**
+ * Initialises the reply to review modal by attaching event listeners to "Reply" buttons.
+ * When a button is clicked, the corresponding reply modal is shown with an empty textarea
+ * allowing the user to submit a reply to the review.
+ *
+ * This function is used to open a modal where the user can reply to a specific review.
+ * The modal is identified using the review ID, and the reply textarea is cleared
+ * to allow the user to enter a new reply.
+ *
+ * @function
+ */
 function initialiseReplyToReviewModal() {
   const replyButtons = document.querySelectorAll(".reply-btn");
   replyButtons.forEach((button) => {
@@ -544,6 +696,17 @@ function initialiseReplyToReviewModal() {
 }
 
 // Initialise edit reply modal
+/**
+ * Initialises the edit reply modal by attaching event listeners to "Edit Reply" buttons.
+ * When an "Edit Reply" button is clicked, the corresponding reply modal is shown,
+ * and the existing reply text is populated into the textarea for editing.
+ *
+ * This function is used to open the modal for editing a specific reply.
+ * The modal is identified using the reply ID, and the existing reply text is
+ * loaded into the textarea to allow the user to modify it.
+ *
+ * @function
+ */
 function initialiseEditReplyModal() {
   const editReplyButtons = document.querySelectorAll(".edit-reply-btn");
   editReplyButtons.forEach((button) => {
@@ -558,6 +721,17 @@ function initialiseEditReplyModal() {
 }
 
 // Initialise delete review buttons
+/**
+ * Initialises delete buttons for reviews and replies by attaching event listeners.
+ * When a "Delete" button is clicked, the function prevents the default behavior
+ * and calls the `handleDelete` function, passing the URL to perform the delete operation.
+ *
+ * This function is used to handle the deletion of reviews and replies. It attaches
+ * event listeners to all "Delete" buttons for both reviews and replies, triggering
+ * the deletion process when clicked.
+ *
+ * @function
+ */
 function initialiseDeleteReviewAndReply() {
   document.querySelectorAll(".delete-review-btn").forEach((button) => {
     button.addEventListener("click", function (event) {
@@ -575,6 +749,20 @@ function initialiseDeleteReviewAndReply() {
 }
 
 // Handle delete requests
+/**
+ * Handles the delete request for reviews or replies by sending a POST request
+ * to the provided URL and processing the server's response.
+ *
+ * This function sends a DELETE request to the server, using the Fetch API, and
+ * expects a JSON response. If the deletion is successful, the page is reloaded.
+ * If an error occurs during the deletion process, an error message is shown in the app.
+ *
+ * @param {string} url - The URL where the delete request is sent. Typically,
+ *                       this will be a server endpoint for deleting a review or reply.
+ *
+ * @returns {void} - This function performs actions (sending a request and updating UI),
+ *                   but does not return a value.
+ */
 function handleDelete(url) {
   fetch(url, {
     method: "POST",
@@ -598,6 +786,20 @@ function handleDelete(url) {
 }
 
 // Handle saving currency preference
+/**
+ * Initialises the functionality for saving the user's currency preference.
+ *
+ * This function listens for a click event on the "Save Changes" button, then
+ * sends the form data (including the currency preference) to the server using
+ * the Fetch API. If the server responds with a success status, the modal
+ * is closed, prices on the page are updated according to the selected currency,
+ * and the page is reloaded to reflect the changes. If there is an error,
+ * an error message is shown to the user.
+ *
+ * @returns {void} - This function does not return any value but performs UI
+ *                   updates, including closing the modal, updating prices,
+ *                   and reloading the page upon success.
+ */
 function initialiseCurrencyChange() {
   const saveBtn = document.getElementById("save-changes-btn");
   if (!saveBtn) return;
@@ -648,6 +850,19 @@ function initialiseCurrencyChange() {
 }
 
 // Function to update prices dynamically
+/**
+ * Updates the displayed prices on the page according to the selected currency.
+ *
+ * This function retrieves the original price for each element with the class `.price`,
+ * then sends a request to the server to convert the price into the new currency.
+ * The converted price is displayed in place of the original price, formatted
+ * with the new currency symbol or code.
+ *
+ * @param {string} newCurrency - The currency to which the prices should be converted.
+ *                               This could be a currency code like "USD", "EUR", etc.
+ * @returns {void} - This function doesn't return any value, but it updates the
+ *                   displayed price text content for each element on the page.
+ */
 function updatePrices(newCurrency) {
   document.querySelectorAll(".price").forEach((priceElement) => {
     const originalAmount = priceElement.dataset.amount;
@@ -667,6 +882,18 @@ function updatePrices(newCurrency) {
 }
 
 // Ensure prices update immediately when loading the page
+/**
+ * Updates the displayed prices on the page immediately after the page loads
+ * according to the user's saved currency preference.
+ *
+ * This function retrieves the user's currency from a `data-user-currency`
+ * attribute stored in the `body` element. If a currency is available, it calls
+ * the `updatePrices` function to convert all prices on the page to the user's
+ * preferred currency.
+ *
+ * @returns {void} - This function doesn't return a value, but it triggers
+ *                   the dynamic update of prices based on the user's currency.
+ */
 function updatePricesOnLoad() {
   // Store user currency in body dataset in the template
   const userCurrency = document.body.dataset.userCurrency;
@@ -676,6 +903,17 @@ function updatePricesOnLoad() {
 }
 
 // Function to handle appearance change
+/**
+ * Initialises the appearance change functionality, allowing users to select
+ * a theme (light or dark) and save their preference.
+ *
+ * When the user clicks the "save changes" button, the selected theme is
+ * applied to the page and stored in a cookie. The function also sends the
+ * preference data to the server, updating the user's settings.
+ *
+ * @returns {void} - This function doesn't return any value but triggers
+ *                   the appearance change process on the page.
+ */
 function initialiseAppearanceChange() {
   const appearanceSelect = document.getElementById("appearance");
   const saveBtn = document.getElementById("save-changes-btn");
@@ -741,6 +979,17 @@ function initialiseAppearanceChange() {
 }
 
 // Apply the theme from the cookie on page load if not the homepage
+/**
+ * Applies the theme stored in the cookie to the page on load,
+ * excluding the homepage and modals from the theme change.
+ *
+ * This function checks for a `theme` cookie and applies the corresponding
+ * theme (light or dark) to the `body` element. It also ensures that modals
+ * are not affected by the theme change.
+ *
+ * @returns {void} - This function doesn't return any value, but it updates
+ *                   the appearance of the page based on the stored theme.
+ */
 function applyThemeFromCookie() {
   const theme = getCookie("theme");
   const isHomepage = window.location.pathname === "/";
@@ -758,6 +1007,16 @@ function applyThemeFromCookie() {
 }
 
 // Function to check for new notifications
+/**
+ * Checks for new notifications and updates the notification count and icon.
+ *
+ * This function fetches the user's notifications from the server and updates
+ * the notification count and icon on the page. If there are new notifications,
+ * the count is displayed, and the icon is animated to draw attention.
+ *
+ * @returns {void} - This function doesn't return any value, but it updates
+ *                   the notification count and icon based on the user's notifications.
+ */
 function checkNotifications() {
   if (!isAuthenticated) {
     // Skip fetching notifications if the user is not authenticated
@@ -825,6 +1084,16 @@ function checkNotifications() {
 }
 
 // Function to mark notifications as read
+/**
+ * Marks all notifications as read by sending a POST request to the server.
+ *
+ * This function sends a POST request to the server to mark all notifications
+ * as read for the current user. It updates the notification count and icon
+ * on the page, hiding the count and removing the animation from the icon.
+ *
+ * @returns {void} - This function doesn't return any value, but it marks
+ *                   all notifications as read and updates the UI accordingly.
+ */
 function markNotificationsAsRead() {
   fetch("/user_settings/mark_notifications_read/", {
     method: "POST",
@@ -847,6 +1116,20 @@ function markNotificationsAsRead() {
 }
 
 // Function to handle saving payment details
+/**
+ * Initializes the payment details update process.
+ *
+ * This function sets up an event listener for the submit button in the payment
+ * details update modal. When the button is clicked, it prevents the default
+ * form submission, collects the form data, and sends it via a POST request to
+ * update the payment details. If the update is successful, it hides the modal,
+ * updates the displayed payment method information, and shows a success message.
+ * In case of failure, it displays an error message.
+ *
+ * @returns {void} - This function does not return any value. It performs DOM
+ *                   updates by sending a request to update payment details,
+ *                   handling the response, and updating the UI.
+ */
 function initialisePaymentDetailsUpdate() {
   const saveBtn = document.querySelector(
     "#editPaymentDetailsModal button[type='submit']"
@@ -901,6 +1184,18 @@ function initialisePaymentDetailsUpdate() {
 }
 
 // Function to update payment details on the page dynamically
+/**
+ * Dynamically updates the payment details on the page.
+ *
+ * This function updates the payment details container with the provided payment method
+ * and the last four digits of the card. It replaces the existing content inside the
+ * payment details container and adds a button that opens the modal for editing payment details.
+ *
+ * @param {string} paymentMethod - The payment method (e.g., "Credit Card", "PayPal").
+ * @param {string} cardLastFour - The last four digits of the card being used for payment.
+ *
+ * @returns {void} - This function does not return any value. It directly updates the DOM.
+ */
 function updatePaymentDetails(paymentMethod, cardLastFour) {
   const paymentDetailsContainer = document.querySelector(
     ".card-body.text-white"
