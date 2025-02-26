@@ -627,16 +627,44 @@ function initialiseBookingButton() {
  */
 function initialiseReviewModal() {
   const reviewButtons = document.querySelectorAll(".leave-review-btn");
+
   reviewButtons.forEach((button) => {
     button.addEventListener("click", function () {
       const caravanId = this.getAttribute("data-caravan-id");
 
-      const modal = document.querySelector(`#submitReviewModal${caravanId}`);
-      const ratingInput = modal.querySelector(`#rating`);
-      const commentTextarea = modal.querySelector(`#comment`);
+      // Find the correct modal for the caravan
+      const modal = document.getElementById(`submitReviewModal${caravanId}`);
+      if (!modal) {
+        console.error(
+          `Modal with ID #submitReviewModal${caravanId} not found.`
+        );
+        return;
+      }
 
+      console.log(`Found modal: #submitReviewModal${caravanId}`);
+
+      // Select input fields
+      const ratingInput = modal.querySelector(`#rating-${caravanId}`);
+      const commentTextarea = modal.querySelector(`#comment-${caravanId}`);
+
+      if (!ratingInput || !commentTextarea) {
+        console.error("Rating input or comment textarea not found.");
+        return;
+      }
+
+      // Clear previous values
       ratingInput.value = "";
       commentTextarea.value = "";
+
+      console.log(`Opening modal: #submitReviewModal${caravanId}`);
+
+      // Ensure Bootstrap Modal is correctly initialized
+      try {
+        const bootstrapModal = new bootstrap.Modal(modal);
+        bootstrapModal.show();
+      } catch (error) {
+        console.error("Error initializing Bootstrap modal:", error);
+      }
     });
   });
 }

@@ -257,32 +257,41 @@
             </div>
             {% if user_type == "customer" %}
             <div class="text-center">
-                <button type="button" class="btn btn-primary mt-2 btn-styles leave-review-btn" data-bs-toggle="modal" data-bs-target="#submitReviewModal{{ caravan.pk }}" data-caravan-id="{{ caravan.pk }}">
+                <button type="button" class="btn btn-primary mt-2 btn-styles leave-review-btn" 
+                data-bs-toggle="modal" data-bs-target="#submitReviewModal{{ caravan.pk }}" 
+                data-caravan-id="{{ caravan.pk }}">
                     {% trans "Leave a Review" %}
                 </button>
             </div>
             {% endif %}
             <!-- Submit Review Modal -->
-            <div class="modal fade" id="submitReviewModal{{ caravan.pk }}" tabindex="-1" aria-labelledby="submitReviewModalLabel{{ caravan.pk }}" aria-hidden="true">
-                <div class=" modal-dialog-centered modal-xl">
+            <div class="modal fade" id="submitReviewModal{{ caravan.pk }}" tabindex="-1" 
+            aria-labelledby="submitReviewModalLabel{{ caravan.pk }}" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="submitReviewModalLabel{{ caravan.pk }}">{% trans "Leave a Review" %}</h5>
+                            <h5 class="modal-title" id="submitReviewModalLabel{{ caravan.pk }}">
+                                {% trans "Leave a Review" %}
+                            </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form method="post" action="{% url 'submit_review' caravan.pk %}">
                                 {% csrf_token %}
                                 <div class="mb-2 modal-input-spacing">
-                                    <label for="rating" class="form-label">{% trans "Rating" %}</label>
-                                    <input type="number" class="form-control" id="rating" name="rating" min="1" max="5" required>
+                                    <label for="rating-{{ caravan.pk }}" class="form-label">{% trans "Rating" %}</label>
+                                    <input type="number" class="form-control rating-input" id="rating-{{ caravan.pk }}" 
+                                            name="rating" min="1" max="5" required>
                                 </div>
                                 <div class="mb-2 modal-input-spacing">
-                                    <label for="comment" class="form-label">{% trans "Comment" %}</label>
-                                    <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+                                    <label for="comment-{{ caravan.pk }}" class="form-label">{% trans "Comment" %}</label>
+                                    <textarea class="form-control comment-textarea" id="comment-{{ caravan.pk }}" 
+                                                name="comment" rows="3" required></textarea>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary mb-2 btn-styles">{% trans "Submit Review" %}</button>
+                                    <button type="submit" class="btn btn-primary mb-2 btn-styles">
+                                        {% trans "Submit Review" %}
+                                    </button>
                                 </div>
                             </form>
                         </div>
