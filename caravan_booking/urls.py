@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.urls import path, include
 from django.contrib import admin
+from .views import handler404, handler500 # noqa
 
 
 urlpatterns = [
@@ -27,3 +28,6 @@ urlpatterns = [
     path('user_settings/', include('user_settings.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
 ]
+
+handler404 = 'caravan_booking.views.handler404' # noqa
+handler500 = 'caravan_booking.views.handler500' # noqa
