@@ -102,8 +102,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'caravan_booking.wsgi.application'
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',  # Default
-    'allauth.account.auth_backends.AuthenticationBackend',  # Allauth
+    # Default
+    'django.contrib.auth.backends.ModelBackend',
+    # Allauth
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 # Database
@@ -212,3 +214,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+X_FRAME_OPTIONS = "ALLOWALL"
+
+CSP_FRAME_ANCESTORS = ["*"]  # Allows embedding on any site
