@@ -98,7 +98,9 @@ class DashboardViewTests(TestCase):
         self.assertIn(self.review, response.context["reviews"])
 
     def test_redirect_if_no_profile(self):
-        """Test that users without a profile are logged out"""
+        """
+        Test that users without a profile are logged out
+        """
         User.objects.create_user(username="noprof", password="testpass")
         self.client.login(username="noprof", password="testpass")
         response = self.client.get(reverse("dashboard"))

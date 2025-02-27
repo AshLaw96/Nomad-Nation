@@ -214,7 +214,3 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-X_FRAME_OPTIONS = "ALLOWALL"
-
-CSP_FRAME_ANCESTORS = ["*"]  # Allows embedding on any site

@@ -30,6 +30,9 @@ def listings_view(request):
 
     # Search Functionality
     search_query = request.GET.get('search', '')
+    # If a search query is provided, filter the 'caravans' queryset to include
+    # only those records where the title, description, or location
+    # contains the search term (case-insensitive).
     if search_query:
         caravans = caravans.filter(
             Q(title__icontains=search_query) |
@@ -188,7 +191,6 @@ def edit_caravan(request, pk):
                 CaravanImage.objects.create(caravan=caravan, image=image)
             return redirect('listings')
     else:
-        print(form.errors)
         form = CaravanForm(instance=caravan, user=request.user)
     return render(request, 'listings/add_caravan.html', {'form': form})
 
