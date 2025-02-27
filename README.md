@@ -8,7 +8,7 @@ The Caravan-themed website/app will allow users to explore, book, and manage car
 
 When a user first opens the app, they will land on the home page, where they will see a brief overview of the app's purpose and features. This introduction will include links to direct new users to the registration page and existing users to the login page. At the top of the home page, there will be a navigation icon that users can click to open a navigation bar with links to other sections of the app.
 
-Once a user has either created a new account or logged into an existing one, they will be redirected to the dashboard. The dashboard layout will vary depending on whether the user is a customer or an owner but will follow the same overall structure, with tailored content for each role. After logging in, a secondary navigation bar will appear, providing quick access to tabs such as Account, Bookings, Listings, and Notifications. The dashboard's main section will feature various content areas, each accompanied by a slideshow of images and links to corresponding pages. A search bar will also be available, allowing users to quickly find specific actions, such as editing their personal details, contacting another user, or booking a caravan stay.
+Once a user has either created a new account or logged into an existing one, they will be redirected to the dashboard. The dashboard layout will vary depending on whether the user is a customer or an owner but will follow the same overall structure, with tailored content for each role. After logging in, a secondary navigation bar will appear, providing quick access to tabs such as Account, Bookings and Listings. The dashboard's main section will feature various content areas, each accompanied by a slideshow of images and links to corresponding pages. A search bar will also be available, allowing users to quickly find specific actions, such as editing their personal details, contacting another user, or booking a caravan stay.
 
 On the Account page, users will be able to update their personal information, modify payment details, change preferences, or review the app’s privacy and data management policies alongside other information. Customers can then proceed to the Caravan Listings page, where they will be able to browse all available caravans. Each listing will include a detailed description and a gallery of images that users can scroll through. To help customers narrow their search, filters will be available, allowing them to focus on specific criteria, such as the caravan’s size, location, or available amenities. Additionally, a search bar will enable customers to input a specific caravan ID to be taken directly to that caravan’s details.
 
@@ -18,15 +18,15 @@ When a customer decides to book a caravan, they can click the "Book Now" button 
 
 On the owner’s side, the Bookings page will display all pending booking requests, along with the details submitted by customers. Owners will be able to review these details, add any further information or questions, and choose to either accept or decline the booking request. Once a decision has been made, a message will be sent to the customer notifying them of the outcome.
 
-All notifications and messages, such as booking updates or admin communications, will be sent to the Notifications page. Users can also choose to enable email notifications in their account preferences, in which case they will receive email updates for important events alongside in-app notifications.
+All notifications, such as booking updates or reviews, will be sent to the Notifications modal. users can stop notifications in their account preferences, in which case they will have to go to each section to view them or re-enable the notifications to allow them to appear again.
 
 The main navigation bar will include a Contact tab accessible to all users. This page will feature a contact form where users can input their personal details and submit any questions or inquiries. The contact form will serve multiple purposes, such as owners reaching out to the admin, customers contacting owners, or even guest users requesting additional information about the application. This ensures streamlined communication for all users of the app.
 
-Additionally, the application will include a 404 error page to handle instances where users attempt to access a non-existent or broken link. The error page will display a clear message explaining that an error has occurred and provide options to either navigate back to a specific page or wait to be automatically redirected to the homepage or dashboard. Consistency will be maintained across all pages in terms of structure and design, ensuring users can easily navigate the app without confusion.
+Additionally, the application will include a 404 error page to handle instances where users attempt to access a non-existent or broken link. The error page will display a clear message explaining that an error has occurred and provide options to either navigate back to a specific page or navigate to the homepage. Consistency will be maintained across all pages in terms of structure and design, ensuring users can easily navigate the app without confusion. Also similar to the 404 page will be a 500 server error page.
 
 ![screenshot](documentation/mockup.png)
 
-source: [Nomad-Nation amiresponsive](https://ui.dev/amiresponsive?url=https://nomad-nation-23b17dd0a6b5.herokuapp.com)
+source: [Nomad-Nation amiresponsive](https://ui.dev/amiresponsive?url=https://nomad-nation-23b17dd0a6b5.herokuapp.com/)
 
 ## UX
 
@@ -90,7 +90,7 @@ Future Goals:
 ##### Information Architecture
 
 - **Navigation Menu**:
-  - Links to Home/Dashboard, Login/Logout, Registration, Notification, Account, Contact, Caravan listing, Booking.
+  - Links to Home/Dashboard, Login/Logout, Registration, Account, Contact, Caravan listing, Booking.
 - **Hierarchy**:
   - Home / Landing page - when a user first arrives on the website will contain a simple navigation bar with links to login or register and a contact page. There will also be a overview of what the app does.
   - Login / Logout page - allow the user to log in to their account where they will then be redirected to their dashboard or if already logged in it will allow them to log out where they will be redirected to the home page.
@@ -152,7 +152,8 @@ Future Goals:
   - Owners are notified of booking requests or customer messages.
 - Secure payment processing for bookings with flexible refund and cancellation policies.
 - Error Management
-  - 404 error page is included with navigation links and automatic redirection.
+  - 404 error page is included with navigation links.
+  - 500 error page is included with navigation links.
 
 #### 4. Skeleton Plane
 
@@ -274,13 +275,11 @@ I've used [Moqups](https://app.moqups.com/dDQLGW13n29lu58kkqxLxu4EKujHh6qx/edit/
 | Caravan reviews        | Customers can leave reviews and ratings for their previous stays, while owners can respond to reviews to build stronger relationships with customers and attract more potential renters.                                                                                                | **customer review:** ![screenshot](documentation/features/review.png) **owner reply:** ![screenshot](documentation/features/reply.png)                                                                                |
 | Social media links     | The footer section includes links to various social media platforms.                                                                                                                                                                                                                    | ![screenshot](documentation/features/socials.png)                                                                                                                                                                     |
 | Favourites             | Customers can add caravans to their favourites, allowing them to revisit their favourite options later.                                                                                                                                                                                 | ![screenshot](documentation/features/favourite.png)                                                                                                                                                                   |
-| Notifications          | Customers and owners can receive both in-app notifications based on their preferences for events like booking requests, reviews, and admin messages. In-app notifications will be deleted automatically when viewed.                                                                    | ![screenshot](documentation/features/notification.png)                                                                                                                                                                |
+| Notifications          | Customers and owners can receive in-app notifications based on their preferences for events like booking requests, reviews, and messages. In-app notifications will be deleted automatically when viewed.                                                                               | ![screenshot](documentation/features/notification.png)                                                                                                                                                                |
 | Heroku Deployment      | The site is fully deployed to Heroku, making it accessible online and easy to manage.                                                                                                                                                                                                   | ![screenshot](documentation/features/heroku.png)                                                                                                                                                                      |
-| 404                    | The 404 error page will indicate when a user has navigated to a page that doesn't exist, replacing the default Heroku 404 page with one that ties into the site's look and feel.                                                                                                        | ![screenshot](documentation/feature)                                                                                                                                                                                  |
-
-# Needs adding
-
-| admin features | Site administrating page allowing superusers to manage the site | ![screenshot](documentation/features/admin.png) |
+| 404                    | The 404 error page will indicate when a user has navigated to a page that doesn't exist, replacing the default Heroku 404 page with one that ties into the site's look and feel.                                                                                                        | ![screenshot](documentation/features/404-page.png)                                                                                                                                                                    |
+| 500                    | The 500 error page will indicate when a server error has occurred, replacing the default Heroku 500 page with one that ties into the site's look and feel.                                                                                                                              | ![screenshot](documentation/features/500-page.png)                                                                                                                                                                    |
+| admin features         | Site administrating page allowing superusers to manage the site                                                                                                                                                                                                                         | ![screenshot](documentation/features/admin.png)                                                                                                                                                                       |
 
 ### Future Features
 
@@ -316,17 +315,13 @@ I've used [Moqups](https://app.moqups.com/dDQLGW13n29lu58kkqxLxu4EKujHh6qx/edit/
 | [![badge](https://img.shields.io/badge/Python-grey?logo=python&logoColor=3776AB)](https://www.python.org)                     | Back-end programming language.                                              |
 | [![badge](https://img.shields.io/badge/Heroku-grey?logo=heroku&logoColor=430098)](https://www.heroku.com)                     | Hosting the deployed back-end site.                                         |
 | [![badge](https://img.shields.io/badge/Bootstrap-grey?logo=bootstrap&logoColor=7952B3)](https://getbootstrap.com)             | Front-end CSS framework for modern responsiveness and pre-built components. |
-
-⚠️ potential remove ⚠️
-| [![badge](https://img.shields.io/badge/Jest-grey?logo=jest&logoColor=c21325)](https://jestjs.io) | Automated JavaScript testing. |
-⚠️ end ⚠️
-| [![badge](https://img.shields.io/badge/Django-grey?logo=django&logoColor=092E20)](https://www.djangoproject.com) | Python framework for the site. |
-| [![badge](https://img.shields.io/badge/PostgreSQL-grey?logo=postgresql&logoColor=4169E1)](https://www.postgresql.org) | Relational database management. |
-| [![badge](https://img.shields.io/badge/Cloudinary-grey?logo=cloudinary&logoColor=3448C5)](https://cloudinary.com) | Online static file storage. |
-| [![badge](https://img.shields.io/badge/WhiteNoise-grey?logo=python&logoColor=FFFFFF)](https://whitenoise.readthedocs.io) | Serving static files with Heroku. |
-| [![badge](https://img.shields.io/badge/Font_Awesome-grey?logo=fontawesome&logoColor=528DD7)](https://fontawesome.com) | Icons. |
-| [![badge](https://img.shields.io/badge/ChatGPT-grey?logo=openai&logoColor=75A99C)](https://chat.openai.com) | Help debug, troubleshoot, and explain things. |
-| [![badge](https://img.shields.io/badge/Mermaid-grey?logo=mermaid&logoColor=FF3670)](https://mermaid.live) | Generate an interactive diagram for the data/schema. |
+| [![badge](https://img.shields.io/badge/Django-grey?logo=django&logoColor=092E20)](https://www.djangoproject.com)              | Python framework for the site.                                              |
+| [![badge](https://img.shields.io/badge/PostgreSQL-grey?logo=postgresql&logoColor=4169E1)](https://www.postgresql.org)         | Relational database management.                                             |
+| [![badge](https://img.shields.io/badge/Cloudinary-grey?logo=cloudinary&logoColor=3448C5)](https://cloudinary.com)             | Online static file storage.                                                 |
+| [![badge](https://img.shields.io/badge/WhiteNoise-grey?logo=python&logoColor=FFFFFF)](https://whitenoise.readthedocs.io)      | Serving static files with Heroku.                                           |
+| [![badge](https://img.shields.io/badge/Font_Awesome-grey?logo=fontawesome&logoColor=528DD7)](https://fontawesome.com)         | Icons.                                                                      |
+| [![badge](https://img.shields.io/badge/ChatGPT-grey?logo=openai&logoColor=75A99C)](https://chat.openai.com)                   | Help debug, troubleshoot, and explain things.                               |
+| [![badge](https://img.shields.io/badge/Mermaid-grey?logo=mermaid&logoColor=FF3670)](https://mermaid.live)                     | Generate an interactive diagram for the data/schema.                        |
 
 ## Database Design
 
@@ -464,16 +459,16 @@ source: [medium.com](https://medium.com/@yathomasi1/1-using-django-extensions-to
 
 [GitHub Projects](https://www.github.com/AshLaw96/Nomad-Nation/projects) served as an Agile tool for this project. Through it, EPICs, User Stories, issues/bugs, and Milestone tasks were planned, then subsequently tracked on a regular basis using the Kanban project board.
 
-![screenshot](documentation/gh-projects.png)
+![screenshot](documentation/board.png)
 
 ### GitHub Issues
 
 [GitHub Issues](https://www.github.com/AshLaw96/Nomad-Nation/issues) served as an another Agile tool. There, I managed my User Stories and Milestone tasks, and tracked any issues/bugs.
 
-| Link                                                                                                                                                                       | Screenshot                                        |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
-| [![GitHub issues](https://img.shields.io/github/issues/AshLaw96/Nomad-Nation)](https://www.github.com/AshLaw96/Nomad-Nation/issues)                                        | ![screenshot](documentation/gh-issues-open.png)   |
-| [![GitHub closed issues](https://img.shields.io/github/issues-closed/AshLaw96/Nomad-Nation)](https://www.github.com/AshLaw96/Nomad-Nation/issues?q=is%3Aissue+is%3Aclosed) | ![screenshot](documentation/gh-issues-closed.png) |
+| Link                                                                                                                                                                       | Screenshot                                     |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| [![GitHub issues](https://img.shields.io/github/issues/AshLaw96/Nomad-Nation)](https://www.github.com/AshLaw96/Nomad-Nation/issues)                                        | ![screenshot](documentation/open-issues.png)   |
+| [![GitHub closed issues](https://img.shields.io/github/issues-closed/AshLaw96/Nomad-Nation)](https://www.github.com/AshLaw96/Nomad-Nation/issues?q=is%3Aissue+is%3Aclosed) | ![screenshot](documentation/closed-issues.png) |
 
 ### MoSCoW Prioritization
 
@@ -602,6 +597,96 @@ MIDDLEWARE = [
 ]
 ```
 
+### Gmail
+
+This project uses [Gmail](https://mail.google.com) to handle sending emails to users for purchase order confirmations.
+
+Once you've created a Gmail (Google) account and logged-in, follow these series of steps to get your project connected.
+
+- Click on the **Account Settings** (cog icon) in the top-right corner of Gmail.
+- Click on the **Accounts and Import** tab.
+- Within the section called "Change account settings", click on the link for **Other Google Account settings**.
+- From this new page, select **Security** on the left.
+- Select **2-Step Verification** to turn it on. (_verify your password and account_)
+- Once verified, select **Turn On** for 2FA.
+- Navigate back to the **Security** page, and you'll see a new option called **App passwords** (_search for it at the top, if not_).
+- This might prompt you once again to confirm your password and account.
+- Select **Mail** for the app type.
+- Select **Other (Custom name)** for the device type.
+  - Any custom name, such as "Django" or `PLACEHOLDER-REPO`
+- You'll be provided with a 16-character password (API key).
+  - Save this somewhere locally, as you cannot access this key again later!
+  - If your 16-character password contains _spaces_, make sure to remove them entirely.
+  - `EMAIL_HOST_PASS` = user's 16-character API key
+  - `EMAIL_HOST_USER` = user's own personal Gmail email address
+
+### Currency Exchange
+
+This project uses a Currency Exchange API to fetch real-time exchange rates for converting different currencies. You will need to set up an API key from a currency exchange service provider such as ExchangeRate-API or Open Exchange Rates.
+
+Follow these steps to configure your project with a Currency Exchange API:
+
+1. Sign Up for an API Key
+   - Visit your chosen provider's website:
+   - ExchangeRate-API (Free & Paid plans available)
+   - Open Exchange Rates
+   - Create an account and verify your email if required.
+   - Log in to your account and navigate to the API Keys section.
+   - Click Generate API Key (or similar).
+   - Copy the provided API Key—you will need this for your project.
+2. Configure API Key in Your Project
+   - In your project's environment variables (.env file):
+
+```
+CURRENCY_API_KEY=your-api-key-here
+```
+
+If using Django, update settings.py:
+
+```
+import os
+
+CURRENCY_API_KEY = os.getenv("CURRENCY_API_KEY")
+CURRENCY_API_URL = "https://api.exchangerate-api.com/v4/latest/"
+```
+
+3. Make API Requests to Fetch Exchange Rates
+   - Example request using Python (requests library):
+
+```
+import requests
+import os
+
+API_KEY = os.getenv("CURRENCY_API_KEY")
+BASE_URL = "https://v6.exchangerate-api.com/v6"
+
+def get_exchange_rate(from_currency, to_currency):
+    url = f"{BASE_URL}/{API_KEY}/latest/{from_currency}"
+    response = requests.get(url)
+    data = response.json()
+
+    if response.status_code == 200 and "conversion_rates" in data:
+        return data["conversion_rates"].get(to_currency, "Currency not found")
+    return "Error fetching exchange rate"
+
+# Example Usage
+print(get_exchange_rate("USD", "EUR"))
+```
+
+4. Test the API
+   - Run the script or make a test request using Postman or Curl:
+
+```
+curl "https://v6.exchangerate-api.com/v6/YOUR-API-KEY/latest/USD"
+```
+
+- If the setup is correct, you should receive a JSON response with exchange rates.
+
+5. Secure Your API Key
+   - Never expose your API key in public repositories.
+   - Use environment variables instead of hardcoding the key.
+   - If compromised, regenerate a new key from your API provider's dashboard.
+
 ### Local Development
 
 This project can be cloned or forked in order to make a local copy on your own system.
@@ -679,51 +764,32 @@ There are no remaining major differences between the local version when compared
 
 ### Content
 
-| Source                                                | Notes                                               |
-| ----------------------------------------------------- | --------------------------------------------------- |
-| [Markdown Builder](https://markdown.2bn.dev)          | Help generating Markdown files                      |
-| [I Think Therefore I Blog](https://codeinstitute.net) | Code Institute walkthrough project inspiration      |
-| [Bootstrap](https://getbootstrap.com)                 | Various components / responsive front-end framework |
-| [Cloudinary API](https://cloudinary.com)              | Cloud storage for static/media files                |
-| [Whitenoise](https://whitenoise.readthedocs.io)       | Static file service                                 |
-| [ChatGPT](https://chatgpt.com)                        | Help with code logic and explanations               |
+| Source                                                                   | Notes                                                                                                                               |
+| ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
+| [Markdown Builder](https://markdown.2bn.dev)                             | Help generating Markdown files                                                                                                      |
+| [I Think Therefore I Blog](https://codeinstitute.net)                    | Code Institute walkthrough project inspiration                                                                                      |
+| [Bootstrap](https://getbootstrap.com)                                    | Various components / responsive front-end framework                                                                                 |
+| [Cloudinary API](https://cloudinary.com)                                 | Cloud storage for static/media files                                                                                                |
+| [Whitenoise](https://whitenoise.readthedocs.io)                          | Static file service                                                                                                                 |
+| [ChatGPT](https://chatgpt.com)                                           | Help with code logic and explanations                                                                                               |
+| [Django](https://docs.djangoproject.com/en/5.1/)                         | Various components / back-end files, like creating some middleware settings, setting up receiving emails, language translation, etc |
+| [My GitHub Repo](https://github.com/AshLaw96/Axisofaccesshack/tree/main) | Hackathon project inspiration                                                                                                       |
 
 ### Media
 
-⚠️ --- Notes ---⚠️
-
-- Images
-  - [Pexels](https://www.pexels.com)
-  - [Unsplash](https://unsplash.com)
-  - [Pixabay](https://pixabay.com)
-  - [Lorem Picsum](https://picsum.photos) (placeholder images)
-  - [Wallhere](https://wallhere.com) (wallpaper / backgrounds)
-  - [This Person Does Not Exist](https://thispersondoesnotexist.com) (reload to get a new person)
-- Audio
-  - [Audio Micro](https://www.audiomicro.com/free-sound-effects)
-- Video
-  - [Videvo](https://www.videvo.net)
-- Image Compression
-  - [TinyPNG](https://tinypng.com) (for images <5MB)
-  - [CompressPNG](https://compresspng.com) (for images >5MB)
-
-⚠️ --- END ---⚠️
-
-| Source                                                                                     | Notes                          |
-| ------------------------------------------------------------------------------------------ | ------------------------------ |
-| [favicon.io](https://favicon.io)                                                           | Generating the favicon         |
-| [Font Awesome](https://fontawesome.com)                                                    | Icons used throughout the site |
-| [Pexels](https://images.pexels.com/photos/416160/pexels-photo-416160.jpeg)                 | Hero image                     |
-| [Wallhere](https://c.wallhere.com/images/9c/c8/da4b4009f070c8e1dfee43d25f99-2318808.jpg!d) | Background wallpaper           |
-| [Pixabay](https://cdn.pixabay.com/photo/2017/09/04/16/58/passport-2714675_1280.jpg)        | Background wallpaper           |
-| [DALL-E 3](https://openai.com/index/dall-e-3)                                              | AI generated artwork           |
-| [TinyPNG](https://tinypng.com)                                                             | Compressing images < 5MB       |
-| [CompressPNG](https://compresspng.com)                                                     | Compressing images > 5MB       |
-| [CloudConvert](https://cloudconvert.com/webp-converter)                                    | Converting images to `.webp`   |
+| Source                                                                                            | Notes                          |
+| ------------------------------------------------------------------------------------------------- | ------------------------------ |
+| [favicon.io](https://favicon.io)                                                                  | Generating the favicon         |
+| [Font Awesome](https://fontawesome.com)                                                           | Icons used throughout the site |
+| [Travel Trailer](https://robbreport.com/motors/cars/lists/best-travel-trailers-1234835349/)       | Background slideshow image     |
+| [Baylyn Lodge](https://www.devonlive.com/news/devon-news/take-look-inside-devons-poshest-1909392) | Background slideshow image     |
+| [RV](https://www.motor1.com/news/276980/land-ark-draper-luxury-rv/)                               | Background slideshow image     |
+| [islawrffordd](https://islawrffordd.com/accommodation/statics/)                                   | Background slideshow image     |
+| [TinyPNG](https://tinypng.com)                                                                    | Compressing images < 5MB       |
+| [CompressPNG](https://compresspng.com)                                                            | Compressing images > 5MB       |
 
 ### Acknowledgements
 
 - I would like to thank my Code Institute mentor, [Tim Nelson](https://www.github.com/TravelTimN) for the support throughout the development of this project.
-- I would like to thank the [Code Institute](https://codeinstitute.net) Tutor Team for their assistance with troubleshooting and debugging some project issues.
 - I would like to thank the [Code Institute Slack community](https://code-institute-room.slack.com) for the moral support; it kept me going during periods of self doubt and impostor syndrome.
 - I would like to thank my partner, [Megan Lawrence](linkedin.com/in/megan-lawrence-27431119b) for believing in me, and allowing me to make this transition into software development.
