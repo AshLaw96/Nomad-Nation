@@ -246,7 +246,7 @@
                         </div>
                     {% endif %}
                     {% if user_type == "owner" and not review.approved %}
-                        <form method="post" action="{% url 'approve_review' review.pk %}" class="border-0 text-center">
+                        <form method="post" action="{% url 'approve_review' review.pk %}" class="border-0 text-center bg-transparent">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-success btn-styles mb-2">{% trans "Approve Review" %}</button>
                         </form>
@@ -336,7 +336,7 @@
                         </a>
                     </div>
                     <div class="col">
-                        <form method="post" action="{% url 'delete_caravan' caravan.pk %}" id="delete-button">
+                        <form method="post" action="{% url 'delete_caravan' caravan.pk %}" class="border-0 bg-transparent">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-danger btn-styles">{% trans "Delete caravan" %}</button>
                         </form>

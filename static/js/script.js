@@ -1,3 +1,6 @@
+/* jshint esversion: 11, jquery: true */
+/* global bootstrap */
+
 let isAuthenticated = false;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -352,7 +355,6 @@ function initialiseEditCaravan() {
       unselectAuto: false,
       select: function (info) {
         let dates = parseJSON(hiddenInputEl.value);
-        let adjustedEnd = new Date(info.endStr);
 
         // Check if the date range already exists
         let existingEventIndex = dates.findIndex(
@@ -447,11 +449,16 @@ function initialiseEditCaravan() {
  * @function
  */
 function initialiseCarousel() {
+  const carousels = [];
   document.querySelectorAll(".carousel").forEach(function (carousel) {
-    new bootstrap.Carousel(carousel, {
+    const instance = new bootstrap.Carousel(carousel, {
       interval: false,
     });
+    carousels.push(instance);
   });
+
+  // Pause all carousels
+  carousels.forEach((carousel) => carousel.pause());
 }
 
 // Initialise image modal

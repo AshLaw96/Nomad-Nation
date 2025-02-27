@@ -30,15 +30,15 @@
                                     {% trans "View Details" %}
                                 </button>
                                 <!-- Owner view of pending bookings -->
-                                <form method="post" action="{% url 'manage_booking' booking.id %}" class="border-0">
+                                <form method="post" action="{% url 'manage_booking' booking.id %}" class="border-0 bg-transparent">
                                     {% csrf_token %}
                                     <input type="hidden" name="action" value="accept">
-                                    <button type="submit" class="btn btn-success btn-sm btn-styles mb-2 no-border-btn">{% trans "Accept" %}</button>
+                                    <button type="submit" class="btn btn-success btn-sm btn-styles mb-2">{% trans "Accept" %}</button>
                                 </form>
-                                <form method="post" action="{% url 'manage_booking' booking.id %}" class="border-0">
+                                <form method="post" action="{% url 'manage_booking' booking.id %}" class="border-0 bg-transparent">
                                     {% csrf_token %}
                                     <input type="hidden" name="action" value="decline">
-                                    <button type="submit" class="btn btn-danger btn-sm btn-styles no-border-btn">{% trans "Decline" %}</button>
+                                    <button type="submit" class="btn btn-danger btn-sm btn-styles">{% trans "Decline" %}</button>
                                 </form>
                                 {% endif %}
                             </div>

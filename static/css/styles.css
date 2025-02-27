@@ -377,10 +377,6 @@ textarea {
     margin-bottom: 0.5rem;
 }
 
-#delete-button {
-    border: none;
-}
-
 /* FullCalendar styles */
 #calendar {
     /* Prevent overflow */
