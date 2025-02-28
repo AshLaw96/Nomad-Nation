@@ -13,6 +13,7 @@ def homepage(request):
     """
     Renders the homepage of the website.
     """
+    raise Exception("Simulating a 500 error")
     return render(request, 'main/home.html')
 
 
