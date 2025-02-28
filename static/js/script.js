@@ -1170,16 +1170,23 @@ function initialisePaymentDetailsUpdate() {
     "#editPaymentDetailsModal button[type='submit']"
   );
 
-  if (!saveBtn) return;
-
+  if (!saveBtn) {
+    console.error("❌ Save button not found!");
+    return;
+  }
+  console.log("✅ Save button found, adding event listener...");
   saveBtn.addEventListener("click", (event) => {
     event.preventDefault();
-
+    console.log("🟡 Save button clicked!");
     const form = document.querySelector("#editPaymentDetailsModal form");
-    if (!form) return;
+    if (!form) {
+      console.error("❌ Form not found!");
+      return;
+    }
+    console.log("✅ Form found, submitting");
 
     const formData = new FormData(form);
-
+    console.log("📤 Sending form data:", Object.fromEntries(formData));
     fetch(form.action, {
       method: "POST",
       body: formData,
@@ -1189,21 +1196,31 @@ function initialisePaymentDetailsUpdate() {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log("📥 Response received:", data);
         if (data.success) {
-          // Close the modal
-          const modalElement = document.getElementById(
-            "editPaymentDetailsModal"
-          );
-          const modal = bootstrap.Modal.getInstance(modalElement);
-          modal.hide();
+          console.log("✅ Payment details updated successfully!");
+          // Close the modal after a successful update
+          setTimeout(() => {
+            const modalElement = document.getElementById(
+              "editPaymentDetailsModal"
+            );
+            const modal = bootstrap.Modal.getInstance(modalElement);
+            modal.hide();
+          }, 200); // 200ms delay
 
           // Update the displayed payment details dynamically
-          updatePaymentDetails(data.payment_method, data.card_last_four);
+          updatePaymentDetails(
+            data.payment_method,
+            data.card_last_four,
+            data.billing_address
+          );
 
+          // Show success message
           showInAppMessage("Payment details updated successfully.", "success");
         } else {
+          console.error("❌ Error from server:", data.error);
           showInAppMessage(
-            "An error occurred while updating payment details.",
+            data.error || "An error occurred while updating payment details.",
             "error"
           );
         }
@@ -1222,26 +1239,40 @@ function initialisePaymentDetailsUpdate() {
 /**
  * Dynamically updates the payment details on the page.
  *
- * This function updates the payment details container with the provided payment method
- * and the last four digits of the card. It replaces the existing content inside the
- * payment details container and adds a button that opens the modal for editing payment details.
+ * This function updates the payment details container with the provided payment method,
+ * the last four digits of the card, and the billing address.
  *
- * @param {string} paymentMethod - The payment method (e.g., "Credit Card", "PayPal").
+ * @param {string} paymentMethod - The payment method (e.g., "Visa", "MasterCard").
  * @param {string} cardLastFour - The last four digits of the card being used for payment.
+ * @param {string} billingAddress - The billing address associated with the payment method.
  *
  * @returns {void} - This function does not return any value. It directly updates the DOM.
  */
-function updatePaymentDetails(paymentMethod, cardLastFour) {
+function updatePaymentDetails(paymentMethod, cardLastFour, billingAddress) {
+  console.log("🛠 Updating payment details in UI...");
+
   const paymentDetailsContainer = document.querySelector(
     ".card-body.text-white"
   );
 
   if (paymentDetailsContainer) {
+    console.log("✅ Payment details container found!");
+
     paymentDetailsContainer.innerHTML = `
-          <p><strong>${paymentMethod}:</strong> **** **** **** ${cardLastFour}</p>
-          <button type="button" class="btn btn-primary mt-3 btn-styles" data-bs-toggle="modal" data-bs-target="#editPaymentDetailsModal">
-              Edit Payment Details
-          </button>
-      `;
+      <p><strong>${paymentMethod}:</strong> **** **** **** ${cardLastFour}</p>
+      <p><strong>Billing Address:</strong> ${billingAddress}</p>
+      <button type="button" class="btn btn-primary mt-3 btn-styles" data-bs-toggle="modal" data-bs-target="#editPaymentDetailsModal">
+          Edit Payment Details
+      </button>
+    `;
+
+    console.log("✅ UI updated successfully!");
+
+    // Force a repaint
+    paymentDetailsContainer.style.display = "none";
+    void paymentDetailsContainer.offsetHeight; // Trigger reflow
+    paymentDetailsContainer.style.display = "block";
+  } else {
+    console.error("❌ Payment details container not found!");
   }
 }

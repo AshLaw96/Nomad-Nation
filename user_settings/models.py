@@ -34,8 +34,6 @@ class UserProfile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='user_profile'
     )
-    profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
-    bio = models.TextField(blank=True)
     phone_number = models.CharField(max_length=15, blank=True)
     language = models.CharField(
         max_length=2, choices=LANGUAGE_CHOICES, default='en'

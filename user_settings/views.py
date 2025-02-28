@@ -7,7 +7,6 @@ from django.conf import settings
 from django.utils import translation
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
-import json
 from django.utils.translation import gettext_lazy as _
 from .models import UserProfile, PaymentDetails, PrivacySettings, Notification
 
@@ -196,16 +195,8 @@ def edit_payment_details(request):
     Returns a JSON response confirming success or error message.
     """
     if request.method == 'POST':
-        try:
-            # Parse JSON data
-            data = json.loads(request.body)
-        except json.JSONDecodeError:
-            return JsonResponse({
-                'success': False,
-                'error': _('Invalid JSON format.')
-            })
 
-        card_last_four = data.get('card_last_four', '')
+        card_last_four = request.POST.get('card_last_four', '')
 
         # Ensure card last four digits are exactly 4 numbers
         if not card_last_four.isdigit() or len(card_last_four) != 4:
@@ -217,15 +208,18 @@ def edit_payment_details(request):
         payment_details, created = PaymentDetails.objects.get_or_create(
             user=request.user
         )
-        payment_details.payment_method = data.get('payment_method', '')
+        payment_details.payment_method = request.POST.get('payment_method', '')
         payment_details.card_last_four = card_last_four
-        payment_details.billing_address = data.get('billing_address', '')
+        payment_details.billing_address = request.POST.get(
+            'billing_address', ''
+        )
         payment_details.save()
 
         return JsonResponse({
             'success': True,
             'payment_method': payment_details.payment_method,
             'card_last_four': payment_details.card_last_four,
+            'billing_address': payment_details.billing_address,
         })
 
     return JsonResponse({'success': False})

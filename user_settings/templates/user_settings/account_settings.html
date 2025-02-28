@@ -48,16 +48,16 @@
             <h2 class="h5 mb-0">{% trans "Payment Details" %}</h2>
         </div>
         <div class="card-body text-white">
-            {% for payment in payment_details %}
+            {% if payment_details %}
                 <p>
-                    <strong>{{ payment.payment_method }}:</strong> **** **** **** {{ payment.card_last_four }}
+                    <strong>{{ payment_details.first.payment_method }}:</strong> **** **** **** {{ payment_details.first.card_last_four }}
                 </p>
                 <p>
-                    <strong>{% trans "Billing Address:" %}</strong> {{ payment.billing_address }}
+                    <strong>{% trans "Billing Address:" %}</strong> {{ payment_details.first.billing_address }}
                 </p>
-            {% empty %}
+            {% else %}
                 <p>{% trans "No payment details available." %}</p>
-            {% endfor %}
+            {% endif %}
             <button type="button" class="btn btn-primary mt-3 btn-styles" data-bs-toggle="modal" data-bs-target="#editPaymentDetailsModal">
                 {% trans "Edit Payment Details" %}
             </button>
