@@ -80,8 +80,8 @@
                 <div class="carousel-inner">
                     {% for image in caravan.images.all %}
                     <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                        <img src="{{ image.image.url }}" class="d-block w-100 img-thumbnail" alt="{{ caravan.title }}">
-                        <div class="position-absolute top-50 start-50 translate-middle" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-image-url="{{ image.image.url }}" data-bs-carousel-id="carousel{{ caravan.pk }}">
+                        <img src="{{ image.image }}" class="d-block w-100 img-thumbnail" alt="{{ caravan.title }}">
+                        <div class="position-absolute top-50 start-50 translate-middle" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-image-url="{{ image.image }}" data-bs-carousel-id="carousel{{ caravan.pk }}">
                             <i class="fa-solid fa-up-right-and-down-left-from-center fa-2x text-white"></i>
                         </div>
                     </div>

@@ -7,6 +7,7 @@ from django.http import JsonResponse
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
+from cloudinary.uploader import upload
 from .models import Caravan, Amenity, Availability, CaravanImage, Booking, \
     Review, Reply
 from .forms import CaravanForm, BookingForm, ReviewForm, ReplyForm
@@ -145,9 +146,16 @@ def add_caravan(request):
                     start_date=date_entry['start_date'],
                     end_date=date_entry['end_date']
                 )
-            # Handle multiple images
+            # Handle image uploads and upload to Cloudinary
             for image in request.FILES.getlist('images'):
-                CaravanImage.objects.create(caravan=caravan, image=image)
+                # Upload to Cloudinary
+                uploaded_image = upload(image)
+                CaravanImage.objects.create(
+                    caravan=caravan,
+                    # Store the Cloudinary URL
+                    image=uploaded_image['secure_url']
+                )
+
             return redirect('listings')
     else:
         form = CaravanForm(user=request.user)

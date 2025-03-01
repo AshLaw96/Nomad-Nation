@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 # Translate model field names
 from django.utils.translation import gettext_lazy as _
+from cloudinary.models import CloudinaryField
 from datetime import date
 
 
@@ -75,7 +76,7 @@ class CaravanImage(models.Model):
     caravan = models.ForeignKey(
         Caravan, on_delete=models.CASCADE, related_name='images'
     )
-    image = models.ImageField(upload_to='static/images/')
+    image = CloudinaryField('image')
 
     def __str__(self):
         return _("Image for") + f" {self.caravan.title}"
