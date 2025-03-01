@@ -219,7 +219,15 @@ STATICFILES_FINDERS = [
 
 COMPRESS_ENABLED = True
 # Precompresses files for production
-COMPRESS_OFFLINE = False
+COMPRESS_OFFLINE = True
+
+CACHES = {
+    'default': {
+        # In-memory cache
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
 
 """
 Lets Django use ManifestStaticFilesStorage to
