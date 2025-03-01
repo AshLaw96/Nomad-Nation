@@ -13,7 +13,6 @@ def homepage(request):
     """
     Renders the homepage of the website.
     """
-    raise Exception("This is a test 500 exception.")
     return render(request, 'main/home.html')
 
 
