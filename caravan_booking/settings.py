@@ -219,7 +219,7 @@ STATICFILES_FINDERS = [
 
 COMPRESS_ENABLED = True
 # Precompresses files for production
-COMPRESS_OFFLINE = True
+COMPRESS_OFFLINE = False
 
 """
 Lets Django use ManifestStaticFilesStorage to
