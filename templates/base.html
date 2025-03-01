@@ -41,7 +41,7 @@
             {% if request.user.is_authenticated %}
             <div class="d-flex ms-auto align-items-center">
                 <!-- Notification Icon -->
-                <a class="nav-link" href="#" id="notification-icon">
+                <a class="nav-link" href="#" id="notification-icon" aria-label="Notifications">
                     <i class="fas fa-bell"></i>
                     <span class="badge bg-danger" id="notification-count" style="display: none;"></span>
                 </a>
@@ -128,20 +128,20 @@
     <footer class="text-center py-4">
         <p>
             {% block copyright %}
-            {% trans "Made by" %} <a href="https://github.com/" class="github-link" target="_blank">Ashley Lawrence</a>
+            {% trans "Made by" %} <a href="https://github.com/" class="github-link fw-bold" target="_blank">Ashley Lawrence</a>
             {% endblock copyright %}
         </p>
         <p>{% trans "Follow us:" %}
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <i class="fab fa-facebook-square"></i>
             </a>
-            <a href="https://x.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                 <i class="fab fa-square-x-twitter"></i>
             </a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <i class="fab fa-instagram-square"></i>
             </a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                 <i class="fab fa-youtube-square"></i>
             </a>
         </p>
