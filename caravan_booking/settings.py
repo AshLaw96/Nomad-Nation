@@ -214,6 +214,10 @@ STATICFILES_FINDERS = [
     'compressor.finders.CompressorFinder',
 ]
 
+COMPRESS_ENABLED = True
+# Precompresses files for production
+COMPRESS_OFFLINE = True
+
 """
 Lets Django use ManifestStaticFilesStorage to
  take advantage of hashed filenames for
