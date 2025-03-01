@@ -280,7 +280,6 @@ function initialiseAddCaravan() {
         }
       },
       eventClick: function (info) {
-        console.log("Event clicked:", info.event);
         let dates = parseJSON(hiddenInputEl.value);
         // Remove event from stored dates
         dates = dates.filter(
@@ -371,8 +370,6 @@ function initialiseEditCaravan() {
             end: info.endStr,
             allDay: true,
           });
-        } else {
-          console.log("Date range already exists.");
         }
       },
 
@@ -648,8 +645,6 @@ function initialiseReviewModal() {
         return;
       }
 
-      console.log(`Found modal: #submitReviewModal${caravanId}`);
-
       // Select input fields
       const ratingInput = modal.querySelector(`#rating-${caravanId}`);
       const commentTextarea = modal.querySelector(`#comment-${caravanId}`);
@@ -662,8 +657,6 @@ function initialiseReviewModal() {
       // Clear previous values
       ratingInput.value = "";
       commentTextarea.value = "";
-
-      console.log(`Opening modal: #submitReviewModal${caravanId}`);
 
       // Ensure Bootstrap Modal is correctly initialized
       try {
@@ -1061,7 +1054,6 @@ function checkNotifications() {
   fetch("/user_settings/get_notifications/")
     .then((response) => response.json())
     .then((data) => {
-      console.log("Notifications:", data);
       const notificationCount = document.getElementById("notification-count");
       const notificationIcon = document.getElementById("notification-icon");
       const notificationList = document.getElementById("notifications-list");
@@ -1171,22 +1163,16 @@ function initialisePaymentDetailsUpdate() {
   );
 
   if (!saveBtn) {
-    console.error("❌ Save button not found!");
     return;
   }
-  console.log("✅ Save button found, adding event listener...");
   saveBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    console.log("🟡 Save button clicked!");
     const form = document.querySelector("#editPaymentDetailsModal form");
     if (!form) {
-      console.error("❌ Form not found!");
       return;
     }
-    console.log("✅ Form found, submitting");
 
     const formData = new FormData(form);
-    console.log("📤 Sending form data:", Object.fromEntries(formData));
     fetch(form.action, {
       method: "POST",
       body: formData,
@@ -1196,9 +1182,7 @@ function initialisePaymentDetailsUpdate() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("📥 Response received:", data);
         if (data.success) {
-          console.log("✅ Payment details updated successfully!");
           // Close the modal after a successful update
           setTimeout(() => {
             const modalElement = document.getElementById(
@@ -1218,7 +1202,6 @@ function initialisePaymentDetailsUpdate() {
           // Show success message
           showInAppMessage("Payment details updated successfully.", "success");
         } else {
-          console.error("❌ Error from server:", data.error);
           showInAppMessage(
             data.error || "An error occurred while updating payment details.",
             "error"
@@ -1249,15 +1232,11 @@ function initialisePaymentDetailsUpdate() {
  * @returns {void} - This function does not return any value. It directly updates the DOM.
  */
 function updatePaymentDetails(paymentMethod, cardLastFour, billingAddress) {
-  console.log("🛠 Updating payment details in UI...");
-
   const paymentDetailsContainer = document.querySelector(
     ".card-body.text-white"
   );
 
   if (paymentDetailsContainer) {
-    console.log("✅ Payment details container found!");
-
     paymentDetailsContainer.innerHTML = `
       <p><strong>${paymentMethod}:</strong> **** **** **** ${cardLastFour}</p>
       <p><strong>Billing Address:</strong> ${billingAddress}</p>
@@ -1265,8 +1244,6 @@ function updatePaymentDetails(paymentMethod, cardLastFour, billingAddress) {
           Edit Payment Details
       </button>
     `;
-
-    console.log("✅ UI updated successfully!");
 
     // Force a repaint
     paymentDetailsContainer.style.display = "none";
