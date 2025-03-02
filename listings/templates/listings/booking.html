@@ -182,6 +182,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    {% if caravan %}
                     <h5 class="title text-center">{{ caravan.title }}</h5>
                     <p><strong>{% trans "Owner:" %}</strong> {{ caravan.owner.username }}</p>
                     <p><strong>{% trans "Available Dates:" %}</strong>
@@ -202,6 +203,9 @@
                             <button type="submit" class="btn btn-primary mb-1 btn-styles">{% trans "Submit" %}</button>
                         </div>
                     </form>
+                    {% else %}
+                    <p class="text-danger text-center">{% trans "No caravan selected for booking." %}</p>
+                    {% endif %}
                 </div>
             </div>
         </div>

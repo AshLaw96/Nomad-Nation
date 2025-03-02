@@ -608,13 +608,54 @@ function initialiseRequestBooking() {
  * @function
  */
 function initialiseBookingButton() {
-  const bookNowBtn = document.querySelectorAll(".book-now-btn");
-  bookNowBtn.forEach((button) => {
+  const bookNowBtns = document.querySelectorAll(".book-now-btn");
+  bookNowBtns.forEach((button) => {
     button.addEventListener("click", function () {
+      const caravanId = this.getAttribute("data-caravan-id");
+
+      // Store caravan ID in localStorage for persistence
       localStorage.setItem("bookNowClicked", true);
-      localStorage.setItem("caravanId", this.getAttribute("data-caravan-id"));
+      localStorage.setItem("caravanId", caravanId);
+
+      // Update modal content dynamically
+      updateBookingModal(caravanId);
     });
   });
+}
+
+/**
+ * Fetches and updates the booking modal content dynamically based on the selected caravan ID.
+ */
+function updateBookingModal(caravanId) {
+  fetch(`/get-caravan-details/${caravanId}/`)
+    .then((response) => response.json())
+    .then((data) => {
+      const modalBody = document.querySelector("#bookCaravanModal .modal-body");
+
+      if (data.success) {
+        modalBody.innerHTML = `
+                  <h5 class="title text-center">${data.title}</h5>
+                  <p><strong>Owner:</strong> ${data.owner}</p>
+                  <p><strong>Available Dates:</strong> ${data.available_dates}</p>
+                  <form id="bookingForm" method="POST" action="/book-caravan/${caravanId}/">
+                      <input type="hidden" name="csrfmiddlewaretoken" value="${data.csrf_token}">
+                      <div class="container">
+                          <div class="row justify-content-center">
+                              <div class="col-sm-8 col-md-4 mx-auto pt-1">
+                                  ${data.form_html}
+                              </div>
+                          </div>
+                      </div>
+                      <div class="text-center">
+                          <button type="submit" class="btn btn-primary mb-1 btn-styles">Submit</button>
+                      </div>
+                  </form>
+              `;
+      } else {
+        modalBody.innerHTML = `<p class="text-danger text-center">No caravan selected for booking.</p>`;
+      }
+    })
+    .catch((error) => console.error("Error fetching caravan details:", error));
 }
 
 // Initialise submit review modal
