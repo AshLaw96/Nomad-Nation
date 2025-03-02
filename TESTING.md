@@ -150,54 +150,26 @@ Unless your project is a single-page application (SPA), you should test Lighthou
 
 I've tested my deployed project using the Lighthouse Audit tool to check for any major issues. Some warnings are outside of my control, and mobile results tend to be lower than desktop.
 
-| Page      | Mobile                                                       | Desktop                                                       |
-| --------- | ------------------------------------------------------------ | ------------------------------------------------------------- |
-| Register  | ![screenshot](documentation/lighthouse/mobile-register.png)  | ![screenshot](documentation/lighthouse/desktop-register.png)  |
-| Login     | ![screenshot](documentation/lighthouse/mobile-login.png)     | ![screenshot](documentation/lighthouse/desktop-login.png)     |
-| Home      | ![screenshot](documentation/lighthouse/mobile-home.png)      | ![screenshot](documentation/lighthouse/desktop-home.png)      |
-| Add Blog  | ![screenshot](documentation/lighthouse/mobile-add-blog.png)  | ![screenshot](documentation/lighthouse/desktop-add-blog.png)  |
-| Edit Blog | ![screenshot](documentation/lighthouse/mobile-edit-blog.png) | ![screenshot](documentation/lighthouse/desktop-edit-blog.png) |
-| Blog Post | ![screenshot](documentation/lighthouse/mobile-blog-post.png) | ![screenshot](documentation/lighthouse/desktop-blog-post.png) |
-| 404       | ![screenshot](documentation/lighthouse/mobile-404.png)       | ![screenshot](documentation/lighthouse/desktop-404.png)       |
+| Page                    | Mobile                                                                               | Desktop                                                                                |
+| ----------------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| Register                | ![screenshot](documentation/lighthouse/mobile/mob-register-light.png)                | ![screenshot](documentation/lighthouse/desktop/desk-register-light.png)                |
+| Login                   | ![screenshot](documentation/lighthouse/mobile/mob-login-light.png)                   | ![screenshot](documentation/lighthouse/desktop/desk-login-light.png)                   |
+| Home                    | ![screenshot](documentation/lighthouse/mobile/mob-home-light.png)                    | ![screenshot](documentation/lighthouse/desktop/desk-home-light.png)                    |
+| Logout                  | ![screenshot](documentation/lighthouse/mobile/mob-logout-light.png)                  | ![screenshot](documentation/lighthouse/desktop/desk-logout-light.png)                  |
+| Password reset          | ![screenshot](documentation/lighthouse/mobile/mob-password-reset-light.png)          | ![screenshot](documentation/lighthouse/desktop/desk-password-reset-light.png)          |
+| Password reset done     | ![screenshot](documentation/lighthouse/mobile/mob-password-reset-done-light.png)     | ![screenshot](documentation/lighthouse/desktop/desk-pasword-reset-done-light.png)      |
+| Password reset key      | ![screenshot](documentation/lighthouse/mobile/mob-password-reset-key-light.png)      | ![screenshot](documentation/lighthouse/desktop/desk-password-reset-key-light.png)      |
+| Password reset key done | ![screenshot](documentation/lighthouse/mobile/mob-password-reset-key-done-light.png) | ![screenshot](documentation/lighthouse/desktop/desk-password-reset-key-done-light.png) |
+| Contact                 | ![screenshot](documentation/lighthouse/mobile/mob-contact-light.png)                 | ![screenshot](documentation/lighthouse/desktop/desk-contact-light.png)                 |
+| Dashboard               | ![screenshot](documentation/lighthouse/mobile/mob-dash-light.png)                    | ![screenshot](documentation/lighthouse/desktop/desk-dash-light.png)                    |
+| Listings                | ![screenshot](documentation/lighthouse/mobile/mob-list-light.png)                    | ![screenshot](documentation/lighthouse/desktop/desk-list-light.png)                    |
+| Add caravan             | ![screenshot](documentation/lighthouse/mobile/mob-add-caravan-light.png)             | ![screenshot](documentation/lighthouse/desktop/desk-add-caravan-light.png)             |
+| Bookings                | ![screenshot](documentation/lighthouse/mobile/mob-book-light.png)                    | ![screenshot](documentation/lighthouse/desktop/desk-book-light.png)                    |
+| Account settings        | ![screenshot](documentation/lighthouse/mobile/mob-account-light.png)                 | ![screenshot](documentation/lighthouse/desktop/desk-account-light.png)                 |
+| 500                     | ![screenshot](documentation/lighthouse/mobile/mob-500-light.png)                     | ![screenshot](documentation/lighthouse/desktop/desk-500-light.png)                     |
+| 404                     | ![screenshot](documentation/lighthouse/mobile/mob-404-light.png)                     | ![screenshot](documentation/lighthouse/desktop/desk-404-light.png)                     |
 
 ## Defensive Programming
-
-⚠️ INSTRUCTIONS ⚠️
-
-Defensive programming (defensive design) is extremely important! When building projects that accept user inputs or forms, you should always test the level of security for each form field. Examples of this could include (but not limited to):
-
-All Projects:
-
-- Users cannot submit an empty form (add the `required` attribute)
-- Users must enter valid field types (ensure the correct input `type=""` is used)
-- Users cannot brute-force a URL to navigate to a restricted pages
-
-Python Projects:
-
-- Users cannot perform CRUD functionality if not authenticated (if login functionality exists)
-- User-A should not be able to manipulate data belonging to User-B, or vice versa
-- Non-Authenticated users should not be able to access pages that require authentication
-- Standard users should not be able to access pages intended for superusers/admins
-
-You'll want to test all functionality on your application, whether it's a standard form, or CRUD functionality, for data manipulation on a database. Try to access various pages on your site as different user types (User-A, User-B, guest user, admin, superuser). You should include any manual tests performed, and the expected results/outcome.
-
-Testing should be replicable (can someone else replicate the same outcome?). Ideally, tests cases should focus on each individual section of every page on the website. Each test case should be specific, objective, and step-wise replicable.
-
-Instead of adding a general overview saying that everything works fine, consider documenting tests on each element of the page (eg. button clicks, input box validation, navigation links, etc.) by testing them in their "happy flow", their "bad/exception flow", mentioning the expected and observed results, and drawing a parallel between them where applicable.
-
-Consider using the following format for manual test cases:
-
-- Expected Outcome / Test Performed / Result Received / Fixes Implemented
-
-- **Expected**: "Feature is expected to do X when the user does Y."
-- **Testing**: "Tested the feature by doing Y."
-- (either) **Result**: "The feature behaved as expected, and it did Y."
-- (or) **Result**: "The feature did not respond to A, B, or C."
-- **Fix**: "I did Z to the code because something was missing."
-
-Use the table below as a basic start, and expand on it using the logic above.
-
-⚠️ --- END --- ⚠️
 
 Defensive programming was manually tested with the below user acceptance testing:
 
