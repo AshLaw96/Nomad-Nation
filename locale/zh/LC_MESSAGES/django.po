@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nomad Nation 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-25 20:59+0000\n"
+"POT-Creation-Date: 2025-03-03 08:21+0000\n"
 "PO-Revision-Date: 2025-02-25 12:00+0000\n"
 "Last-Translator: Ashley Lawrence <ashley.lawrence.students@codeinstitute."
 "net>\n"
@@ -50,7 +50,7 @@ msgstr "查看您收藏的房车。"
 
 #: dashboard/templates/dashboard/dashboard.html:54
 #: listings/templates/listings/booking.html:90
-#: listings/templates/listings/booking.html:186
+#: listings/templates/listings/booking.html:189
 msgid "Owner:"
 msgstr "所有者："
 
@@ -70,8 +70,8 @@ msgstr "查看您的过去住宿。"
 #: dashboard/templates/dashboard/dashboard.html:109
 #: listings/templates/listings/booking.html:25
 #: listings/templates/listings/booking.html:88
-#: listings/templates/listings/booking.html:153
-#: listings/templates/listings/booking.html:189
+#: listings/templates/listings/booking.html:155
+#: listings/templates/listings/booking.html:192
 msgid "to"
 msgstr "到"
 
@@ -137,144 +137,148 @@ msgstr "星级"
 msgid "No reviews"
 msgstr "没有评论"
 
-#: listings/forms.py:10
+#: listings/forms.py:17
 msgid "Add extra amenities"
 msgstr "添加额外的设施"
 
-#: listings/forms.py:30
+#: listings/forms.py:37
 msgid "Caravan Title"
 msgstr "房车标题"
 
-#: listings/forms.py:31
+#: listings/forms.py:38
 msgid "Caravan Description"
 msgstr "房车描述"
 
-#: listings/forms.py:32
+#: listings/forms.py:39
 msgid "Berth Capacity"
 msgstr "泊位容量"
 
-#: listings/forms.py:33
+#: listings/forms.py:40
 msgid "Select Amenities"
 msgstr "选择设施"
 
-#: listings/forms.py:34 listings/templates/listings/listing_page.html:35
+#: listings/forms.py:41 listings/templates/listings/listing_page.html:35
 msgid "Location"
 msgstr "位置"
 
-#: listings/forms.py:35
+#: listings/forms.py:42
 msgid "Price per Night"
 msgstr "每晚价格"
 
-#: listings/forms.py:36
+#: listings/forms.py:43
 msgid "Available Dates"
 msgstr "可用日期"
 
-#: listings/forms.py:41
+#: listings/forms.py:48
 msgid "Select start date"
 msgstr "选择开始日期"
 
-#: listings/forms.py:44
+#: listings/forms.py:51
 msgid "Select end date"
 msgstr "选择结束日期"
 
-#: listings/forms.py:63
+#: listings/forms.py:78
 msgid "Caravan must have an owner."
 msgstr "房车必须有一个所有者。"
 
-#: listings/forms.py:69
+#: listings/forms.py:84
 msgid "This amenity already exists for your account."
 msgstr "此设施已存在于您的账户中。"
 
-#: listings/forms.py:81
+#: listings/forms.py:100
 msgid "Invalid date format. Expected a list of objects."
 msgstr "日期格式无效。预期是一个对象列表。"
 
-#: listings/forms.py:85
+#: listings/forms.py:104
 msgid "Invalid JSON format for available dates."
 msgstr "可用日期的 JSON 格式无效。"
 
-#: listings/forms.py:91
+#: listings/forms.py:110
 msgid "Each date entry must be a dictionary."
 msgstr "每个日期条目必须是一个字典。"
 
-#: listings/forms.py:96
+#: listings/forms.py:115
 msgid "Each date entry must contain 'start_date' and 'end_date'."
 msgstr "每个日期条目必须包含 'start_date' 和 'end_date'。"
 
-#: listings/forms.py:109
+#: listings/forms.py:128
 msgid "Invalid date format. Use YYYY-MM-DD."
 msgstr "日期格式无效。使用 YYYY-MM-DD。"
 
-#: listings/forms.py:113
+#: listings/forms.py:132
 msgid "Start date cannot be after end date."
 msgstr "开始日期不能晚于结束日期。"
 
-#: listings/forms.py:150
+#: listings/forms.py:185
+msgid "Phone number must contain only digits."
+msgstr "电话号码只能包含数字。"
+
+#: listings/forms.py:200
 msgid "This booking does not have an associated caravan."
 msgstr "此预订没有关联的房车。"
 
-#: listings/forms.py:159 listings/models.py:87
+#: listings/forms.py:209 listings/models.py:115
 msgid "End date must be after start date."
 msgstr "结束日期必须在开始日期之后。"
 
-#: listings/forms.py:172 listings/views.py:256
+#: listings/forms.py:222 listings/views.py:301
 msgid "The caravan is not available for the selected dates."
 msgstr "房车在所选日期不可用。"
 
-#: listings/models.py:31
+#: listings/models.py:41
 msgid "Two-berth"
 msgstr "两人床位"
 
-#: listings/models.py:32
+#: listings/models.py:42
 msgid "Four-berth"
 msgstr "四人床位"
 
-#: listings/models.py:33
+#: listings/models.py:43
 msgid "Six-berth"
 msgstr "六人床位"
 
-#: listings/models.py:63
+#: listings/models.py:82
 msgid "Image for"
 msgstr "图片用于"
 
-#: listings/models.py:92
+#: listings/models.py:124
 msgid "Pending"
 msgstr "待处理"
 
-#: listings/models.py:93
+#: listings/models.py:125
 msgid "Accepted"
 msgstr "已接受"
 
-#: listings/models.py:94
+#: listings/models.py:126
 msgid "Declined"
 msgstr "已拒绝"
 
-#: listings/models.py:115 listings/views.py:369
+#: listings/models.py:150 listings/views.py:427
 msgid "Booking for"
 msgstr "预订用于"
 
-#: listings/models.py:116
+#: listings/models.py:151
 msgid " by "
 msgstr " 由 "
 
-#: listings/models.py:135
+#: listings/models.py:177
 msgid "Review for"
 msgstr "评论用于"
 
-#: listings/models.py:136
+#: listings/models.py:178
 msgid "by"
 msgstr "由"
 
-#: listings/models.py:153
+#: listings/models.py:201
 msgid "Reply by"
 msgstr "回复由"
 
-#: listings/models.py:154
+#: listings/models.py:202
 msgid "to review"
 msgstr "评论"
 
 #: listings/templates/listings/add_caravan.html:6
-#: listings/templates/listings/listing_page.html:356
+#: listings/templates/listings/listing_page.html:365
 msgid "Add Caravan"
 msgstr "添加房车"
 
@@ -317,7 +321,13 @@ msgstr "每晚价格："
 msgid "Availability:"
 msgstr "可用性："
 
-#: listings/templates/listings/add_caravan.html:49
+#: listings/templates/listings/add_caravan.html:47
+msgid ""
+"Click on a date to toggle availability. Drag over multiple days to select a "
+"range. Click an existing date to remove it."
+msgstr "单击日期可切换可用性。拖动多天以选择一个范围。单击现有日期将其删除。"
+
+#: listings/templates/listings/add_caravan.html:53
 msgid "Add"
 msgstr "添加"
 
@@ -377,7 +387,7 @@ msgstr "开始日期："
 msgid "End Date:"
 msgstr "结束日期："
 
-#: listings/templates/listings/booking.html:63 templates/base.html:104
+#: listings/templates/listings/booking.html:63 templates/base.html:105
 msgid "Close"
 msgstr "关闭"
 
@@ -386,7 +396,7 @@ msgid "No pending bookings."
 msgstr "没有待处理的预订。"
 
 #: listings/templates/listings/booking.html:72
-#: listings/templates/listings/booking.html:137
+#: listings/templates/listings/booking.html:139
 msgid "Go back to listings"
 msgstr "返回列表"
 
@@ -407,44 +417,48 @@ msgstr "修改预订"
 msgid "Start Date"
 msgstr "开始日期"
 
-#: listings/templates/listings/booking.html:118
+#: listings/templates/listings/booking.html:119
 msgid "End Date"
 msgstr "结束日期"
 
-#: listings/templates/listings/booking.html:122
+#: listings/templates/listings/booking.html:124
 msgid "Message"
 msgstr "留言"
 
-#: listings/templates/listings/booking.html:126
-#: listings/templates/listings/booking.html:202
+#: listings/templates/listings/booking.html:128
+#: listings/templates/listings/booking.html:205
 msgid "Submit"
 msgstr "提交"
 
-#: listings/templates/listings/booking.html:136
+#: listings/templates/listings/booking.html:138
 msgid "No upcoming bookings."
 msgstr "没有即将到来的预订。"
 
-#: listings/templates/listings/booking.html:144
+#: listings/templates/listings/booking.html:146
 msgid "Previous Bookings"
 msgstr "以往的预订"
 
-#: listings/templates/listings/booking.html:159
+#: listings/templates/listings/booking.html:161
 msgid "No previous bookings."
 msgstr "没有以往的预订。"
 
-#: listings/templates/listings/booking.html:167
+#: listings/templates/listings/booking.html:169
 msgid "Request a Booking"
 msgstr "请求预订"
 
-#: listings/templates/listings/booking.html:171
-#: listings/templates/listings/booking.html:181
+#: listings/templates/listings/booking.html:173
+#: listings/templates/listings/booking.html:183
 msgid "Request Booking"
 msgstr "请求预订"
 
-#: listings/templates/listings/booking.html:187
+#: listings/templates/listings/booking.html:190
 #: listings/templates/listings/listing_page.html:147
 msgid "Available Dates:"
 msgstr "可用日期："
+
+#: listings/templates/listings/booking.html:209
+msgid "No caravan selected for booking."
+msgstr "没有选择预订大篷车。"
 
 #: listings/templates/listings/listing_page.html:6
 msgid "Welcome to your Listings Page"
@@ -552,12 +566,12 @@ msgstr "回复"
 msgid "Submit Reply"
 msgstr "提交回复"
 
-#: listings/templates/listings/listing_page.html:218 user_settings/models.py:52
+#: listings/templates/listings/listing_page.html:218 user_settings/models.py:83
 msgid "Reply to Review"
 msgstr "回复评价"
 
 #: listings/templates/listings/listing_page.html:241
-#: listings/templates/listings/listing_page.html:298
+#: listings/templates/listings/listing_page.html:307
 msgid "Edit Review"
 msgstr "编辑评价"
 
@@ -569,183 +583,193 @@ msgstr "删除评价"
 msgid "Approve Review"
 msgstr "批准评价"
 
-#: listings/templates/listings/listing_page.html:261
-#: listings/templates/listings/listing_page.html:270
+#: listings/templates/listings/listing_page.html:263
+#: listings/templates/listings/listing_page.html:274
 msgid "Leave a Review"
 msgstr "留下评价"
 
-#: listings/templates/listings/listing_page.html:277
-#: listings/templates/listings/listing_page.html:305
+#: listings/templates/listings/listing_page.html:282
+#: listings/templates/listings/listing_page.html:314
 msgid "Rating"
 msgstr "评分"
 
-#: listings/templates/listings/listing_page.html:281
-#: listings/templates/listings/listing_page.html:309
+#: listings/templates/listings/listing_page.html:287
+#: listings/templates/listings/listing_page.html:318
 msgid "Comment"
 msgstr "评论"
 
-#: listings/templates/listings/listing_page.html:285
-#: listings/templates/listings/listing_page.html:313
+#: listings/templates/listings/listing_page.html:293
+#: listings/templates/listings/listing_page.html:322
 msgid "Submit Review"
 msgstr "提交评价"
 
-#: listings/templates/listings/listing_page.html:326
+#: listings/templates/listings/listing_page.html:335
 msgid "Edit caravan"
 msgstr "编辑房车"
 
-#: listings/templates/listings/listing_page.html:332
+#: listings/templates/listings/listing_page.html:341
 msgid "Delete caravan"
 msgstr "删除房车"
 
-#: listings/templates/listings/listing_page.html:340
+#: listings/templates/listings/listing_page.html:349
 msgid "BOOK CARAVAN NOW"
 msgstr "立即预订房车"
 
-#: listings/templates/listings/listing_page.html:343
+#: listings/templates/listings/listing_page.html:352
 msgid "Not Available"
 msgstr "不可用"
 
-#: listings/templates/listings/listing_page.html:351
+#: listings/templates/listings/listing_page.html:360
 msgid "No caravans available"
 msgstr "没有可用的房车"
 
-#: listings/views.py:268
+#: listings/views.py:315
 msgid "Booking request for "
 msgstr "预订请求"
 
-#: listings/views.py:269
+#: listings/views.py:316
 msgid " from "
 msgstr " 从 "
 
-#: listings/views.py:279
+#: listings/views.py:325
 msgid "Booking request for"
 msgstr "预订请求"
 
-#: listings/views.py:280
+#: listings/views.py:326
 msgid " sent successfully "
 msgstr "成功发送 "
 
-#: listings/views.py:280
+#: listings/views.py:326
 msgid "to "
 msgstr "到 "
 
-#: listings/views.py:286
+#: listings/views.py:332
 msgid "There was an error with your booking request."
 msgstr "您的预订请求出现错误。"
 
-#: listings/views.py:354
+#: listings/views.py:411
 msgid "Booking has no associated caravan."
 msgstr "预订没有关联的房车。"
 
-#: listings/views.py:362
+#: listings/views.py:419
 msgid "Booking accepted!"
 msgstr "预订已接受！"
 
-#: listings/views.py:370
+#: listings/views.py:428
 msgid "has been accepted."
 msgstr "已被接受。"
 
-#: listings/views.py:379
+#: listings/views.py:437
 msgid "Booking declined."
 msgstr "预订已拒绝。"
 
-#: listings/views.py:386
+#: listings/views.py:446
 msgid "Booking for "
 msgstr "预订用于 "
 
-#: listings/views.py:387
+#: listings/views.py:447
 msgid " has been declined."
 msgstr " 已被拒绝。"
 
-#: listings/views.py:420
+#: listings/views.py:483
+msgid "Start date cannot be in the past."
+msgstr "开始日期不能是过去的日期。"
+
+#: listings/views.py:488
+msgid "End date cannot be before start date."
+msgstr "结束日期不能早于开始日期。"
+
+#: listings/views.py:503
+msgid "Selected dates are not available for this caravan."
+msgstr "此大篷车无法选择指定日期。"
+
+#: listings/views.py:519
 msgid "Booking modification request for "
 msgstr "预订修改请求 "
 
-#: listings/views.py:422
+#: listings/views.py:521
 msgid "from"
 msgstr "来自"
 
-#: listings/views.py:430
+#: listings/views.py:530
 msgid "Booking modification request sent to the owner."
 msgstr "预订修改请求已发送给所有者。"
 
-#: listings/views.py:453
+#: listings/views.py:535
+msgid "Invalid date format."
+msgstr "日期格式无效。"
+
+#: listings/views.py:562
 msgid "New review from "
 msgstr "新评论来自 "
 
-#: listings/views.py:454
-msgid "on your caravan!"
-msgstr "在您的房车上！"
+#: listings/views.py:563
+msgid " on your caravan!"
+msgstr " 在您的房车上！"
 
-#: listings/views.py:462
+#: listings/views.py:571
 msgid "Review submitted successfully!"
 msgstr "评论提交成功！"
 
-#: listings/views.py:472 listings/views.py:518 listings/views.py:548
-#: listings/views.py:590 user_settings/views.py:80
+#: listings/views.py:581 listings/views.py:641 user_settings/views.py:103
 msgid "Invalid request"
 msgstr "无效请求"
 
-#: listings/views.py:483
+#: listings/views.py:597
 msgid "Review approved!"
 msgstr "评论已批准！"
 
-#: listings/views.py:497
+#: listings/views.py:617
 msgid "Reply submitted successfully!"
 msgstr "回复提交成功！"
 
-#: listings/views.py:503
+#: listings/views.py:626
 msgid "replied to your review"
 msgstr "回复了您的评论"
 
-#: listings/views.py:528
+#: listings/views.py:655
+msgid "You do not have permission to edit this review."
+msgstr "您无权编辑此评论。"
+
+#: listings/views.py:664
 msgid "Review edited successfully!"
 msgstr "评论编辑成功！"
 
-#: listings/views.py:533
+#: listings/views.py:671
 msgid "Review edited by"
 msgstr "评论编辑者"
 
-#: listings/views.py:554
+#: listings/views.py:687 listings/views.py:769
+msgid "Invalid request."
+msgstr "无效请求。"
+
+#: listings/views.py:705 listings/views.py:711
+msgid "You do not have permission to delete this review."
+msgstr "您无权删除此评论。"
+
+#: listings/views.py:716
 msgid "Review deleted successfully!"
 msgstr "评论删除成功！"
 
-#: listings/views.py:567
+#: listings/views.py:736
+msgid "You do not have permission to edit this reply."
+msgstr "您无权编辑此回复。"
+
+#: listings/views.py:745
 msgid "Reply edited successfully!"
 msgstr "回复编辑成功！"
 
-#: listings/views.py:574
-msgid "edited their reply to "
-msgstr "编辑了他们对 "
+#: listings/views.py:753
+msgid "edited their reply to your review"
+msgstr "编辑了他们对您评论的回复"
 
-#: listings/views.py:575
-msgid "your review"
-msgstr "您的评论的回复"
+#: listings/views.py:787 listings/views.py:793
+msgid "You do not have permission to delete this reply."
+msgstr "您无权删除此回复。"
 
-#: listings/views.py:599
+#: listings/views.py:798
 msgid "Reply deleted successfully!"
 msgstr "回复删除成功！"
-
-#: main/models.py:28 main/views.py:52
-msgid "Guest"
-msgstr "访客"
-
-#: main/models.py:31
-msgid "Unknown"
-msgstr "未知"
-
-#: main/models.py:34
-msgid "Message from "
-msgstr "消息来自 "
-
-#: main/models.py:35
-msgid " to"
-msgstr " 到"
-
-#: main/models.py:34
-#, python-brace-format
-msgid "{sender_name}"
-msgstr "{sender_name}"
 
 #: main/templates/main/contact.html:6
 msgid "Contact Us"
@@ -823,40 +847,60 @@ msgstr "安全支付"
 msgid "Easy and secure booking for peace of mind."
 msgstr "轻松、安全的预订让您无忧出行。"
 
-#: main/views.py:59
+#: main/views.py:68
+msgid "Guest"
+msgstr "访客"
+
+#: main/views.py:78
 msgid "New contact message from "
 msgstr "新的联系消息来自 "
 
-#: main/views.py:67
+#: main/views.py:89
 msgid "Your message has been sent successfully."
 msgstr "您的消息已成功发送。"
 
-#: main/views.py:91
+#: main/views.py:121
 msgid "Message deleted successfully."
 msgstr "消息已成功删除。"
 
-#: templates/404.html:9
+#: templates/404.html:10
 msgid "Oops! 404 - Page Not Found!"
 msgstr "哎呀！404 - 页面未找到！"
 
-#: templates/404.html:11
+#: templates/404.html:12
 msgid ""
 "It seems like you've taken a detour off the beaten path. The page you're "
 "looking for is nowhere to be found on Nomad Nation."
 msgstr "看起来您偏离了常规路径。您正在寻找的页面在 Nomad Nation 上找不到。"
 
-#: templates/404.html:14
+#: templates/404.html:15
 msgid ""
 "But don't worry, our caravans are still here waiting for your next adventure!"
 msgstr "但别担心，我们的房车仍在这里等待您的下一次冒险！"
 
-#: templates/404.html:23
+#: templates/404.html:24 templates/500.html:24
 msgid "Take Me Back Home"
 msgstr "带我回首页"
 
-#: templates/404.html:28
+#: templates/404.html:29 templates/500.html:29
 msgid "Or, if you're feeling adventurous, try navigating a little differently!"
 msgstr "或者，如果您感到冒险，可以尝试以不同的方式导航！"
+
+#: templates/500.html:10
+msgid "Oops! 500 - Server error!"
+msgstr "哎呀！ 500 - 服务器错误！"
+
+#: templates/500.html:12
+msgid ""
+"It seems like we've encountered a technical glitch. The page you're looking "
+"for is temporarily lost on the road."
+msgstr "我们似乎遇到了技术故障。您正在寻找的页面暂时迷失在路上。"
+
+#: templates/500.html:15
+msgid ""
+"But don't worry! Our team is already working on it, and you'll be heading to "
+"your destination in no time!"
+msgstr "但别担心！我们的团队已经在努力，您很快就会到达目的地！"
 
 #: templates/account/login.html:6 templates/account/login.html:14
 msgid "Log In"
@@ -958,137 +1002,137 @@ msgstr "已经有账户？那么"
 msgid "sign in"
 msgstr "登录"
 
-#: templates/base.html:14 templates/base.html:36
+#: templates/base.html:15 templates/base.html:37
 msgid "Nomad Nation"
 msgstr "Nomad Nation"
 
-#: templates/base.html:54
+#: templates/base.html:55
 msgid "Home"
 msgstr "首页"
 
-#: templates/base.html:57
+#: templates/base.html:58
 msgid "Contact"
 msgstr "联系我们"
 
-#: templates/base.html:62
+#: templates/base.html:63
 msgid "Dashboard"
 msgstr "仪表盘"
 
-#: templates/base.html:65
+#: templates/base.html:66
 msgid "Caravan listings"
 msgstr "房车列表"
 
-#: templates/base.html:68
+#: templates/base.html:69
 msgid "Bookings"
 msgstr "预订"
 
-#: templates/base.html:71
+#: templates/base.html:72
 msgid "Account settings"
 msgstr "账户设置"
 
-#: templates/base.html:74
+#: templates/base.html:75
 msgid "Logout"
 msgstr "退出"
 
-#: templates/base.html:79
+#: templates/base.html:80
 msgid "Register"
 msgstr "注册"
 
-#: templates/base.html:82
+#: templates/base.html:83
 msgid "Login"
 msgstr "登录"
 
-#: templates/base.html:94
+#: templates/base.html:95
 msgid "New Notifications"
 msgstr "新通知"
 
-#: templates/base.html:131
+#: templates/base.html:132
 msgid "Made by"
 msgstr "制作人"
 
-#: templates/base.html:134
+#: templates/base.html:135
 msgid "Follow us:"
 msgstr "关注我们："
 
-#: user_settings/models.py:8
-#: user_settings/templates/user_settings/account_settings.html:128
+#: user_settings/models.py:22
+#: user_settings/templates/user_settings/account_settings.html:127
 msgid "English"
 msgstr "英语"
 
-#: user_settings/models.py:9
-#: user_settings/templates/user_settings/account_settings.html:129
+#: user_settings/models.py:23
+#: user_settings/templates/user_settings/account_settings.html:128
 msgid "Spanish"
 msgstr "西班牙语"
 
-#: user_settings/models.py:10
-#: user_settings/templates/user_settings/account_settings.html:130
+#: user_settings/models.py:24
+#: user_settings/templates/user_settings/account_settings.html:129
 msgid "French"
 msgstr "法语"
 
-#: user_settings/models.py:11
-#: user_settings/templates/user_settings/account_settings.html:131
+#: user_settings/models.py:25
+#: user_settings/templates/user_settings/account_settings.html:130
 msgid "German"
 msgstr "德语"
 
-#: user_settings/models.py:12
-#: user_settings/templates/user_settings/account_settings.html:132
+#: user_settings/models.py:26
+#: user_settings/templates/user_settings/account_settings.html:131
 msgid "Italian"
 msgstr "意大利语"
 
-#: user_settings/models.py:13
-#: user_settings/templates/user_settings/account_settings.html:133
+#: user_settings/models.py:27
+#: user_settings/templates/user_settings/account_settings.html:132
 msgid "Portuguese"
 msgstr "葡萄牙语"
 
-#: user_settings/models.py:14
-#: user_settings/templates/user_settings/account_settings.html:134
+#: user_settings/models.py:28
+#: user_settings/templates/user_settings/account_settings.html:133
 msgid "Russian"
 msgstr "俄语"
 
-#: user_settings/models.py:15
-#: user_settings/templates/user_settings/account_settings.html:135
+#: user_settings/models.py:29
+#: user_settings/templates/user_settings/account_settings.html:134
 msgid "Chinese"
 msgstr "中文"
 
-#: user_settings/models.py:16
-#: user_settings/templates/user_settings/account_settings.html:136
+#: user_settings/models.py:30
+#: user_settings/templates/user_settings/account_settings.html:135
 msgid "Japanese"
 msgstr "日语"
 
-#: user_settings/models.py:17
-#: user_settings/templates/user_settings/account_settings.html:137
+#: user_settings/models.py:31
+#: user_settings/templates/user_settings/account_settings.html:136
 msgid "Hindi"
 msgstr "印地语"
 
-#: user_settings/models.py:51
+#: user_settings/models.py:82
 msgid "Review"
 msgstr "评论"
 
-#: user_settings/models.py:53
+#: user_settings/models.py:84
 msgid "Booking Request"
 msgstr "预订请求"
 
-#: user_settings/models.py:54
+#: user_settings/models.py:85
 msgid "Booking Accepted"
 msgstr "预订已接受"
 
-#: user_settings/models.py:55
+#: user_settings/models.py:86
 msgid "Booking Declined"
 msgstr "预订已拒绝"
 
-#: user_settings/models.py:56
+#: user_settings/models.py:87
 msgid "Booking Modification Request"
 msgstr "预订修改请求"
 
-#: user_settings/models.py:57
+#: user_settings/models.py:88
 msgid "Contact Form Message"
 msgstr "联系表单消息"
 
-#: user_settings/models.py:104
+#: user_settings/models.py:138
 msgid "Notification for "
 msgstr "通知："
 
-#: user_settings/models.py:131
+#: user_settings/models.py:189
 msgid "Privacy settings for"
 msgstr "隐私设置："
 
@@ -1101,7 +1145,7 @@ msgid "Personal Details"
 msgstr "个人资料"
 
 #: user_settings/templates/user_settings/account_settings.html:17
-#: user_settings/templates/user_settings/account_settings.html:87
+#: user_settings/templates/user_settings/account_settings.html:86
 msgid "Edit Personal Details"
 msgstr "编辑个人资料"
 
@@ -1126,7 +1170,7 @@ msgid "Notifications:"
 msgstr "通知："
 
 #: user_settings/templates/user_settings/account_settings.html:41
-#: user_settings/templates/user_settings/account_settings.html:119
+#: user_settings/templates/user_settings/account_settings.html:118
 msgid "Edit Preferences"
 msgstr "编辑偏好设置"
 
@@ -1134,154 +1178,160 @@ msgstr "编辑偏好设置"
 msgid "Payment Details"
 msgstr "支付详情"
 
-#: user_settings/templates/user_settings/account_settings.html:56
-msgid "Billing Address:"
-msgstr "账单地址："
-
-#: user_settings/templates/user_settings/account_settings.html:59
+#: user_settings/templates/user_settings/account_settings.html:58
 msgid "No payment details available."
 msgstr "没有可用的支付详情。"
 
-#: user_settings/templates/user_settings/account_settings.html:62
-#: user_settings/templates/user_settings/account_settings.html:176
+#: user_settings/templates/user_settings/account_settings.html:61
+#: user_settings/templates/user_settings/account_settings.html:175
 msgid "Edit Payment Details"
 msgstr "编辑支付详情"
 
-#: user_settings/templates/user_settings/account_settings.html:69
+#: user_settings/templates/user_settings/account_settings.html:68
 msgid "Profile Settings"
 msgstr "个人资料设置"
 
-#: user_settings/templates/user_settings/account_settings.html:74
+#: user_settings/templates/user_settings/account_settings.html:73
 msgid "Delete Profile"
 msgstr "删除个人资料"
 
-#: user_settings/templates/user_settings/account_settings.html:94
+#: user_settings/templates/user_settings/account_settings.html:93
 msgid "Name"
 msgstr "姓名"
 
-#: user_settings/templates/user_settings/account_settings.html:98
+#: user_settings/templates/user_settings/account_settings.html:97
 msgid "Email"
 msgstr "电子邮件"
 
-#: user_settings/templates/user_settings/account_settings.html:102
+#: user_settings/templates/user_settings/account_settings.html:101
 msgid "Phone Number"
 msgstr "电话号码"
 
-#: user_settings/templates/user_settings/account_settings.html:106
-#: user_settings/templates/user_settings/account_settings.html:164
-#: user_settings/templates/user_settings/account_settings.html:201
+#: user_settings/templates/user_settings/account_settings.html:105
+#: user_settings/templates/user_settings/account_settings.html:163
+#: user_settings/templates/user_settings/account_settings.html:199
 msgid "Save Changes"
 msgstr "保存更改"
 
-#: user_settings/templates/user_settings/account_settings.html:126
+#: user_settings/templates/user_settings/account_settings.html:125
 msgid "Language"
 msgstr "语言"
 
-#: user_settings/templates/user_settings/account_settings.html:141
+#: user_settings/templates/user_settings/account_settings.html:140
 msgid "Currency"
 msgstr "货币"
 
-#: user_settings/templates/user_settings/account_settings.html:143
+#: user_settings/templates/user_settings/account_settings.html:142
 msgid "British Pound"
 msgstr "英镑"
 
-#: user_settings/templates/user_settings/account_settings.html:144
+#: user_settings/templates/user_settings/account_settings.html:143
 msgid "US Dollar"
 msgstr "美元"
 
-#: user_settings/templates/user_settings/account_settings.html:145
+#: user_settings/templates/user_settings/account_settings.html:144
 msgid "Euro"
 msgstr "欧元"
 
-#: user_settings/templates/user_settings/account_settings.html:146
+#: user_settings/templates/user_settings/account_settings.html:145
 msgid "Russian Ruble"
 msgstr "俄罗斯卢布"
 
-#: user_settings/templates/user_settings/account_settings.html:147
+#: user_settings/templates/user_settings/account_settings.html:146
 msgid "Chinese Yuan"
 msgstr "人民币"
 
-#: user_settings/templates/user_settings/account_settings.html:148
+#: user_settings/templates/user_settings/account_settings.html:147
 msgid "Japanese Yen"
 msgstr "日圆"
 
-#: user_settings/templates/user_settings/account_settings.html:149
+#: user_settings/templates/user_settings/account_settings.html:148
 msgid "Indian Rupee"
 msgstr "印度卢比"
 
-#: user_settings/templates/user_settings/account_settings.html:153
+#: user_settings/templates/user_settings/account_settings.html:152
 msgid "Appearance"
 msgstr "外观"
 
-#: user_settings/templates/user_settings/account_settings.html:155
+#: user_settings/templates/user_settings/account_settings.html:154
 msgid "Light"
 msgstr "浅色"
 
-#: user_settings/templates/user_settings/account_settings.html:156
+#: user_settings/templates/user_settings/account_settings.html:155
 msgid "Dark"
 msgstr "深色"
 
-#: user_settings/templates/user_settings/account_settings.html:160
+#: user_settings/templates/user_settings/account_settings.html:159
 msgid "Notifications Enabled"
 msgstr "启用通知"
 
-#: user_settings/templates/user_settings/account_settings.html:183
+#: user_settings/templates/user_settings/account_settings.html:182
 msgid "Payment Method"
 msgstr "支付方式"
 
-#: user_settings/templates/user_settings/account_settings.html:185
-msgid "Visa"
-msgstr "签证"
-
-#: user_settings/templates/user_settings/account_settings.html:186
-msgid "MasterCard"
-msgstr "万事达"
-
-#: user_settings/templates/user_settings/account_settings.html:187
-msgid "American Express"
-msgstr "美国运通"
-
-#: user_settings/templates/user_settings/account_settings.html:188
-msgid "PayPal"
-msgstr "贝宝"
-
-#: user_settings/templates/user_settings/account_settings.html:192
+#: user_settings/templates/user_settings/account_settings.html:191
 msgid "Card Last Four Digits"
 msgstr "卡片最后四位数字"
 
-#: user_settings/templates/user_settings/account_settings.html:194
-msgid "Enter the last four digits of your card."
-msgstr "输入卡的最后四位数字。"
-
-#: user_settings/templates/user_settings/account_settings.html:197
+#: user_settings/templates/user_settings/account_settings.html:195
 msgid "Billing Address"
 msgstr "账单地址"
 
-#: user_settings/templates/user_settings/account_settings.html:213
+#: user_settings/templates/user_settings/account_settings.html:211
 msgid "Confirm Profile Deletion"
 msgstr "确认删除个人资料"
 
-#: user_settings/templates/user_settings/account_settings.html:217
+#: user_settings/templates/user_settings/account_settings.html:215
 msgid ""
 "Are you sure you want to delete your profile? This action cannot be undone."
 msgstr "您确定要删除您的个人资料吗？此操作无法撤销。"
 
-#: user_settings/templates/user_settings/account_settings.html:222
+#: user_settings/templates/user_settings/account_settings.html:220
 msgid "DELETE"
 msgstr "删除"
 
-#: user_settings/templates/user_settings/account_settings.html:224
+#: user_settings/templates/user_settings/account_settings.html:222
 msgid "Cancel"
 msgstr "取消"
 
-#: user_settings/views.py:46
+#: user_settings/views.py:60
 msgid "Personal details updated successfully."
 msgstr "个人资料已成功更新。"
 
-#: user_settings/views.py:157
-msgid "Invalid card number format."
-msgstr "卡号格式无效。"
-
-#: user_settings/views.py:187
+#: user_settings/views.py:247
 msgid "Your profile has been deleted successfully."
 msgstr "您的个人资料已成功删除。"
+
+#~ msgid "your review"
+#~ msgstr "您的评论的回复"
+
+#~ msgid "Unknown"
+#~ msgstr "未知"
+
+#~ msgid "Message from "
+#~ msgstr "消息来自 "
+
+#~ msgid " to"
+#~ msgstr " 到"
+
+#, python-brace-format
+#~ msgid "{sender_name}"
+#~ msgstr "{sender_name}"
+
+#~ msgid "Billing Address:"
+#~ msgstr "账单地址："
+
+#~ msgid "Visa"
+#~ msgstr "签证"
+
+#~ msgid "MasterCard"
+#~ msgstr "万事达"
+
+#~ msgid "American Express"
+#~ msgstr "美国运通"
+
+#~ msgid "PayPal"
+#~ msgstr "贝宝"
+
+#~ msgid "Enter the last four digits of your card."
+#~ msgstr "输入卡的最后四位数字。"

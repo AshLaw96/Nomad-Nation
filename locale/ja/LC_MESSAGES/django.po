@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nomad Nation 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-25 20:59+0000\n"
+"POT-Creation-Date: 2025-03-03 08:21+0000\n"
 "PO-Revision-Date: 2025-02-25 12:00+0000\n"
 "Last-Translator: Ashley Lawrence <ashley.lawrence.students@codeinstitute."
 "net>\n"
@@ -51,7 +51,7 @@ msgstr "お気に入りのキャラバンを確認"
 
 #: dashboard/templates/dashboard/dashboard.html:54
 #: listings/templates/listings/booking.html:90
-#: listings/templates/listings/booking.html:186
+#: listings/templates/listings/booking.html:189
 msgid "Owner:"
 msgstr "オーナー："
 
@@ -71,8 +71,8 @@ msgstr "過去の宿泊を確認"
 #: dashboard/templates/dashboard/dashboard.html:109
 #: listings/templates/listings/booking.html:25
 #: listings/templates/listings/booking.html:88
-#: listings/templates/listings/booking.html:153
-#: listings/templates/listings/booking.html:189
+#: listings/templates/listings/booking.html:155
+#: listings/templates/listings/booking.html:192
 msgid "to"
 msgstr "へ"
 
@@ -138,145 +138,149 @@ msgstr "星"
 msgid "No reviews"
 msgstr "レビューはありません"
 
-#: listings/forms.py:10
+#: listings/forms.py:17
 msgid "Add extra amenities"
 msgstr "追加の設備を追加"
 
-#: listings/forms.py:30
+#: listings/forms.py:37
 msgid "Caravan Title"
 msgstr "キャラバンのタイトル"
 
-#: listings/forms.py:31
+#: listings/forms.py:38
 msgid "Caravan Description"
 msgstr "キャラバンの説明"
 
-#: listings/forms.py:32
+#: listings/forms.py:39
 msgid "Berth Capacity"
 msgstr "寝台容量"
 
-#: listings/forms.py:33
+#: listings/forms.py:40
 msgid "Select Amenities"
 msgstr "設備を選択"
 
-#: listings/forms.py:34 listings/templates/listings/listing_page.html:35
+#: listings/forms.py:41 listings/templates/listings/listing_page.html:35
 msgid "Location"
 msgstr "場所"
 
-#: listings/forms.py:35
+#: listings/forms.py:42
 msgid "Price per Night"
 msgstr "1泊の料金"
 
-#: listings/forms.py:36
+#: listings/forms.py:43
 msgid "Available Dates"
 msgstr "利用可能な日付"
 
-#: listings/forms.py:41
+#: listings/forms.py:48
 msgid "Select start date"
 msgstr "開始日を選択"
 
-#: listings/forms.py:44
+#: listings/forms.py:51
 msgid "Select end date"
 msgstr "終了日を選択"
 
-#: listings/forms.py:63
+#: listings/forms.py:78
 msgid "Caravan must have an owner."
 msgstr "キャラバンには所有者が必要です。"
 
-#: listings/forms.py:69
+#: listings/forms.py:84
 msgid "This amenity already exists for your account."
 msgstr "この設備はすでにあなたのアカウントに存在します。"
 
-#: listings/forms.py:81
+#: listings/forms.py:100
 msgid "Invalid date format. Expected a list of objects."
 msgstr "無効な日付形式。オブジェクトのリストが期待されました。"
 
-#: listings/forms.py:85
+#: listings/forms.py:104
 msgid "Invalid JSON format for available dates."
 msgstr "利用可能な日付のための無効なJSON形式。"
 
-#: listings/forms.py:91
+#: listings/forms.py:110
 msgid "Each date entry must be a dictionary."
 msgstr "各日付エントリは辞書でなければなりません。"
 
-#: listings/forms.py:96
+#: listings/forms.py:115
 msgid "Each date entry must contain 'start_date' and 'end_date'."
 msgstr ""
 "各日付エントリには「start_date」と「end_date」が含まれている必要があります。"
 
-#: listings/forms.py:109
+#: listings/forms.py:128
 msgid "Invalid date format. Use YYYY-MM-DD."
 msgstr "無効な日付形式。YYYY-MM-DDを使用してください。"
 
-#: listings/forms.py:113
+#: listings/forms.py:132
 msgid "Start date cannot be after end date."
 msgstr "開始日は終了日の後にすることはできません。"
 
-#: listings/forms.py:150
+#: listings/forms.py:185
+msgid "Phone number must contain only digits."
+msgstr "電話番号には数字のみを含める必要があります。"
+
+#: listings/forms.py:200
 msgid "This booking does not have an associated caravan."
 msgstr "この予約には関連するキャラバンがありません。"
 
-#: listings/forms.py:159 listings/models.py:87
+#: listings/forms.py:209 listings/models.py:115
 msgid "End date must be after start date."
 msgstr "終了日は開始日の後でなければなりません。"
 
-#: listings/forms.py:172 listings/views.py:256
+#: listings/forms.py:222 listings/views.py:301
 msgid "The caravan is not available for the selected dates."
 msgstr "選択した日付にはキャラバンは利用できません。"
 
-#: listings/models.py:31
+#: listings/models.py:41
 msgid "Two-berth"
 msgstr "2寝台"
 
-#: listings/models.py:32
+#: listings/models.py:42
 msgid "Four-berth"
 msgstr "4寝台"
 
-#: listings/models.py:33
+#: listings/models.py:43
 msgid "Six-berth"
 msgstr "6寝台"
 
-#: listings/models.py:63
+#: listings/models.py:82
 msgid "Image for"
 msgstr "の画像"
 
-#: listings/models.py:92
+#: listings/models.py:124
 msgid "Pending"
 msgstr "保留中"
 
-#: listings/models.py:93
+#: listings/models.py:125
 msgid "Accepted"
 msgstr "受け入れ済み"
 
-#: listings/models.py:94
+#: listings/models.py:126
 msgid "Declined"
 msgstr "拒否された"
 
-#: listings/models.py:115 listings/views.py:369
+#: listings/models.py:150 listings/views.py:427
 msgid "Booking for"
 msgstr "の予約"
 
-#: listings/models.py:116
+#: listings/models.py:151
 msgid " by "
 msgstr " によって "
 
-#: listings/models.py:135
+#: listings/models.py:177
 msgid "Review for"
 msgstr "のレビュー"
 
-#: listings/models.py:136
+#: listings/models.py:178
 msgid "by"
 msgstr "によって"
 
-#: listings/models.py:153
+#: listings/models.py:201
 msgid "Reply by"
 msgstr "による返信"
 
-#: listings/models.py:154
+#: listings/models.py:202
 msgid "to review"
 msgstr "レビューする"
 
 #: listings/templates/listings/add_caravan.html:6
-#: listings/templates/listings/listing_page.html:356
+#: listings/templates/listings/listing_page.html:365
 msgid "Add Caravan"
 msgstr "キャラバンを追加"
 
@@ -319,7 +323,13 @@ msgstr "1泊の料金："
 msgid "Availability:"
 msgstr "空き状況："
 
-#: listings/templates/listings/add_caravan.html:49
+#: listings/templates/listings/add_caravan.html:47
+msgid ""
+"Click on a date to toggle availability. Drag over multiple days to select a "
+"range. Click an existing date to remove it."
+msgstr "日付をクリックして空き状況を切り替えます。複数の日をドラッグして範囲を選択します。既存の日付をクリックして削除します。"
+
+#: listings/templates/listings/add_caravan.html:53
 msgid "Add"
 msgstr "追加"
 
@@ -379,7 +389,7 @@ msgstr "開始日："
 msgid "End Date:"
 msgstr "終了日："
 
-#: listings/templates/listings/booking.html:63 templates/base.html:104
+#: listings/templates/listings/booking.html:63 templates/base.html:105
 msgid "Close"
 msgstr "閉じる"
 
@@ -388,7 +398,7 @@ msgid "No pending bookings."
 msgstr "保留中の予約はありません"
 
 #: listings/templates/listings/booking.html:72
-#: listings/templates/listings/booking.html:137
+#: listings/templates/listings/booking.html:139
 msgid "Go back to listings"
 msgstr "リストに戻る"
 
@@ -409,44 +419,48 @@ msgstr "予約の変更"
 msgid "Start Date"
 msgstr "開始日"
 
-#: listings/templates/listings/booking.html:118
+#: listings/templates/listings/booking.html:119
 msgid "End Date"
 msgstr "終了日"
 
-#: listings/templates/listings/booking.html:122
+#: listings/templates/listings/booking.html:124
 msgid "Message"
 msgstr "メッセージ"
 
-#: listings/templates/listings/booking.html:126
-#: listings/templates/listings/booking.html:202
+#: listings/templates/listings/booking.html:128
+#: listings/templates/listings/booking.html:205
 msgid "Submit"
 msgstr "送信"
 
-#: listings/templates/listings/booking.html:136
+#: listings/templates/listings/booking.html:138
 msgid "No upcoming bookings."
 msgstr "今後の予約はありません"
 
-#: listings/templates/listings/booking.html:144
+#: listings/templates/listings/booking.html:146
 msgid "Previous Bookings"
 msgstr "過去の予約"
 
-#: listings/templates/listings/booking.html:159
+#: listings/templates/listings/booking.html:161
 msgid "No previous bookings."
 msgstr "過去の予約はありません"
 
-#: listings/templates/listings/booking.html:167
+#: listings/templates/listings/booking.html:169
 msgid "Request a Booking"
 msgstr "予約をリクエスト"
 
-#: listings/templates/listings/booking.html:171
-#: listings/templates/listings/booking.html:181
+#: listings/templates/listings/booking.html:173
+#: listings/templates/listings/booking.html:183
 msgid "Request Booking"
 msgstr "予約をリクエスト"
 
-#: listings/templates/listings/booking.html:187
+#: listings/templates/listings/booking.html:190
 #: listings/templates/listings/listing_page.html:147
 msgid "Available Dates:"
 msgstr "空いている日程："
+
+#: listings/templates/listings/booking.html:209
+msgid "No caravan selected for booking."
+msgstr "予約対象にキャラバンが選択されていません。"
 
 #: listings/templates/listings/listing_page.html:6
 msgid "Welcome to your Listings Page"
@@ -554,12 +568,12 @@ msgstr "返信"
 msgid "Submit Reply"
 msgstr "返信を送信"
 
-#: listings/templates/listings/listing_page.html:218 user_settings/models.py:52
+#: listings/templates/listings/listing_page.html:218 user_settings/models.py:83
 msgid "Reply to Review"
 msgstr "レビューに返信"
 
 #: listings/templates/listings/listing_page.html:241
-#: listings/templates/listings/listing_page.html:298
+#: listings/templates/listings/listing_page.html:307
 msgid "Edit Review"
 msgstr "レビューを編集"
 
@@ -571,183 +585,193 @@ msgstr "レビューを削除"
 msgid "Approve Review"
 msgstr "レビューを承認"
 
-#: listings/templates/listings/listing_page.html:261
-#: listings/templates/listings/listing_page.html:270
+#: listings/templates/listings/listing_page.html:263
+#: listings/templates/listings/listing_page.html:274
 msgid "Leave a Review"
 msgstr "レビューを残す"
 
-#: listings/templates/listings/listing_page.html:277
-#: listings/templates/listings/listing_page.html:305
+#: listings/templates/listings/listing_page.html:282
+#: listings/templates/listings/listing_page.html:314
 msgid "Rating"
 msgstr "評価"
 
-#: listings/templates/listings/listing_page.html:281
-#: listings/templates/listings/listing_page.html:309
+#: listings/templates/listings/listing_page.html:287
+#: listings/templates/listings/listing_page.html:318
 msgid "Comment"
 msgstr "コメント"
 
-#: listings/templates/listings/listing_page.html:285
-#: listings/templates/listings/listing_page.html:313
+#: listings/templates/listings/listing_page.html:293
+#: listings/templates/listings/listing_page.html:322
 msgid "Submit Review"
 msgstr "レビューを送信"
 
-#: listings/templates/listings/listing_page.html:326
+#: listings/templates/listings/listing_page.html:335
 msgid "Edit caravan"
 msgstr "キャラバンを編集"
 
-#: listings/templates/listings/listing_page.html:332
+#: listings/templates/listings/listing_page.html:341
 msgid "Delete caravan"
 msgstr "キャラバンを削除"
 
-#: listings/templates/listings/listing_page.html:340
+#: listings/templates/listings/listing_page.html:349
 msgid "BOOK CARAVAN NOW"
 msgstr "今すぐキャラバンを予約"
 
-#: listings/templates/listings/listing_page.html:343
+#: listings/templates/listings/listing_page.html:352
 msgid "Not Available"
 msgstr "利用できません"
 
-#: listings/templates/listings/listing_page.html:351
+#: listings/templates/listings/listing_page.html:360
 msgid "No caravans available"
 msgstr "利用可能なキャラバンはありません"
 
-#: listings/views.py:268
+#: listings/views.py:315
 msgid "Booking request for "
 msgstr "予約リクエスト "
 
-#: listings/views.py:269
+#: listings/views.py:316
 msgid " from "
 msgstr " から "
 
-#: listings/views.py:279
+#: listings/views.py:325
 msgid "Booking request for"
 msgstr "予約リクエスト"
 
-#: listings/views.py:280
+#: listings/views.py:326
 msgid " sent successfully "
 msgstr " が正常に送信されました "
 
-#: listings/views.py:280
+#: listings/views.py:326
 msgid "to "
 msgstr "へ "
 
-#: listings/views.py:286
+#: listings/views.py:332
 msgid "There was an error with your booking request."
 msgstr "予約リクエストにエラーが発生しました。"
 
-#: listings/views.py:354
+#: listings/views.py:411
 msgid "Booking has no associated caravan."
 msgstr "予約には関連するキャラバンがありません。"
 
-#: listings/views.py:362
+#: listings/views.py:419
 msgid "Booking accepted!"
 msgstr "予約が受け入れられました！"
 
-#: listings/views.py:370
+#: listings/views.py:428
 msgid "has been accepted."
 msgstr "が受け入れられました。"
 
-#: listings/views.py:379
+#: listings/views.py:437
 msgid "Booking declined."
 msgstr "予約が拒否されました。"
 
-#: listings/views.py:386
+#: listings/views.py:446
 msgid "Booking for "
 msgstr "予約 "
 
-#: listings/views.py:387
+#: listings/views.py:447
 msgid " has been declined."
 msgstr " が拒否されました。"
 
-#: listings/views.py:420
+#: listings/views.py:483
+msgid "Start date cannot be in the past."
+msgstr "開始日を過去にすることはできません。"
+
+#: listings/views.py:488
+msgid "End date cannot be before start date."
+msgstr "終了日を開始日より前にすることはできません。"
+
+#: listings/views.py:503
+msgid "Selected dates are not available for this caravan."
+msgstr "選択した日付はこのキャラバンには参加できません。"
+
+#: listings/views.py:519
 msgid "Booking modification request for "
 msgstr "予約変更リクエスト "
 
-#: listings/views.py:422
+#: listings/views.py:521
 msgid "from"
 msgstr "から"
 
-#: listings/views.py:430
+#: listings/views.py:530
 msgid "Booking modification request sent to the owner."
 msgstr "予約変更リクエストがオーナーに送信されました。"
 
-#: listings/views.py:453
+#: listings/views.py:535
+msgid "Invalid date format."
+msgstr "無効な日付形式です。"
+
+#: listings/views.py:562
 msgid "New review from "
 msgstr "からの新しいレビュー "
 
-#: listings/views.py:454
-msgid "on your caravan!"
-msgstr "あなたのキャラバンに！"
+#: listings/views.py:563
+msgid " on your caravan!"
+msgstr " あなたのキャラバンに！"
 
-#: listings/views.py:462
+#: listings/views.py:571
 msgid "Review submitted successfully!"
 msgstr "レビューが正常に送信されました！"
 
-#: listings/views.py:472 listings/views.py:518 listings/views.py:548
-#: listings/views.py:590 user_settings/views.py:80
+#: listings/views.py:581 listings/views.py:641 user_settings/views.py:103
 msgid "Invalid request"
 msgstr "無効なリクエスト"
 
-#: listings/views.py:483
+#: listings/views.py:597
 msgid "Review approved!"
 msgstr "レビューが承認されました！"
 
-#: listings/views.py:497
+#: listings/views.py:617
 msgid "Reply submitted successfully!"
 msgstr "返信が正常に送信されました！"
 
-#: listings/views.py:503
+#: listings/views.py:626
 msgid "replied to your review"
 msgstr "あなたのレビューに返信しました"
 
-#: listings/views.py:528
+#: listings/views.py:655
+msgid "You do not have permission to edit this review."
+msgstr "このレビューを編集する権限がありません。"
+
+#: listings/views.py:664
 msgid "Review edited successfully!"
 msgstr "レビューが正常に編集されました！"
 
-#: listings/views.py:533
+#: listings/views.py:671
 msgid "Review edited by"
 msgstr "によって編集されたレビュー"
 
-#: listings/views.py:554
+#: listings/views.py:687 listings/views.py:769
+msgid "Invalid request."
+msgstr "無効なリクエストです。"
+
+#: listings/views.py:705 listings/views.py:711
+msgid "You do not have permission to delete this review."
+msgstr "このレビューを削除する権限がありません。"
+
+#: listings/views.py:716
 msgid "Review deleted successfully!"
 msgstr "レビューが正常に削除されました！"
 
-#: listings/views.py:567
+#: listings/views.py:736
+msgid "You do not have permission to edit this reply."
+msgstr "この返信を編集する権限がありません。"
+
+#: listings/views.py:745
 msgid "Reply edited successfully!"
 msgstr "返信が正常に編集されました！"
 
-#: listings/views.py:574
-msgid "edited their reply to "
-msgstr "に対する返信を編集しました "
+#: listings/views.py:753
+msgid "edited their reply to your review"
+msgstr "あなたのレビューへの返信を編集しました"
 
-#: listings/views.py:575
-msgid "your review"
-msgstr "あなたのレビュー"
+#: listings/views.py:787 listings/views.py:793
+msgid "You do not have permission to delete this reply."
+msgstr "この返信を削除する権限がありません。"
 
-#: listings/views.py:599
+#: listings/views.py:798
 msgid "Reply deleted successfully!"
 msgstr "返信が正常に削除されました！"
-
-#: main/models.py:28 main/views.py:52
-msgid "Guest"
-msgstr "ゲスト"
-
-#: main/models.py:31
-msgid "Unknown"
-msgstr "未知"
-
-#: main/models.py:34
-msgid "Message from "
-msgstr "からのメッセージ "
-
-#: main/models.py:35
-msgid " to"
-msgstr " へ"
-
-#: main/models.py:34
-#, python-brace-format
-msgid "{sender_name}"
-msgstr "{sender_name}"
 
 #: main/templates/main/contact.html:6
 msgid "Contact Us"
@@ -828,23 +852,27 @@ msgstr "安全な支払い"
 msgid "Easy and secure booking for peace of mind."
 msgstr "安心のための簡単で安全な予約。"
 
-#: main/views.py:59
+#: main/views.py:68
+msgid "Guest"
+msgstr "ゲスト"
+
+#: main/views.py:78
 msgid "New contact message from "
 msgstr "からの新しいお問い合わせメッセージ "
 
-#: main/views.py:67
+#: main/views.py:89
 msgid "Your message has been sent successfully."
 msgstr "メッセージが正常に送信されました。"
 
-#: main/views.py:91
+#: main/views.py:121
 msgid "Message deleted successfully."
 msgstr "メッセージが正常に削除されました。"
 
-#: templates/404.html:9
+#: templates/404.html:10
 msgid "Oops! 404 - Page Not Found!"
 msgstr "おっと！ 404 - ページが見つかりません！"
 
-#: templates/404.html:11
+#: templates/404.html:12
 msgid ""
 "It seems like you've taken a detour off the beaten path. The page you're "
 "looking for is nowhere to be found on Nomad Nation."
@@ -852,20 +880,36 @@ msgstr ""
 "あなたは道を外れてしまったようです。お探しのページはノマドネイションには見つ"
 "かりません。"
 
-#: templates/404.html:14
+#: templates/404.html:15
 msgid ""
 "But don't worry, our caravans are still here waiting for your next adventure!"
 msgstr ""
 "でも心配しないでください、私たちのキャラバンはまだここにあり、あなたの次の冒"
 "険を待っています！"
 
-#: templates/404.html:23
+#: templates/404.html:24 templates/500.html:24
 msgid "Take Me Back Home"
 msgstr "ホームに戻る"
 
-#: templates/404.html:28
+#: templates/404.html:29 templates/500.html:29
 msgid "Or, if you're feeling adventurous, try navigating a little differently!"
 msgstr "または、冒険心があるなら、少し違った方法でナビゲートしてみてください！"
+
+#: templates/500.html:10
+msgid "Oops! 500 - Server error!"
+msgstr "おっと！ 500 - サーバーエラー!"
+
+#: templates/500.html:12
+msgid ""
+"It seems like we've encountered a technical glitch. The page you're looking "
+"for is temporarily lost on the road."
+msgstr "技術的な問題が発生したようです。探しているページが一時的に路上で失われてしまいました。"
+
+#: templates/500.html:15
+msgid ""
+"But don't worry! Our team is already working on it, and you'll be heading to "
+"your destination in no time!"
+msgstr "でも心配しないでください！私たちのチームはすでに取り組んでおり、すぐに目的地に向かうことができるでしょう。"
 
 #: templates/account/login.html:6 templates/account/login.html:14
 msgid "Log In"
@@ -972,137 +1016,137 @@ msgstr "すでにアカウントをお持ちですか？"
 msgid "sign in"
 msgstr "サインイン"
 
-#: templates/base.html:14 templates/base.html:36
+#: templates/base.html:15 templates/base.html:37
 msgid "Nomad Nation"
 msgstr "ノマドネイション"
 
-#: templates/base.html:54
+#: templates/base.html:55
 msgid "Home"
 msgstr "ホーム"
 
-#: templates/base.html:57
+#: templates/base.html:58
 msgid "Contact"
 msgstr "お問い合わせ"
 
-#: templates/base.html:62
+#: templates/base.html:63
 msgid "Dashboard"
 msgstr "ダッシュボード"
 
-#: templates/base.html:65
+#: templates/base.html:66
 msgid "Caravan listings"
 msgstr "キャラバンのリスト"
 
-#: templates/base.html:68
+#: templates/base.html:69
 msgid "Bookings"
 msgstr "予約"
 
-#: templates/base.html:71
+#: templates/base.html:72
 msgid "Account settings"
 msgstr "アカウント設定"
 
-#: templates/base.html:74
+#: templates/base.html:75
 msgid "Logout"
 msgstr "ログアウト"
 
-#: templates/base.html:79
+#: templates/base.html:80
 msgid "Register"
 msgstr "登録"
 
-#: templates/base.html:82
+#: templates/base.html:83
 msgid "Login"
 msgstr "ログイン"
 
-#: templates/base.html:94
+#: templates/base.html:95
 msgid "New Notifications"
 msgstr "新しい通知"
 
-#: templates/base.html:131
+#: templates/base.html:132
 msgid "Made by"
 msgstr "製作元"
 
-#: templates/base.html:134
+#: templates/base.html:135
 msgid "Follow us:"
 msgstr "フォローしてください："
 
-#: user_settings/models.py:8
-#: user_settings/templates/user_settings/account_settings.html:128
+#: user_settings/models.py:22
+#: user_settings/templates/user_settings/account_settings.html:127
 msgid "English"
 msgstr "英語"
 
-#: user_settings/models.py:9
-#: user_settings/templates/user_settings/account_settings.html:129
+#: user_settings/models.py:23
+#: user_settings/templates/user_settings/account_settings.html:128
 msgid "Spanish"
 msgstr "スペイン語"
 
-#: user_settings/models.py:10
-#: user_settings/templates/user_settings/account_settings.html:130
+#: user_settings/models.py:24
+#: user_settings/templates/user_settings/account_settings.html:129
 msgid "French"
 msgstr "フランス語"
 
-#: user_settings/models.py:11
-#: user_settings/templates/user_settings/account_settings.html:131
+#: user_settings/models.py:25
+#: user_settings/templates/user_settings/account_settings.html:130
 msgid "German"
 msgstr "ドイツ語"
 
-#: user_settings/models.py:12
-#: user_settings/templates/user_settings/account_settings.html:132
+#: user_settings/models.py:26
+#: user_settings/templates/user_settings/account_settings.html:131
 msgid "Italian"
 msgstr "イタリア語"
 
-#: user_settings/models.py:13
-#: user_settings/templates/user_settings/account_settings.html:133
+#: user_settings/models.py:27
+#: user_settings/templates/user_settings/account_settings.html:132
 msgid "Portuguese"
 msgstr "ポルトガル語"
 
-#: user_settings/models.py:14
-#: user_settings/templates/user_settings/account_settings.html:134
+#: user_settings/models.py:28
+#: user_settings/templates/user_settings/account_settings.html:133
 msgid "Russian"
 msgstr "ロシア語"
 
-#: user_settings/models.py:15
-#: user_settings/templates/user_settings/account_settings.html:135
+#: user_settings/models.py:29
+#: user_settings/templates/user_settings/account_settings.html:134
 msgid "Chinese"
 msgstr "中国語"
 
-#: user_settings/models.py:16
-#: user_settings/templates/user_settings/account_settings.html:136
+#: user_settings/models.py:30
+#: user_settings/templates/user_settings/account_settings.html:135
 msgid "Japanese"
 msgstr "日本語"
 
-#: user_settings/models.py:17
-#: user_settings/templates/user_settings/account_settings.html:137
+#: user_settings/models.py:31
+#: user_settings/templates/user_settings/account_settings.html:136
 msgid "Hindi"
 msgstr "ヒンディー語"
 
-#: user_settings/models.py:51
+#: user_settings/models.py:82
 msgid "Review"
 msgstr "レビュー"
 
-#: user_settings/models.py:53
+#: user_settings/models.py:84
 msgid "Booking Request"
 msgstr "予約リクエスト"
 
-#: user_settings/models.py:54
+#: user_settings/models.py:85
 msgid "Booking Accepted"
 msgstr "予約が受け入れられました"
 
-#: user_settings/models.py:55
+#: user_settings/models.py:86
 msgid "Booking Declined"
 msgstr "予約が拒否されました"
 
-#: user_settings/models.py:56
+#: user_settings/models.py:87
 msgid "Booking Modification Request"
 msgstr "予約変更リクエスト"
 
-#: user_settings/models.py:57
+#: user_settings/models.py:88
 msgid "Contact Form Message"
 msgstr "お問い合わせフォームのメッセージ"
 
-#: user_settings/models.py:104
+#: user_settings/models.py:138
 msgid "Notification for "
 msgstr "通知:"
 
-#: user_settings/models.py:131
+#: user_settings/models.py:189
 msgid "Privacy settings for"
 msgstr "プライバシー設定"
 
@@ -1115,7 +1159,7 @@ msgid "Personal Details"
 msgstr "個人情報"
 
 #: user_settings/templates/user_settings/account_settings.html:17
-#: user_settings/templates/user_settings/account_settings.html:87
+#: user_settings/templates/user_settings/account_settings.html:86
 msgid "Edit Personal Details"
 msgstr "個人情報を編集"
 
@@ -1140,7 +1184,7 @@ msgid "Notifications:"
 msgstr "通知:"
 
 #: user_settings/templates/user_settings/account_settings.html:41
-#: user_settings/templates/user_settings/account_settings.html:119
+#: user_settings/templates/user_settings/account_settings.html:118
 msgid "Edit Preferences"
 msgstr "設定を編集"
 
@@ -1148,157 +1192,163 @@ msgstr "設定を編集"
 msgid "Payment Details"
 msgstr "支払い詳細"
 
-#: user_settings/templates/user_settings/account_settings.html:56
-msgid "Billing Address:"
-msgstr "請求先住所:"
-
-#: user_settings/templates/user_settings/account_settings.html:59
+#: user_settings/templates/user_settings/account_settings.html:58
 msgid "No payment details available."
 msgstr "支払い詳細はありません。"
 
-#: user_settings/templates/user_settings/account_settings.html:62
-#: user_settings/templates/user_settings/account_settings.html:176
+#: user_settings/templates/user_settings/account_settings.html:61
+#: user_settings/templates/user_settings/account_settings.html:175
 msgid "Edit Payment Details"
 msgstr "支払い詳細を編集"
 
-#: user_settings/templates/user_settings/account_settings.html:69
+#: user_settings/templates/user_settings/account_settings.html:68
 msgid "Profile Settings"
 msgstr "プロファイル設定"
 
-#: user_settings/templates/user_settings/account_settings.html:74
+#: user_settings/templates/user_settings/account_settings.html:73
 msgid "Delete Profile"
 msgstr "プロフィールの削除"
 
-#: user_settings/templates/user_settings/account_settings.html:94
+#: user_settings/templates/user_settings/account_settings.html:93
 msgid "Name"
 msgstr "名前"
 
-#: user_settings/templates/user_settings/account_settings.html:98
+#: user_settings/templates/user_settings/account_settings.html:97
 msgid "Email"
 msgstr "メール"
 
-#: user_settings/templates/user_settings/account_settings.html:102
+#: user_settings/templates/user_settings/account_settings.html:101
 msgid "Phone Number"
 msgstr "電話番号"
 
-#: user_settings/templates/user_settings/account_settings.html:106
-#: user_settings/templates/user_settings/account_settings.html:164
-#: user_settings/templates/user_settings/account_settings.html:201
+#: user_settings/templates/user_settings/account_settings.html:105
+#: user_settings/templates/user_settings/account_settings.html:163
+#: user_settings/templates/user_settings/account_settings.html:199
 msgid "Save Changes"
 msgstr "変更を保存"
 
-#: user_settings/templates/user_settings/account_settings.html:126
+#: user_settings/templates/user_settings/account_settings.html:125
 msgid "Language"
 msgstr "言語"
 
-#: user_settings/templates/user_settings/account_settings.html:141
+#: user_settings/templates/user_settings/account_settings.html:140
 msgid "Currency"
 msgstr "通貨"
 
-#: user_settings/templates/user_settings/account_settings.html:143
+#: user_settings/templates/user_settings/account_settings.html:142
 msgid "British Pound"
 msgstr "英国ポンド"
 
-#: user_settings/templates/user_settings/account_settings.html:144
+#: user_settings/templates/user_settings/account_settings.html:143
 msgid "US Dollar"
 msgstr "米ドル"
 
-#: user_settings/templates/user_settings/account_settings.html:145
+#: user_settings/templates/user_settings/account_settings.html:144
 msgid "Euro"
 msgstr "ユーロ"
 
-#: user_settings/templates/user_settings/account_settings.html:146
+#: user_settings/templates/user_settings/account_settings.html:145
 msgid "Russian Ruble"
 msgstr "ロシアルーブル"
 
-#: user_settings/templates/user_settings/account_settings.html:147
+#: user_settings/templates/user_settings/account_settings.html:146
 msgid "Chinese Yuan"
 msgstr "中国人民元"
 
-#: user_settings/templates/user_settings/account_settings.html:148
+#: user_settings/templates/user_settings/account_settings.html:147
 msgid "Japanese Yen"
 msgstr "日本円"
 
-#: user_settings/templates/user_settings/account_settings.html:149
+#: user_settings/templates/user_settings/account_settings.html:148
 msgid "Indian Rupee"
 msgstr "インドルピー"
 
-#: user_settings/templates/user_settings/account_settings.html:153
+#: user_settings/templates/user_settings/account_settings.html:152
 msgid "Appearance"
 msgstr "外観"
 
-#: user_settings/templates/user_settings/account_settings.html:155
+#: user_settings/templates/user_settings/account_settings.html:154
 msgid "Light"
 msgstr "ライト"
 
-#: user_settings/templates/user_settings/account_settings.html:156
+#: user_settings/templates/user_settings/account_settings.html:155
 msgid "Dark"
 msgstr "ダーク"
 
-#: user_settings/templates/user_settings/account_settings.html:160
+#: user_settings/templates/user_settings/account_settings.html:159
 msgid "Notifications Enabled"
 msgstr "通知を有効にする"
 
-#: user_settings/templates/user_settings/account_settings.html:183
+#: user_settings/templates/user_settings/account_settings.html:182
 msgid "Payment Method"
 msgstr "支払い方法"
 
-#: user_settings/templates/user_settings/account_settings.html:185
-msgid "Visa"
-msgstr "ビザ"
-
-#: user_settings/templates/user_settings/account_settings.html:186
-msgid "MasterCard"
-msgstr "マスターカード"
-
-#: user_settings/templates/user_settings/account_settings.html:187
-msgid "American Express"
-msgstr "アメリカン・エキスプレス"
-
-#: user_settings/templates/user_settings/account_settings.html:188
-msgid "PayPal"
-msgstr "ペイパル"
-
-#: user_settings/templates/user_settings/account_settings.html:192
+#: user_settings/templates/user_settings/account_settings.html:191
 msgid "Card Last Four Digits"
 msgstr "カードの最後の4桁"
 
-#: user_settings/templates/user_settings/account_settings.html:194
-msgid "Enter the last four digits of your card."
-msgstr "カードの下 4 桁を入力します。"
-
-#: user_settings/templates/user_settings/account_settings.html:197
+#: user_settings/templates/user_settings/account_settings.html:195
 msgid "Billing Address"
 msgstr "請求先住所"
 
-#: user_settings/templates/user_settings/account_settings.html:213
+#: user_settings/templates/user_settings/account_settings.html:211
 msgid "Confirm Profile Deletion"
 msgstr "プロフィール削除の確認"
 
-#: user_settings/templates/user_settings/account_settings.html:217
+#: user_settings/templates/user_settings/account_settings.html:215
 msgid ""
 "Are you sure you want to delete your profile? This action cannot be undone."
 msgstr "本当にプロフィールを削除しますか？この操作は元に戻せません。"
 
-#: user_settings/templates/user_settings/account_settings.html:222
+#: user_settings/templates/user_settings/account_settings.html:220
 msgid "DELETE"
 msgstr "削除"
 
-#: user_settings/templates/user_settings/account_settings.html:224
+#: user_settings/templates/user_settings/account_settings.html:222
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: user_settings/views.py:46
+#: user_settings/views.py:60
 msgid "Personal details updated successfully."
 msgstr "個人情報が正常に更新されました。"
 
-#: user_settings/views.py:157
-msgid "Invalid card number format."
-msgstr "無効なカード番号形式。"
-
-#: user_settings/views.py:187
+#: user_settings/views.py:247
 msgid "Your profile has been deleted successfully."
 msgstr "プロフィールが正常に削除されました。"
+
+#~ msgid "your review"
+#~ msgstr "あなたのレビュー"
+
+#~ msgid "Unknown"
+#~ msgstr "未知"
+
+#~ msgid "Message from "
+#~ msgstr "からのメッセージ "
+
+#~ msgid " to"
+#~ msgstr " へ"
+
+#, python-brace-format
+#~ msgid "{sender_name}"
+#~ msgstr "{sender_name}"
+
+#~ msgid "Billing Address:"
+#~ msgstr "請求先住所:"
+
+#~ msgid "Visa"
+#~ msgstr "ビザ"
+
+#~ msgid "MasterCard"
+#~ msgstr "マスターカード"
+
+#~ msgid "American Express"
+#~ msgstr "アメリカン・エキスプレス"
+
+#~ msgid "PayPal"
+#~ msgstr "ペイパル"
+
+#~ msgid "Enter the last four digits of your card."
+#~ msgstr "カードの下 4 桁を入力します。"
 
 #~ msgid "You have new notifications."
 #~ msgstr "新しい通知があります。"
