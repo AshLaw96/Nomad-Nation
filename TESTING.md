@@ -239,36 +239,34 @@ Defensive programming was manually tested with the below user acceptance testing
 
 ## User Story Testing
 
-⚠️ INSTRUCTIONS ⚠️
-
-Testing User Stories is actually quite simple, once you've already got the stories defined on your README.
-
-Most of your project's **Features** should already align with the **User Stories**, so this should be as simple as creating a table with the User Story, matching with the re-used screenshot from the respective Feature.
-
-⚠️ --- END --- ⚠️
-
-| Target               | Expectation                                                                             | Outcome                                                                             | Screenshot                                          |
-| -------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------- |
-| As a blog owner      | I would like to create new blog posts with a title, featured image, and content         | so that I can share my experiences with my audience.                                | ![screenshot](documentation/features/feature01.png) |
-| As a blog owner      | I would like to update existing blog posts                                              | so that I can correct or add new information to my previous stories.                | ![screenshot](documentation/features/feature02.png) |
-| As a blog owner      | I would like to delete blog posts                                                       | so that I can remove outdated or irrelevant content from my blog.                   | ![screenshot](documentation/features/feature03.png) |
-| As a blog owner      | I would like to retrieve a list of all my published blog posts                          | so that I can manage them from a central dashboard.                                 | ![screenshot](documentation/features/feature04.png) |
-| As a blog owner      | I would like to preview a post as draft before publishing it                            | so that I can ensure formatting and content appear correctly.                       | ![screenshot](documentation/features/feature05.png) |
-| As a blog owner      | I would like to review comments before they are published                               | so that I can filter out spam or inappropriate content.                             | ![screenshot](documentation/features/feature06.png) |
-| As a blog owner      | I would like to approve or reject comments from users                                   | so that I can maintain control over the discussion on my posts.                     | ![screenshot](documentation/features/feature07.png) |
-| As a blog owner      | I would like to view a list of all comments (both approved and pending)                 | so that I can manage user engagement effectively.                                   | ![screenshot](documentation/features/feature08.png) |
-| As a blog owner      | I would like to edit or delete user comments                                            | so that I can clean up or remove inappropriate responses after they've been posted. | ![screenshot](documentation/features/feature09.png) |
-| As a registered user | I would like to log in to the site                                                      | so that I can leave comments on blog posts.                                         | ![screenshot](documentation/features/feature10.png) |
-| As a registered user | I would like to register for an account                                                 | so that I can become part of the community and engage with the blog.                | ![screenshot](documentation/features/feature11.png) |
-| As a registered user | I would like to leave a comment on a blog post                                          | so that I can share my thoughts or ask questions about the owner's experiences.     | ![screenshot](documentation/features/feature12.png) |
-| As a registered user | I would like my comment to show my name and the timestamp                               | so that others can see who I am and when I left the comment.                        | ![screenshot](documentation/features/feature13.png) |
-| As a registered user | I would like to receive a notification or message saying my comment is pending approval | so that I understand it hasn't been posted immediately.                             | ![screenshot](documentation/features/feature14.png) |
-| As a registered user | I would like to edit or delete my own comments                                          | so that I can fix mistakes or retract my statement.                                 | ![screenshot](documentation/features/feature15.png) |
-| As a guest user      | I would like to read blog posts without registering                                     | so that I can enjoy the content without needing to log in.                          | ![screenshot](documentation/features/feature16.png) |
-| As a guest user      | I would like to browse past posts                                                       | so that I can explore the blog's full content history.                              | ![screenshot](documentation/features/feature17.png) |
-| As a guest user      | I would like to register for an account                                                 | so that I can participate in the community by leaving comments on posts.            | ![screenshot](documentation/features/feature18.png) |
-| As a guest user      | I would like to see the names of other commenters on posts                              | so that I can get a sense of community interaction before registering.              | ![screenshot](documentation/features/feature19.png) |
-| As a user            | I would like to see a 404 error page if I get lost                                      | so that it's obvious that I've stumbled upon a page that doesn't exist.             | ![screenshot](documentation/features/feature20.png) |
+| Target | Expectation | Outcome |
+Screenshot
+| ------------------ | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| ------------------ |
+| As a caravan owner | I would like to create a listing for my caravan | so that I can rent it out to customers. | ![screenshot](documentation/responsiveness/desktop/desk-list.png) |
+| As a caravan owner | I would like to upload photos and provide details about my caravan | so that I can attract potential renters. | ![screenshot](documentation/browsers/firefox/fox-add-caravan.png) |
+| As a caravan owner | I would like to set the availability and pricing for my caravan | so that I can manage when it's rented and how much I earn. | ![screenshot](documentation/stories/add-event.png) |
+| As a caravan owner | I would like to approve or decline booking requests | so that I can ensure the caravan is available for trustworthy renters. | ![screenshot](documentation/defensive/decline-book-test.png) |
+| As a caravan owner | I would like to manage multiple caravan listings | so that I can rent out more than one vehicle. | ![screenshot](documentation/stories/all-list.png) |
+| As a caravan owner | I would like to receive notifications about new booking requests | so that I can respond promptly to customers. | ![screenshot](documentation/defensive/notification-test.png) |
+| As a caravan owner | I would like to block specific dates for personal use | so that my caravan is unavailable during those times. | ![screenshot](documentation/stories/unavailable.png) |
+| As a caravan owner | I would like to respond to customers messages or questions | so that I can provide them with helpful information. | ![screenshot](documentation/responsiveness/mobile/mob-contact.jpg) |
+| As a caravan owner | I would like to view and manage reviews left by customers | so that I can improve my service and attract more renters. | ![screenshot](documentation/defensive/reply-form-test.png) |
+| As a customer | I would like to filter caravans by location, price, and features | so that I can quickly find one that suits my needs. | ![screenshot](documentation/defensive/filter-test.jpg) |
+| As a customer | I would like to view detailed information about a caravan | so that I can see photos, amenities, and availability before making a decision. | ![screenshot](documentation/responsiveness/tablet/tab-list.jpg) |
+| As a customer | I would like to search for caravans near specific destinations | so that I can plan my travel conveniently. | ![screenshot](documentation/defensive/search-form-test.jpg) |
+| As a customer | I would like to book a caravan for a specific date range | so that I can secure it for my trip. | ![screenshot](documentation/defensive/book-form-test.png) |
+| As a customer | I would like to receive a confirmation email or notification for my booking | so that I have proof and details of my reservation. | ![screenshot](documentation/defensive/accept-book-test.png) |
+| As a customer | I would like to cancel or modify my booking | so that I can adjust my plans if necessary. | ![screenshot](documentation/defensive/modify-booking-form-test.png) |
+| As a customer | I would like to save my favourite caravans to a wish-list | so that I can revisit them later when planning a trip. | ![screenshot](documentation/defensive/fave-links.jpg) |
+| As a customer | I would like to leave a review and rating for a caravan I rented | so that I can share my experience with others. | ![screenshot](documentation/stories/review-form.png) |
+| As a customer | I would like to create an account or log in | so that I can manage my bookings and preferences easily. | ![screenshot](documentation/browsers/firefox/fox-register.png) |
+| As a customer | I would like to chat with the caravan owner | so that I can ask specific questions about the rental. | ![screenshot](documentation/responsiveness/mobile/mob-contact.jpg) |
+| As a admin | I would like to view all user accounts | so that I can monitor activity and handle issues if needed. | ![screenshot](documentation/stories/user-account.png) |
+| As a admin | I would like to approve or reject caravan listings | so that only high-quality and legitimate caravans are available on the platform. | ![screenshot](documentation/stories/caravan-.png) |
+| As a admin | I would like to moderate reviews and comments | so that inappropriate content can be removed. | ![screenshot](documentation/stories/reviews.png) |
+| As a admin | I would like to analyse app usage statistics | so that I can identify areas for improvement. | ![screenshot](documentation/stories/analytics.png) |
+| As a admin | I would like to disable user accounts that violate the terms of service | so that the platform remains safe and trustworthy. | ![screenshot](documentation/stories/disable-account.png) |
 
 ## Automated Testing
 
