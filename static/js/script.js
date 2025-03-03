@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initialiseSelect2();
   initialiseRequestBooking();
   initialiseBookingButton();
+  initialiseEditBookingModal();
   initialiseImageModal();
   initialiseFavouriteIcons();
   initialiseReviewModal();
@@ -244,76 +245,73 @@ function initialiseAddCaravan() {
       editable: true,
       eventResizableFromStart: true,
       unselectAuto: false,
+      longPressDelay: 300,
+      eventLongPressDelay: 300,
+
       select: function (info) {
-        let dates = parseJSON(hiddenInputEl.value);
+        console.log("Date selected:", info.startStr);
+        let dates = parseHiddenDates();
+
         let adjustedEnd = new Date(info.endStr);
+        adjustedEnd.setDate(adjustedEnd.getDate() - 1); // Fix end date issue
+
         if (
           !dates.some(
-            (d) => d.start_date === info.startStr && d.end_date === info.endStr
+            (d) =>
+              d.start_date === info.startStr &&
+              d.end_date === adjustedEnd.toISOString().split("T")[0]
           )
         ) {
           dates.push({
             start_date: info.startStr,
             end_date: adjustedEnd.toISOString().split("T")[0],
           });
-          hiddenInputEl.value = JSON.stringify(removeDuplicates(dates));
+          updateHiddenInput(dates);
+
           calendar.addEvent({
             title: "Available",
             start: info.startStr,
-            end: info.endStr,
+            end: adjustedEnd.toISOString().split("T")[0],
             allDay: true,
           });
         }
         calendar.unselect();
       },
-      eventDrop: function (info) {
-        let dates = parseJSON(hiddenInputEl.value);
-        let index = dates.findIndex(
-          (d) => d.start_date === info.oldEvent.startStr
+
+      dateClick: function (info) {
+        console.log("Date tapped:", info.dateStr);
+        let dates = parseHiddenDates();
+
+        let existingIndex = dates.findIndex(
+          (d) => d.start_date === info.dateStr
         );
 
-        if (index !== -1) {
-          dates.splice(index, 1);
-          let adjustedEnd = new Date(info.event.endStr);
-          adjustedEnd.setDate(adjustedEnd.getDate() - 1);
-          dates.push({
-            start_date: info.event.startStr,
-            end_date: adjustedEnd.toISOString().split("T")[0],
+        if (existingIndex === -1) {
+          // Add date if not already in the list
+          dates.push({ start_date: info.dateStr, end_date: info.dateStr });
+          calendar.addEvent({
+            title: "Available",
+            start: info.dateStr,
+            end: info.dateStr,
+            allDay: true,
           });
-          hiddenInputEl.value = JSON.stringify(dates);
+        } else {
+          // Remove date if already selected
+          dates.splice(existingIndex, 1);
+          calendar.getEvents().forEach((event) => {
+            if (event.startStr === info.dateStr) event.remove();
+          });
         }
+        updateHiddenInput(dates);
       },
-      eventResize: function (info) {
-        let dates = parseJSON(hiddenInputEl.value);
-        let index = dates.findIndex(
-          (d) => d.start_date === info.event.startStr
-        );
 
-        if (index !== -1) {
-          let adjustedEnd = new Date(info.event.endStr);
-          adjustedEnd.setDate(adjustedEnd.getDate() - 1);
-          dates[index].end_date = adjustedEnd.toISOString().split("T")[0];
-          hiddenInputEl.value = JSON.stringify(removeDuplicates(dates));
-        }
+      eventDidMount: function (info) {
+        info.el.style.pointerEvents = "auto";
       },
-      eventClick: function (info) {
-        let dates = parseJSON(hiddenInputEl.value);
-        // Remove event from stored dates
-        dates = dates.filter(
-          (d) =>
-            !(
-              d.start_date === info.event.startStr &&
-              d.end_date === info.event.endStr
-            )
-        );
-        // Update hidden input
-        hiddenInputEl.value = JSON.stringify(removeDuplicates(dates));
-        // Remove event from calendar
-        info.event.remove();
-        calendar.refetchEvents();
-      },
-      events: parseJSON(hiddenInputEl.value),
+
+      events: parseHiddenDates(),
     });
+
     calendar.render();
   }
 }
@@ -336,7 +334,22 @@ function initialiseEditCaravan() {
   const calendarEl = document.getElementById("calendar");
   const hiddenInputEl = document.getElementById("available_dates");
 
-  // Adding multiple amenities
+  // Utility function to safely parse JSON
+  function parseHiddenDates() {
+    try {
+      return hiddenInputEl.value ? JSON.parse(hiddenInputEl.value) : [];
+    } catch (e) {
+      console.error("Invalid JSON in hidden input:", e);
+      return [];
+    }
+  }
+
+  // Utility function to update hidden input
+  function updateHiddenInput(dates) {
+    hiddenInputEl.value = JSON.stringify(removeDuplicates(dates));
+  }
+
+  // Adding multiple amenities dynamically
   const addAmenityBtn = document.getElementById("add-amenity-btn");
   if (addAmenityBtn) {
     addAmenityBtn.addEventListener("click", function () {
@@ -369,50 +382,93 @@ function initialiseEditCaravan() {
       editable: true,
       eventResizableFromStart: true,
       unselectAuto: false,
-      select: function (info) {
-        let dates = parseJSON(hiddenInputEl.value);
+      longPressDelay: 300,
+      eventLongPressDelay: 300,
 
-        // Check if the date range already exists
-        let existingEventIndex = dates.findIndex(
-          (d) => d.start_date === info.startStr && d.end_date === info.endStr
-        );
-        if (existingEventIndex === -1) {
-          // Add new event if it doesn't exist
-          dates.push({ start_date: info.startStr, end_date: info.endStr });
-          hiddenInputEl.value = JSON.stringify(dates);
+      select: function (info) {
+        console.log("Date selected:", info.startStr);
+        let dates = parseHiddenDates();
+
+        let adjustedEnd = new Date(info.endStr);
+        // Fix end date issue
+        adjustedEnd.setDate(adjustedEnd.getDate() - 1);
+
+        if (
+          !dates.some(
+            (d) =>
+              d.start_date === info.startStr &&
+              d.end_date === adjustedEnd.toISOString().split("T")[0]
+          )
+        ) {
+          dates.push({
+            start_date: info.startStr,
+            end_date: adjustedEnd.toISOString().split("T")[0],
+          });
+          updateHiddenInput(dates);
 
           calendar.addEvent({
             title: "Available",
             start: info.startStr,
-            end: info.endStr,
+            end: adjustedEnd.toISOString().split("T")[0],
             allDay: true,
           });
         }
+        calendar.unselect();
       },
 
-      // Click on an event to remove it
-      eventClick: function (info) {
-        let dates = parseJSON(hiddenInputEl.value);
+      dateClick: function (info) {
+        console.log("Date tapped:", info.dateStr);
+        let dates = parseHiddenDates();
 
-        // Filter out the clicked event
+        let existingIndex = dates.findIndex(
+          (d) => d.start_date === info.dateStr
+        );
+
+        if (existingIndex === -1) {
+          // Add date if not already in the list
+          dates.push({ start_date: info.dateStr, end_date: info.dateStr });
+          calendar.addEvent({
+            title: "Available",
+            start: info.dateStr,
+            end: info.dateStr,
+            allDay: true,
+          });
+        } else {
+          // Remove date if already selected
+          dates.splice(existingIndex, 1);
+          calendar.getEvents().forEach((event) => {
+            if (event.startStr === info.dateStr) event.remove();
+          });
+        }
+        updateHiddenInput(dates);
+      },
+
+      eventClick: function (info) {
+        let dates = parseHiddenDates();
+
+        // Remove clicked event from the stored dates
         dates = dates.filter(
           (d) =>
             !(
               d.start_date === info.event.startStr &&
-              d.end_date === info.event.endStr
+              d.end_date === (info.event.endStr || info.event.startStr)
             )
         );
-        // Update hidden input with new dates
-        hiddenInputEl.value = JSON.stringify(dates);
 
-        // Remove event from calendar
+        updateHiddenInput(dates.length > 0 ? dates : []); // Ensure empty array instead of undefined
         info.event.remove();
       },
-      // Load existing events
-      events: parseJSON(hiddenInputEl.value),
+
+      eventDidMount: function (info) {
+        info.el.style.pointerEvents = "auto";
+      },
+
+      events: parseHiddenDates(),
     });
+
     calendar.render();
   }
+
   // Handle amenities in the edit modal
   const editModal = document.getElementById("editCaravanModal");
   if (editModal) {
@@ -424,7 +480,7 @@ function initialiseEditCaravan() {
       const berth = button.getAttribute("data-berth");
       const location = button.getAttribute("data-location");
       const price = button.getAttribute("data-price");
-      const amenities = button.getAttribute("data-amenities").split(",");
+      const amenitiesAttr = button.getAttribute("data-amenities");
 
       const modal = event.target;
       modal.querySelector(".modal-body #id_title").value = title;
@@ -433,10 +489,12 @@ function initialiseEditCaravan() {
       modal.querySelector(".modal-body #id_location").value = location;
       modal.querySelector(".modal-body #id_price_per_night").value = price;
 
-      // Handle amenities
+      // Handle amenities selection
       const amenitiesField = modal.querySelector(".modal-body #id_amenities");
       if (amenitiesField) {
         const options = amenitiesField.options;
+        const amenities = amenitiesAttr ? amenitiesAttr.split(",") : [];
+
         for (let i = 0; i < options.length; i++) {
           options[i].selected = amenities.includes(options[i].value);
         }
@@ -642,6 +700,12 @@ function initialiseBookingButton() {
 
 /**
  * Fetches and updates the booking modal content dynamically based on the selected caravan ID.
+ * This function fetches the caravan details from the server using the caravan ID and updates
+ * the booking modal content with the title, owner, available dates, and a booking form.
+ * If the server request fails, an error message is logged to the console.
+ * @param {number} caravanId - The ID of the selected caravan.
+ * @function
+ * @returns {void} - This function does not return any value but updates the booking modal content.
  */
 function updateBookingModal(caravanId) {
   fetch(`/get-caravan-details/${caravanId}/`)
@@ -673,6 +737,62 @@ function updateBookingModal(caravanId) {
       }
     })
     .catch((error) => console.error("Error fetching caravan details:", error));
+}
+
+/**
+ * Initialises the booking modal for editing bookings by attaching event listeners to "Edit" buttons.
+ * When an "Edit" button is clicked, the corresponding booking modal is shown with the booking details
+ * pre-filled, allowing the user to update the booking information.
+ *
+ * This function is used to populate the booking modal with the existing booking details when the user
+ * clicks the "Edit" button. The modal is identified using the booking ID, and the form fields are
+ * pre-filled with the current booking information for editing.
+ * @function
+ */
+function initialiseEditBookingModal() {
+  document
+    .querySelectorAll("[id^=start_date]")
+    .forEach(function (startDateInput) {
+      const bookingId = startDateInput.id.replace("start_date", "");
+      const endDateInput = document.getElementById(`end_date${bookingId}`);
+
+      // Ensure both inputs exist before proceeding
+      if (!startDateInput || !endDateInput) return;
+
+      const today = new Date().toISOString().split("T")[0];
+
+      // Ensure start date cannot be in the past, but keep existing selections
+      if (
+        !startDateInput.value ||
+        new Date(startDateInput.value) < new Date(today)
+      ) {
+        startDateInput.setAttribute("min", today);
+      }
+
+      // Ensure end date is valid
+      if (
+        !endDateInput.value ||
+        new Date(endDateInput.value) < new Date(startDateInput.value)
+      ) {
+        endDateInput.setAttribute("min", startDateInput.value);
+      }
+
+      // Adjust end date when start date changes
+      startDateInput.addEventListener("change", function () {
+        endDateInput.setAttribute("min", startDateInput.value);
+        if (new Date(endDateInput.value) < new Date(startDateInput.value)) {
+          endDateInput.value = startDateInput.value;
+        }
+      });
+
+      // Ensure end date is valid when changed
+      endDateInput.addEventListener("change", function () {
+        if (new Date(endDateInput.value) < new Date(startDateInput.value)) {
+          alert("End date cannot be before the start date.");
+          endDateInput.value = startDateInput.value;
+        }
+      });
+    });
 }
 
 // Initialise submit review modal
@@ -1227,36 +1347,26 @@ function checkNotifications() {
 
         data.notifications.forEach((notification) => {
           const p = document.createElement("p");
-
-          // Create a brief overview of the notification
           const overview = document.createElement("strong");
           overview.classList.add("notification-type");
-          // Add notification type
           overview.textContent = `${notification.type}: `;
 
           const message = document.createElement("span");
           message.classList.add("notification-message");
-          // Add message content
           message.textContent = `${notification.message} (${notification.created_at})`;
 
-          // Create a clickable link
           if (notification.link) {
             const link = document.createElement("a");
             link.href = notification.link;
             link.textContent = " View Details";
             link.classList.add("notification-link");
-            // Add some spacing
             link.style.marginLeft = "5px";
-            // Open in new tab
             link.target = "_blank";
             message.appendChild(link);
           }
 
-          // Append elements to the paragraph
           p.appendChild(overview);
           p.appendChild(message);
-
-          // Append the paragraph to the modal's notification list
           notificationList.appendChild(p);
         });
       } else {
@@ -1393,18 +1503,18 @@ function initialisePaymentDetailsUpdate() {
 
   if (paymentForm) {
     paymentForm.addEventListener("submit", function (event) {
-    event.preventDefault();
+      event.preventDefault();
 
       let formData = new FormData(this);
 
       fetch(this.action, {
-      method: "POST",
-      body: formData,
+        method: "POST",
+        body: formData,
         headers: { "X-CSRFToken": formData.get("csrfmiddlewaretoken") },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
             // Update the payment details section dynamically
             const paymentDetailsSection = document.getElementById(
               "payment-details-section"
@@ -1424,63 +1534,28 @@ function initialisePaymentDetailsUpdate() {
               "editPaymentDetailsModal"
             );
             if (modalElement) {
-            const modal = bootstrap.Modal.getInstance(modalElement);
-            modal.hide();
+              const modal = bootstrap.Modal.getInstance(modalElement);
+              modal.hide();
             }
 
             // Show success message (from server response)
             showInAppMessage(
               data.message || "Payment details updated successfully!"
             );
-        } else {
+          } else {
             // Show error message if update fails (from server response)
-          showInAppMessage(
+            showInAppMessage(
               data.error || "An error occurred while updating payment details."
-          );
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        showInAppMessage(
+            );
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          showInAppMessage(
             "A network error occurred. Please try again.",
-          "error"
-        );
-      });
-  });
-}
-
-// Function to update payment details on the page dynamically
-/**
- * Dynamically updates the payment details on the page.
- *
- * This function updates the payment details container with the provided payment method,
- * the last four digits of the card, and the billing address.
- *
- * @param {string} paymentMethod - The payment method (e.g., "Visa", "MasterCard").
- * @param {string} cardLastFour - The last four digits of the card being used for payment.
- * @param {string} billingAddress - The billing address associated with the payment method.
- *
- * @returns {void} - This function does not return any value. It directly updates the DOM.
- */
-function updatePaymentDetails(paymentMethod, cardLastFour, billingAddress) {
-  const paymentDetailsContainer = document.querySelector(
-    ".card-body.text-white"
-  );
-
-  if (paymentDetailsContainer) {
-    paymentDetailsContainer.innerHTML = `
-      <p><strong>${paymentMethod}:</strong> **** **** **** ${cardLastFour}</p>
-      <p><strong>Billing Address:</strong> ${billingAddress}</p>
-      <button type="button" class="btn btn-primary mt-3 btn-styles" data-bs-toggle="modal" data-bs-target="#editPaymentDetailsModal">
-          Edit Payment Details
-      </button>
-    `;
-
-    // Force a repaint
-    paymentDetailsContainer.style.display = "none";
-    void paymentDetailsContainer.offsetHeight; // Trigger reflow
-    paymentDetailsContainer.style.display = "block";
-  } else {
-    console.error("❌ Payment details container not found!");
+            "error"
+          );
+        });
+    });
   }
 }
