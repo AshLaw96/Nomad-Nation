@@ -404,6 +404,11 @@ textarea {
     margin-bottom: 5px !important;
 }
 
+.fc-daygrid-day {
+    /* Prevents unwanted scrolling */
+    touch-action: manipulation; 
+}
+
 /* Footer section */
 footer {
     width: 100%;

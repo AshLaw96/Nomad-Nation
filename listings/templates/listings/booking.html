@@ -112,12 +112,14 @@
                                             {% csrf_token %}
                                             <div class="mb-3 modal-input-spacing">
                                                 <label for="start_date" class="form-label">{% trans "Start Date" %}</label>
-                                                <input type="date" class="form-control" id="start_date" name="start_date" value="{{ booking.start_date|date:'Y-m-d' }}" required>
+                                                <input type="date" class="form-control" id="start_date_{{ booking.id }}" name="start_date" 
+                                                       value="{{ booking.start_date|date:'Y-m-d' }}" required>
                                             </div>
                                             <div class="mb-3 modal-input-spacing">
                                                 <label for="end_date" class="form-label">{% trans "End Date" %}</label>
-                                                <input type="date" class="form-control" id="end_date" name="end_date" value="{{ booking.end_date|date:'Y-m-d' }}" required>
-                                            </div>
+                                                <input type="date" class="form-control" id="end_date_{{ booking.id }}" name="end_date" 
+                                                       value="{{ booking.end_date|date:'Y-m-d' }}" required>
+                                            </div>                                            
                                             <div class="mb-3 modal-input-spacing">
                                                 <label for="message" class="form-label">{% trans "Message" %}</label>
                                                 <textarea class="form-control" id="message" name="message" rows="3"></textarea>

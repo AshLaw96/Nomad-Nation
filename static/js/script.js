@@ -195,6 +195,22 @@ function initialiseFilterToggle() {
 function initialiseAddCaravan() {
   const calendarEl = document.getElementById("calendar");
   const hiddenInputEl = document.getElementById("available_dates");
+
+  // Utility function to safely parse JSON
+  function parseHiddenDates() {
+    try {
+      return hiddenInputEl.value ? JSON.parse(hiddenInputEl.value) : [];
+    } catch (e) {
+      console.error("Invalid JSON in hidden input:", e);
+      return [];
+    }
+  }
+
+  // Utility function to update hidden input
+  function updateHiddenInput(dates) {
+    hiddenInputEl.value = JSON.stringify(removeDuplicates(dates));
+  }
+
   // Adding multiple amenities
   const addAmenityBtn = document.getElementById("add-amenity-btn");
   if (addAmenityBtn) {
@@ -208,6 +224,7 @@ function initialiseAddCaravan() {
       container.appendChild(input);
     });
   }
+
   const form = document.querySelector("form");
   if (form) {
     form.addEventListener("submit", function () {

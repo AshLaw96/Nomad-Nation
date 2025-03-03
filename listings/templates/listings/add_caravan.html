@@ -42,6 +42,10 @@
                 <!-- Availability calendar -->
                 <div class="form-group mb-3 text-start">
                     <label id="calendar-label">{% trans "Availability:" %}</label>
+                    <!-- Instructional text -->
+                    <p class="text-muted">
+                        {% trans "Click on a date to toggle availability. Drag over multiple days to select a range. Click an existing date to remove it." %}
+                    </p>
                     <div id="calendar" class="w-100" aria-labelledby="calendar-label" role="application"></div>
                     <div id="selected-dates" class="mt-2"></div>
                     <input type="hidden" id="available_dates" name="available_dates" value='[]'>

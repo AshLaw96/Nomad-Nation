@@ -2,6 +2,8 @@ import json
 from django import forms
 from datetime import datetime
 from django.utils.translation import gettext_lazy as _
+from django.core.exceptions import ValidationError
+import re
 from .models import Caravan, Amenity, CaravanImage, Booking, Review, Reply
 
 
@@ -156,6 +158,13 @@ class BookingForm(forms.ModelForm):
         widgets = {
             'start_date': forms.DateInput(attrs={'type': 'date'}),
             'end_date': forms.DateInput(attrs={'type': 'date'}),
+            'phone_number': forms.TextInput(
+                attrs={
+                    'type': 'tel',
+                    'pattern': '[0-9]+',
+                    'title': 'Only numbers are allowed'
+                }
+            ),
         }
 
     def __init__(self, *args, **kwargs):
@@ -166,6 +175,15 @@ class BookingForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         if self.caravan:
             self.instance.caravan = self.caravan
+
+    def clean_phone_number(self):
+        """
+        Ensure phone_number contains only digits.
+        """
+        phone_number = self.cleaned_data.get('phone_number')
+        if phone_number and not re.fullmatch(r'\d+', phone_number):
+            raise ValidationError(_("Phone number must contain only digits."))
+        return phone_number
 
     def clean(self):
         """

@@ -194,9 +194,15 @@ def edit_caravan(request, pk):
                         name=value, owner=request.user
                     )
                     caravan.amenities.add(amenity_obj)
-            # Handle multiple images
+            # Handle image uploads and upload to Cloudinary
             for image in request.FILES.getlist('images'):
-                CaravanImage.objects.create(caravan=caravan, image=image)
+                # Upload to Cloudinary
+                uploaded_image = upload(image)
+                CaravanImage.objects.create(
+                    caravan=caravan,
+                    # Store the Cloudinary URL
+                    image=uploaded_image['secure_url']
+                )
             return redirect('listings')
     else:
         form = CaravanForm(instance=caravan, user=request.user)

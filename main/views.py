@@ -43,7 +43,8 @@ def contact_view(request):
             contact_message = form.save(commit=False)
             # Set sender as the current user, if logged in
             contact_message.sender = (
-                request.user if request.user.is_authenticated else None
+                request.user if request.user.is_authenticated
+                else None
             )
 
             # Determine recipient:

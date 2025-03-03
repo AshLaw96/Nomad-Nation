@@ -34,7 +34,7 @@ class Caravan(models.Model):
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='caravans'
     )
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=40)
     description = models.TextField()
     berth = models.CharField(
         max_length=10, choices=[
@@ -45,7 +45,7 @@ class Caravan(models.Model):
     )
     price_per_night = models.DecimalField(max_digits=6, decimal_places=2)
     currency = models.CharField(max_length=3, default="GBP")
-    location = models.CharField(max_length=100)
+    location = models.CharField(max_length=40)
     amenities = models.ManyToManyField(Amenity, related_name='caravans')
     favourites = models.ManyToManyField(
         User, related_name='favourite_caravans', blank=True
