@@ -9,7 +9,6 @@
     {% elif user_type == 'owner' %}
         <h2 class="text-center mt-3 title">{% trans "Your Caravan's Bookings" %}</h2>
     {% endif %}
-
     <!-- Pending Bookings Section -->
     <div class="card mb-4">
         <div class="card-header">
@@ -24,37 +23,43 @@
                                 <strong>{{ booking.caravan.title }}</strong><br>
                                 <small>{{ booking.start_date }} {% trans "to" %} {{ booking.end_date }}</small>
                             </div>
-                            <div class="d-flex flex-column align-items-end">
-                                {% if user_type == 'owner' %}
-                                <button type="button" class="btn btn-info btn-sm btn-styles mt-1 mb-2" data-bs-toggle="modal" data-bs-target="#bookingDetailsModal{{ booking.id }}">
-                                    {% trans "View Details" %}
-                                </button>
-                                <!-- Owner view of pending bookings -->
-                                <form method="post" action="{% url 'manage_booking' booking.id %}" class="border-0 bg-transparent">
+
+                            <!-- View Details Button -->
+                            <button type="button" class="btn btn-info btn-sm btn-styles"
+                                    data-bs-toggle="modal" data-bs-target="#bookingDetailsModal{{ booking.id }}">
+                                {% trans "View Details" %}
+                            </button>
+
+                            <!-- Accept/Decline Buttons (Owner only) -->
+                            {% if user_type == 'owner' %}
+                            <div class="d-flex">
+                                <form method="post" action="{% url 'manage_booking' booking.id %}">
                                     {% csrf_token %}
                                     <input type="hidden" name="action" value="accept">
-                                    <button type="submit" class="btn btn-success btn-sm btn-styles mb-2">{% trans "Accept" %}</button>
+                                    <button type="submit" class="btn btn-success btn-sm btn-styles me-2">{% trans "Accept" %}</button>
                                 </form>
-                                <form method="post" action="{% url 'manage_booking' booking.id %}" class="border-0 bg-transparent">
+                                <form method="post" action="{% url 'manage_booking' booking.id %}">
                                     {% csrf_token %}
                                     <input type="hidden" name="action" value="decline">
                                     <button type="submit" class="btn btn-danger btn-sm btn-styles">{% trans "Decline" %}</button>
                                 </form>
-                                {% endif %}
                             </div>
+                            {% endif %}
                         </li>
+
                         <!-- Booking Details Modal -->
-                        <div class="modal fade" id="bookingDetailsModal{{ booking.id }}" tabindex="-1" aria-labelledby="bookingDetailsModalLabel{{ booking.id }}" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                        <div class="modal fade" id="bookingDetailsModal{{ booking.id }}" tabindex="-1"
+                            aria-labelledby="bookingDetailsModalLabel{{ booking.id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="bookingDetailsModalLabel{{ booking.id }}">{% trans "Booking Details" %}</h5>
+                                        <h5 class="modal-title">{% trans "Booking Details" %}</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <p><strong>{% trans "Name:" %}</strong> {{ booking.name }}</p>
+                                        <p><strong>{% trans "Customer:" %}</strong> {{ booking.name }}</p>
                                         <p><strong>{% trans "Email:" %}</strong> {{ booking.email }}</p>
-                                        <p><strong>{% trans "Phone Number:" %}</strong> {{ booking.phone_number }}</p>
+                                        <p><strong>{% trans "Phone:" %}</strong> {{ booking.phone_number }}</p>
                                         <p><strong>{% trans "Message:" %}</strong> {{ booking.message }}</p>
                                         <p><strong>{% trans "Start Date:" %}</strong> {{ booking.start_date }}</p>
                                         <p><strong>{% trans "End Date:" %}</strong> {{ booking.end_date }}</p>
@@ -92,46 +97,7 @@
                                     <small><strong>{% trans "Customer:" %}</strong> {{ booking.customer.username }}</small>
                                 {% endif %}
                             </div>
-                            {% if user_type == 'customer' and booking.can_modify %}
-                                <!-- Modify Booking Button -->
-                                <button type="button" class="btn btn-warning btn-sm ms-2 mb-2 btn-styles" data-bs-toggle="modal" data-bs-target="#modifyBookingModal{{ booking.id }}">
-                                    {% trans "Modify Booking" %}
-                                </button>
-                            {% endif %}
                         </li>
-                        <!-- Modify Booking Modal -->
-                        <div class="modal fade" id="modifyBookingModal{{ booking.id }}" tabindex="-1" aria-labelledby="modifyBookingModalLabel{{ booking.id }}" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-xl">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modifyBookingModalLabel{{ booking.id }}">{% trans "Modify Booking" %}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form method="post" action="{% url 'modify_booking' booking.id %}">
-                                            {% csrf_token %}
-                                            <div class="mb-3 modal-input-spacing">
-                                                <label for="start_date" class="form-label">{% trans "Start Date" %}</label>
-                                                <input type="date" class="form-control" id="start_date_{{ booking.id }}" name="start_date" 
-                                                       value="{{ booking.start_date|date:'Y-m-d' }}" required>
-                                            </div>
-                                            <div class="mb-3 modal-input-spacing">
-                                                <label for="end_date" class="form-label">{% trans "End Date" %}</label>
-                                                <input type="date" class="form-control" id="end_date_{{ booking.id }}" name="end_date" 
-                                                       value="{{ booking.end_date|date:'Y-m-d' }}" required>
-                                            </div>                                            
-                                            <div class="mb-3 modal-input-spacing">
-                                                <label for="message" class="form-label">{% trans "Message" %}</label>
-                                                <textarea class="form-control" id="message" name="message" rows="3"></textarea>
-                                            </div>
-                                            <div class="text-center">
-                                                <button type="submit" class="btn btn-primary mb-1 btn-styles">{% trans "Submit" %}</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     {% endfor %}
                 </ul>
             {% else %}
@@ -140,6 +106,7 @@
             {% endif %}
         </div>
     </div>
+
     <!-- Previous Bookings Section -->
     <div class="card mb-4">
         <div class="card-header">
@@ -162,19 +129,25 @@
             {% endif %}
         </div>
     </div>
+
     {% if user_type == 'customer' %}
         <!-- Booking Request Form Section -->
+        {% if caravan %}
+        <div class="card mb-4" id="requestBookingCard">
+        {% else %}
         <div class="card mb-4" id="requestBookingCard" style="display: none;">
+        {% endif %}
             <div class="card-header">
                 <h3 class="title text-center">{% trans "Request a Booking" %}</h3>
             </div>
             <div class="card-body text-center">
-                <button type="button" class="btn btn-primary btn-styles request-booking-btn" data-bs-toggle="modal" data-bs-target="#bookCaravanModal" data-caravan-id="{{ caravan.id }}">
+                <button type="button" class="btn btn-primary btn-styles request-booking-btn" data-bs-toggle="modal" data-bs-target="#bookCaravanModal">
                     {% trans "Request Booking" %}
                 </button>
             </div>
         </div>
     {% endif %}
+
     <!-- Booking Modal -->
     <div class="modal fade" id="bookCaravanModal" tabindex="-1" aria-labelledby="bookCaravanModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -185,28 +158,32 @@
                 </div>
                 <div class="modal-body">
                     {% if caravan %}
-                    <h5 class="title text-center">{{ caravan.title }}</h5>
-                    <p><strong>{% trans "Owner:" %}</strong> {{ caravan.owner.username }}</p>
-                    <p><strong>{% trans "Available Dates:" %}</strong>
-                        {% for availability in caravan.availabilities.all %}
-                            {{ availability.start_date }} {% trans "to" %} {{ availability.end_date }}{% if not forloop.last %}, {% endif %}
-                        {% endfor %}
-                    </p>
-                    <form id="bookingForm" method="POST" action="{% url 'book_caravan' caravan.id %}">
-                        {% csrf_token %}
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-sm-8 col-md-4 mx-auto pt-1">
-                                    {{ form.as_p }}
+                        <h5 class="title text-center">{{ caravan.title }}</h5>
+                        <p><strong>{% trans "Owner:" %}</strong> {{ caravan.owner.username }}</p>
+                        <p><strong>{% trans "Available Dates:" %}</strong>
+                            {% for availability in caravan.availabilities.all %}
+                                {{ availability.start_date }} {% trans "to" %} {{ availability.end_date }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </p>
+                        {% if caravan %}
+                            <form id="bookingForm" method="POST" action="{% url 'book_caravan' caravan.id %}">
+                        {% else %}
+                            <form id="bookingForm" method="POST" action="{% url 'booking_view' %}">
+                        {% endif %}
+                            {% csrf_token %}
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-sm-8 col-md-4 mx-auto pt-1">
+                                        {{ form.as_p }}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary mb-1 btn-styles">{% trans "Submit" %}</button>
-                        </div>
-                    </form>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary mb-1 btn-styles">{% trans "Submit" %}</button>
+                            </div>
+                        </form>
                     {% else %}
-                    <p class="text-danger text-center">{% trans "No caravan selected for booking." %}</p>
+                        <p class="text-danger text-center">{% trans "No caravan selected for booking." %}</p>
                     {% endif %}
                 </div>
             </div>

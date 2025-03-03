@@ -227,51 +227,6 @@ def delete_caravan(request, pk):
 
 
 @login_required
-def booking_page_view(request):
-    """
-    Displays all bookings for the logged-in user.
-    Owners see all bookings for their caravans,
-    while customers see their own bookings.
-    """
-    user = request.user
-    user_type = user.profile.user_type
-    today = timezone.now().date()
-
-    # Fetch bookings based on user type
-    if user_type == 'owner':
-        bookings = Booking.objects.filter(caravan__owner=user)
-    else:
-        bookings = Booking.objects.filter(customer=user)
-
-    # Split bookings into categories
-    pending_bookings = bookings.filter(status='pending')
-    upcoming_bookings = bookings.filter(
-        status='accepted', start_date__gte=today
-    )
-    previous_bookings = bookings.filter(status='accepted', end_date__lt=today)
-
-    # Ensure the caravan context is passed
-    caravan = None
-    if bookings.exists():
-        caravan = bookings.first().caravan
-
-    # Add a flag to each booking indicating if it can be modified
-    for booking in upcoming_bookings:
-        booking.can_modify = (booking.start_date - today).days > 7
-
-    form = BookingForm()
-
-    return render(request, 'listings/booking.html', {
-        'pending_bookings': pending_bookings,
-        'upcoming_bookings': upcoming_bookings,
-        'previous_bookings': previous_bookings,
-        'user_type': user_type,
-        'caravan': caravan,
-        'form': form,
-    })
-
-
-@login_required
 def book_caravan(request, caravan_id):
     """
     Handles booking a caravan.
@@ -354,27 +309,40 @@ def book_caravan(request, caravan_id):
 
 
 @login_required
-def booking_view(request, caravan_id):
+def booking_view(request, caravan_id=None):
     """
-    Displays bookings for a specific caravan.
-    Shows pending, upcoming, and past bookings.
-    Determines if a booking can be modified.
+    Displays bookings for a specific caravan if caravan_id is provided.
+    Otherwise, displays all bookings for the logged-in user.
+    Owners see all bookings for their caravans,
+    while customers see their own bookings.
     """
-    caravan = get_object_or_404(Caravan, id=caravan_id)
     user = request.user
     user_type = user.profile.user_type
-    # Get today's date for comparison
     today = timezone.now().date()
 
-    # Determine bookings based on user type (owner or customer)
-    if user_type == 'owner' and user == caravan.owner:
-        # Owner's bookings for this caravan
-        bookings = Booking.objects.filter(caravan=caravan)
-    else:
-        # Customer's bookings
-        bookings = Booking.objects.filter(customer=user)
+    caravan = None
+    if caravan_id:
+        # Fetch a specific caravan if caravan_id is given
+        caravan = get_object_or_404(Caravan, id=caravan_id)
 
-    # Split bookings into Pending, Upcoming, and Previous
+        # Owner sees all bookings for this caravan,
+        # Customer sees only their own bookings
+        if user_type == 'owner' and user == caravan.owner:
+            bookings = Booking.objects.filter(caravan=caravan)
+        else:
+            bookings = Booking.objects.filter(caravan=caravan, customer=user)
+    else:
+        # No caravan_id provided, show all user-specific bookings
+        if user_type == 'owner':
+            bookings = Booking.objects.filter(caravan__owner=user)
+        else:
+            bookings = Booking.objects.filter(customer=user)
+
+        # Assign the first caravan (for context) if bookings exist
+        if bookings.exists():
+            caravan = bookings.first().caravan
+
+    # Categorize bookings
     pending_bookings = bookings.filter(status='pending')
     upcoming_bookings = bookings.filter(
         status='accepted', start_date__gte=today
@@ -385,6 +353,8 @@ def booking_view(request, caravan_id):
     for booking in upcoming_bookings:
         booking.can_modify = (booking.start_date - today).days > 7
 
+    form = BookingForm()
+
     return render(request, 'listings/booking.html', {
         'caravan': caravan,
         'pending_bookings': pending_bookings,
@@ -394,6 +364,7 @@ def booking_view(request, caravan_id):
         'has_pending': pending_bookings.exists(),
         'has_upcoming': upcoming_bookings.exists(),
         'has_previous': previous_bookings.exists(),
+        'form': form,
     })
 
 
@@ -401,15 +372,23 @@ def booking_view(request, caravan_id):
 def manage_booking(request, booking_id):
     """
     Handles the acceptance or rejection of a booking request.
-    Only allows the caravan owner to manage the booking.
+    Ensures only the caravan owner can manage the booking.
     Notifies the customer when their booking is accepted or declined.
     Redirects to the booking view after processing.
     """
     booking = get_object_or_404(Booking, pk=booking_id)
 
+    # Ensure the booking has an associated caravan
     if not booking.caravan:
         messages.error(request, _("Booking has no associated caravan."))
         return redirect("listings")
+
+    # Ensure only the caravan owner can manage this booking
+    if request.user != booking.caravan.owner:
+        messages.error(
+            request, _("You are not authorized to manage this booking.")
+        )
+        return redirect("booking_view", caravan_id=booking.caravan.id)
 
     if request.method == "POST":
         action = request.POST.get("action")
@@ -418,14 +397,17 @@ def manage_booking(request, booking_id):
             booking.status = "accepted"
             messages.success(request, _("Booking accepted!"))
 
-            # Check if the customer has notifications enabled before creating
-            if booking.customer.user_profile.notifications:
+            # Notify customer if notifications are enabled
+            if (
+                hasattr(booking.customer, "user_profile") and
+                booking.customer.user_profile.notifications
+            ):
                 Notification.objects.create(
                     user=booking.customer,
                     type=Notification.BOOKING_ACCEPTED,
                     message=(
-                        _("Booking for") + f" {booking.caravan.title} " +
-                        _("has been accepted."),
+                        _("Your booking for ") + f"{booking.caravan.title} " +
+                        _("has been accepted.")
                     ),
                     booking=booking,
                     caravan=booking.caravan,
@@ -436,15 +418,17 @@ def manage_booking(request, booking_id):
             booking.status = "declined"
             messages.warning(request, _("Booking declined."))
 
-            # Notify the customer of the booking rejection if notifications
-            # are enabled
-            if booking.customer.user_profile.notifications:
+            # Notify customer of rejection if notifications are enabled
+            if (
+                hasattr(booking.customer, "user_profile") and
+                booking.customer.user_profile.notifications
+            ):
                 Notification.objects.create(
                     user=booking.customer,
                     type=Notification.BOOKING_DECLINED,
                     message=(
-                        _("Booking for ") + f"{booking.caravan.title}" +
-                        _(" has been declined."),
+                        _("Your booking for ") + f"{booking.caravan.title} " +
+                        _("has been declined.")
                     ),
                     booking=booking,
                     caravan=booking.caravan,

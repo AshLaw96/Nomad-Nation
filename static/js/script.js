@@ -688,12 +688,8 @@ function initialiseBookingButton() {
     button.addEventListener("click", function () {
       const caravanId = this.getAttribute("data-caravan-id");
 
-      // Store caravan ID in localStorage for persistence
-      localStorage.setItem("bookNowClicked", true);
-      localStorage.setItem("caravanId", caravanId);
-
-      // Update modal content dynamically
-      updateBookingModal(caravanId);
+      // Redirect user to the specific caravan's booking page
+      window.location.href = `/bookings/${caravanId}/`;
     });
   });
 }

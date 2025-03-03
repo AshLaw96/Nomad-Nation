@@ -342,17 +342,17 @@
                         </form>
                     </div>
                 </div>
-            {% elif user_type == "customer" %}
+                {% elif user_type == "customer" %}
                 <div class="text-center mt-3 {% if caravan.reviews.all|length > 0 %}border rounded p-3{% endif %}">
                     {% if caravan.is_available %}
-                        <a href="{% url 'book_caravan' caravan.id %}" class="btn btn-success btn-styles book-now-btn w-100 mt-2 mb-2" data-caravan-id="{{ caravan.id }}">
+                        <a href="{% url 'booking_view' caravan.id %}" class="btn btn-success btn-styles w-100 mt-2 mb-2">
                             {% trans "BOOK CARAVAN NOW" %}
                         </a>
                     {% else %}
                         <button class="btn btn-secondary btn-styles w-100" disabled>{% trans "Not Available" %}</button>
                     {% endif %}
                 </div>
-            {% endif %}
+                {% endif %}                
         </li>
         {% endfor %}
     </ul>
