@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 from main.models import ContactMessage
-from user_settings.models import Notification
+from user_settings.models import Notification, UserProfile
 
 
 class MainViewsTestCase(TestCase):
@@ -19,6 +19,13 @@ class MainViewsTestCase(TestCase):
         self.user2 = User.objects.create_user(
             username="user2", email="user2@example.com", password="password123"
         )
+
+        # Ensure each user has a UserProfile
+        self.superuser_profile = UserProfile.objects.create(
+            user=self.superuser
+        )
+        self.user1_profile = UserProfile.objects.create(user=self.user1)
+        self.user2_profile = UserProfile.objects.create(user=self.user2)
 
         # Create a test message
         self.message = ContactMessage.objects.create(
@@ -120,7 +127,8 @@ class MainViewsTestCase(TestCase):
             follow=True,
         )
 
-        self.assertContains(response, "This field is required.")
+        # Use Django's default error message checking
+        self.assertContains(response, "This field is required.", html=True)
 
     def test_authenticated_user_can_delete_own_message(self):
         """
