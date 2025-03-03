@@ -7,6 +7,8 @@ from django.http import JsonResponse
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
+from django.utils.timezone import now
+from datetime import datetime
 from cloudinary.uploader import upload
 from .models import Caravan, Amenity, Availability, CaravanImage, Booking, \
     Review, Reply
@@ -303,19 +305,20 @@ def book_caravan(request, caravan_id):
                 booking.status = "pending"
                 booking.save()
 
-                # Notify the owner of the booking request
-                Notification.objects.create(
-                    user=caravan.owner,
-                    type=Notification.BOOKING_REQUEST,
-                    message=(
-                        _("Booking request for ") + f" {caravan.title}" +
-                        _(" from ") +
-                        f"{booking.customer.username}.",
-                    ),
-                    booking=booking,
-                    caravan=caravan,
-                    created_by=request.user
-                )
+                # Check if the caravan owner has notifications enabled
+                # before creating
+                if caravan.owner.user_profile.notifications:
+                    Notification.objects.create(
+                        user=caravan.owner,
+                        type=Notification.BOOKING_REQUEST,
+                        message=(
+                            _("Booking request for ") + f" {caravan.title}" +
+                            _(" from ") + f"{booking.customer.username}."
+                        ),
+                        booking=booking,
+                        caravan=caravan,
+                        created_by=request.user
+                    )
 
                 messages.success(
                     request,
@@ -458,23 +461,54 @@ def manage_booking(request, booking_id):
 def modify_booking(request, booking_id):
     """
     Handles modification of a booking request.
-    Allows the customer to request changes to the booking dates.
-    Saves the new dates and sets the status to pending for owner approval.
-    Notifies the caravan owner about the modification request.
-    Redirects to the booking view after updating.
+    Ensures selected dates are within the caravan's available dates.
     """
     booking = get_object_or_404(Booking, pk=booking_id)
+    caravan = booking.caravan  # Get the caravan from the booking
+
+    # Fetch availability periods for the caravan
+    available_periods = Availability.objects.filter(caravan=caravan)
 
     if request.method == "POST":
-        start_date = request.POST.get("start_date")
-        end_date = request.POST.get("end_date")
+        start_date_str = request.POST.get("start_date")
+        end_date_str = request.POST.get("end_date")
 
-        # Update booking dates
-        booking.start_date = start_date
-        booking.end_date = end_date
-        # Set status to pending for owner approval
-        booking.status = "pending"
-        booking.save()
+        try:
+            start_date = datetime.strptime(start_date_str, "%Y-%m-%d").date()
+            end_date = datetime.strptime(end_date_str, "%Y-%m-%d").date()
+            today = now().date()
+
+            # Validate dates
+            if start_date < today:
+                messages.error(request, _("Start date cannot be in the past."))
+                return redirect("booking_view", caravan_id=caravan.id)
+
+            if end_date < start_date:
+                messages.error(
+                    request, _("End date cannot be before start date.")
+                )
+                return redirect("booking_view", caravan_id=caravan.id)
+
+            # Check if selected dates fall within available periods
+            is_valid = False
+            for period in available_periods:
+                if (period.start_date <= start_date and
+                        period.end_date >= end_date):
+                    is_valid = True
+                    break
+
+            if not is_valid:
+                messages.error(
+                    request,
+                    _("Selected dates are not available for this caravan.")
+                )
+                return redirect("booking_view", caravan_id=caravan.id)
+
+            # Update booking dates
+            booking.start_date = start_date
+            booking.end_date = end_date
+            booking.status = "pending"
+            booking.save()
 
             # Notify the owner if notifications are enabled
             if caravan.owner.user_profile.notifications:
@@ -492,12 +526,14 @@ def modify_booking(request, booking_id):
                     created_by=request.user,
                 )
 
-        messages.success(
-            request, _("Booking modification request sent to the owner.")
-        )
-        return redirect("booking_view", caravan_id=booking.caravan.id)
+            messages.success(
+                request, _("Booking modification request sent to the owner.")
+            )
+            return redirect("booking_view", caravan_id=caravan.id)
 
-    return redirect("booking_view", caravan_id=booking.caravan.id)
+        except ValueError:
+            messages.error(request, _("Invalid date format."))
+            return redirect("booking_view", caravan_id=caravan.id)
 
 
 @login_required
@@ -610,10 +646,17 @@ def edit_review(request, pk):
     """
     Handles editing an existing review.
     Ensures only the customer who wrote the review can edit it.
-    Saves the updated review and notifies the caravan owner.
-    Returns a JSON response for AJAX requests.
     """
-    review = get_object_or_404(Review, pk=pk, customer=request.user)
+    review = get_object_or_404(Review, pk=pk)
+
+    # If the user is NOT the review author, redirect with warning
+    if review.customer != request.user:
+        messages.warning(
+            request, _("You do not have permission to edit this review.")
+        )
+        # Redirect to listings page
+        return redirect("listings")
+
     if request.method == "POST":
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
@@ -645,16 +688,38 @@ def edit_review(request, pk):
     return redirect("listings")
 
 
+@login_required
 def delete_review(request, pk):
     """
     Handles deletion of a review.
     Ensures only the customer who wrote the review can delete it.
-    Returns a JSON response indicating success.
     """
-    review = get_object_or_404(Review, pk=pk, customer=request.user)
+    review = get_object_or_404(Review, pk=pk)
+
+    # If the user is NOT the review author, return JSON if AJAX request
+    if review.customer != request.user:
+        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+            return JsonResponse(
+                {
+                    "error": _(
+                        "You do not have permission to delete this review."
+                    )
+                },
+                status=403
+            )
+        messages.warning(
+            request, _("You do not have permission to delete this review.")
+        )
+        return redirect("listings")
+
     review.delete()
     messages.success(request, _("Review deleted successfully!"))
-    return JsonResponse({"success": True})
+
+    # Return JSON if it's an AJAX request
+    if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+        return JsonResponse({"success": True})
+
+    return redirect("listings")
 
 
 @login_required
@@ -662,12 +727,17 @@ def edit_reply(request, pk):
     """
     Handles editing an existing reply to a review.
     Ensures only the caravan owner can edit their reply.
-    Saves the updated reply and notifies the original reviewer.
-    Returns a JSON response for AJAX requests.
     """
-    reply = get_object_or_404(
-        Reply, pk=pk, review__caravan__owner=request.user
-    )
+    reply = get_object_or_404(Reply, pk=pk)
+
+    # If the user is NOT the owner of the caravan, redirect with warning
+    if reply.review.caravan.owner != request.user:
+        messages.warning(
+            request, _("You do not have permission to edit this reply.")
+        )
+        # Redirect to listings page
+        return redirect("listings")
+
     if request.method == "POST":
         form = ReplyForm(request.POST, instance=reply)
         if form.is_valid():
@@ -696,7 +766,8 @@ def edit_reply(request, pk):
         if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
             return JsonResponse({"errors": form.errors}, status=400)
 
-    return JsonResponse({"error": _("Invalid request")}, status=400)
+    messages.warning(request, _("Invalid request."))
+    return redirect("listings")
 
 
 @login_required
@@ -704,11 +775,30 @@ def delete_reply(request, pk):
     """
     Handles deletion of a reply to a review.
     Ensures only the caravan owner can delete their reply.
-    Returns a JSON response indicating success.
     """
-    reply = get_object_or_404(
-        Reply, pk=pk, review__caravan__owner=request.user
-    )
+    reply = get_object_or_404(Reply, pk=pk)
+
+    # If the user is NOT the caravan owner, return a JSON response for AJAX
+    if reply.review.caravan.owner != request.user:
+        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+            return JsonResponse(
+                {
+                    "error": _(
+                        "You do not have permission to delete this reply."
+                    )
+                },
+                status=403
+            )
+        messages.warning(
+            request, _("You do not have permission to delete this reply.")
+        )
+        return redirect("listings")
+
     reply.delete()
     messages.success(request, _("Reply deleted successfully!"))
-    return JsonResponse({"success": True})
+
+    # Return JSON if it's an AJAX request
+    if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+        return JsonResponse({"success": True})
+
+    return redirect("listings")

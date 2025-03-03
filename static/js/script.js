@@ -750,9 +750,25 @@ function initialiseEditReviewModal() {
       const modal = document.querySelector(`#editReviewModal${reviewId}`);
       const ratingInput = modal.querySelector(`#rating-${reviewId}`);
       const commentTextarea = modal.querySelector(`#comment-${reviewId}`);
+      const form = modal.querySelector(".edit-review-form");
 
+      // Fill the form fields
       ratingInput.value = rating;
       commentTextarea.value = comment;
+
+      // Remove any existing event listener to prevent multiple bindings
+      form.replaceWith(form.cloneNode(true));
+      const newForm = modal.querySelector(".edit-review-form");
+
+      // Attach submit event listener
+      newForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const formData = new FormData(newForm);
+        // Form action should point to edit_review view
+        const url = newForm.getAttribute("action");
+
+        handleEdit(url, formData, "Review edited successfully!");
+      });
     });
   });
 }
@@ -799,14 +815,76 @@ function initialiseEditReplyModal() {
     button.addEventListener("click", function () {
       const replyId = this.getAttribute("data-reply-id");
       const replyText = this.getAttribute("data-reply-text");
+
       const modal = document.querySelector(`#editReplyModal${replyId}`);
       const replyTextarea = modal.querySelector(`#reply`);
+      const form = modal.querySelector(".edit-reply-form");
+
+      // Fill the form field
       replyTextarea.value = replyText;
+
+      // Remove any existing event listener to prevent multiple bindings
+      form.replaceWith(form.cloneNode(true));
+      const newForm = modal.querySelector(".edit-reply-form");
+
+      // Attach submit event listener
+      newForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const formData = new FormData(newForm);
+        // Form action should point to edit_reply view
+        const url = newForm.getAttribute("action");
+
+        handleEdit(url, formData, "Reply edited successfully!");
+      });
     });
   });
 }
 
-// Initialise delete review buttons
+function handleDelete(url) {
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "X-CSRFToken": getCookie("csrftoken"),
+      "X-Requested-With": "XMLHttpRequest",
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        // Handle 403 Forbidden separately to avoid logging in DevTools
+        if (response.status === 403) {
+          return response
+            .json()
+            .then((data) => {
+              showInAppMessage(
+                data.error || "You do not have permission to delete this."
+              );
+            })
+            .catch(() => {
+              showInAppMessage("You do not have permission to delete this.");
+            });
+        }
+        throw new Error("An unexpected error occurred.");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (data.success) {
+        // Reload if deletion is successful
+        location.reload();
+      }
+    })
+    .catch((error) => {
+      if (error.message.includes("permission to delete")) {
+        // Suppress expected 403 errors from DevTools
+        return;
+      }
+      // Only log unexpected errors
+      console.error("Error:", error.message);
+      showInAppMessage(error.message);
+    });
+}
+
+// Initialise delete review and reply buttons
 /**
  * Initialises delete buttons for reviews and replies by attaching event listeners.
  * When a "Delete" button is clicked, the function prevents the default behavior
@@ -857,17 +935,37 @@ function handleDelete(url) {
       "X-Requested-With": "XMLHttpRequest",
     },
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        // Handle 403 Forbidden & 404 Not Found errors
+        return response.json().then((data) => {
+          if (response.status === 403) {
+            throw new Error(
+              data.error || "You do not have permission to perform this action."
+            );
+          } else if (response.status === 404) {
+            throw new Error(
+              data.error || "The item you are trying to delete does not exist."
+            );
+          } else {
+            throw new Error("An unexpected error occurred.");
+          }
+        });
+      }
+      return response.json();
+    })
     .then((data) => {
       if (data.success) {
         location.reload();
       } else {
-        showInAppMessage("An error occurred while deleting the review.");
+        showInAppMessage(
+          data.error || "An error occurred while deleting the review."
+        );
       }
     })
     .catch((error) => {
-      console.error("Error:", error);
-      showInAppMessage("An error occurred while deleting the review.");
+      console.error("Error:", error.message);
+      showInAppMessage(error.message);
     });
 }
 
