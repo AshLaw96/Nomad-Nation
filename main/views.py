@@ -67,17 +67,21 @@ def contact_view(request):
                     else _("Guest")
                 )
 
-                Notification.objects.create(
-                    # Recipient of the notification
-                    user=recipient,
-                    type=Notification.CONTACT_FORM,
-                    message=(
-                        _("New contact message from ") + f"{sender_name}."
-                    ),
-                    created_by=(
-                        request.user if request.user.is_authenticated else None
-                    ),
-                )
+                # Check if notifications are enabled
+                if recipient.user_profile.notifications:
+                    Notification.objects.create(
+                        # Recipient of the notification
+                        user=recipient,
+                        type=Notification.CONTACT_FORM,
+                        message=(
+                            _("New contact message from ") +
+                            f"{sender_name}."
+                        ),
+                        created_by=(
+                            request.user if request.user.is_authenticated
+                            else None
+                        ),
+                    )
 
             # Show success message to the user
             messages.success(

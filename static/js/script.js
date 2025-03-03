@@ -1088,13 +1088,16 @@ function applyThemeFromCookie() {
  */
 function checkNotifications() {
   if (!isAuthenticated) {
-    // Skip fetching notifications if the user is not authenticated
-    return;
+    return; // Skip if not authenticated
   }
 
   fetch("/user_settings/get_notifications/")
     .then((response) => response.json())
     .then((data) => {
+      if (!data.notifications_enabled) {
+        return; // Stop if user has disabled notifications
+      }
+
       const notificationCount = document.getElementById("notification-count");
       const notificationIcon = document.getElementById("notification-icon");
       const notificationList = document.getElementById("notifications-list");
@@ -1151,6 +1154,78 @@ function checkNotifications() {
     });
 }
 
+// Initialise payment details update
+/**
+ * Initialises the payment details update process.
+ *  - Sets up an event listener for the submit button in the payment details update modal.
+ *  - Prevents the default form submission and sends the form data via a POST request.
+ *  - Updates the payment details section dynamically if the update is successful.
+ *  - Hides the modal after update and shows a success message.
+ *
+ * @returns {void} - This function doesn't return any value, but it sets up an event listener
+ *                   for the payment details update form and handles the update process.
+ */
+function initialisePaymentDetailsUpdate() {
+  const paymentForm = document.querySelector("#payment-form");
+
+  if (paymentForm) {
+    paymentForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      let formData = new FormData(this);
+
+      fetch(this.action, {
+        method: "POST",
+        body: formData,
+        headers: { "X-CSRFToken": formData.get("csrfmiddlewaretoken") },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            // Update the payment details section dynamically
+            const paymentDetailsSection = document.getElementById(
+              "payment-details-section"
+            );
+            if (paymentDetailsSection) {
+              paymentDetailsSection.innerHTML = `
+                <p><strong>Payment Method:</strong> ${data.payment_method}</p>
+                <p><strong>Card Last Four:</strong> **** **** **** ${data.card_last_four}</p>
+                <p><strong>Billing Address:</strong> ${data.billing_address}</p>
+                <button type="button" class="btn btn-primary mt-3 btn-styles" data-bs-toggle="modal" data-bs-target="#editPaymentDetailsModal">
+                    Edit Payment Details
+                </button>`;
+            }
+
+            // Hide the modal after update
+            const modalElement = document.getElementById(
+              "editPaymentDetailsModal"
+            );
+            if (modalElement) {
+              const modal = bootstrap.Modal.getInstance(modalElement);
+              if (modal) {
+                modal.hide();
+              }
+            }
+
+            // Show success message instantly from response
+            if (data.message) {
+              showInAppMessage(data.message);
+            }
+          } else {
+            // Show error message if update fails
+            showInAppMessage(
+              data.error || "An error occurred while updating payment details."
+            );
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          showInAppMessage("A network error occurred. Please try again.");
+        });
+    });
+  }
+}
+
 // Function to mark notifications as read
 /**
  * Marks all notifications as read by sending a POST request to the server.
@@ -1199,60 +1274,60 @@ function markNotificationsAsRead() {
  *                   handling the response, and updating the UI.
  */
 function initialisePaymentDetailsUpdate() {
-  const saveBtn = document.querySelector(
-    "#editPaymentDetailsModal button[type='submit']"
-  );
+  const paymentForm = document.querySelector("#payment-form");
 
-  if (!saveBtn) {
-    return;
-  }
-  saveBtn.addEventListener("click", (event) => {
+  if (paymentForm) {
+    paymentForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    const form = document.querySelector("#editPaymentDetailsModal form");
-    if (!form) {
-      return;
-    }
 
-    const formData = new FormData(form);
-    fetch(form.action, {
+      let formData = new FormData(this);
+
+      fetch(this.action, {
       method: "POST",
       body: formData,
-      headers: {
-        "X-CSRFToken": formData.get("csrfmiddlewaretoken"),
-      },
+        headers: { "X-CSRFToken": formData.get("csrfmiddlewaretoken") },
     })
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          // Close the modal after a successful update
-          setTimeout(() => {
+            // Update the payment details section dynamically
+            const paymentDetailsSection = document.getElementById(
+              "payment-details-section"
+            );
+            if (paymentDetailsSection) {
+              paymentDetailsSection.innerHTML = `
+                <p><strong>Payment Method:</strong> ${data.payment_method}</p>
+                <p><strong>Card Last Four:</strong> **** **** **** ${data.card_last_four}</p>
+                <p><strong>Billing Address:</strong> ${data.billing_address}</p>
+                <button type="button" class="btn btn-primary mt-3 btn-styles" data-bs-toggle="modal" data-bs-target="#editPaymentDetailsModal">
+                    Edit Payment Details
+                </button>`;
+            }
+
+            // Hide the modal after update
             const modalElement = document.getElementById(
               "editPaymentDetailsModal"
             );
+            if (modalElement) {
             const modal = bootstrap.Modal.getInstance(modalElement);
             modal.hide();
-          }, 200); // 200ms delay
+            }
 
-          // Update the displayed payment details dynamically
-          updatePaymentDetails(
-            data.payment_method,
-            data.card_last_four,
-            data.billing_address
-          );
-
-          // Show success message
-          showInAppMessage("Payment details updated successfully.", "success");
+            // Show success message (from server response)
+            showInAppMessage(
+              data.message || "Payment details updated successfully!"
+            );
         } else {
+            // Show error message if update fails (from server response)
           showInAppMessage(
-            data.error || "An error occurred while updating payment details.",
-            "error"
+              data.error || "An error occurred while updating payment details."
           );
         }
       })
       .catch((error) => {
         console.error("Error:", error);
         showInAppMessage(
-          "An error occurred while updating payment details.",
+            "A network error occurred. Please try again.",
           "error"
         );
       });

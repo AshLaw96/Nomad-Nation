@@ -125,50 +125,53 @@ def get_notifications(request):
     Returns a JSON response containing:
     - Notification count
     - List of notifications with message, type, timestamp, and relevant links.
+    - Whether notifications are enabled for the user.
     """
     user = request.user
-    notifications = Notification.objects.filter(user=user, is_read=False)
-    notifications_list = []
 
+    # Ensure user has a profile with notification preferences
+    user_profile = getattr(user, 'user_profile', None)
+    notifications_enabled = (
+        user_profile.notifications if user_profile else False
+    )
+
+    # Get all unread notifications for the user
+    notifications = Notification.objects.filter(user=user, is_read=False)
+
+    notifications_list = []
     for n in notifications:
-        # Default if no link is available
+        # Default fallback link
         link = "#"
 
-        if n.type == "review" and n.review:
-            # reviews on listings page
+        if n.type == Notification.REVIEW and n.review:
             link = reverse("listings") + f"#review-{n.review.id}"
-        elif n.type == "review_reply" and n.review:
-            link = reverse("listings") + f"#review-{n.related_object.id}"
-        elif n.type == "booking_request":
+        elif n.type == Notification.REPLY and n.review:
+            link = reverse("listings") + f"#review-{n.related_object_id}"
+        elif n.type == Notification.BOOKING_REQUEST and n.booking:
             link = reverse(
                 "manage_booking", kwargs={"booking_id": n.booking.id}
             )
-        elif n.type == "booking_accepted":
-            link = reverse(
-                    "booking_view", kwargs={"caravan_id": n.caravan.id}
-                )
-        elif n.type == "booking_declined":
-            link = reverse(
-                "booking_view", kwargs={"caravan_id": n.caravan.id}
-            )
-        elif n.type == "booking_modified_request":
-            link = reverse(
-                "booking_view", kwargs={"caravan_id": n.caravan.id}
-            )
-        elif n.type == "contact_form_message":
+        elif n.type in [
+            Notification.BOOKING_ACCEPTED,
+            Notification.BOOKING_DECLINED,
+            Notification.BOOKING_MODIFIED_REQUEST
+        ] and n.caravan:
+            link = reverse("booking_view", kwargs={"caravan_id": n.caravan.id})
+        elif n.type == Notification.CONTACT_FORM:
             link = reverse("contact")
 
         notifications_list.append({
-            'message': n.message,
-            'type': n.get_type_display(),
-            'created_at': n.created_at.strftime('%Y-%m-%d %H:%M:%S'),
-            # Include link in response
-            'link': link,
+            "message": n.message,
+            "type": n.get_type_display(),
+            "created_at": n.created_at.strftime("%Y-%m-%d %H:%M:%S"),
+            "link": link,
         })
 
     return JsonResponse({
-        'count': notifications.count(),
-        'notifications': notifications_list
+        "count": notifications.count(),
+        "notifications": notifications_list,
+        # Include user's preference
+        "notifications_enabled": notifications_enabled,
     })
 
 
@@ -188,41 +191,44 @@ def mark_notifications_read(request):
 @login_required
 def edit_payment_details(request):
     """
-    Updates a user's payment details.
-    - Parses JSON data from request
-    - Validates card last four digits
-    - Saves new payment details for the user
-    Returns a JSON response confirming success or error message.
+    Handles AJAX request to update the user's payment details.
+    Validates input, updates or creates a PaymentDetails object,
+    and returns a JSON response for dynamic UI update.
     """
     if request.method == 'POST':
+        user = request.user
+        payment_method = request.POST.get('payment_method', '').strip()
+        card_last_four = request.POST.get('card_last_four', '').strip()
+        billing_address = request.POST.get('billing_address', '').strip()
 
-        card_last_four = request.POST.get('card_last_four', '')
-
-        # Ensure card last four digits are exactly 4 numbers
+        # Validate card last four digits
         if not card_last_four.isdigit() or len(card_last_four) != 4:
             return JsonResponse({
                 'success': False,
-                'error': _('Invalid card number format.')
+                'error': 'Invalid card number format.'
             })
 
+        # Retrieve or create the payment details object
         payment_details, created = PaymentDetails.objects.get_or_create(
-            user=request.user
+            user=user
         )
-        payment_details.payment_method = request.POST.get('payment_method', '')
+        payment_details.payment_method = payment_method
         payment_details.card_last_four = card_last_four
-        payment_details.billing_address = request.POST.get(
-            'billing_address', ''
-        )
+        payment_details.billing_address = billing_address
         payment_details.save()
 
+        # Add success message and return it in the JSON response
+        messages.success(request, "Payment details updated successfully!")
         return JsonResponse({
             'success': True,
-            'payment_method': payment_details.payment_method,
-            'card_last_four': payment_details.card_last_four,
-            'billing_address': payment_details.billing_address,
+            'payment_method': payment_method,
+            'card_last_four': card_last_four,
+            'billing_address': billing_address,
+            # Include the message
+            'message': "Payment details updated successfully!"
         })
 
-    return JsonResponse({'success': False})
+    return JsonResponse({'success': False, 'error': 'Invalid request method.'})
 
 
 @login_required

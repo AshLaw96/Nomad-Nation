@@ -409,35 +409,38 @@ def manage_booking(request, booking_id):
             booking.status = "accepted"
             messages.success(request, _("Booking accepted!"))
 
-            # Notify the customer of the booking confirmation
-            Notification.objects.create(
-                user=booking.customer,
-                type=Notification.BOOKING_ACCEPTED,
-                message=(
-                    _("Booking for") + f" {booking.caravan.title} " +
-                    _("has been accepted.")
-                ),
-                booking=booking,
-                caravan=booking.caravan,
-                created_by=request.user
-            )
+            # Check if the customer has notifications enabled before creating
+            if booking.customer.user_profile.notifications:
+                Notification.objects.create(
+                    user=booking.customer,
+                    type=Notification.BOOKING_ACCEPTED,
+                    message=(
+                        _("Booking for") + f" {booking.caravan.title} " +
+                        _("has been accepted."),
+                    ),
+                    booking=booking,
+                    caravan=booking.caravan,
+                    created_by=request.user
+                )
 
         elif action == "decline":
             booking.status = "declined"
             messages.warning(request, _("Booking declined."))
 
-            # Notify the customer of the booking rejection
-            Notification.objects.create(
-                user=booking.customer,
-                type=Notification.BOOKING_DECLINED,
-                message=(
-                    _("Booking for ") + f"{booking.caravan.title}" +
-                    _(" has been declined.")
-                ),
-                booking=booking,
-                caravan=booking.caravan,
-                created_by=request.user
-            )
+            # Notify the customer of the booking rejection if notifications
+            # are enabled
+            if booking.customer.user_profile.notifications:
+                Notification.objects.create(
+                    user=booking.customer,
+                    type=Notification.BOOKING_DECLINED,
+                    message=(
+                        _("Booking for ") + f"{booking.caravan.title}" +
+                        _(" has been declined."),
+                    ),
+                    booking=booking,
+                    caravan=booking.caravan,
+                    created_by=request.user
+                )
 
         booking.save()
         return redirect("booking_view", caravan_id=booking.caravan.id)
@@ -467,19 +470,21 @@ def modify_booking(request, booking_id):
         booking.status = "pending"
         booking.save()
 
-        # Notify the owner of the booking modification request
-        Notification.objects.create(
-            user=booking.caravan.owner,
-            type=Notification.BOOKING_MODIFIED_REQUEST,
-            message=(
-                _("Booking modification request for ") +
-                f" {booking.caravan.title} " +
-                _("from") + f" {booking.customer.username}."
-            ),
-            booking=booking,
-            caravan=booking.caravan,
-            created_by=request.user
-        )
+            # Notify the owner if notifications are enabled
+            if caravan.owner.user_profile.notifications:
+                Notification.objects.create(
+                    user=caravan.owner,
+                    type=Notification.BOOKING_MODIFIED_REQUEST,
+                    message=(
+                        _("Booking modification request for ") +
+                        f"{caravan.title} " +
+                        _("from") +
+                        f" {booking.customer.username}."
+                    ),
+                    booking=booking,
+                    caravan=caravan,
+                    created_by=request.user,
+                )
 
         messages.success(
             request, _("Booking modification request sent to the owner.")
@@ -506,18 +511,20 @@ def submit_review(request, caravan_id):
             review.customer = request.user
             review.save()
 
-            Notification.objects.create(
-                # The owner gets the notification
-                user=caravan.owner,
-                message=(
-                    _("New review from ") + f"{review.customer.username} " +
-                    _("on your caravan!")
-                ),
-                type=Notification.REVIEW,
-                # Associate the notification with this caravan
-                caravan=caravan,
-                review=review,
-            )
+            # Notify the owner if notifications are enabled
+            if caravan.owner.user_profile.notifications:
+                Notification.objects.create(
+                    # The owner gets the notification
+                    user=caravan.owner,
+                    message=(
+                        _("New review from ") + f"{review.customer.username} "
+                        + _(" on your caravan!")
+                    ),
+                    type=Notification.REVIEW,
+                    # Associate the notification with this caravan
+                    caravan=caravan,
+                    review=review,
+                )
 
             messages.success(request, _("Review submitted successfully!"))
 
@@ -567,18 +574,21 @@ def submit_reply(request, review_id):
             reply.save()
             messages.success(request, _("Reply submitted successfully!"))
 
-            Notification.objects.create(
-                # Notify the original reviewer
-                user=review.customer,
-                message=(
-                    f"{request.user.username}" + _("replied to your review")
-                ),
-                type=Notification.REPLY,
-                caravan=review.caravan,
-                created_by=request.user,
-                # Link notification to the review
-                related_object_id=review.pk
-            )
+            # Notify the original reviewer if they have notifications enabled
+            if review.customer.user_profile.notifications:
+                Notification.objects.create(
+                    # Notify the original reviewer
+                    user=review.customer,
+                    message=(
+                        f"{request.user.username} " +
+                        _("replied to your review")
+                    ),
+                    type=Notification.REPLY,
+                    caravan=review.caravan,
+                    created_by=request.user,
+                    # Link notification to the review
+                    related_object_id=review.pk
+                )
 
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({"success": True})
@@ -604,25 +614,29 @@ def edit_review(request, pk):
             form.save()
             messages.success(request, _("Review edited successfully!"))
 
-            # Send notification to the caravan owner
-            Notification.objects.create(
-                user=review.caravan.owner,
-                message=_("Review edited by") + f" {request.user.username}",
-                # Use same type as new review
-                type=Notification.REVIEW,
-                caravan=review.caravan,
-                created_by=request.user,
-                # Store the review ID for linking
-                related_object_id=review.pk
-            )
+            # Send notification to caravan owner if enabled
+            if review.caravan.owner.user_profile.notifications:
+                Notification.objects.create(
+                    user=review.caravan.owner,
+                    message=(
+                        _("Review edited by") + f" {request.user.username}"
+                    ),
+                    type=Notification.REVIEW,
+                    caravan=review.caravan,
+                    created_by=request.user,
+                    related_object_id=review.pk
+                )
 
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({"success": True})
+
             return redirect("listings")
+
         if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
             return JsonResponse({"errors": form.errors}, status=400)
 
-    return JsonResponse({"error": _("Invalid request")}, status=400)
+    messages.warning(request, _("Invalid request."))
+    return redirect("listings")
 
 
 def delete_review(request, pk):
@@ -654,24 +668,25 @@ def edit_reply(request, pk):
             form.save()
             messages.success(request, _("Reply edited successfully!"))
 
-            # Create a notification for the original reviewer
-            Notification.objects.create(
-                # Notify the reviewer
-                user=reply.review.customer,
-                message=(
-                    f"{request.user.username} " + _("edited their reply to ") +
-                    _("your review")
-                ),
-                type=Notification.REPLY,
-                caravan=reply.review.caravan,
-                created_by=request.user,
-                # Link notification to the review
-                related_object_id=reply.review.pk
-            )
+            # Notify the original reviewer if they have notifications enabled
+            if reply.review.customer.user_profile.notifications:
+                Notification.objects.create(
+                    user=reply.review.customer,
+                    message=(
+                        f"{request.user.username} " +
+                        _("edited their reply to your review")
+                    ),
+                    type=Notification.REPLY,
+                    caravan=reply.review.caravan,
+                    created_by=request.user,
+                    related_object_id=reply.review.pk
+                )
 
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({"success": True})
+
             return redirect("listings")
+
         if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
             return JsonResponse({"errors": form.errors}, status=400)
 
